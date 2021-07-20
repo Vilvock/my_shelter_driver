@@ -1,0 +1,23 @@
+Aplicativo ter menu flutuante na parte de cima três listras ícone de menu abre minhas reservas,
+meus pagamentos essas questões:
+Luis-passageiro: no layout do passageiro o login e-mail e senha, splash telas de slide para
+passageiro e motorista.
+João- Motorista:
+Tela de cadastro
+T16: nome e-mail data de nascimento cpf e senha na tela
+de cadastro tela 7. marca modelo ano, ano modelo e
+placa ,cor (para receber o login)
+-Depois dessa tela de cadastro mostrar uma mensagem “você recebera por e-mail a permissão para
+entrar no aplicativo após nosso time avaliar sua solicitação.”
+Tela de upload de documentos
+tem que enviar CNH e enviar DOC do veículo, ter status de cada um(depois de login) depois que
+aprovar os dois documentos ele já pode estar apto a usar o aplicativo.
+-Mostrar o status da CNH e do DOC do veículo enquanto ele aguarda a permissão para usar o app
+Após isso ele vai cair no mapa vai ter TWITE: Ativo e desativo, ao aceitar a corrida vai vir o nome
+do usuário que solicitou destino tal valor tal e forma de pagamento: A forma de aceitar será um
+deslize (Tela 29 FIGMA)
+no meu perfil do motorista (menu lateral) mostrar avaliação viagens e nota atual do motorista. T30
+contas bancárias. Ao adicionar a conta bancária será conta ou PIX T33
+histórico de viagens
+meus pagamentos T34 valor total que recebeu no dia tal uma listagem de meus pagamentos.
+E o botão de deslogar no final.
