@@ -1,0 +1,25 @@
+<resources>
+
+    <dimen name="text_size20">46sp</dimen>
+    <dimen name="text_size19">44sp</dimen>
+    <dimen name="text_size18">42sp</dimen>
+    <dimen name="text_size17">40sp</dimen>
+    <dimen name="text_size16">38sp</dimen>
+    <dimen name="text_size15">36sp</dimen>
+    <dimen name="text_size14">34sp</dimen>
+    <dimen name="text_size13">32sp</dimen>
+    <dimen name="text_size12">30sp</dimen>
+    <dimen name="text_size11">28sp</dimen>
+    <dimen name="text_size10">26sp</dimen>
+    <dimen name="text_size9">24sp</dimen>
+    <dimen name="text_size8">22sp</dimen>
+    <dimen name="text_size7">20sp</dimen>
+    <dimen name="text_size6">18sp</dimen>
+    <dimen name="text_size5">16sp</dimen>
+    <dimen name="text_size4">14sp</dimen>
+    <dimen name="text_size3">12sp</dimen>
+    <dimen name="text_size2">10sp</dimen>
+    <dimen name="text_size1">8sp</dimen>
+
+
+</resources>

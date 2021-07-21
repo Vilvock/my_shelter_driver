@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".fragment.intro.Intro_container">
+    tools:context=".fragment.intro.IntroContainerFrag">
 
     <include
         android:id="@+id/include"
         layout="@layout/container_bottomrounded_intro"
-        android:layout_width="416dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -29,7 +29,7 @@
         android:paddingEnd="15dp"
         android:text="Pŕoximo"
         android:textColor="#FFFFFF"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/amber500"
         app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
