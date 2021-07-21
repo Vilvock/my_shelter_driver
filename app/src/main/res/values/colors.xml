@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/amber700</color>
-    <color name="colorPrimaryDark">@color/blue900</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorPrimary">#243C75</color>
+    <color name="colorPrimaryDark">#18284C</color>
+    <color name="colorAccent">#F4B607</color>
 
-
-    //intro
+    <!--intro-->
     <color name="colorContainer">#FFFFFF</color>
 
 
