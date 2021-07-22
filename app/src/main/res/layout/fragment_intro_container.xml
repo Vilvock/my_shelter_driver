@@ -20,29 +20,21 @@
 
     <Button
         android:id="@+id/next_Intro_Bnt"
-        style="@style/StyleButtonIntro"
+        style="@style/StyleButtonSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:padding="10dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
         android:text="Pŕoximo"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="@color/amber500"
-        app:cornerRadius="25dp"
+        app:backgroundTint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <Button
         android:id="@+id/skip_intro_bnt"
+        style="@style/StyleTextButtonSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:background="@drawable/rounded_bnt_intro_skip"
-        android:padding="10dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
         android:text="Pular"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
