@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.fragment
+package br.com.app5m.appshelterdriver.fragment.auth.phoneValidation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

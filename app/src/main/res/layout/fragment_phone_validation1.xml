@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.PhoneValidation1Frag">
+    android:layout_height="wrap_content"
+    tools:context=".fragment.auth.phoneValidation.PhoneValidation1Frag">
 
     <TextView
         android:id="@+id/textView"
@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/sf_ui_display_medium"
-        android:singleLine="false"
         android:justificationMode="inter_word"
+        android:singleLine="false"
         android:text="Qual o seu número\nde celular?"
         android:textAlignment="textStart"
         android:textColor="@color/black"
@@ -43,7 +43,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
         android:autoSizeTextType="uniform"
-        android:justificationMode="inter_word"
         android:text='Toque em "começar" para obter uma confirmação por SMS para ajudá-lo a usar o SHELTER. Gostaríamos do seu telefone.'
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/guideline9"
@@ -65,7 +64,7 @@
         <AutoCompleteTextView
             android:id="@+id/phoneCountryAcTv"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="none"
             android:text="+1"
             app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -80,7 +79,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="38dp"
         android:minWidth="220dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toEndOf="@+id/phoneCountryTi"
@@ -92,15 +91,24 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="phone"
-            android:text="1231234356" />
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingLeft="0dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="12dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="1231234356"
+            android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="country code"
+        android:text="Código DDI"
         android:textAllCaps="true"
+        android:textColor="#737373"
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/phoneCountryTi"
@@ -108,12 +116,14 @@
         app:layout_constraintStart_toStartOf="@+id/guideline10" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/next_phonevalidation_bnt"
+        style="@style/StyleButtonMedium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_marginTop="68dp"
+        android:text="Avançar"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        tools:layout_editor_absoluteY="407dp" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneCountryTi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

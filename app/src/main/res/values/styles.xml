@@ -42,13 +42,15 @@
             <item name="android:paddingStart">15dp</item>
             <item name="android:paddingEnd">15dp</item>
             <item name="android:textColor">#FFFFFF</item>
-            <item name="cornerRadius">25dp</item>
+        <item name="android:textSize">14dp</item>
+        <item name="cornerRadius">25dp</item>
     </style>
     <style name="StyleTextButtonSmall" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:padding">10dp</item>
         <item name="android:paddingStart">15dp</item>
         <item name="android:paddingEnd">15dp</item>
         <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14dp</item>
         <item name="cornerRadius">25dp</item>
     </style>
     <style name="StyleButtonMedium" parent="Widget.MaterialComponents.Button">
@@ -56,6 +58,7 @@
         <item name="android:paddingStart">40dp</item>
         <item name="android:paddingEnd">40dp</item>
         <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16sp</item>
     </style>
     <style name="StyleTextButtonMedium" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:padding">10dp</item>
