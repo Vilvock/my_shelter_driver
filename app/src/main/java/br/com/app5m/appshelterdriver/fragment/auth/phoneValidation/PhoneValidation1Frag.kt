@@ -34,10 +34,7 @@ class PhoneValidation1Frag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val items = listOf("93", "55", "61", "257")
-        val adapter = ArrayAdapter(requireContext(), R.layout.adapter_list_codcountry, items)
-//        phoneCountryTi.phoneCountryAcTv?.setAdapter(adapter)
-        phoneCountryAcTv.setText(adapter.getItem(0).toString(),false)
+
 
     }
 }

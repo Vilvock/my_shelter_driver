@@ -19,6 +19,6 @@ Nullam non nisi sed urna malesuada malesuada id ut arcu. Morbi ex lacus, efficit
 Quisque ullamcorper quis nulla eu iaculis. Fusce pharetra vulputate placerat. In vel aliquet metus. Donec a odio ut tortor bibendum faucibus a sit amet mi. Ut facilisis in ante non pharetra. Phasellus non ligula dui. Proin ullamcorper sagittis mi non lacinia. Ut posuere justo felis, at vehicula velit hendrerit ac. Phasellus finibus sem erat, sit amet aliquet ligula tincidunt in. Nam non ex non sapien mollis porta. Vivamus non dolor ex. Vivamus feugiat ex interdum magna iaculis tristique. Vivamus lobortis justo nec purus eleifend mattis. Vestibulum efficitur non est quis sollicitudin.
 </string>
 
-
+    <string name="terms_conditions">Clicando em "Cadastrar" você concorda com nossos <b><u>Termos de uso</u></b> e <b><u>Políticas de privacidade.</u></b></string>
 
 </resources>

@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".fragment.auth.phoneValidation.PhoneValidation1Frag">
 
     <TextView
         android:id="@+id/textView"
+        style="@style/fontTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autoSizeTextType="uniform"
@@ -16,7 +18,7 @@
         android:singleLine="false"
         android:text="Qual o seu número\nde celular?"
         android:textAlignment="textStart"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/guideline9"
@@ -44,86 +46,85 @@
         android:layout_marginTop="34dp"
         android:autoSizeTextType="uniform"
         android:text='Toque em "começar" para obter uma confirmação por SMS para ajudá-lo a usar o SHELTER. Gostaríamos do seu telefone.'
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/guideline9"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phoneCountryTi"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintEnd_toStartOf="@+id/guideline9"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayout">
-
-        <AutoCompleteTextView
-            android:id="@+id/phoneCountryAcTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:text="+1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline9"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline10"
-            tools:layout_editor_absoluteY="260dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="38dp"
-        android:minWidth="220dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/next_phonevalidation_bnt"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
-        app:layout_constraintStart_toEndOf="@+id/phoneCountryTi"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.0">
+
 
         <EditText
-            android:id="@+id/editTextPhone"
-            android:layout_width="match_parent"
+            android:id="@+id/countryCode_et"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_main_et"
+            android:drawableEnd="@drawable/ic_main_dropdown"
             android:ems="10"
-            android:inputType="phone"
-            android:padding="10dp"
-            android:paddingStart="12dp"
-            android:paddingLeft="0dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="12dp"
-            android:paddingRight="0dp"
-            android:paddingBottom="0dp"
-            android:text="1231234356"
-            android:textSize="16sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:inputType="textEmailAddress"
+            android:paddingEnd="16dp"
+            android:text="+1" />
 
-    <TextView
-        android:id="@+id/textView4"
+        <com.santalu.maskedittext.MaskEditText
+            android:id="@+id/phone_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_main_et"
+            android:ems="10"
+            android:hint="Telefone"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Código DDI"
-        android:textAllCaps="true"
-        android:textColor="#737373"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/phoneCountryTi"
-        app:layout_constraintEnd_toEndOf="@+id/phoneCountryTi"
-        app:layout_constraintStart_toStartOf="@+id/guideline10" />
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Código DDI"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:boxStrokeWidth="2dp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/next_phonevalidation_bnt"
         style="@style/StyleButtonMedium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
         android:text="Avançar"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toBottomOf="@+id/phoneCountryTi" />
+        tools:layout_editor_absoluteY="334dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
