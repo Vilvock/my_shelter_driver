@@ -7,7 +7,7 @@
         android:color="#DDDDDD"
         ></stroke>-->
     <!--<stroke android:width="0.5dp" android:color="#000000" />-->
-    <solid
+  <solid
         android:color="@color/colorContainer"
         />
     <corners
