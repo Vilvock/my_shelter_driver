@@ -1,3 +1,4 @@
+/*
 package br.com.app5m.appshelterdriver.dialog
 
 
@@ -6,24 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.adapter.VeicleColorAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.VeicleColor
 import kotlinx.android.synthetic.main.dialog_veicle_color.*
+import kotlin.collections.ArrayList
 
-class VeicleColorDialog: DialogFragment(), RecyclerItemClickListener{
+class VeicleColorDialogCopy: DialogFragment(), RecyclerItemClickListener{
     private val TAG = "VeicleColorDialog"
 
 
-    private var veicleColorList  = ArrayList<VeicleColor>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.AppTheme) }
-//se nao for em tela cheia a dialog nao esta abrindo.
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,22 +34,24 @@ class VeicleColorDialog: DialogFragment(), RecyclerItemClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
+
         configureInitialViews()
-        veicleColorList.add(VeicleColor())
-        veicleColorList.add(VeicleColor())
-        veicleColorList.add(VeicleColor())
-        veicleColorList.add(VeicleColor())
+
     }
     fun configureInitialViews(){
-        val productsAdapter = VeicleColorAdapter(requireContext(),veicleColorList,this)
+        val arrayList = ArrayList<VeicleColor>()
 
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
+        arrayList.add(VeicleColor("azul",R.drawable.blue_circle))
+        arrayList.add(VeicleColor("black",R.drawable.black_circle))
 
-        veicleColorRv.layoutManager = layoutManager
+        val myAdapter = context?.let { VeicleColorAdapter(arrayList, it) }
 
-        veicleColorRv.adapter = productsAdapter
+        veicleColorRv.layoutManager = LinearLayoutManager(context)
+        veicleColorRv.adapter = myAdapter
 
     }
 
 
-}
+}*/

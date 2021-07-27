@@ -5,9 +5,10 @@ import android.os.Bundle
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.dialog.VeicleColorDialog
 import br.com.app5m.appshelterdriver.fragment.auth.phoneValidation.PhoneValidation1Frag
+import br.com.app5m.appshelterdriver.fragment.auth.phoneValidation.PhoneValidation2Frag
 import br.com.app5m.appshelterdriver.fragment.signIn.SignUpFrag
-import br.com.app5m.appshelterdriver.fragment.signIn.SigninFrag
 import br.com.app5m.appshelterdriver.helper.MyUsefulKotlin
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,8 +16,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-//        MyUsefulKotlin().startFragment(PhoneValidation1Frag(), supportFragmentManager)
-//        VeicleColorDialog().show(supportFragmentManager, "VeicleColorDialog")
+      MyUsefulKotlin().startFragment(SignUpFrag(), supportFragmentManager)
+
 
     }
 }
