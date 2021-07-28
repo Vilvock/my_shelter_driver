@@ -45,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
         android:autoSizeTextType="uniform"
+        android:fontFamily="@font/sf_ui_display_bold"
         android:text='Toque em "começar" para obter uma confirmação por SMS para ajudá-lo a usar o SHELTER. Gostaríamos do seu telefone.'
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/guideline9"
@@ -108,6 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/sf_ui_display_heavy"
             android:text="Código DDI"
             android:textAllCaps="true"
             android:textColor="@color/white"

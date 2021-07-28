@@ -46,13 +46,13 @@ class VeicleColorDialog: DialogFragment(), RecyclerItemClickListener{
         veicleColorList.add(VeicleColor())
     }
     fun configureInitialViews(){
-        val productsAdapter = VeicleColorAdapter(requireContext(),veicleColorList,this)
+        val veicleColorAdapter = VeicleColorAdapter(requireContext(),veicleColorList,this)
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
 
         veicleColorRv.layoutManager = layoutManager
 
-        veicleColorRv.adapter = productsAdapter
+        veicleColorRv.adapter = veicleColorAdapter
 
     }
 

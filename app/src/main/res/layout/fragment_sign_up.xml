@@ -39,6 +39,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
+                style="@style/fontTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cadastrar"
@@ -116,6 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/sf_ui_display_heavy"
                     android:text="Código DDI"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -167,7 +169,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/background_rounded_tv"
+                    android:background="@drawable/bg_title_round"
+                    android:fontFamily="@font/sf_ui_display_heavy"
                     android:text="veículo"
                     android:textAllCaps="true"
                     android:textColor="@color/white"

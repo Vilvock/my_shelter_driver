@@ -9,10 +9,10 @@
 
     <TextView
         android:id="@+id/textView"
+        style="@style/fontTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autoSizeTextType="uniform"
-        android:fontFamily="@font/sf_ui_display_medium"
         android:singleLine="false"
         android:text="Verifique seu número\nde celular"
         android:textAlignment="textStart"
@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
         android:autoSizeTextType="uniform"
+        android:fontFamily="@font/sf_ui_display_bold"
         android:text="Verifique suas mensagens SMS. Nós te enviamos o PIN no número "
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
@@ -96,6 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="62dp"
+        android:fontFamily="@font/sf_ui_display_bold"
         android:text="Não recebeu o SMS?"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/guideline10"

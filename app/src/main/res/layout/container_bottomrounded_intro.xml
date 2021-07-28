@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud_container_bottomrounded_intro">
+    android:background="@drawable/bg_bottom_round">
 
     <view
         android:id="@+id/container"

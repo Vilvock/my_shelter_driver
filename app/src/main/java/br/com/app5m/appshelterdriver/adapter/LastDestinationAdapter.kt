@@ -4,24 +4,22 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.Local
 
 
-class LocalDestinationAdapter (private val context: Context, private val listLocalDestination: List<Local>,
-                               private val clickOnListener: RecyclerItemClickListener
+class LastDestinationAdapter (private val context: Context, private val listLocalDestination: List<Local>,
+                              private val clickOnListener: RecyclerItemClickListener
 )
-    : RecyclerView.Adapter<LocalDestinationAdapter.LocalDestinationViewHolder>() {
+    : RecyclerView.Adapter<LastDestinationAdapter.LocalDestinationViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocalDestinationViewHolder {
         val listItem: View = LayoutInflater.from(parent.context)
             .inflate(
-                R.layout.adapter_localdestination,
+                R.layout.adapter_last_destination,
                 parent,
                 false
             ) // vai conectar com os ids abaixo

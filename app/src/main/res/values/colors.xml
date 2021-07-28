@@ -8,6 +8,7 @@
     <!--intro-->
     <color name="colorContainer">#FFFFFF</color>
 
+    <color name="facebookBtColor">#3B5899</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
