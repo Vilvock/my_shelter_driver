@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_chose_adestination.*
  * Use the [MyFavoritesFrag.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ChoseAdestinationFrag : Fragment(),RecyclerItemClickListener {
+class MyFavoritesFrag : Fragment(),RecyclerItemClickListener {
     private var listLocalDestination  = ArrayList<Local>()
     private var listMyAdresses  = ArrayList<Local>()
 
@@ -39,7 +39,7 @@ class ChoseAdestinationFrag : Fragment(),RecyclerItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chose_adestination, container, false)
+        return inflater.inflate(R.layout.fragment_my_favorites, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

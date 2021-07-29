@@ -113,5 +113,9 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="StyleSubTitle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/colorSubTitle</item>
+    </style>
+
 
 </resources>

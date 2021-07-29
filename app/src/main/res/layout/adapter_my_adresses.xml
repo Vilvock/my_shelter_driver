@@ -6,13 +6,23 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_right_arrow" />
+
+    <ImageView
         android:id="@+id/imageView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline19"
         app:layout_constraintTop_toTopOf="@+id/guideline14"
-        app:srcCompat="@drawable/ic_oval" />
+        app:srcCompat="@drawable/ic_oval_adresses" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -36,14 +46,17 @@
 
     <TextView
         android:id="@+id/adressRoute2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="Alto Petrópolis, Porto Alegre - RS"
         android:textColor="@color/gray500"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/placeName2" />
 
@@ -53,6 +66,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.91" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline19"

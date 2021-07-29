@@ -4,58 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_top_round">
+    android:background="@drawable/bg_top_round"
+    android:elevation="5dp">
 
-    <TextView
-        android:id="@+id/textView4"
-        style="@style/fontTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/sf_ui_display_heavy"
-        android:text="Para Onde Você esta indo?"
+    <view
+        android:id="@+id/container2"
+        class="androidx.fragment.app.FragmentContainerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline28"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView11"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:text="Reserve viagens sob demanda ou pré-agendadas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="34dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_____iconsearch"
-            android:hint="Entre com seu destino"
-
-            android:padding="10dp"
-            android:textSize="16sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="197dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

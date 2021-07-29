@@ -8,6 +8,7 @@
     <!--intro-->
     <color name="backgroundGray">#F8F9FD</color>
     <color name="colorDivider">#E1E4EC</color>
+    <color name="colorSubTitle">#97989E</color>
 
     <color name="facebookBtColor">#3B5899</color>
 
