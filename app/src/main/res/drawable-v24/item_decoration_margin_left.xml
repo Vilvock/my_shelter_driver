@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/item_decoration_shape"
+        android:left="74dp"
+        android:right="0dp" />
+
+</layer-list>

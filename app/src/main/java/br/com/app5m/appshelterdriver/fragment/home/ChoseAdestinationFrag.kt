@@ -1,5 +1,6 @@
 package br.com.app5m.appshelterdriver.fragment.home
 
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.adapter.LastDestinationAdapter
+import br.com.app5m.appshelterdriver.adapter.MyAdressesAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.Local
 import kotlinx.android.synthetic.main.dialog_veicle_color.*
@@ -23,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_chose_adestination.*
  */
 class ChoseAdestination : Fragment(),RecyclerItemClickListener {
     private var listLocalDestination  = ArrayList<Local>()
+    private var listMyAdresses  = ArrayList<Local>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +47,8 @@ class ChoseAdestination : Fragment(),RecyclerItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         configureInitialViews()
-        listLocalDestination.add(Local())
+
+        listMyAdresses.add(Local())
         listLocalDestination.add(Local())
         listLocalDestination.add(Local())
         listLocalDestination.add(Local())
@@ -56,24 +60,40 @@ class ChoseAdestination : Fragment(),RecyclerItemClickListener {
 
 
     fun configureInitialViews(){
-        lastDestinationsRv.addItemDecoration(VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE))
-        //or
-        //or
-        lastDestinationsRv.addItemDecoration(DividerItemDecoration(activity))
-        //or
-        //or
-        lastDestinationsRv.addItemDecoration(
-            DividerItemDecoration(activity, R.drawable.divider)
-        )
+        myAdressesRv.apply {
+            setHasFixedSize(true)
+             val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            itemDecoration.setDrawable(resources.getDrawable(R.drawable.item_decoration_margin_left, null))
+            myAdressesRv.addItemDecoration(itemDecoration)
+
+        }
+        val myAdressesAdapter = MyAdressesAdapter(requireContext(),listMyAdresses,this)
+
+        val layoutManagerAdresses: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
+
+        myAdressesRv.layoutManager = layoutManagerAdresses
+
+        myAdressesRv.adapter = myAdressesAdapter
 
 
-        val lastDestination = LastDestinationAdapter(requireContext(),listLocalDestination,this)
+
+        lastDestinationsRv.apply {
+            setHasFixedSize(true)
+//            addItemDecoration(CustomDivider(this.context, DividerItemDecoration.VERTICAL))
+            val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            itemDecoration.setDrawable(resources.getDrawable(R.drawable.item_decoration_margin_left, null))
+            lastDestinationsRv.addItemDecoration(itemDecoration)
+
+        }
+
+
+        val lastDestinationAdapter = LastDestinationAdapter(requireContext(),listLocalDestination,this)
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
 
         lastDestinationsRv.layoutManager = layoutManager
 
-        lastDestinationsRv.adapter = lastDestination
+        lastDestinationsRv.adapter = lastDestinationAdapter
 
     }
 }

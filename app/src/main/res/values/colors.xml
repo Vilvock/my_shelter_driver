@@ -6,7 +6,8 @@
     <color name="colorSecondary">#0D263A</color>
 
     <!--intro-->
-    <color name="colorContainer">#FFFFFF</color>
+    <color name="colorContainer">#F8F9FD</color>
+    <color name="colorDivider">#E1E4EC</color>
 
     <color name="facebookBtColor">#3B5899</color>
 

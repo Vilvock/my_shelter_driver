@@ -10,6 +10,9 @@ interface RecyclerItemClickListener {
     fun onClickListenerLocalDestination(local: Local){
         //optional body
     }
+    fun onClickListenerMyAdresses(local: Local){
+        //optional body
+    }
     fun onClickListenerVeicleColor(veicleColor: VeicleColor){
         //optional body
     }
