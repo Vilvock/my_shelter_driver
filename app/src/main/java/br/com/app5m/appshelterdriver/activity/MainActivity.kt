@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.fragment.home.MyFavoritesFrag
+import br.com.app5m.appshelterdriver.fragment.home.PaymentMethodsFrag
 import br.com.app5m.appshelterdriver.helper.MyUsefulKotlin
 
 
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-      MyUsefulKotlin().startFragment(MyFavoritesFrag(), supportFragmentManager)
+      MyUsefulKotlin().startFragment(PaymentMethodsFrag(), supportFragmentManager)
 
 
     }
