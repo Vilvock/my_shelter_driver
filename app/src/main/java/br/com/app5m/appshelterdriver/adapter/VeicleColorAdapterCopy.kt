@@ -10,19 +10,19 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 
-import br.com.app5m.appshelterdriver.model.VeicleColor
+import br.com.app5m.appshelterdriver.model.VehicleColor
 import kotlinx.android.synthetic.main.adapter_veicle_color.view.*
 
 
-class VeicleColorAdapterCopy(val arrayList: ArrayList<VeicleColor>, val context: Context) :
+class VeicleColorAdapterCopy(val arrayList: ArrayList<VehicleColor>, val context: Context) :
     RecyclerView.Adapter<VeicleColorAdapterCopy.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItems(veicleColor: VeicleColor) {
+        fun bindItems(vehicleColor: VehicleColor) {
 
-            itemView.veicleColorNameTv.text = veicleColor.name
-            itemView.veicleColorIv.setImageResource(veicleColor.image)
+            itemView.veicleColorNameTv.text = vehicleColor.name
+            itemView.veicleColorIv.setImageResource(vehicleColor.image)
         }
     }
 

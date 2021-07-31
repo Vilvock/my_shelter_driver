@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.adapter.VeicleColorAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.VeicleColor
+import br.com.app5m.appshelterdriver.model.VehicleColor
 import kotlinx.android.synthetic.main.dialog_veicle_color.*
 
-class VeicleColorDialog: DialogFragment(), RecyclerItemClickListener{
+class VehicleColorDialog: DialogFragment(), RecyclerItemClickListener{
     private val TAG = "VeicleColorDialog"
 
 
-    private var veicleColorList  = ArrayList<VeicleColor>()
+    private var veicleColorList  = ArrayList<VehicleColor>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +40,10 @@ class VeicleColorDialog: DialogFragment(), RecyclerItemClickListener{
         super.onViewCreated(view, savedInstanceState)
 
         configureInitialViews()
-        veicleColorList.add(VeicleColor())
-        veicleColorList.add(VeicleColor())
-        veicleColorList.add(VeicleColor())
-        veicleColorList.add(VeicleColor())
+        veicleColorList.add(VehicleColor())
+        veicleColorList.add(VehicleColor())
+        veicleColorList.add(VehicleColor())
+        veicleColorList.add(VehicleColor())
     }
     fun configureInitialViews(){
         val veicleColorAdapter = VeicleColorAdapter(requireContext(),veicleColorList,this)

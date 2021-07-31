@@ -3,8 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_all_round34.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/bg_all_round_white_6.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/bg_layout_credit_card.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/bg_left_edge_round_6.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/bg_reciclerv_border34.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_americanexpress.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_main_dropdown.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_open_map.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_scann.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_visa.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/item_decoration_layout_no_bg.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/item_decoration_margin_left.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/shape_main_et.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/adapter_my_payment_methods.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_payment_methods.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_add_credit_card.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_chose_adestination.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_credit_card_flags_adapter.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_my_favorites.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_payment_methods.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/fragment_update_favorite_place.xml" value="0.14444444444444443" />
       </map>
     </option>
   </component>

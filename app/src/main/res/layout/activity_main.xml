@@ -8,7 +8,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
-        android:name="br.com.app5m.appshelterdriver.fragment.auth.phoneValidation.PhoneValidation2Frag"
+        android:name="br.com.app5m.appshelterdriver.fragment.auth.phonevalidation.PhoneValidation2Frag"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

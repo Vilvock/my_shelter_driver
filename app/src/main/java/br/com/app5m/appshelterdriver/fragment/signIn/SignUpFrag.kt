@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.dialog.VeicleColorDialog
+import br.com.app5m.appshelterdriver.dialog.VehicleColorDialog
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 
@@ -27,7 +27,7 @@ class SignUpFrag : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         color_et.setOnClickListener {
-            val dialog = VeicleColorDialog()
+            val dialog = VehicleColorDialog()
             dialog.setTargetFragment(this, 1)
             fragmentManager?.let { it1 -> dialog.show(it1,"VeicleColorDialog") }
         }

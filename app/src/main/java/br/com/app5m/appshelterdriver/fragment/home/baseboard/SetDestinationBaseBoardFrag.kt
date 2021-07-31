@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.fragment.home.baseBoard
+package br.com.app5m.appshelterdriver.fragment.home.baseboard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

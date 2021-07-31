@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragment.home.baseBoard.ChoseDestinationBaseBoardFrag"
+    tools:context=".fragment.home.baseboard.ChoseDestinationBaseBoardFrag"
 
     >
 
@@ -53,7 +53,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_____iconsearch"
+            android:drawableEnd="@drawable/ic_search"
             android:hint="Entre com seu destino"
 
             android:padding="10dp"

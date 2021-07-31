@@ -10,11 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 
-import br.com.app5m.appshelterdriver.model.VeicleColor
-import kotlinx.android.synthetic.main.adapter_veicle_color.view.*
+import br.com.app5m.appshelterdriver.model.VehicleColor
 
 
-class VeicleColorAdapter(private val context: Context, private val listVeicleColor: List<VeicleColor>,
+class VeicleColorAdapter(private val context: Context, private val listVehicleColor: List<VehicleColor>,
                          private val clickOnListener: RecyclerItemClickListener
 )
     : RecyclerView.Adapter<VeicleColorAdapter.VeicleColorViewHolder>() {
@@ -33,7 +32,7 @@ class VeicleColorAdapter(private val context: Context, private val listVeicleCol
     }
 
     override fun onBindViewHolder(holder: VeicleColorViewHolder, position: Int) {
-        val veicleColor = listVeicleColor[position]
+        val veicleColor = listVehicleColor[position]
 
 
 
@@ -43,7 +42,7 @@ class VeicleColorAdapter(private val context: Context, private val listVeicleCol
     }
 
     override fun getItemCount(): Int {
-        return listVeicleColor.size
+        return listVehicleColor.size
     }
 
     class VeicleColorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

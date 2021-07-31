@@ -2,7 +2,7 @@ package br.com.app5m.appshelterdriver.model
 
 import java.io.Serializable
 
-class VeicleColor: Serializable{
+class VehicleColor: Serializable{
 
     constructor()
     constructor(

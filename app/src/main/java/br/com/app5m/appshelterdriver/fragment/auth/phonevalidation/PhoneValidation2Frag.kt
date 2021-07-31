@@ -1,17 +1,10 @@
-package br.com.app5m.appshelterdriver.fragment.auth.phoneValidation
+package br.com.app5m.appshelterdriver.fragment.auth.phonevalidation
 
 import android.os.Build
 import android.os.Bundle
-import android.text.Html
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.BackgroundColorSpan
-import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
