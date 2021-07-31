@@ -9,12 +9,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.adapter.MyAdressesAdapter
-import br.com.app5m.appshelterdriver.adapter.MyCreditCardAdapter
+import br.com.app5m.appshelterdriver.adapter.MyCreditCardsAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.CreditCard
-import br.com.app5m.appshelterdriver.model.Local
-import kotlinx.android.synthetic.main.fragment_chose_adestination.*
 import kotlinx.android.synthetic.main.fragment_payment_methods.*
 
 
@@ -55,7 +52,7 @@ class PaymentMethodsFrag : Fragment(),RecyclerItemClickListener {
             myCreditCards.addItemDecoration(itemDecoration)
 
         }
-        val myCreditCardsAdapter = MyCreditCardAdapter(requireContext(), listMyCreditCards, this)
+        val myCreditCardsAdapter = MyCreditCardsAdapter(requireContext(), listMyCreditCards, this)
 
         val layoutManagerAdresses: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
 

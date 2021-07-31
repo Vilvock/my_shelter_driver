@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.adapter.LastDestinationAdapter
+import br.com.app5m.appshelterdriver.adapter.LastDestinationsAdapter
 import br.com.app5m.appshelterdriver.adapter.MyAdressesAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.Local
@@ -86,7 +86,7 @@ class ChoseAdestinationFrag : Fragment(),RecyclerItemClickListener {
         }
 
 
-        val lastDestinationAdapter = LastDestinationAdapter(requireContext(),listLocalDestination,this)
+        val lastDestinationAdapter = LastDestinationsAdapter(requireContext(),listLocalDestination,this)
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
 

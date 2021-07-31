@@ -10,10 +10,10 @@ import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.Local
 
 
-class LastDestinationAdapter (private val context: Context, private val listLocalDestination: List<Local>,
-                              private val clickOnListener: RecyclerItemClickListener
+class LastDestinationsAdapter (private val context: Context, private val listLocalDestination: List<Local>,
+                               private val clickOnListener: RecyclerItemClickListener
 )
-    : RecyclerView.Adapter<LastDestinationAdapter.LocalDestinationViewHolder>() {
+    : RecyclerView.Adapter<LastDestinationsAdapter.LocalDestinationViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocalDestinationViewHolder {

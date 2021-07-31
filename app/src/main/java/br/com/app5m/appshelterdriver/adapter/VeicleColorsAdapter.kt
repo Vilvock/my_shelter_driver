@@ -13,10 +13,10 @@ import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.VehicleColor
 
 
-class VeicleColorAdapter(private val context: Context, private val listVehicleColor: List<VehicleColor>,
-                         private val clickOnListener: RecyclerItemClickListener
+class VeicleColorsAdapter(private val context: Context, private val listVehicleColor: List<VehicleColor>,
+                          private val clickOnListener: RecyclerItemClickListener
 )
-    : RecyclerView.Adapter<VeicleColorAdapter.VeicleColorViewHolder>() {
+    : RecyclerView.Adapter<VeicleColorsAdapter.VeicleColorViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VeicleColorViewHolder {

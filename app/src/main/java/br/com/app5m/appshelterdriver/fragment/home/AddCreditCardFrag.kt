@@ -5,15 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.adapter.CreditCardFlagsAdapter
+import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
+import br.com.app5m.appshelterdriver.model.CreditCardFlag
 import kotlinx.android.synthetic.main.fragment_add_credit_card.*
+import kotlinx.android.synthetic.main.fragment_payment_methods.*
 
 
-class AddCreditCardFrag : Fragment() {
+class AddCreditCardFrag : Fragment(),RecyclerItemClickListener {
+    private var listCreditCardFrags  = ArrayList<CreditCardFlag>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,15 +36,33 @@ class AddCreditCardFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
-        val myList = creditCardFlagsRv as RecyclerView
-        myList.layoutManager = layoutManager
-
+        listCreditCardFrags.add(CreditCardFlag())
+        listCreditCardFrags.add(CreditCardFlag())
+        listCreditCardFrags.add(CreditCardFlag())
+        listCreditCardFrags.add(CreditCardFlag())
+        listCreditCardFrags.add(CreditCardFlag())
+        listCreditCardFrags.add(CreditCardFlag())
+        configureInitialViews()
     }
 
+    fun configureInitialViews() {
 
+        creditCardFlagsRv.apply {
+            setHasFixedSize(true)
+            val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            itemDecoration.setDrawable(
+                resources.getDrawable(R.drawable.item_decoration_layout_no_bg, null)
+            )
+            creditCardFlagsRv.addItemDecoration(itemDecoration)
+
+        }
+        val creditCardFlagsAdapter = CreditCardFlagsAdapter(requireContext(), listCreditCardFrags, this)
+
+        val layoutManagerAdresses: RecyclerView.LayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        creditCardFlagsRv.layoutManager = layoutManagerAdresses
+
+        creditCardFlagsRv.adapter = creditCardFlagsAdapter
+    }
 
 }

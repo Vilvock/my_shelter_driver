@@ -14,8 +14,8 @@ import br.com.app5m.appshelterdriver.model.VehicleColor
 import kotlinx.android.synthetic.main.adapter_veicle_color.view.*
 
 
-class VeicleColorAdapterCopy(val arrayList: ArrayList<VehicleColor>, val context: Context) :
-    RecyclerView.Adapter<VeicleColorAdapterCopy.ViewHolder>() {
+class VeicleColorsAdapterCopy(val arrayList: ArrayList<VehicleColor>, val context: Context) :
+    RecyclerView.Adapter<VeicleColorsAdapterCopy.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

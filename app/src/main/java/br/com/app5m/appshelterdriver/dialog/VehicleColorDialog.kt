@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.adapter.VeicleColorAdapter
+import br.com.app5m.appshelterdriver.adapter.VeicleColorsAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.VehicleColor
 import kotlinx.android.synthetic.main.dialog_veicle_color.*
@@ -46,7 +46,7 @@ class VehicleColorDialog: DialogFragment(), RecyclerItemClickListener{
         veicleColorList.add(VehicleColor())
     }
     fun configureInitialViews(){
-        val veicleColorAdapter = VeicleColorAdapter(requireContext(),veicleColorList,this)
+        val veicleColorAdapter = VeicleColorsAdapter(requireContext(),veicleColorList,this)
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
 

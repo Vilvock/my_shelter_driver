@@ -20,7 +20,7 @@
         <entry key="app/src/main/res/drawable/item_decoration_margin_left.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_et.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/adapter_my_payment_methods.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_add_credit_card.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_add_credit_card.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_chose_adestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_credit_card_flags_adapter.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_my_favorites.xml" value="0.14444444444444443" />

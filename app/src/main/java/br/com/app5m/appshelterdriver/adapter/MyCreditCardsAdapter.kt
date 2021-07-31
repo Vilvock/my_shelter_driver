@@ -10,10 +10,10 @@ import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.model.CreditCard
 
 
-class MyCreditCardAdapter (private val context: Context, private val listMyCreditCards: List<CreditCard>,
-                           private val clickOnListener: RecyclerItemClickListener
+class MyCreditCardsAdapter (private val context: Context, private val listMyCreditCards: List<CreditCard>,
+                            private val clickOnListener: RecyclerItemClickListener
 )
-    : RecyclerView.Adapter<MyCreditCardAdapter.MyCreditCardHolder>() {
+    : RecyclerView.Adapter<MyCreditCardsAdapter.MyCreditCardHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyCreditCardHolder {
