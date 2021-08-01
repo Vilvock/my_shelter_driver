@@ -43,6 +43,7 @@
         <entry key="app/src/main/res/layout/fragment_booking_details_schedule.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_chose_adestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_credit_card_flags_adapter.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_document_status.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/fragment_get_started.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_intro1.xml" value="0.14444444444444443" />
@@ -61,7 +62,7 @@
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_splash_copy.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_update_favorite_place.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/fragment_upload_documents.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_upload_documents.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_waiting_approval.xml" value="0.2" />
         <entry key="app/src/main/res/layout/header_chose_adestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/home_baseboard.xml" value="0.14444444444444443" />

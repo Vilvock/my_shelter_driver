@@ -14,8 +14,9 @@ placa ,cor (para receber o login) --ok
 entrar no aplicativo após nosso time avaliar sua solicitação.”--ok
 
 Tela de upload de documentos -- ok
+tem que enviar CNH e enviar DOC do veículo, -- ok
 
-tem que enviar CNH e enviar DOC do veículo, ter status de cada um(depois de login) depois que
+ ter status de cada um(depois de login) depois que
 aprovar os dois documentos ele já pode estar apto a usar o aplicativo.
 -Mostrar o status da CNH e do DOC do veículo enquanto ele aguarda a permissão para usar o app
 
