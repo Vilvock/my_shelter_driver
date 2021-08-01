@@ -1,15 +1,11 @@
 package br.com.app5m.appshelterdriver.fragment
 
-import android.R.attr.src
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.RoundedBitmapDrawable
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
-import kotlinx.android.synthetic.main.fragment_splash.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,10 +15,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SplashFragment.newInstance] factory method to
+ * Use the [SplashFrag.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SplashFragment : Fragment() {
+class SplashFrag : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -62,7 +58,7 @@ class SplashFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SplashFragment().apply {
+            SplashFrag().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

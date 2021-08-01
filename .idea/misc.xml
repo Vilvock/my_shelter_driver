@@ -11,7 +11,9 @@
         <entry key="app/src/main/res/drawable/bg_reciclerv_border34.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_americanexpress.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_driver_license.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_id_card.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_main_dropdown.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_open_map.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.15520833333333334" />
@@ -22,6 +24,7 @@
         <entry key="app/src/main/res/drawable/item_decoration_no_bg.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_et.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_et_gray.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/shape_main_et_gray2.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_last_destination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_list_codcountry.xml" value="0.14444444444444443" />
@@ -58,7 +61,7 @@
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_splash_copy.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_update_favorite_place.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/fragment_upload_documents.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_upload_documents.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_waiting_approval.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/header_chose_adestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/home_baseboard.xml" value="0.14444444444444443" />

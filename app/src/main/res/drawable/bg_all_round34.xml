@@ -8,11 +8,10 @@
         ></stroke>-->
     <!--<stroke android:width="0.5dp" android:color="#000000" />-->
     <solid
-        android:color="@color/gray900"
+        android:color="#FFFFFF"
         />
     <corners
-        android:topLeftRadius="100dp" android:topRightRadius="100dp"
-        android:bottomLeftRadius="100dp" android:bottomRightRadius="100dp"
+        android:radius="25dp"
 
         ></corners>
 
