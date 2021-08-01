@@ -1,9 +1,6 @@
 package br.com.app5m.appshelterdriver.helper
 
-import br.com.app5m.appshelterdriver.model.CreditCard
-import br.com.app5m.appshelterdriver.model.CreditCardFlag
-import br.com.app5m.appshelterdriver.model.Local
-import br.com.app5m.appshelterdriver.model.VehicleColor
+import br.com.app5m.appshelterdriver.model.*
 
 
 interface RecyclerItemClickListener {
@@ -13,6 +10,9 @@ interface RecyclerItemClickListener {
         //optional body
     }
     fun onClickListenerMyAdresses(local: Local){
+        //optional body
+    }
+    fun onClickListenerMyPromotions(promotion: Promotion){
         //optional body
     }
     fun onClickListenerVeicleColor(vehicleColor: VehicleColor){

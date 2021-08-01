@@ -49,7 +49,7 @@ class AddCreditCardFrag : Fragment(),RecyclerItemClickListener {
 
         creditCardFlagsRv.apply {
             setHasFixedSize(true)
-            val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL)
             itemDecoration.setDrawable(
                 resources.getDrawable(R.drawable.item_decoration_layout_no_bg, null)
             )
