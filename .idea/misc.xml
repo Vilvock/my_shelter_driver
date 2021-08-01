@@ -43,26 +43,26 @@
         <entry key="app/src/main/res/layout/fragment_booking_details_schedule.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_chose_adestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_credit_card_flags_adapter.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_get_started.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_get_started.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_intro1.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_intro2.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_intro3.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_intro4.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_intro_container.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4214501510574018" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_my_favorites.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_my_promotions.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_payment_methods.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_phone_validation1.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_phone_validation2.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_splash_copy.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_update_favorite_place.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/fragment_upload_documents.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_waiting_approval.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_upload_documents.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_waiting_approval.xml" value="0.2" />
         <entry key="app/src/main/res/layout/header_chose_adestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/home_baseboard.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/loading.xml" value="0.14444444444444443" />

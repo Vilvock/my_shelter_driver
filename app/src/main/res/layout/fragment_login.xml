@@ -92,7 +92,7 @@
 
             <Button
                 android:id="@+id/login_bt"
-                style="@style/StyleButton"
+                style="@style/StyleButtonMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
