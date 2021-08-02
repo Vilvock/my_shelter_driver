@@ -53,24 +53,25 @@ class Useful (private val context: Context) {
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun setActionBar(activity: Activity, bar: ActionBar, title: String, type: Int){
+    fun setActionBar(activity: Activity, bar: androidx.appcompat.app.ActionBar, title: String, type: Int){
 
         val view = activity.layoutInflater.inflate(R.layout.toolbar, null)
-        val params = ActionBar.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,
-            ActionBar.LayoutParams.WRAP_CONTENT, Gravity.START)
+        val params = androidx.appcompat.app.ActionBar.LayoutParams(
+            androidx.appcompat.app.ActionBar.LayoutParams.WRAP_CONTENT,
+            androidx.appcompat.app.ActionBar.LayoutParams.WRAP_CONTENT, Gravity.START)
 
-        val textTitle = view.findViewById<TextView>(R.id.textTitle)
-        val avatarIv = view.findViewById<ImageView>(R.id.avatar_iv)
-        textTitle.text = title
+//        val textTitle = view.findViewById<TextView>(R.id.textTitle)
+//        val avatarIv = view.findViewById<ImageView>(R.id.avatar_iv)
+//        textTitle.text = title
         bar.setCustomView(view, params)
 
         when (type) {
             0 -> {
                 bar.setDisplayHomeAsUpEnabled(true)
-//                bar.setHomeAsUpIndicator(activity.resources.getDrawable(R.drawable.ic_arrow_left_green, null))
+                bar.setHomeAsUpIndicator(activity.resources.getDrawable(R.drawable.ic_arrow_back, null))
             }
             2 -> {
-                avatarIv.visibility = View.VISIBLE
+//                avatarIv.visibility = View.VISIBLE
                 bar.setDisplayHomeAsUpEnabled(true)
 //                bar.setHomeAsUpIndicator(activity.resources.getDrawable(R.drawable.ic_arrow_left_green, null))
             }

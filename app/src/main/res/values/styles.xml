@@ -170,5 +170,8 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
     </style>
-
+    <style name="StyleButton4" parent="Widget.MaterialComponents.Button">
+        <item name="rippleColor">@color/white</item>
+        <item name="cornerRadius">24dp</item>
+    </style>
 </resources>
