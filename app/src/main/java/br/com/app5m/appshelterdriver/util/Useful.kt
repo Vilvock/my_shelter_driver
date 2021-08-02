@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.ui.dialog.DefaultBottomSheetContainerFragDialog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -84,22 +85,11 @@ class Useful (private val context: Context) {
     }
 
     @SuppressLint("SetTextI18n")
-    fun showDefaultDialogView(activity: Activity) {
-        val bottomSheetDialog = BottomSheetDialog(context, R.style.AppTheme_SheetDialog)
-        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        val bottomSheetView: View = LayoutInflater.from(context).inflate(R.layout.default_bottom_sheet_dialog_container,
-            activity?.findViewById(R.id.sheet_container))
-        bottomSheetDialog.setContentView(bottomSheetView)
-        bottomSheetDialog.show()
-
-        val closeIb: ImageButton = bottomSheetView.findViewById(R.id.close_imageButton)
-
-        closeIb.setOnClickListener {
-
-            bottomSheetDialog.dismiss()
-
-        }
+    fun showDefaultDialogView(fragmentManager: FragmentManager, fragment: Fragment) {
+        val bottomSheetDialog = DefaultBottomSheetContainerFragDialog(fragment)
+        bottomSheetDialog.show(fragmentManager, "dialog")
     }
+
 
     //CRIAR CLASSE ANIMATIONS
 
