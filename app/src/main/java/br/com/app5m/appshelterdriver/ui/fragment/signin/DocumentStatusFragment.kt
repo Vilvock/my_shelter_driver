@@ -38,10 +38,7 @@ class DocumentStatusFragment : Fragment(),RecyclerItemClickListener {
         configureInitialViews()
 
         listDocumentStatus.add(DriverDocument())
-        listDocumentStatus.add(DriverDocument())
-        listDocumentStatus.add(DriverDocument())
-        listDocumentStatus.add(DriverDocument())
-        listDocumentStatus.add(DriverDocument())
+
 
 
     }

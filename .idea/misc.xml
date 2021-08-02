@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_id_card.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_main_dropdown.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_menu.xml" value="0.16157407407407406" />
         <entry key="app/src/main/res/drawable/ic_open_map.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_scann.xml" value="0.15520833333333334" />
@@ -40,7 +41,9 @@
         <entry key="app/src/main/res/drawable/shape_main_stroke_gray_et.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/solid_background.xml" value="0.20694444444444443" />
+        <entry key="app/src/main/res/layout-land/fragment_home_map.xml" value="0.16574074074074074" />
         <entry key="app/src/main/res/layout-land/fragment_user_profile.xml" value="0.2" />
+        <entry key="app/src/main/res/layout-land/toolbar_chat.xml" value="0.16574074074074074" />
         <entry key="app/src/main/res/layout/activity_auth_container.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_intro_container.xml" value="0.2" />
@@ -65,9 +68,10 @@
         <entry key="app/src/main/res/layout/fragment_booking_details_schedule.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_chose_adestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_credit_card_flags_adapter.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_document_status.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_document_status.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/fragment_get_started.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_home_map.xml" value="0.14722222222222223" />
         <entry key="app/src/main/res/layout/fragment_intro1.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_intro2.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_intro3.xml" value="0.14444444444444443" />
@@ -83,7 +87,7 @@
         <entry key="app/src/main/res/layout/fragment_phone_validation1.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_phone_validation2.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_splash_copy.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_update_favorite_place.xml" value="0.14444444444444443" />
@@ -97,6 +101,7 @@
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/pickup_at.xml" value="0.67" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/toolbar_chat.xml" value="0.1787037037037037" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.1925925925925926" />
       </map>
     </option>

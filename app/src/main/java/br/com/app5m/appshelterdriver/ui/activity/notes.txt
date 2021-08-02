@@ -25,6 +25,7 @@ do usuário que solicitou destino tal valor tal e forma de pagamento: A forma de
 deslize (Tela 29 FIGMA)
 no meu perfil do motorista (menu lateral) mostrar avaliação viagens e nota atual do motorista. T30
 contas bancárias. Ao adicionar a conta bancária será conta ou PIX T33
+
 histórico de viagens
 meus pagamentos T34 valor total que recebeu no dia tal uma listagem de meus pagamentos.
 E o botão de deslogar no final.

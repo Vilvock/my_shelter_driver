@@ -12,6 +12,7 @@
         style="@style/fontTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:autoSizeTextType="uniform"
         android:singleLine="false"
         android:text="Código enviado!"
