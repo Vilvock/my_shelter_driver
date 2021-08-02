@@ -8,7 +8,7 @@
     tools:context=".ui.fragment.WaitingApproval">
 
     <Button
-        android:id="@+id/backBnt1"
+        android:id="@+id/exit_bt"
         style="@style/StyleButtonBig"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/docStatus_bt"
         style="@style/StyleTextButtonBig"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
         android:backgroundTint="#79202020"
         android:text="Status Dos Documentos"
         android:textColor="#FEC007"
-        app:layout_constraintBottom_toTopOf="@+id/backBnt1"
+        app:layout_constraintBottom_toTopOf="@+id/exit_bt"
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline15"

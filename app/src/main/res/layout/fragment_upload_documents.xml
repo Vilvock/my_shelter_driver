@@ -32,7 +32,7 @@
         android:paddingTop="24dp"
         android:paddingRight="16dp"
         android:paddingBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/send_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView32">
@@ -41,6 +41,7 @@
             android:id="@+id/outlinedTextField"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="12dp"
@@ -67,6 +68,7 @@
             android:id="@+id/outlinedTextField2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="12dp"
@@ -163,7 +165,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/send_bt"
         style="@style/StyleButtonBig"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

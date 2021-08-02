@@ -38,22 +38,36 @@ class DocumentStatusFragment : Fragment(),RecyclerItemClickListener {
         configureInitialViews()
 
         listDocumentStatus.add(DriverDocument())
+        listDocumentStatus.add(DriverDocument())
 
 
 
     }
     fun configureInitialViews() {
 
-        documentStatusRv.apply {
+        identityRv.apply {
             setHasFixedSize(true)
 
         }
-        val myPromotionsAdapter = DocumentStatusAdapter(requireContext(), listDocumentStatus, this)
+        val documentStatusAdapter = DocumentStatusAdapter(requireContext(), listDocumentStatus, this)
 
         val layoutDocumentStatus: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
 
-        documentStatusRv.layoutManager = layoutDocumentStatus
+        identityRv.layoutManager = layoutDocumentStatus
 
-        documentStatusRv.adapter = myPromotionsAdapter
+        identityRv.adapter = documentStatusAdapter
+        ////////////////////////////////
+        cnhRv.apply {
+            setHasFixedSize(true)
+
+        }
+        val cnhRvStatusAdapter = DocumentStatusAdapter(requireContext(), listDocumentStatus, this)
+
+        val layoutcnhRvStatus: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
+
+        cnhRv.layoutManager = layoutcnhRvStatus
+
+        cnhRv.adapter = cnhRvStatusAdapter
+
     }
 }

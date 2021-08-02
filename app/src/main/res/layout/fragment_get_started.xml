@@ -8,7 +8,7 @@
     tools:context=".ui.fragment.WaitingApproval">
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/start_bt"
         style="@style/StyleButtonBig"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

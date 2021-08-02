@@ -79,7 +79,7 @@ class HomeAct : AppCompatActivity() {
         }
 
         //alterar compasso de posição
-        map.view?.let { mapView->
+   /*     map.view?.let { mapView->
             mapView.findViewWithTag<View>("GoogleMapMyLocationButton").parent?.let { parent->
                 val vg: ViewGroup = parent as ViewGroup
                 vg.post {
@@ -96,7 +96,7 @@ class HomeAct : AppCompatActivity() {
                     mapCompass.layoutParams = rlp
                 }
             }
-        }
+        }*/
 
     }
 

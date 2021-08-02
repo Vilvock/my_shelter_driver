@@ -6,6 +6,7 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.24375" />
         <entry key="../../.gradle/caches/transforms-2/files-2.1/4518575df0e01a18dd838aaff3f1b88a/timelineview-1.1.5/res/drawable/marker.xml" value="0.12037037037037036" />
         <entry key="app/src/main/res/drawable/bg_all_round34.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/bg_all_round_blue.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/bg_all_round_white_6.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/bg_layout_credit_card.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/bg_left_edge_round_6.xml" value="0.15520833333333334" />
@@ -48,7 +49,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_intro_container.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/adapter_document_status.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/adapter_document_status.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_last_destination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_list_codcountry.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_my_adresses.xml" value="0.14444444444444443" />
@@ -86,6 +87,7 @@
         <entry key="app/src/main/res/layout/fragment_phone_validate2.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_phone_validation1.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_phone_validation2.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_rating_driver.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.17" />
