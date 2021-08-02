@@ -20,11 +20,15 @@ tem que enviar CNH e enviar DOC do veículo, -- ok
 aprovar os dois documentos ele já pode estar apto a usar o aplicativo.
 -Mostrar o status da CNH e do DOC do veículo enquanto ele aguarda a permissão para usar o app
 
+ tem que enviar cnh e enviar doc do veículo, ter status de cada um(na home)
+
+
 Após isso ele vai cair no mapa vai ter TWITE: Ativo e desativo(encontrei aqui https://github.com/Capitaoneo3/styled-views-android), ao aceitar a corrida vai vir o nome
 do usuário que solicitou destino tal valor tal e forma de pagamento: A forma de aceitar será um
 deslize (Tela 29 FIGMA)
-no meu perfil do motorista (menu lateral) mostrar avaliação viagens e nota atual do motorista. T30
-contas bancárias. Ao adicionar a conta bancária será conta ou PIX T33
+
+no meu perfil do motorista (menu lateral) mostrar avaliação nas  minhas viagens e nota atual do motorista embaixo do avatar dele. T30
+também no menu lateral área para alterar veículo
 
 histórico de viagens
 meus pagamentos T34 valor total que recebeu no dia tal uma listagem de meus pagamentos.

@@ -11,7 +11,9 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
+import br.com.app5m.appshelterdriver.ui.fragment.signin.GetStartedFrag
 import br.com.app5m.appshelterdriver.ui.fragment.signin.UploadDocumentsFrag
+import br.com.app5m.appshelterdriver.ui.fragment.signin.WaitingApproval
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.fragment_phone_validate1.*
 import kotlinx.android.synthetic.main.fragment_phone_validate2.*
@@ -48,7 +50,7 @@ class PhoneValidate2Frag : Fragment() {
 
         verify_bt.setOnClickListener {
 
-            activity?.let { it1 -> useful.startFragmentOnBack(UploadDocumentsFrag(), it1.supportFragmentManager) }
+            activity?.let { it1 -> useful.startFragmentOnBack(GetStartedFrag(), it1.supportFragmentManager) }
 
         }
 
