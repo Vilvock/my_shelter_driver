@@ -57,7 +57,7 @@
                 android:layout_marginTop="16dp"
                 android:maxLines="1"
                 android:hint="Destino"
-                android:background="@drawable/shape_main_stroke_et"
+                android:background="@drawable/solid_background"
                 android:ems="10"
                 android:inputType="text"
                 android:imeOptions="actionSearch"

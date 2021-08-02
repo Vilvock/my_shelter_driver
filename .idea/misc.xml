@@ -62,12 +62,13 @@
         <entry key="app/src/main/res/layout/adapter_my_payment_methods.xml" value="0.22" />
         <entry key="app/src/main/res/layout/adapter_mypromotions.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_veicle_color.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/container_bottomrounded_intro.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/content_home.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/content_home.xml" value="0.15" />
         <entry key="app/src/main/res/layout/credit_card_layout.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/current_location.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/default_bottom_sheet_dialog_container.xml" value="0.1925925925925926" />
-        <entry key="app/src/main/res/layout/dialog_bottom_view_choosedestination.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/default_bottom_sheet_dialog_container.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/dialog_bottom_view_choosedestination.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_veicle_color.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/edge_left.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_add_credit_card.xml" value="0.2" />
