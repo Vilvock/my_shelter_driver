@@ -15,6 +15,9 @@ interface RecyclerItemClickListener {
     fun onClickListenerMyPromotions(promotion: Promotion){
         //optional body
     }
+    fun onClickListenerDocumentStatus(documentDriver: DriverDocument){
+        //optional body
+    }
     fun onClickListenerVeicleColor(vehicleColor: VehicleColor){
         //optional body
     }

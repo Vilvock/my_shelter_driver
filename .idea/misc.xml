@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/drawable/shape_main_et_gray.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_et_gray2.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/adapter_document_status.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/adapter_last_destination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_list_codcountry.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_my_adresses.xml" value="0.14444444444444443" />
