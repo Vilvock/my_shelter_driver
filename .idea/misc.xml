@@ -44,6 +44,8 @@
         <entry key="app/src/main/res/drawable/shape_main_stroke_gray_et.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/solid_background.xml" value="0.20694444444444443" />
+        <entry key="app/src/main/res/drawable/thumb.xml" value="0.20694444444444443" />
+        <entry key="app/src/main/res/drawable/track.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/layout-land/activity_drawer_container.xml" value="0.17592592592592593" />
         <entry key="app/src/main/res/layout-land/content_home.xml" value="0.17592592592592593" />
         <entry key="app/src/main/res/layout-land/dialog_bottom_view_choosedestination.xml" value="0.17592592592592593" />
@@ -64,7 +66,7 @@
         <entry key="app/src/main/res/layout/adapter_veicle_color.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/container_bottomrounded_intro.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/content_home.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/content_home.xml" value="0.2874913614374568" />
         <entry key="app/src/main/res/layout/credit_card_layout.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/current_location.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/default_bottom_sheet_dialog_container.xml" value="0.18" />
