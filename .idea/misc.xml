@@ -4,13 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.24375" />
+        <entry key="../../.gradle/caches/transforms-2/files-2.1/4518575df0e01a18dd838aaff3f1b88a/timelineview-1.1.5/res/drawable/marker.xml" value="0.12037037037037036" />
         <entry key="app/src/main/res/drawable/bg_all_round34.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/bg_all_round_white_6.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/bg_layout_credit_card.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/bg_left_edge_round_6.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/bg_reciclerv_border34.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/bg_status_text.xml" value="0.20694444444444443" />
+        <entry key="app/src/main/res/drawable/bg_title_round.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_americanexpress.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/ic_circle_point_map.xml" value="0.12037037037037036" />
+        <entry key="app/src/main/res/drawable/ic_circle_time_line.xml" value="0.12037037037037036" />
         <entry key="app/src/main/res/drawable/ic_driver_license.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_id_card.xml" value="0.15520833333333334" />
@@ -22,11 +27,12 @@
         <entry key="app/src/main/res/drawable/item_decoration_layout_no_bg.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/item_decoration_margin_left.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/item_decoration_no_bg.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/marker_custom.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/shape_main_et.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_et_gray.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_et_gray2.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/adapter_document_status.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/adapter_document_status.xml" value="0.33" />
         <entry key="app/src/main/res/layout/adapter_last_destination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_list_codcountry.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_my_adresses.xml" value="0.14444444444444443" />

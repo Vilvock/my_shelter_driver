@@ -4,6 +4,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="lorem_ipsum_0.1p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra risus at est eleifend venenatis. Duis volutpat fermentum lorem eget convallis. Fusce rutrum tincidunt lorem, in ultrices orci pharetra a. Cras vitae orci sit amet urna tempor dapibus.  </string>
+
+
     <string name="lorem_ipsum_1p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra risus at est eleifend venenatis. Duis volutpat fermentum lorem eget convallis. Fusce rutrum tincidunt lorem, in ultrices orci pharetra a. Cras vitae orci sit amet urna tempor dapibus. Etiam commodo nisl a diam dictum, vel molestie urna semper. Vivamus sapien arcu, malesuada nec ullamcorper lacinia, hendrerit eget nulla. Sed eleifend nibh eget sapien placerat egestas id sed orci. Suspendisse sem enim, auctor eget volutpat eu, aliquet at dui. Vestibulum sapien sem, ullamcorper ac dictum suscipit, interdum in dolor. Donec euismod et justo elementum interdum. </string>
 
     <string name="lorem_ipsum_5p">
