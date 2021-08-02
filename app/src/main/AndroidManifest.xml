@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/GeneralNoTitle">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity android:name=".ui.activity.HomeAct"/>
         <activity android:name=".ui.activity.IntroContainerAct" />
         <activity android:name=".ui.activity.AuthContainerAct" />

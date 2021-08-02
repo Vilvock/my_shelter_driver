@@ -1,5 +1,6 @@
 package br.com.app5m.appshelterdriver.ui.activity
 
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home_map.*
@@ -17,9 +19,13 @@ import kotlinx.android.synthetic.main.fragment_home_map.*
 class HomeAct : AppCompatActivity() {
 
 
+    private lateinit var useful: Useful
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        useful = Useful(this)
 
         val drawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
             this,
@@ -49,54 +55,62 @@ class HomeAct : AppCompatActivity() {
         nav_view.itemIconTintList = null
         nav_view.setNavigationItemSelectedListener {
 
-//            val intent = Intent(this, DrawserAct::class.java)
-//
-//            when (it.itemId) {
-//
-//                R.id.nav_profile -> {
-//                    intent.putExtra("value", "1")
-//                    startActivity(intent)
-//                }
-//
-//                R.id.nav_doubts -> {
-//                    intent.putExtra("value", "2")
-//                    startActivity(intent)
-//                }
-//                R.id.nav_contact -> {
-//                    intent.putExtra("value", "3")
-//                    startActivity(intent)
-//                }
-//
-//                R.id.nav_exit -> {
-//                    Message(this).exit(this)
-//                }
-//            }
+            val intent = Intent(this, DrawerContainerAct::class.java)
 
+            when (it.itemId) {
+
+                R.id.nav_myCards -> {
+                    intent.putExtra("key", "cards")
+                }
+                R.id.nav_myRides -> {
+                    intent.putExtra("key", "rides")
+                }
+                R.id.nav_favoriteDrivers -> {
+                    intent.putExtra("key", "favoriteDrivers")
+                }
+                R.id.nav_myEmployees-> {
+                    intent.putExtra("key", "myEmployees")
+                }
+                R.id.nav_employeesHistoryRides -> {
+                    intent.putExtra("key", "historyEmployees")
+                }
+                else -> {
+                    intent.putExtra("key", "registerEmployee")
+                }
+            }
+
+            startActivity(intent)
 
             // Close the drawer
             drawer_layout.closeDrawer(GravityCompat.START)
             true
         }
 
-        //alterar compasso de posição
-   /*     map.view?.let { mapView->
-            mapView.findViewWithTag<View>("GoogleMapMyLocationButton").parent?.let { parent->
+        beginRide_bt.setOnClickListener {
+
+            useful.showDefaultDialogView(supportFragmentManager, ChooseDestinationFragDialog())
+
+        }
+
+        //alterar compasso de posição depois
+        map.view?.let { mapView ->
+            mapView.findViewWithTag<View>("GoogleMapMyLocationButton").parent?.let { parent ->
                 val vg: ViewGroup = parent as ViewGroup
                 vg.post {
-                    val mapCompass : View = parent.getChildAt(4)
+                    val mapCompass: View = parent.getChildAt(4)
                     val rlp = RelativeLayout.LayoutParams(mapCompass.height, mapCompass.height)
                     rlp.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
-                    rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP,0)
-                    rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,0)
+                    rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0)
+                    rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0)
                     rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
 
                     val bottomMargin = (40 * Resources.getSystem().displayMetrics.density).toInt()
                     val leftMargin = (5 * Resources.getSystem().displayMetrics.density).toInt()
-                    rlp.setMargins(leftMargin,0,0,bottomMargin)
+                    rlp.setMargins(leftMargin, 0, 0, bottomMargin)
                     mapCompass.layoutParams = rlp
                 }
             }
-        }*/
+        }
 
     }
 
