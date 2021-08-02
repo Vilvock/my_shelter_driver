@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg_promoticket"
     android:elevation="5dp"
-    tools:context=".adapter.MyPromotionsAdapter">
+    tools:context=".ui.adapter.MyPromotionsAdapter">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"

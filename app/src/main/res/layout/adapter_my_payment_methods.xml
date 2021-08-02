@@ -7,7 +7,7 @@
     android:layout_margin="4dp"
     android:background="@drawable/bg_layout_credit_card"
     android:elevation="5dp"
-    tools:context=".adapter.MyCreditCardsAdapter">
+    tools:context=".ui.adapter.MyCreditCardsAdapter">
 
     <ImageView
         android:id="@+id/imageView22"

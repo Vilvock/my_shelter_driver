@@ -7,7 +7,7 @@
     android:background="@drawable/bg_bottom_round">
 
     <view
-        android:id="@+id/container"
+        android:id="@+id/containerView"
         class="androidx.fragment.app.FragmentContainerView"
         android:layout_width="0dp"
         android:layout_height="0dp"

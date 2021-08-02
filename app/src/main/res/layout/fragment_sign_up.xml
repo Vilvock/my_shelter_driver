@@ -61,8 +61,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/shape_main_et"
                     android:ems="10"
-                    android:hint="Nome"
-                    android:text="456456" />
+                    android:hint="Nome" />
 
 
                 <EditText
@@ -107,57 +106,6 @@
                 android:ems="10"
                 android:hint="Senha"
                 android:inputType="textPassword" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/sf_ui_display_heavy"
-                    android:text="Código DDI"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    app:boxStrokeWidth="2dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:orientation="horizontal">
-
-
-                <EditText
-                    android:id="@+id/countryCode_et"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_main_et"
-                    android:drawableEnd="@drawable/ic_main_dropdown"
-                    android:ems="10"
-                    android:inputType="textEmailAddress"
-                    android:paddingEnd="16dp"
-                    android:text="+1" />
-
-                <com.santalu.maskedittext.MaskEditText
-                    android:id="@+id/phone_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_main_et"
-                    android:ems="10"
-                    android:hint="Telefone"
-                    android:inputType="number" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -269,13 +217,13 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2">
 
             <Button
-                android:id="@+id/login_bt"
+                android:id="@+id/next_bt"
                 style="@style/StyleButtonMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="Cadastrar" />
+                android:text="Avançar" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

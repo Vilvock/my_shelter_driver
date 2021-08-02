@@ -50,7 +50,10 @@
         <item name="android:paddingEnd">12dp</item>
     </style>
 
-
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 
     <style name="StyleButtonSmall" parent="Widget.MaterialComponents.Button">
         <item name="rippleColor">@color/white</item>
@@ -157,6 +160,15 @@
     <style name="StyleSubTitle" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/colorSubTitle</item>
     </style>
-
+    <style name="AppTheme.SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 
 </resources>

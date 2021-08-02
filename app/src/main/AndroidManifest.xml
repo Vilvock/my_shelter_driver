@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/GeneralNoTitle">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="br.com.app5m.appshelterdriver.MainAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

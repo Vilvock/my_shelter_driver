@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_myCards"
+            android:title="@string/menu_myCards"
+            />
+        <item
+            android:id="@+id/nav_myRides"
+            android:title="@string/menu_myRides"
+            />
+        <item
+            android:id="@+id/nav_favoriteDrivers"
+            android:title="@string/menu_favoriteDrivers"
+            />
+        <item
+            android:id="@+id/nav_myEmployees"
+            android:title="@string/menu_myEmployees"
+            />
+        <item
+            android:id="@+id/nav_employeesHistoryRides"
+            android:title="@string/menu_employeesHistoryRides"
+            />
+        <item
+            android:id="@+id/nav_registerEmployee"
+            android:title="@string/menu_registerEmployee"
+            />
+<!--
+        android:icon="@drawable/ic_menu_slideshow"-->
+
+    </group>
+</menu>

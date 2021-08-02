@@ -48,12 +48,12 @@ class MyUsefulKotlin {
 
     fun startFragment(frag: Fragment, fragmentManager: FragmentManager) {
         val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.container, frag)/*.addToBackStack(null)*/.commit()
+        transaction.replace(R.id.containerView, frag)/*.addToBackStack(null)*/.commit()
     }
 
     fun startFragmentOnBack(frag: Fragment, fragmentManager: FragmentManager) {
         val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.container, frag).addToBackStack(null).commit()
+        transaction.replace(R.id.containerView, frag).addToBackStack(null).commit()
     }
 
 
