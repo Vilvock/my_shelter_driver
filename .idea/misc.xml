@@ -39,10 +39,13 @@
         <entry key="app/src/main/res/drawable/shape_main_et.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_et_gray.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_et_gray2.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/drawable/shape_main_stroke_et.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/shape_main_stroke_gray_et.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/solid_background.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/layout-land/activity_drawer_container.xml" value="0.17592592592592593" />
+        <entry key="app/src/main/res/layout-land/content_home.xml" value="0.17592592592592593" />
+        <entry key="app/src/main/res/layout-land/dialog_bottom_view_choosedestination.xml" value="0.17592592592592593" />
         <entry key="app/src/main/res/layout-land/fragment_home_map.xml" value="0.16574074074074074" />
         <entry key="app/src/main/res/layout-land/fragment_user_profile.xml" value="0.2" />
         <entry key="app/src/main/res/layout-land/toolbar_chat.xml" value="0.16574074074074074" />
@@ -63,6 +66,7 @@
         <entry key="app/src/main/res/layout/credit_card_layout.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/current_location.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/default_bottom_sheet_dialog_container.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/dialog_bottom_view_choosedestination.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/dialog_veicle_color.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/edge_left.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_add_credit_card.xml" value="0.2" />
