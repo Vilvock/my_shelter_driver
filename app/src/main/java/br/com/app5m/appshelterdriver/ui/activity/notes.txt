@@ -33,4 +33,5 @@ também no menu lateral área para alterar veículo
 
 histórico de viagens
 meus pagamentos T34 valor total que recebeu no dia tal uma listagem de meus pagamentos.
+contas bancárias. Ao adicionar a conta bancária será conta ou pix T33
 E o botão de deslogar no final.

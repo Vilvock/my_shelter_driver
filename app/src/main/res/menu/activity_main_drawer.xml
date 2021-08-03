@@ -5,28 +5,28 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_myCards"
-            android:title="@string/menu_myCards"
+            android:id="@+id/nav_changeVeicle"
+            android:title="@string/menu_Change_vehicle"
             />
         <item
-            android:id="@+id/nav_myRides"
-            android:title="@string/menu_myRides"
+            android:id="@+id/nav_myTrips"
+            android:title="@string/menu_myTrips"
             />
         <item
-            android:id="@+id/nav_favoriteDrivers"
-            android:title="@string/menu_favoriteDrivers"
+            android:id="@+id/nav_travelHistory"
+            android:title="@string/menu_travel_history"
             />
         <item
-            android:id="@+id/nav_myEmployees"
-            android:title="@string/menu_myEmployees"
+            android:id="@+id/nav_myPayments"
+            android:title="@string/menu_myPayments"
             />
         <item
-            android:id="@+id/nav_employeesHistoryRides"
-            android:title="@string/menu_employeesHistoryRides"
+            android:id="@+id/nav_bankAccount"
+            android:title="@string/menu_bank_account"
             />
         <item
-            android:id="@+id/nav_registerEmployee"
-            android:title="@string/menu_registerEmployee"
+            android:id="@+id/nav_logOut"
+            android:title="@string/menu_logOut"
             />
 <!--
         android:icon="@drawable/ic_menu_slideshow"-->

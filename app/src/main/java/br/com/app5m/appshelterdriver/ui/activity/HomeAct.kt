@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.baseboard_acept_race.*
 import kotlinx.android.synthetic.main.content_home.*
+import kotlinx.android.synthetic.main.nav_header_home.view.*
 
 class HomeAct : AppCompatActivity() {
 
@@ -61,23 +62,23 @@ class HomeAct : AppCompatActivity() {
 
             when (it.itemId) {
 
-                R.id.nav_myCards -> {
-                    intent.putExtra("key", "cards")
+                R.id.nav_changeVeicle -> {
+                    intent.putExtra("key", "change_vehicle")
                 }
-                R.id.nav_myRides -> {
-                    intent.putExtra("key", "rides")
+                R.id.nav_myTrips -> {
+                    intent.putExtra("key", "myTrips")
                 }
-                R.id.nav_favoriteDrivers -> {
-                    intent.putExtra("key", "favoriteDrivers")
+                R.id.nav_travelHistory -> {
+                    intent.putExtra("key", "travel_history")
                 }
-                R.id.nav_myEmployees-> {
-                    intent.putExtra("key", "myEmployees")
+                R.id.nav_myPayments-> {
+                    intent.putExtra("key", "myPayments")
                 }
-                R.id.nav_employeesHistoryRides -> {
-                    intent.putExtra("key", "historyEmployees")
+                R.id.nav_bankAccount -> {
+                    intent.putExtra("key", "bank_account")
                 }
                 else -> {
-                    intent.putExtra("key", "registerEmployee")
+                    intent.putExtra("key", "logOut")
                 }
             }
 
@@ -119,18 +120,24 @@ class HomeAct : AppCompatActivity() {
         }
 
     }
-
-/*    override fun onResume() {
+    override fun onResume() {
         super.onResume()
 
         val headerView: View = nav_view.getHeaderView(0)
-        headerView.nameHeader_tv.text = Preferences(
-            this
-        ).getUserData()?.name
-        headerView.emailHeader_tv.text = Preferences(
-            this
-        ).getUserData()?.email
+        headerView.nameUser_tv.text = "Android Lorem"
+        headerView.emailUser_tv.text = "android@aandroid.com"
 
-    }*/
+        headerView.profile_ib.setOnClickListener {
+
+
+            val intent = Intent(this, DrawerContainerAct::class.java)
+            intent.putExtra("key", "profile")
+            startActivity(intent)
+
+        }
+
+    }
+
+
 
 }

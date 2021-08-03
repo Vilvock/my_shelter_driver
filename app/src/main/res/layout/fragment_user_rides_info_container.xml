@@ -29,13 +29,13 @@
 
         <TextView
             android:id="@+id/textView3"
+            style="@style/fontTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:text="Minhas viagens"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/text_size17"
-            android:textStyle="bold"
+            android:textSize="@dimen/text_size11"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="parent" />

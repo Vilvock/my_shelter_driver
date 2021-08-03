@@ -51,10 +51,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Name user!"
-                    android:textStyle="bold"
+                    android:text="Nome Sobrenome"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/text_size17" />
+                    android:textSize="@dimen/text_size17"
+                    android:textStyle="bold" />
 
 
                 <ImageView
@@ -89,6 +89,46 @@
 
 
             <TextView
+                android:id="@+id/textView50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sobrenome"
+                android:textAllCaps="true"
+                android:textColor="@color/gray400" />
+
+            <EditText
+                android:id="@+id/lastName_et8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/shape_main_stroke_gray_et"
+                android:ems="10"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="Lorem Ipsum" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="CPF"
+                android:textAllCaps="true"
+                android:textColor="@color/gray400" />
+
+            <EditText
+                android:id="@+id/lastName_et3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/shape_main_stroke_gray_et"
+                android:ems="10"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="87503951034" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -101,11 +141,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:maxLines="1"
                 android:background="@drawable/shape_main_stroke_gray_et"
                 android:ems="10"
-                android:text="Lorem Ipsum"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:text="contato@app5m.com.br" />
 
             <TextView
                 android:layout_width="match_parent"

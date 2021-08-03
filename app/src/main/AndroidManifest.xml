@@ -16,6 +16,8 @@
         <activity android:name=".ui.activity.HomeAct"/>
         <activity android:name=".ui.activity.IntroContainerAct" />
         <activity android:name=".ui.activity.AuthContainerAct" />
+        <activity android:name=".ui.activity.DrawerContainerAct" />
+
         <activity android:name=".MainAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

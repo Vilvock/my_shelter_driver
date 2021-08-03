@@ -1,5 +1,6 @@
 package br.com.app5m.appshelterdriver.ui.dialog
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.ui.activity.DrawerContainerAct
 import br.com.app5m.appshelterdriver.util.Useful
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -42,6 +44,8 @@ class DefaultBottomSheetContainerFragDialog (private val fragment: Fragment) : B
 
         close_imageButton.setOnClickListener {
             this.dismiss()
+            val intent = Intent(context, DrawerContainerAct::class.java)
+
         }
 
     }

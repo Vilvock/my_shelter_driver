@@ -1,12 +1,13 @@
 package br.com.app5m.appshelterdriver.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil.setContentView
+import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.fragment.UserProfileFrag
-import br.com.app5m.appshelterdriver.ui.fragment.UserRidesInfoContainerFrag
+import br.com.app5m.appshelterdriver.ui.fragment.*
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_drawer_container.*
 
@@ -29,28 +30,32 @@ class DrawerContainerAct : AppCompatActivity() {
                 "profile" -> {
                     useful.startFragment(UserProfileFrag(), supportFragmentManager)
                 }
-                "cards" -> {
-                    useful.startFragment(UserProfileFrag(), supportFragmentManager)
+                "change_vehicle" -> {
+                    useful.startFragment(UpdateVehicleFrag(), supportFragmentManager)
 
                 }
-                "rides" -> {
-
-                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
-                }
-                "favoriteDrivers" -> {
+                "myTrips" -> {
                     useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
 
                 }
-                "myEmployees" -> {
-                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
+                "travel_history" -> {
+
+                    useful.startFragment(TravelHistoryFrag(), supportFragmentManager)
+                }
+                "myPayments" -> {
+                    useful.startFragment(MyPayments(), supportFragmentManager)
 
                 }
-                "historyEmployees" -> {
-                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
+                "bank_account" -> {
+                    useful.startFragment(BankAccountFrag(), supportFragmentManager)
 
                 }
-                "registerEmployee" -> {
-                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
+
+                "logOut" -> {
+                    this.finishAffinity()
+                    val intent = Intent(this, MainAct::class.java)
+                    startActivity(intent)
+
 
                 }
 
