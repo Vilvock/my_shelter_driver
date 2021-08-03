@@ -11,7 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.dialog.ChooseDestinationFragDialog
+import br.com.app5m.appshelterdriver.ui.dialog.AceptRideFragDialog
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -87,10 +87,14 @@ class HomeAct : AppCompatActivity() {
             true
         }
 
-        beginRide_bt.setOnClickListener {
 
-            useful.showDefaultDialogView(supportFragmentManager, ChooseDestinationFragDialog())
+        switchCustom.setOnClickListener{
+            if(switchCustom.isChecked){
+                useful.showDefaultDialogView(supportFragmentManager, AceptRideFragDialog())
+            }
+            else{
 
+            }
         }
 
         //alterar compasso de posição depois

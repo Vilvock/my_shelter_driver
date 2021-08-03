@@ -54,6 +54,7 @@ dependencies {
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
     implementation 'com.github.santalu:mask-edittext:1.1.1'
     implementation 'com.github.vipulasri:timelineview:1.1.5'
-
+    //swiped button
+    implementation 'com.ebanx:swipe-button:0.4.0'
 
 }

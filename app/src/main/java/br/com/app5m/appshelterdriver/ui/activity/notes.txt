@@ -23,7 +23,8 @@ aprovar os dois documentos ele já pode estar apto a usar o aplicativo.
  tem que enviar cnh e enviar doc do veículo, ter status de cada um(na home)
 
 
-Após isso ele vai cair no mapa vai ter TWITE: Ativo e desativo(encontrei aqui https://github.com/Capitaoneo3/styled-views-android), ao aceitar a corrida vai vir o nome
+Após isso ele vai cair no mapa vai ter TWITE: Ativo e desativo(encontrei aqui https://github.com/Capitaoneo3/styled-views-android),
+ao aceitar a corrida vai vir o nome
 do usuário que solicitou destino tal valor tal e forma de pagamento: A forma de aceitar será um
 deslize (Tela 29 FIGMA)
 

@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_americanexpress.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/ic_arrow_back.xml" value="0.10740740740740741" />
+        <entry key="app/src/main/res/drawable/ic_check.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/drawable/ic_circle_point_map.xml" value="0.12037037037037036" />
         <entry key="app/src/main/res/drawable/ic_circle_time_line.xml" value="0.12037037037037036" />
         <entry key="app/src/main/res/drawable/ic_close.xml" value="0.20694444444444443" />
@@ -42,6 +43,8 @@
         <entry key="app/src/main/res/drawable/shape_main_et_gray2.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/shape_main_stroke_et.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/shape_main_stroke_gray_et.xml" value="0.20694444444444443" />
+        <entry key="app/src/main/res/drawable/shape_swiped_button.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/drawable/shape_swiped_button_background.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/solid_background.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/thumb.xml" value="0.20694444444444443" />
@@ -66,16 +69,18 @@
         <entry key="app/src/main/res/layout/adapter_veicle_color.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/container_bottomrounded_intro.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/content_home.xml" value="0.2874913614374568" />
+        <entry key="app/src/main/res/layout/content_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/credit_card_layout.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/current_location.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/default_bottom_sheet_dialog_container.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/dialog_bottom_view_acepride.xml" value="0.22" />
         <entry key="app/src/main/res/layout/dialog_bottom_view_choosedestination.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_veicle_color.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/edge_left.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_add_credit_card.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_baseboard_chosedestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_baseboard_setdestination.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_blank_frag_dialog.xml" value="0.18995433789954339" />
         <entry key="app/src/main/res/layout/fragment_booking_details_schedule.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_chose_adestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_credit_card_flags_adapter.xml" value="0.33" />
@@ -112,6 +117,7 @@
         <entry key="app/src/main/res/layout/loading.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/pickup_at.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/ride_details_frag_dialog.xml" value="0.16" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/toolbar_chat.xml" value="0.1787037037037037" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.1925925925925926" />
