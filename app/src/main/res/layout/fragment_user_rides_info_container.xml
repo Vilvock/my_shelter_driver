@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@drawable/solid_background"
-    tools:context=".ui.fragment.LoginFrag">
+    tools:context=".ui.fragment.driveracesinfo.DriverRacesInfoContainerFrag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -81,8 +81,8 @@
             </com.google.android.material.tabs.TabLayout>
 
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/containerView"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/mPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0" />

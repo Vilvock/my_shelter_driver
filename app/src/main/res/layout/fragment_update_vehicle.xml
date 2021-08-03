@@ -96,7 +96,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/next_bt2"
             style="@style/StyleButtonMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
