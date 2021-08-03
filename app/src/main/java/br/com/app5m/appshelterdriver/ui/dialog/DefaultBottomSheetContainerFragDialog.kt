@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
  */
 class DefaultBottomSheetContainerFragDialog (private val fragment: Fragment) : BottomSheetDialogFragment() {
 
-
     private lateinit var useful: Useful
 
     override fun onCreateView(
@@ -46,5 +45,7 @@ class DefaultBottomSheetContainerFragDialog (private val fragment: Fragment) : B
         }
 
     }
-
+    fun closeContainerDialog(){
+        this.dismiss()
+    }
 }

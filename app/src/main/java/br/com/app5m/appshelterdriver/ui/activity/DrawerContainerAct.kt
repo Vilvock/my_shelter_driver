@@ -3,7 +3,10 @@ package br.com.app5m.appshelterdriver.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.databinding.DataBindingUtil.setContentView
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.ui.fragment.UserProfileFrag
+import br.com.app5m.appshelterdriver.ui.fragment.UserRidesInfoContainerFrag
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_drawer_container.*
 
@@ -27,6 +30,7 @@ class DrawerContainerAct : AppCompatActivity() {
                     useful.startFragment(UserProfileFrag(), supportFragmentManager)
                 }
                 "cards" -> {
+                    useful.startFragment(UserProfileFrag(), supportFragmentManager)
 
                 }
                 "rides" -> {
@@ -34,15 +38,19 @@ class DrawerContainerAct : AppCompatActivity() {
                     useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
                 }
                 "favoriteDrivers" -> {
+                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
 
                 }
                 "myEmployees" -> {
+                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
 
                 }
                 "historyEmployees" -> {
+                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
 
                 }
                 "registerEmployee" -> {
+                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
 
                 }
 

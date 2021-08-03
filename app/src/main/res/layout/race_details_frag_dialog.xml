@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.dialog.RideDetailsFragDialog">
+    tools:context=".ui.dialog.RaceDetailsFragDialog">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -19,16 +19,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/indicatorHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp" />
-
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="24dp"
             android:background="#000000"
             app:cardCornerRadius="90dp">
 
@@ -137,10 +132,11 @@
             app:inner_text_top_padding="14dp" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/startTrip_bt"
             style="@style/StyleButtonMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
             android:text="Iniciar" />
 
     </LinearLayout>

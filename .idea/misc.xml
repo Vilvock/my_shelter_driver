@@ -68,17 +68,19 @@
         <entry key="app/src/main/res/layout/adapter_mypromotions.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_veicle_color.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/baseboard_acept_race.xml" value="0.25" />
         <entry key="app/src/main/res/layout/container_bottomrounded_intro.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/content_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/credit_card_layout.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/current_location.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/default_bottom_sheet_dialog_container.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/dialog_bottom_view_acepit_race.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/dialog_bottom_view_acepride.xml" value="0.22" />
         <entry key="app/src/main/res/layout/dialog_bottom_view_choosedestination.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_veicle_color.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/edge_left.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_add_credit_card.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_baseboard_chosedestination.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/fragment_baseboard_chosedestination.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_baseboard_setdestination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_blank_frag_dialog.xml" value="0.18995433789954339" />
         <entry key="app/src/main/res/layout/fragment_booking_details_schedule.xml" value="0.14444444444444443" />
@@ -110,6 +112,7 @@
         <entry key="app/src/main/res/layout/fragment_update_favorite_place.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_upload_documents.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_user_profile.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_user_rides_info_container.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/fragment_waiting_approval.xml" value="0.2" />
         <entry key="app/src/main/res/layout/gradient2_background.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/header_chose_adestination.xml" value="0.14444444444444443" />
@@ -117,10 +120,11 @@
         <entry key="app/src/main/res/layout/loading.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/pickup_at.xml" value="0.67" />
-        <entry key="app/src/main/res/layout/ride_details_frag_dialog.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/race_details_frag_dialog.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/ride_details_frag_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/toolbar_chat.xml" value="0.1787037037037037" />
-        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
       </map>
     </option>
   </component>

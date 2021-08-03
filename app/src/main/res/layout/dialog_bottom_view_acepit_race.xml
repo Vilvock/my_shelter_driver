@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/solid_background"
-    tools:context=".ui.dialog.AceptRideFragDialog">
+    tools:context=".ui.dialog.AceptRaceFragDialog">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -84,7 +84,7 @@
             android:orientation="vertical"></LinearLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/aceptRace_bt"
             style="@style/StyleTextButtonMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

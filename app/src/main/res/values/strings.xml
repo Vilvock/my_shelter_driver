@@ -19,12 +19,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_myCards">Meus cartões</string>
+    <string name="menu_myCards">Alterar Veículo</string>
     <string name="menu_myRides">Minhas viagens</string>
-    <string name="menu_favoriteDrivers">Motoristas Favoritos</string>
-    <string name="menu_myEmployees">Meus Funcionários</string>
-    <string name="menu_employeesHistoryRides">Historico dos Funcionários</string>
-    <string name="menu_registerEmployee">Cadastrar Funcionário</string>
+    <string name="menu_favoriteDrivers">Historico de viagens</string>
+    <string name="menu_myEmployees">Meus Pagamentos</string>
+    <string name="menu_employeesHistoryRides">Conta Bancária</string>
+    <string name="menu_registerEmployee">Sair</string>
 
     <string name="lorem_ipsum_0.1p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra risus at est eleifend venenatis. Duis volutpat fermentum lorem eget convallis. Fusce rutrum tincidunt lorem, in ultrices orci pharetra a. Cras vitae orci sit amet urna tempor dapibus.  </string>
     <string name="lorem_ipsum_1p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra risus at est eleifend venenatis. Duis volutpat fermentum lorem eget convallis. Fusce rutrum tincidunt lorem, in ultrices orci pharetra a. Cras vitae orci sit amet urna tempor dapibus. Etiam commodo nisl a diam dictum, vel molestie urna semper. Vivamus sapien arcu, malesuada nec ullamcorper lacinia, hendrerit eget nulla. Sed eleifend nibh eget sapien placerat egestas id sed orci. Suspendisse sem enim, auctor eget volutpat eu, aliquet at dui. Vestibulum sapien sem, ullamcorper ac dictum suscipit, interdum in dolor. Donec euismod et justo elementum interdum. </string>

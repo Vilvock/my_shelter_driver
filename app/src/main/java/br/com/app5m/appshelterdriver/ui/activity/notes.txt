@@ -26,7 +26,7 @@ aprovar os dois documentos ele já pode estar apto a usar o aplicativo.
 Após isso ele vai cair no mapa vai ter TWITE: Ativo e desativo(encontrei aqui https://github.com/Capitaoneo3/styled-views-android),
 ao aceitar a corrida vai vir o nome
 do usuário que solicitou destino tal valor tal e forma de pagamento: A forma de aceitar será um
-deslize (Tela 29 FIGMA)
+deslize (Tela 29 FIGMA)--ok
 
 no meu perfil do motorista (menu lateral) mostrar avaliação nas  minhas viagens e nota atual do motorista embaixo do avatar dele. T30
 também no menu lateral área para alterar veículo
