@@ -7,6 +7,7 @@ import android.view.MenuItem
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.fragment.*
+import br.com.app5m.appshelterdriver.ui.fragment.bankaccount.BankAccountFrag
 import br.com.app5m.appshelterdriver.ui.fragment.driveracesinfo.DriverRacesInfoContainerFrag
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_drawer_container.*

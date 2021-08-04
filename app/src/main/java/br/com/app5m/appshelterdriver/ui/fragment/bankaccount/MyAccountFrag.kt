@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.ui.fragment
+package br.com.app5m.appshelterdriver.ui.fragment.bankaccount
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.activity.DrawerContainerAct
-import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.fragment_my_account.*
 
 

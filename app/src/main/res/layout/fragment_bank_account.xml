@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.BankAccountFrag">
+    tools:context=".ui.fragment.bankaccount.BankAccountFrag">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.core.widget.NestedScrollView
@@ -39,7 +39,7 @@
                 app:rippleColor="@color/colorPrimary" />
 
             <Button
-                android:id="@+id/pix_bt"
+                android:id="@+id/addBankAccount_bt"
                 style="@style/StyleButtonMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
