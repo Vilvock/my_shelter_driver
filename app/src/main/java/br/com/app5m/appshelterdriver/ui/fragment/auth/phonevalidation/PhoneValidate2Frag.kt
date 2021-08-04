@@ -48,17 +48,17 @@ class PhoneValidate2Frag : Fragment() {
         val next = "<font color='#828282'>51981856895</font>"
         pinCodeTv.setText(HtmlCompat.fromHtml(first + next, HtmlCompat.FROM_HTML_MODE_LEGACY))
 
-        verify_bt.setOnClickListener {
+      /*  verify_bt.setOnClickListener {
 
             activity?.let { it1 -> useful.startFragmentOnBack(GetStartedFrag(), it1.supportFragmentManager) }
 
-        }
+        }*/
 
-     /*   verify_bt.setOnClickListener {
+        verify_bt.setOnClickListener {
 
             startActivity(Intent(requireContext(), HomeAct::class.java))
             requireActivity().finishAffinity()
 
-        }*/
+        }
     }
 }

@@ -3,6 +3,7 @@ package br.com.app5m.appshelterdriver.ui.activity
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
@@ -11,15 +12,21 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.helper.Preferences
 import br.com.app5m.appshelterdriver.ui.dialog.AceptRaceFragDialog
+import br.com.app5m.appshelterdriver.ui.fragment.UserProfileFrag
+import br.com.app5m.appshelterdriver.ui.fragment.signin.WaitingApproval
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.baseboard_acept_race.*
 import kotlinx.android.synthetic.main.content_home.*
+import kotlinx.android.synthetic.main.loading.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 
 class HomeAct : AppCompatActivity() {
+    private var preferences: Preferences? = null
 
 
     private lateinit var useful: Useful
@@ -27,6 +34,8 @@ class HomeAct : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        start()
 
         useful = Useful(this)
 
@@ -137,7 +146,22 @@ class HomeAct : AppCompatActivity() {
         }
 
     }
+    private fun start() {
+        preferences = Preferences(this)
+        if (!Preferences(this).getLogin()) {
+            Handler().postDelayed({
+                val intent = Intent(this, DrawerContainerAct::class.java)
+                intent.putExtra("key", "upload_documents")
+                startActivity(intent)
 
+
+            }, 3500)
+        }else{
+
+
+        }
+
+    }
 
 
 }
