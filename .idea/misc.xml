@@ -73,8 +73,10 @@
         <entry key="app/src/main/res/layout/adapter_last_destination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_list_codcountry.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_my_adresses.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/adapter_my_bank.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_my_payment_methods.xml" value="0.22" />
         <entry key="app/src/main/res/layout/adapter_my_payments.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/adapter_my_pix.xml" value="0.22" />
         <entry key="app/src/main/res/layout/adapter_mypromotions.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_travel_history.xml" value="0.22" />
         <entry key="app/src/main/res/layout/adapter_veicle_color.xml" value="0.14444444444444443" />
@@ -121,6 +123,7 @@
         <entry key="app/src/main/res/layout/fragment_my_bank.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/fragment_my_favorites.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_my_payments.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/fragment_my_pix.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/fragment_my_promotions.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_payment_methods.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_phone_validate1.xml" value="0.1925925925925926" />
