@@ -77,9 +77,7 @@ class HomeAct : AppCompatActivity() {
                 R.id.nav_myTrips -> {
                     intent.putExtra("key", "myTrips")
                 }
-                R.id.nav_travelHistory -> {
-                    intent.putExtra("key", "travel_history")
-                }
+
                 R.id.nav_myPayments-> {
                     intent.putExtra("key", "myPayments")
                 }
@@ -150,12 +148,13 @@ class HomeAct : AppCompatActivity() {
         preferences = Preferences(this)
         if (!Preferences(this).getLogin()) {
             Handler().postDelayed({
+
                 val intent = Intent(this, DrawerContainerAct::class.java)
                 intent.putExtra("key", "upload_documents")
                 startActivity(intent)
 
 
-            }, 3500)
+            }, 2500)
         }else{
 
 

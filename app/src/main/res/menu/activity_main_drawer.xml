@@ -12,10 +12,7 @@
             android:id="@+id/nav_myTrips"
             android:title="@string/menu_myTrips"
             />
-        <item
-            android:id="@+id/nav_travelHistory"
-            android:title="@string/menu_travel_history"
-            />
+
         <item
             android:id="@+id/nav_myPayments"
             android:title="@string/menu_myPayments"

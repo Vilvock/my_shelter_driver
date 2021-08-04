@@ -64,7 +64,8 @@
         <entry key="app/src/main/res/layout/activity_drawer_container.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_intro_container.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main_logovariation.xml" value="0.18" />
         <entry key="app/src/main/res/layout/adapter_add_bank_form.xml" value="0.18995433789954339" />
         <entry key="app/src/main/res/layout/adapter_add_pix_form.xml" value="0.33" />
         <entry key="app/src/main/res/layout/adapter_document_status.xml" value="0.25" />

@@ -19,11 +19,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_Change_vehicle">Alterar veículo</string>
-    <string name="menu_myTrips">Minhas viagens</string>
-    <string name="menu_travel_history">Historico de viagens</string>
-    <string name="menu_myPayments">Meus pagamentos</string>
-    <string name="menu_bank_account">Conta bancária</string>
+    <string name="menu_Change_vehicle">Meu Veículo</string>
+    <string name="menu_myTrips">Minhas Viagens</string>
+    <string name="menu_myPayments">Meus Pagamentos</string>
+    <string name="menu_bank_account">Contas Bancárias</string>
     <string name="menu_logOut">Sair</string>
 
     <string name="lorem_ipsum_0.1p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra risus at est eleifend venenatis. Duis volutpat fermentum lorem eget convallis. Fusce rutrum tincidunt lorem, in ultrices orci pharetra a. Cras vitae orci sit amet urna tempor dapibus.  </string>

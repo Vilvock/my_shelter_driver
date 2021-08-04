@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.ui.fragment.bankaccount
+package br.com.app5m.appshelterdriver.ui.fragment.bankaccount.tabs
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.ui.fragment.bankaccount.AddBankAccountFrag
+import br.com.app5m.appshelterdriver.ui.fragment.bankaccount.MyAccountFrag
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.fragment_bank_account.*
 
