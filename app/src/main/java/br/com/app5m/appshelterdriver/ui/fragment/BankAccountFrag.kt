@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
+import kotlinx.android.synthetic.main.fragment_bank_account.*
 
 
 class BankAccountFrag : Fragment() {
@@ -23,5 +24,13 @@ class BankAccountFrag : Fragment() {
         return inflater.inflate(R.layout.fragment_bank_account, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        account_bt.setOnClickListener {
+
+        }
+
+    }
 
 }
