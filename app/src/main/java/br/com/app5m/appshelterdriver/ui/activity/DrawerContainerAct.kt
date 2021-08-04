@@ -40,10 +40,7 @@ class DrawerContainerAct : AppCompatActivity() {
                     useful.startFragment(DriverRacesInfoContainerFrag(), supportFragmentManager)
 
                 }
-                "travel_history" -> {
 
-                    useful.startFragment(TravelHistoryFrag(), supportFragmentManager)
-                }
                 "myPayments" -> {
                     useful.startFragment(MyPayments(), supportFragmentManager)
 
