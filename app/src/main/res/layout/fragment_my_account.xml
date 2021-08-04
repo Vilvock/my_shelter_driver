@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".ui.fragment.MyAccount">
+    tools:context=".ui.fragment.MyAccountFrag">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -396,7 +396,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/back_bt_account"
                 style="@style/StyleButtonMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

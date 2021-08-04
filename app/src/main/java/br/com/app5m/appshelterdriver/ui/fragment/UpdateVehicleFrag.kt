@@ -32,7 +32,6 @@ class UpdateVehicleFrag : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         useful = Useful(requireContext())
-
         next_bt2.setOnClickListener {
             activity?.let { it1 -> useful.startFragmentOnBack(UploadDocumentsFrag(), it1.supportFragmentManager) }
 

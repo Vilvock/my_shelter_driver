@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.fragment_bank_account.*
 
 
 class BankAccountFrag : Fragment() {
+    private lateinit var useful: Useful
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +29,9 @@ class BankAccountFrag : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        useful = Useful(requireContext())
         account_bt.setOnClickListener {
+            activity?.let { it1 -> useful.startFragmentOnBack(MyAccountFrag(), it1.supportFragmentManager) }
 
         }
 
