@@ -88,7 +88,7 @@
             style="@style/StyleTextButtonMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Aperte para Aceitar"
+            android:text="Toque para Aceitar"
             android:textColor="#000000"
             app:rippleColor="@color/colorAccent"
             app:strokeWidth="0dp" />
