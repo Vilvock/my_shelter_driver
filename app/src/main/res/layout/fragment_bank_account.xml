@@ -26,7 +26,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/hello_blank_fragment" />
+                android:text="Conta Bancária" />
+
+            <Button
+                android:id="@+id/account_bt"
+                style="@style/StyleTextButtonMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="Minha Conta"
+                android:textColor="#FFFFFF"
+                app:rippleColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/pix_bt"
+                style="@style/StyleButtonMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adicionar Conta" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

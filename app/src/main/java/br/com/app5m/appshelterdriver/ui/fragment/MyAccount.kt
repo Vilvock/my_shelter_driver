@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
 
 
-class BankAccountFrag : Fragment() {
+class MyAccount : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class BankAccountFrag : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bank_account, container, false)
+        return inflater.inflate(R.layout.fragment_my_account, container, false)
     }
 
 
