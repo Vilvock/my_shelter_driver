@@ -29,8 +29,8 @@ class RaceDetailsFragDialog : DialogFragment() {
         }
         swipe_bt2.setOnStateChangeListener {
 
-            useful.showDefaultDialogView(requireActivity().supportFragmentManager, "cancel")
-            bottomSheetDialogFragment.dismiss()
+            dialog?.dismiss();
+
         }
 
     }
