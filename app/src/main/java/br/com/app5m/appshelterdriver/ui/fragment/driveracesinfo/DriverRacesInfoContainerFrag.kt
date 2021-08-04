@@ -54,8 +54,8 @@ class DriverRacesInfoContainerFrag : Fragment() , RecyclerItemClickListener {
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 ->  TabScheduledFrag()
-                1 ->  TabCompletedFrag()
-                else -> TabCanceledFrag()
+                1 ->  TabScheduledFrag()
+                else -> TabScheduledFrag()
             }
         }
 

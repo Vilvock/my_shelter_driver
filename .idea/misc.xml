@@ -68,6 +68,7 @@
         <entry key="app/src/main/res/layout/adapter_add_bank_form.xml" value="0.18995433789954339" />
         <entry key="app/src/main/res/layout/adapter_add_pix_form.xml" value="0.33" />
         <entry key="app/src/main/res/layout/adapter_document_status.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/adapter_drive_race_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_last_destination.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_list_codcountry.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_my_adresses.xml" value="0.14444444444444443" />
