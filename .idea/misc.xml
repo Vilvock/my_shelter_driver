@@ -72,9 +72,9 @@
         <entry key="app/src/main/res/layout/adapter_list_codcountry.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_my_adresses.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/adapter_my_payment_methods.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/adapter_my_payments.xml" value="0.16574074074074074" />
+        <entry key="app/src/main/res/layout/adapter_my_payments.xml" value="0.25" />
         <entry key="app/src/main/res/layout/adapter_mypromotions.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/adapter_travel_history.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/adapter_travel_history.xml" value="0.22" />
         <entry key="app/src/main/res/layout/adapter_veicle_color.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/baseboard_acept_race.xml" value="0.25" />
@@ -82,6 +82,7 @@
         <entry key="app/src/main/res/layout/content_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/credit_card_layout.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/current_location.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/dados_da_corrida_historico.xml" value="0.18995433789954339" />
         <entry key="app/src/main/res/layout/default_bottom_sheet_dialog_container.xml" value="0.18" />
         <entry key="app/src/main/res/layout/dialog_bottom_view_acepit_race.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/dialog_bottom_view_acepride.xml" value="0.22" />

@@ -31,7 +31,7 @@ class AddPixFormFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        save_bt_addBank.setOnClickListener {
+        save_bt_addPix.setOnClickListener {
             activity?.finishAffinity()
             startActivity(Intent(requireContext(), HomeAct::class.java))
         }
