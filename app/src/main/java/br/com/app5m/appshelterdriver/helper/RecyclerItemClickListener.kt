@@ -12,6 +12,9 @@ interface RecyclerItemClickListener {
     fun onClickListenerMyAdresses(local: Local){
         //optional body
     }
+    fun onClickListenerTravelHistory(travel: Travel){
+        //optional body
+    }
     fun onClickListenerMyPromotions(promotion: Promotion){
         //optional body
     }
