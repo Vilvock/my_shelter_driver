@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.race_details_frag_dialog.*
 
 
 class RaceDetailsFragDialog : DialogFragment() {
-
+    private lateinit var useful: Useful
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +27,12 @@ class RaceDetailsFragDialog : DialogFragment() {
         startTrip_bt.setOnClickListener {
             dialog?.dismiss();
         }
+        swipe_bt2.setOnStateChangeListener {
+
+            useful.showDefaultDialogView(requireActivity().supportFragmentManager, "cancel")
+            bottomSheetDialogFragment.dismiss()
+        }
+
     }
 
 }
