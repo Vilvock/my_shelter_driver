@@ -38,31 +38,10 @@ tools:context=".ui.fragment.bankaccount.AddPixFormFrag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="34dp"
+            android:layout_marginBottom="64dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView51"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/sf_ui_display_bold"
-                android:text="Nome Completo"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/name_et8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/shape_main_stroke_gray_et"
-                android:ems="10"
-                android:fontFamily="@font/sf_ui_display_bold"
-                android:maxLines="1"
-                android:text="Ezequiel Da Silva"
-                android:textAllCaps="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -135,7 +114,8 @@ tools:context=".ui.fragment.bankaccount.AddPixFormFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -170,7 +150,8 @@ tools:context=".ui.fragment.bankaccount.AddPixFormFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"

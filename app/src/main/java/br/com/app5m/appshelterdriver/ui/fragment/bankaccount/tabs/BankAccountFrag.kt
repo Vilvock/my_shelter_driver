@@ -5,20 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.fragment.bankaccount.AddBankAccountFrag
-import br.com.app5m.appshelterdriver.ui.fragment.bankaccount.MyAccountFrag
-import br.com.app5m.appshelterdriver.util.Useful
+import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_bank_account.*
 
 
-class BankAccountFrag : Fragment() {
-    private lateinit var useful: Useful
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+class BankAccountFrag : Fragment() , RecyclerItemClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,19 +23,43 @@ class BankAccountFrag : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bank_account, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        useful = Useful(requireContext())
-        account_bt.setOnClickListener {
-            activity?.let { it1 -> useful.startFragmentOnBack(MyAccountFrag(), it1.supportFragmentManager) }
+        configInitialViews()
 
-        }
-        addBankAccount_bt.setOnClickListener {
-            activity?.let { it1 -> useful.startFragmentOnBack(AddBankAccountFrag(), it1.supportFragmentManager) }
+    }
+    private fun configInitialViews(){
+        val adapter: FragmentStateAdapter = ScreenSlidePagerAdapter(activity)
+        mPagerBankAccount.adapter = adapter
 
-        }
+/*
+        mPager.setPageTransformer(ZoomOutPageTransformer())
+*/
+
+        TabLayoutMediator(tabViewBankAccount, mPagerBankAccount) { tab: TabLayout.Tab, position: Int ->
+            when (position) {
+                0 -> tab.text = "Pix"
+                1 -> tab.text = "Conta Bancária"
+            }
+        }.attach()
     }
 
+    private class ScreenSlidePagerAdapter(fa: FragmentActivity?) :
+        FragmentStateAdapter(fa!!) {
+
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                0 ->  MyPixFrag()
+                else -> MyBankFrag()
+            }
+        }
+
+
+
+        override fun getItemCount(): Int {
+            return 2
+        }
+
+    }
 }

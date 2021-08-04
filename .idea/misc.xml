@@ -118,6 +118,7 @@
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_multi_intro.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/fragment_my_account.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_my_bank.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/layout/fragment_my_favorites.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_my_payments.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_my_promotions.xml" value="0.16" />

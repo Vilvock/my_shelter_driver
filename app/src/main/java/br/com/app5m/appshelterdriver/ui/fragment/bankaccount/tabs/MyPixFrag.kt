@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.ui.fragment.bankaccount
+package br.com.app5m.appshelterdriver.ui.fragment.bankaccount.tabs
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.activity.DrawerContainerAct
-import kotlinx.android.synthetic.main.fragment_my_account.*
+import br.com.app5m.appshelterdriver.ui.fragment.bankaccount.AddPixFrag
+import br.com.app5m.appshelterdriver.util.Useful
+import kotlinx.android.synthetic.main.fragment_my_pix.*
 
 
-class MyAccountFrag : Fragment() {
+class MyPixFrag : Fragment() {
+    private lateinit var useful: Useful
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,16 +25,16 @@ class MyAccountFrag : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_account, container, false)
+        return inflater.inflate(R.layout.fragment_my_pix, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        back_bt_account.setOnClickListener {
-            activity?.finish()
-            val intent = Intent(context, DrawerContainerAct::class.java)
-            intent.putExtra("key", "bank_account")
-            startActivity(intent)
+        useful = Useful(requireContext())
+
+        add_pix_account_bt.setOnClickListener {
+            activity?.let { it1 -> useful.startFragmentOnBack(AddPixFrag(), it1.supportFragmentManager) }
+
         }
 
     }
