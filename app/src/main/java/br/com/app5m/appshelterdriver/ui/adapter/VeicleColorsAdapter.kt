@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
 
-import br.com.app5m.appshelterdriver.model.VehicleColor
+import br.com.app5m.appshelterdriver.models.VehicleColor
 
 
 class VeicleColorsAdapter(private val context: Context, private val listVehicleColor: List<VehicleColor>,

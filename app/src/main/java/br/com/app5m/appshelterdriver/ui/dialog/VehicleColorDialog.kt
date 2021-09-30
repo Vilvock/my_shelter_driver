@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.adapter.VeicleColorsAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.VehicleColor
+import br.com.app5m.appshelterdriver.models.VehicleColor
 import kotlinx.android.synthetic.main.dialog_veicle_color.*
 
 class VehicleColorDialog: DialogFragment(), RecyclerItemClickListener{

@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.Travel
+import br.com.app5m.appshelterdriver.models.Travel
 import br.com.app5m.appshelterdriver.ui.adapter.AddPixFormAdapter
-import br.com.app5m.appshelterdriver.ui.adapter.MyPaymentsAdapter
-import br.com.app5m.appshelterdriver.ui.fragment.signin.UploadDocumentsFrag
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.fragment_add_pix.*
 import kotlinx.android.synthetic.main.fragment_my_payments.*

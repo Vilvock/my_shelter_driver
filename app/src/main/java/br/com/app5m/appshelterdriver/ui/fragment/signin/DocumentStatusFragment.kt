@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.ui.adapter.DocumentStatusAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.DriverDocument
+import br.com.app5m.appshelterdriver.models.DriverDocument
 import kotlinx.android.synthetic.main.fragment_document_status.*
 
 

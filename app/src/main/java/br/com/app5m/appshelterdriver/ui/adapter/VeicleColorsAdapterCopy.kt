@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 
-import br.com.app5m.appshelterdriver.model.VehicleColor
+import br.com.app5m.appshelterdriver.models.VehicleColor
 import kotlinx.android.synthetic.main.adapter_veicle_color.view.*
 
 

@@ -1,6 +1,6 @@
 package br.com.app5m.appshelterdriver.helper
 
-import br.com.app5m.appshelterdriver.model.*
+import br.com.app5m.appshelterdriver.models.*
 
 
 interface RecyclerItemClickListener {

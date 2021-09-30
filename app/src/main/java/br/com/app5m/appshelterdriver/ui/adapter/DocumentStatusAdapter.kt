@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.DriverDocument
+import br.com.app5m.appshelterdriver.models.DriverDocument
 
 import com.github.vipulasri.timelineview.TimelineView
 

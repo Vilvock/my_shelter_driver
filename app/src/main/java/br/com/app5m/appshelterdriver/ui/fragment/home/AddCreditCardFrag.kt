@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.adapter.CreditCardFlagsAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.CreditCardFlag
+import br.com.app5m.appshelterdriver.models.CreditCardFlag
 import kotlinx.android.synthetic.main.fragment_add_credit_card.*
 
 

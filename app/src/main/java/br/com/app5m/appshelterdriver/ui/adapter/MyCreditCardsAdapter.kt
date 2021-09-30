@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.CreditCard
+import br.com.app5m.appshelterdriver.models.CreditCard
 
 
 class MyCreditCardsAdapter (private val context: Context, private val listMyCreditCards: List<CreditCard>,

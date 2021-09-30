@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.Travel
+import br.com.app5m.appshelterdriver.models.Travel
 import br.com.app5m.appshelterdriver.ui.adapter.MyPaymentsAdapter
 import br.com.app5m.appshelterdriver.ui.dialog.MyPaymentsFilterFragDialog
 import br.com.app5m.appshelterdriver.util.Useful

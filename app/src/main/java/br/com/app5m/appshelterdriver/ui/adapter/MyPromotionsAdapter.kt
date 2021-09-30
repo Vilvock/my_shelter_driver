@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.Promotion
+import br.com.app5m.appshelterdriver.models.Promotion
 
 
 class MyPromotionsAdapter (private val context: Context, private val listPromotions: List<Promotion>,

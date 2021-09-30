@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.adapter.MyCreditCardsAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.CreditCard
+import br.com.app5m.appshelterdriver.models.CreditCard
 import kotlinx.android.synthetic.main.fragment_payment_methods.*
 
 

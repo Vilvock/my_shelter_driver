@@ -12,7 +12,7 @@ import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.adapter.LastDestinationsAdapter
 import br.com.app5m.appshelterdriver.ui.adapter.MyAdressesAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.Local
+import br.com.app5m.appshelterdriver.models.Local
 import kotlinx.android.synthetic.main.dialog_veicle_color.*
 import kotlinx.android.synthetic.main.fragment_chose_adestination.*
 

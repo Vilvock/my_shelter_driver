@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.model
+package br.com.app5m.appshelterdriver.models
 
 import java.io.Serializable
 

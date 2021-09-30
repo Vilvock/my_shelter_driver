@@ -1,15 +1,13 @@
 package br.com.app5m.appshelterdriver.ui.adapter
 
 import android.content.Context
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.Travel
+import br.com.app5m.appshelterdriver.models.Travel
 
 class AddBankFormAdapter (private val context: Context, private val listTravelHistory: List<Travel>,
                           private val clickOnListener: RecyclerItemClickListener

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.adapter.MyPromotionsAdapter
 import br.com.app5m.appshelterdriver.helper.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.model.Promotion
+import br.com.app5m.appshelterdriver.models.Promotion
 import kotlinx.android.synthetic.main.fragment_my_promotions.*
 
 
