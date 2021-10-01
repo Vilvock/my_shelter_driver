@@ -76,10 +76,14 @@ interface WebService {
     @POST("documentos/documentosmotorista/" + "{id}")
     fun listDocDriver(
         @Path("id") idUser: String,
-        @Body a: UAddress
+        @Body d: Document
     ): Call<List<Document>>
 
+    @Multipart
     @POST("/documentos/updatedocumento")
-    fun updateDoc(@Body a: UAddress): Call<List<Document>>
+    fun updateDoc(@Part("id") id: RequestBody,
+        /*@Part("token") token: RequestBody,*/
+                     @Part doc: MultipartBody.Part): Call<List<Document>>
+
 
 }
