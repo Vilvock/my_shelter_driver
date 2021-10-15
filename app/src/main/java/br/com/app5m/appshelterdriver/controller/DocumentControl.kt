@@ -2,12 +2,10 @@ package br.com.app5m.appshelterdriver.controller
 
 import android.content.Context
 import android.util.Log
-import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.controller.webservice.WebService
 import br.com.app5m.appshelterdriver.helper.Preferences
 import br.com.app5m.appshelterdriver.models.Document
-import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody

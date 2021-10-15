@@ -1,9 +1,13 @@
 package br.com.app5m.appshelterdriver.models
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
-class User: Serializable {
+@Parcelize
+class User : Parcelable {
 
     @field:SerializedName("id")
     var id: String? = null
@@ -50,5 +54,7 @@ class User: Serializable {
     @field:SerializedName("celular")
     var phone: String? = null
 
+    @field:SerializedName("token_senha")
+    var tokenPassword: String? = null
 
 }

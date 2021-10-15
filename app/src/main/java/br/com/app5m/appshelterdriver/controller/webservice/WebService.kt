@@ -1,6 +1,7 @@
 package br.com.app5m.appshelterdriver.controller.webservice
 
 import br.com.app5m.appshelterdriver.models.Document
+import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.models.UAddress
 import br.com.app5m.appshelterdriver.models.User
 import okhttp3.MultipartBody
@@ -85,5 +86,13 @@ interface WebService {
         /*@Part("token") token: RequestBody,*/
                      @Part doc: MultipartBody.Part): Call<List<Document>>
 
+
+    //Ride
+
+    @POST("corridas/findsolicitadas")
+    fun findRidesRequests(@Body r: Ride): Call<List<Ride>>
+
+    @POST("corridas/listtiposveiculo")
+    fun listVehicleTypes(@Body r: Ride): Call<List<Ride>>
 
 }

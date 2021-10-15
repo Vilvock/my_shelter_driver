@@ -40,7 +40,7 @@ class UAddressControl(context: Context, private val result: WSResult): Callback<
 
         type = "saveAddress"
 
-        uAddress.token = WSConstants().TOKEN
+        uAddress.token = WSConstants.TOKEN
 
         val param: Call<List<UAddress>> = service.saveAddress(uAddress)
         param.enqueue(this)
@@ -50,7 +50,7 @@ class UAddressControl(context: Context, private val result: WSResult): Callback<
 
         type = "listAddress"
 
-        uAddress.token = WSConstants().TOKEN
+        uAddress.token = WSConstants.TOKEN
 
         val param: Call<List<UAddress>> = service.listAddress(idUser, uAddress)
         param.enqueue(this)
@@ -72,7 +72,7 @@ class UAddressControl(context: Context, private val result: WSResult): Callback<
             "id": 4
         }*/
 
-        uAddress.token = WSConstants().TOKEN
+        uAddress.token = WSConstants.TOKEN
 
         val param: Call<List<UAddress>> = service.updateAddressData(uAddress)
         param.enqueue(this)
@@ -87,7 +87,7 @@ class UAddressControl(context: Context, private val result: WSResult): Callback<
             "token": "shelter_movel#2021"
         }*/
 
-        uAddress.token = WSConstants().TOKEN
+        uAddress.token = WSConstants.TOKEN
 
         val param: Call<List<UAddress>> = service.deleteAddress(uAddress)
         param.enqueue(this)

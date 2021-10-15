@@ -2,8 +2,8 @@ package br.com.app5m.appshelterdriver.controller
 
 import android.content.Context
 import android.util.Log
-import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
 import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
+import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.controller.webservice.WebService
 import br.com.app5m.appshelterdriver.helper.Preferences
@@ -50,7 +50,7 @@ class UserControl(context: Context, private val result: WSResult): Callback<List
             "token": "shelter_movel#2021"
         }*/
 
-        user.token = WSConstants().TOKEN
+        user.token = WSConstants.TOKEN
 
         val param: Call<List<User>> = service.login(user)
         param.enqueue(this)
@@ -81,7 +81,7 @@ class UserControl(context: Context, private val result: WSResult): Callback<List
         }*/
 
 
-        user.token = WSConstants().TOKEN
+        user.token = WSConstants.TOKEN
 
         val param: Call<List<User>> = service.register(user)
         param.enqueue(this)
@@ -92,7 +92,7 @@ class UserControl(context: Context, private val result: WSResult): Callback<List
         type = "listId"
 
         user.id = preferences.getUserData()!!.id
-        user.token = WSConstants().TOKEN
+        user.token = WSConstants.TOKEN
 
         val param: Call<List<User>> = service.listId(user.id!! ,user)
         param.enqueue(this)
@@ -104,7 +104,7 @@ class UserControl(context: Context, private val result: WSResult): Callback<List
 
         user.id = preferences.getUserData()!!.id
         user.password = password
-        user.token = WSConstants().TOKEN
+        user.token = WSConstants.TOKEN
 
         val param: Call<List<User>> = service.updatePassword(user)
         param.enqueue(this)
@@ -125,7 +125,7 @@ class UserControl(context: Context, private val result: WSResult): Callback<List
         type = "updateUserData"
 
         user.id = preferences.getUserData()!!.id
-        user.token = WSConstants().TOKEN
+        user.token = WSConstants.TOKEN
 
         val param: Call<List<User>> = service.updateUserData(user)
         param.enqueue(this)

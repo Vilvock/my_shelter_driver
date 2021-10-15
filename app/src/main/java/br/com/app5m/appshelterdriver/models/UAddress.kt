@@ -1,8 +1,12 @@
 package br.com.app5m.appshelterdriver.models
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
-class UAddress: Serializable {
+@Parcelize
+class UAddress : Parcelable {
 
     var msg: String? = null
     var rows: String? = null
@@ -44,6 +48,9 @@ class UAddress: Serializable {
 
     @field:SerializedName("endereco")
     var address: String? = null
+
+    @field:SerializedName("id")
+    var id: String? = null
 
 
 }

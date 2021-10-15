@@ -1,8 +1,6 @@
 package br.com.app5m.appshelterdriver.helper
 
 import android.content.Context
-import br.com.app5m.appshelterdriver.models.UAddress
-import br.com.app5m.appshelterdriver.models.User
 import com.google.gson.Gson
 
 
