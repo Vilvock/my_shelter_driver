@@ -1,9 +1,6 @@
 package br.com.app5m.appshelterdriver.controller.webservice
 
-import br.com.app5m.appshelterdriver.models.Document
-import br.com.app5m.appshelterdriver.models.Ride
-import br.com.app5m.appshelterdriver.models.UAddress
-import br.com.app5m.appshelterdriver.models.User
+import br.com.app5m.appshelterdriver.models.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -95,4 +92,16 @@ interface WebService {
     @POST("corridas/listtiposveiculo")
     fun listVehicleTypes(@Body r: Ride): Call<List<Ride>>
 
+    //Bank
+
+    @POST("bancos/update")
+    fun updateBank(@Body b: Bank): Call<List<Bank>>
+
+    @POST("bancos/listbancos/" + "{id}")
+    fun listBanks(
+        @Path("id") idUser: String
+    ): Call<List<Bank>>
+
+    @POST("bancos/save")
+    fun saveBank(@Body b: Bank): Call<List<Bank>>
 }
