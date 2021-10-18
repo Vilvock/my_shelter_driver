@@ -65,4 +65,60 @@ class RideControl(context: Context, private val result: WSResult): Callback<List
         param.enqueue(this)
     }
 
+
+    fun findProcess(ride: Ride){
+
+        type = "findProcess"
+
+/*        {
+{
+	"id_motorista": 4,
+	"tipo_carro": 1,
+	"latitude": "-30.0166311",
+	"longitude": "-51.0544592",
+	"token": "shelter_movel#2021"
+}
+        }*/
+
+        ride.token = WSConstants.TOKEN
+
+        val param: Call<List<Ride>> = service.findProcessDriver(ride)
+        param.enqueue(this)
+    }
+
+    fun startRide(ride: Ride){
+
+        type = "start"
+
+/*        {
+{
+	"id": 0,
+	"token": "shelter_movel#2021"
+}
+        }*/
+
+        ride.token = WSConstants.TOKEN
+
+        val param: Call<List<Ride>> = service.startRide(ride)
+        param.enqueue(this)
+    }
+
+    fun acceptRide(ride: Ride){
+
+        type = "accept"
+
+/*        {
+{
+	"id": 0,
+	"id_motorista": 4,
+	"token": "shelter_movel#2021"
+}
+        }*/
+
+        ride.token = WSConstants.TOKEN
+
+        val param: Call<List<Ride>> = service.acceptRide(ride)
+        param.enqueue(this)
+    }
+
 }

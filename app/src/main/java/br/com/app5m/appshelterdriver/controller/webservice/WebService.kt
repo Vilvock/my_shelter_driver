@@ -92,6 +92,16 @@ interface WebService {
     @POST("corridas/listtiposveiculo")
     fun listVehicleTypes(@Body r: Ride): Call<List<Ride>>
 
+    @POST("corridas/findandamento_motorista")
+    fun findProcessDriver(@Body r: Ride): Call<List<Ride>>
+
+    @POST("corridas/iniciar")
+    fun startRide(@Body r: Ride): Call<List<Ride>>
+
+    @POST("corridas/aceitar")
+    fun acceptRide(@Body r: Ride): Call<List<Ride>>
+
+
     //Bank
 
     @POST("bancos/update")
