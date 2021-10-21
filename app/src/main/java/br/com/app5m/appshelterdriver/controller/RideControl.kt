@@ -121,4 +121,22 @@ class RideControl(context: Context, private val result: WSResult): Callback<List
         param.enqueue(this)
     }
 
+    fun finishRide(ride: Ride){
+
+        type = "finish"
+
+/*        {
+{
+	"id": 1,
+	"id_motorista": 4,
+	"token": "shelter_movel#2021"
+}
+        }*/
+
+        ride.token = WSConstants.TOKEN
+
+        val param: Call<List<Ride>> = service.finishRide(ride)
+        param.enqueue(this)
+    }
+
 }

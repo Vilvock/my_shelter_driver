@@ -101,6 +101,8 @@ interface WebService {
     @POST("corridas/aceitar")
     fun acceptRide(@Body r: Ride): Call<List<Ride>>
 
+    @POST("corridas/finalizar")
+    fun finishRide(@Body r: Ride): Call<List<Ride>>
 
     //Bank
 
