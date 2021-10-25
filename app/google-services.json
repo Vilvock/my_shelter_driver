@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682984235075",
+    "project_id": "shelter-motorista-395a8",
+    "storage_bucket": "shelter-motorista-395a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682984235075:android:a77a1873c77f501b6534f6",
+        "android_client_info": {
+          "package_name": "br.com.app5m.appshelterdriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682984235075-0l4p1grf0lk9nnoar3u36igi1rdrb0u0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDswLVpv3NqXi7Ig71Oh8emn3jD04xI4yQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682984235075-0l4p1grf0lk9nnoar3u36igi1rdrb0u0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
