@@ -104,6 +104,12 @@ interface WebService {
     @POST("corridas/finalizar")
     fun finishRide(@Body r: Ride): Call<List<Ride>>
 
+    @POST("corridas/findall_motorista")
+    fun findAllDriver(@Body r: Ride): Call<List<Ride>>
+
+    @POST("corridas/cancelarmotorista")
+    fun cancelRideDriver(@Body r: Ride): Call<List<Ride>>
+
     //Bank
 
     @POST("bancos/update")

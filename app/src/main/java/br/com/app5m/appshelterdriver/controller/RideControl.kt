@@ -139,4 +139,38 @@ class RideControl(context: Context, private val result: WSResult): Callback<List
         param.enqueue(this)
     }
 
+    fun findAllDriver(ride: Ride){
+
+        type = "findAll"
+
+/*        {
+{
+	"id_motorista": 4,
+	"token": "shelter_movel#2021"
+}  }*/
+
+        ride.token = WSConstants.TOKEN
+
+        val param: Call<List<Ride>> = service.findAllDriver(ride)
+        param.enqueue(this)
+    }
+
+    fun cancelRidePassenger(ride: Ride){
+
+        type = "cancel"
+
+/*        {
+{
+	"id": 1,
+	"id_motorista": 4,
+	"token": "shelter_movel#2021"
+}
+        }*/
+
+        ride.token = WSConstants.TOKEN
+
+        val param: Call<List<Ride>> = service.cancelRideDriver(ride)
+        param.enqueue(this)
+    }
+
 }
