@@ -89,9 +89,6 @@ interface WebService {
     @POST("corridas/findsolicitadas")
     fun findRidesRequests(@Body r: Ride): Call<List<Ride>>
 
-    @POST("corridas/listtiposveiculo")
-    fun listVehicleTypes(@Body r: Ride): Call<List<Ride>>
-
     @POST("corridas/findandamento_motorista")
     fun findProcessDriver(@Body r: Ride): Call<List<Ride>>
 

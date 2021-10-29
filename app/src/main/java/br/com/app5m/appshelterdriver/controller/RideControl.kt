@@ -34,23 +34,6 @@ class RideControl(context: Context, private val result: WSResult): Callback<List
         Log.d("error", "onFailure: " + t.message)
     }
 
-
-    fun listVehicleTypes(ride: Ride){
-
-        type = "vehicleTypes"
-
-/*        {
-{
-		"token": "shelter_movel#2021",
-		"origem": "Avenida Getúlio Vargas 5019, Alvorada",
-	  "destino": "Avenida Tiradentes 81, Alvorada"
-}
-        }*/
-
-        val param: Call<List<Ride>> = service.listVehicleTypes(ride)
-        param.enqueue(this)
-    }
-
     fun findRidesRequests(ride: Ride){
 
         type = "findRidesRequests"
