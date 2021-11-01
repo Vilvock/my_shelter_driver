@@ -12,10 +12,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.helper.Preferences
 import br.com.app5m.appshelterdriver.ui.dialog.AceptRaceFragDialog
 import br.com.app5m.appshelterdriver.ui.fragment.UserProfileFrag
 import br.com.app5m.appshelterdriver.ui.fragment.signin.WaitingApproval
+import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,7 +28,6 @@ import kotlinx.android.synthetic.main.toolbar_custom.*
 
 class HomeAct : AppCompatActivity() {
     private var preferences: Preferences? = null
-
 
     private lateinit var useful: Useful
 

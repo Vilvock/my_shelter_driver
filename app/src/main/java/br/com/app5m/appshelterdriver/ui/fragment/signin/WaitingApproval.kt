@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.util.Useful
-import kotlinx.android.synthetic.main.fragment_upload_documents.*
-import kotlinx.android.synthetic.main.fragment_upload_documents.send_bt
 import kotlinx.android.synthetic.main.fragment_waiting_approval.*
 
 
@@ -35,7 +33,7 @@ class WaitingApproval : Fragment() {
 
         docStatus_bt.setOnClickListener {
 
-            activity?.let { it1 -> useful.startFragmentOnBack(DocumentStatusFragment(), it1.supportFragmentManager) }
+            activity?.let { it1 -> useful.startFragmentOnBack(DocumentStatusFrag(), it1.supportFragmentManager) }
 
         }
 

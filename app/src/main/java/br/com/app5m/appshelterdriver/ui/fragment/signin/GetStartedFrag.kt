@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.helper.Preferences
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.fragment_get_started.*
@@ -39,7 +38,6 @@ class GetStartedFrag : Fragment() {
 
                startActivity(Intent(requireContext(), HomeAct::class.java))
                requireActivity().finishAffinity()
-            Preferences(context).setLogin(true)
 
         }
 

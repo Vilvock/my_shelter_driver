@@ -6,8 +6,8 @@ import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.controller.webservice.WebService
-import br.com.app5m.appshelterdriver.helper.Preferences
 import br.com.app5m.appshelterdriver.models.User
+import br.com.app5m.appshelterdriver.util.Preferences
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

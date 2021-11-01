@@ -5,8 +5,8 @@ import android.util.Log
 import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.controller.webservice.WebService
-import br.com.app5m.appshelterdriver.helper.Preferences
 import br.com.app5m.appshelterdriver.models.Ride
+import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback

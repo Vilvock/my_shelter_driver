@@ -1,6 +1,5 @@
 package br.com.app5m.appshelterdriver.config
 
-import androidx.core.app.NotificationCompat
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -8,30 +7,25 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.helper.Preferences
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
 class FirebaseMessagingService: FirebaseMessagingService() {
 
-    var TAG = "notifica"
-
-    private var preferences: Preferences? = null
-
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
         Log.i(TAG, "onMessageReceived: " + remoteMessage.data)
-        preferences = Preferences(this)
 
         if (remoteMessage.data.isNotEmpty()) {
 
             val title = remoteMessage.data["titulo"]
             val body = remoteMessage.data["descricao"]
 
-            setMessage(body, title)
+            setMessage("body", "title")
         }
     }
 
@@ -50,12 +44,12 @@ class FirebaseMessagingService: FirebaseMessagingService() {
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
 
         val notification = NotificationCompat.Builder(this, channel)
-                .setContentTitle(title)
-                .setContentText(body)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setSound(uriSom)
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent)
+            .setContentTitle(title)
+            .setContentText(body)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSound(uriSom)
+            .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
 
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
@@ -66,6 +60,10 @@ class FirebaseMessagingService: FirebaseMessagingService() {
 
         notificationManager.notify(0, notification.build())
 
+    }
+
+    companion object {
+        private const val TAG = "notifica"
     }
 
 }

@@ -7,8 +7,6 @@ import android.view.MenuItem
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.fragment.*
-import br.com.app5m.appshelterdriver.ui.fragment.bankaccount.tabs.BankAccountFrag
-import br.com.app5m.appshelterdriver.ui.fragment.driveracesinfo.DriverRacesInfoContainerFrag
 import br.com.app5m.appshelterdriver.ui.fragment.signin.UploadDocumentsFrag
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_drawer_container.*
@@ -38,16 +36,16 @@ class DrawerContainerAct : AppCompatActivity() {
 
                 }
                 "myTrips" -> {
-                    useful.startFragment(DriverRacesInfoContainerFrag(), supportFragmentManager)
+//                    useful.startFragment(DriverRacesInfoContainerFrag(), supportFragmentManager)
 
                 }
 
                 "myPayments" -> {
-                    useful.startFragment(MyPayments(), supportFragmentManager)
+//                    useful.startFragment(MyPayments(), supportFragmentManager)
 
                 }
                 "bank_account" -> {
-                    useful.startFragment(BankAccountFrag(), supportFragmentManager)
+//                    useful.startFragment(BankAccountFrag(), supportFragmentManager)
 
                 }
 
