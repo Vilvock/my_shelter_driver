@@ -2,12 +2,15 @@ package br.com.app5m.appshelterdriver.controller
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.controller.webservice.WebService
 import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.util.Preferences
+import br.com.app5m.appshelterdriver.util.Useful
+import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -18,24 +21,28 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 
-class UserControl(context: Context, private val result: WSResult): Callback<List<User>> {
+class UserControl(private val context: Context, private val result: WSResult, private val useful: Useful): Callback<List<User>> {
 
     private val service = RetrofitInitializer().retrofit(
         true).create(WebService::class.java)
     private val preferences = Preferences(context)
     private var type = ""
-    private var user = User()
+    private lateinit var user: User
 
     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
         if (response.isSuccessful){
             response.body()?.let { result.uResponse(it, type) }
         }else{
-            result.error("Erro não esperado.")
+            SingleToast.INSTANCE.show(context, "Ocorreu um erro não esperado, tente novamente mais tarde.",
+                Toast.LENGTH_LONG)
+            Log.d("error", "onFailure: " + response.message())
         }
     }
 
     override fun onFailure(call: Call<List<User>>, t: Throwable) {
-        result.error("Não foi possível contatar o servidor.")
+        useful.closeLoading()
+        SingleToast.INSTANCE.show(context, "Não foi possível contatar o servidor.",
+            Toast.LENGTH_LONG)
         Log.d("error", "onFailure: " + t.message)
     }
 

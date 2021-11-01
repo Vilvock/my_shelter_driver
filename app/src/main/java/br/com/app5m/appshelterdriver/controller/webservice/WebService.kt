@@ -132,4 +132,11 @@ interface WebService {
 
     @POST("bancos/save")
     fun saveBank(@Body b: Bank): Call<List<Bank>>
+
+
+    /*
+     *Outros
+     */
+    @GET("{CEP}/json/")
+    fun getAddressByCEP(@Path("CEP") CEP: String?): Call<UAddress>
 }
