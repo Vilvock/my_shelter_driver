@@ -24,7 +24,7 @@ class UserControl(context: Context, private val result: WSResult): Callback<List
         true).create(WebService::class.java)
     private val preferences = Preferences(context)
     private var type = ""
-    private val user = User()
+    private var user = User()
 
     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
         if (response.isSuccessful){
@@ -216,6 +216,33 @@ class UserControl(context: Context, private val result: WSResult): Callback<List
 
 
         val param: Call<List<User>> = service.updateOnline(user)
+        param.enqueue(this)
+    }
+
+
+    fun listCredit(){
+
+        type = "listCredit"
+
+        user = User()
+
+        user.id = preferences.getUserData()!!.id
+        user.token = WSConstants.TOKEN
+
+        val param: Call<List<User>> = service.listCredit(user.id!!, user)
+        param.enqueue(this)
+    }
+
+    fun listReceipts(){
+
+        type = "listReceipts"
+
+        user = User()
+
+        user.id = preferences.getUserData()!!.id
+        user.token = WSConstants.TOKEN
+
+        val param: Call<List<User>> = service.listReceipts(user.id!!, user)
         param.enqueue(this)
     }
 
