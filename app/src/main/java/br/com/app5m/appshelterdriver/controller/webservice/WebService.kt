@@ -10,7 +10,7 @@ interface WebService {
 
     //User
 
-    @POST ("")
+    @POST ("passageiros/savefcm")
     fun fcm(@Body u: User): Call<List<User>>
 
     @POST("motoristas/login")

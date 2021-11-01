@@ -7,14 +7,27 @@ import com.google.gson.Gson
 
 class Preferences(context: Context?) {
 
-    /**
-     * Preferences
-     */
-
-    val ENTERING_FIRST_TIME = "EnteringFirstTime"
-
     private var preferences = context?.getSharedPreferences("high.preference", 0)
     private var editor = preferences?.edit()
+
+    fun saveInstanceTokenFcm(key: String?, value: String) {
+        editor?.putString(key, value)
+        editor!!.commit()
+    }
+
+    fun getInstanceTokenFcm(): String {
+        return preferences!!.getString("token", "")!!
+    }
+
+    fun storeInt(key: String?, value: Int) {
+        editor?.putInt(key, value)
+        editor!!.commit()
+    }
+
+    fun getInt(key: String?, defaultValue: Int): Int {
+        return preferences!!.getInt(key, defaultValue)
+    }
+
 
     fun setUserData(user: User?) {
         val data = Gson().toJson(user)
@@ -44,11 +57,8 @@ class Preferences(context: Context?) {
     fun clearUserData(){
         editor?.remove("getData")
         editor?.remove("login")
+        editor?.remove("token")
         editor!!.commit()
-    }
-
-    fun firstUser(): String? {
-        return preferences!!.getString("user", "0")
     }
 
     fun clearUserLocation(){
@@ -72,13 +82,11 @@ class Preferences(context: Context?) {
         } else null
     }
 
-    fun storeInt(key: String?, value: Int) {
-        editor?.putInt(key, value)
-        editor!!.commit()
-    }
+    companion object {
+        /**
+         * Preferences
+         */
 
-    fun getInt(key: String?, defaultValue: Int): Int {
-        return preferences!!.getInt(key, defaultValue)
+        const val ENTERING_FIRST_TIME = "EnteringFirstTime"
     }
-
 }

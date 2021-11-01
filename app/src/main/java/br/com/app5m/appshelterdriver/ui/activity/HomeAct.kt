@@ -260,22 +260,33 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     }
 
     private fun saveFcm() {
+
         FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult: InstanceIdResult ->
 
-            val user = User()
+            if (preferences.getInstanceTokenFcm() == instanceIdResult.token) {
 
-            user.typeUser = "1"
-            user.type = WSConstants.TYPE_FCM
-            user.registrationId = instanceIdResult.token
+                Log.d("TAG", "uResponse: não salvou")
 
-            val userControl = UserControl(this, object : WSResult{
-                override fun uResponse(list: List<User>, type: String) {
-                    Log.d("TAG", "uResponse: salve")
+            } else {
 
-                }
-            }, useful)
+                preferences.saveInstanceTokenFcm("token", instanceIdResult.token)
 
-            userControl.saveFcm(user)
+                val user = User()
+
+                user.typeUser = "1"
+                user.type = WSConstants.TYPE_FCM
+                user.registrationId = preferences.getInstanceTokenFcm()
+
+                val userControl = UserControl(this, object : WSResult{
+                    override fun uResponse(list: List<User>, type: String) {
+                        Log.d("TAG", "uResponse: salve")
+
+                    }
+                }, useful)
+
+                userControl.saveFcm(user)
+
+            }
         }
     }
 
