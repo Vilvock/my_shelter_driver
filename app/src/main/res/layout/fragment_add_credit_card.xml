@@ -157,7 +157,6 @@
 
     <TextView
         android:id="@+id/textView22"
-        style="@style/fontTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -170,7 +169,7 @@
 
     <Button
         android:id="@+id/button10"
-        style="@style/StyleButtonMedium"
+        style="@style/StyleButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -201,7 +200,7 @@
 
     <Button
         android:id="@+id/button11"
-        style="@style/StyleButtonMedium"
+        style="@style/StyleButton2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

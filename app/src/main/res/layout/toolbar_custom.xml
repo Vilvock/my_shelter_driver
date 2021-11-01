@@ -13,13 +13,12 @@
         android:fitsSystemWindows="true"
         android:elevation="0dp"
         app:elevation="0dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:background="@android:color/transparent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            android:layout_height="?attr/actionBarSize"/>
     </com.google.android.material.appbar.AppBarLayout>
 
 </FrameLayout>

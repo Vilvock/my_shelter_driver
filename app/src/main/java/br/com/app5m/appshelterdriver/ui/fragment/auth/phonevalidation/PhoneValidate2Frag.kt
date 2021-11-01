@@ -44,10 +44,6 @@ class PhoneValidate2Frag : Fragment() {
 
         useful = Useful(requireContext())
 
-        val first = "Verifique suas mensagens SMS. Nós te enviamos o PIN no número "
-        val next = "<font color='#828282'>51981856895</font>"
-        pinCodeTv.setText(HtmlCompat.fromHtml(first + next, HtmlCompat.FROM_HTML_MODE_LEGACY))
-
       /*  verify_bt.setOnClickListener {
 
             activity?.let { it1 -> useful.startFragmentOnBack(GetStartedFrag(), it1.supportFragmentManager) }

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".ui.fragment.WaitingApproval">
+    tools:context=".ui.fragment.signin.WaitingApproval">
 
     <Button
         android:id="@+id/start_bt"
-        style="@style/StyleButtonBig"
+        style="@style/StyleButton2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="34dp"
@@ -35,7 +35,6 @@
 
     <TextView
         android:id="@+id/textView7"
-        style="@style/fontTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"

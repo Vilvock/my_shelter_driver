@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 
 import br.com.app5m.appshelterdriver.models.VehicleColor
-import kotlinx.android.synthetic.main.adapter_veicle_color.view.*
-
+import kotlinx.android.synthetic.main.adapter_vehicle_color.view.*
 
 class VeicleColorsAdapterCopy(val arrayList: ArrayList<VehicleColor>, val context: Context) :
     RecyclerView.Adapter<VeicleColorsAdapterCopy.ViewHolder>() {
@@ -27,7 +26,7 @@ class VeicleColorsAdapterCopy(val arrayList: ArrayList<VehicleColor>, val contex
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.adapter_veicle_color,parent,false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.adapter_vehicle_color,parent,false)
         Toast.makeText(context, "vamo ve", Toast.LENGTH_SHORT).show()
         return ViewHolder(v)
     }

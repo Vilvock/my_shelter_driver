@@ -50,7 +50,7 @@
 
         <Button
             android:id="@+id/next_intro_bt"
-            style="@style/StyleButtonSmall"
+            style="@style/StyleButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"

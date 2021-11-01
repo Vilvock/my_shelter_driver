@@ -11,27 +11,10 @@
         android:layout_height="match_parent"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
-    <Button
-        android:id="@+id/beginRide_bt"
-        style="@style/StyleButton4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="16dp"
-        android:text="Iniciar uma viagem"
-        android:visibility="gone"
-        app:backgroundTint="@color/colorPrimary" />
-
     <include
-        layout="@layout/baseboard_acept_race"
+        layout="@layout/baseboard_accept_race"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

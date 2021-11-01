@@ -28,7 +28,7 @@
 
             <Button
                 android:id="@+id/add_pix_account_bt"
-                style="@style/StyleButtonMedium"
+                style="@style/StyleButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

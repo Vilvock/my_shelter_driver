@@ -6,46 +6,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@drawable/gradient_background"
+    android:overScrollMode="never"
     tools:context=".ui.fragment.signin.LoginFrag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.96" />
+        android:layout_height="wrap_content"
+        android:padding="12dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Log in"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size17" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:text="Login"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size17"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/main_logo" />
+
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -62,7 +67,8 @@
                 android:layout_marginTop="4dp"
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -79,7 +85,8 @@
                 android:layout_marginTop="4dp"
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:maxLines="1" />
 
             <TextView
                 android:id="@+id/forgetPassword_tv"
@@ -87,16 +94,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Esqueceu sua senha?"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/text_size3" />
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size4" />
 
             <Button
                 android:id="@+id/login_bt"
-                style="@style/StyleButtonMedium"
+                style="@style/StyleButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTint="@color/colorAccent"
                 android:text="Login" />
 
         </LinearLayout>
@@ -105,16 +112,15 @@
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
 
             <Button
                 android:id="@+id/facebook_bt"
-                style="@style/StyleButtonFacebook"
+                style="@style/StyleButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/facebookBtColor"
@@ -123,17 +129,17 @@
 
             <Button
                 android:id="@+id/connectPhone_bt"
-                style="@style/StyleButtonPhone"
+                style="@style/StyleButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/white"
                 android:text="Conectar com número do telefone"
-                android:textColor="#000000"
-                android:textSize="14sp"
+                android:textColor="@color/colorAccent"
                 app:icon="@drawable/ic_phone"
-                app:iconTint="#000000"
-                app:strokeColor="@color/colorAccent" />
+                app:iconTint="@color/colorAccent"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="0.8dp" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

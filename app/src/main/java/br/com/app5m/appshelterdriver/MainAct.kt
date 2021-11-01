@@ -22,16 +22,10 @@ class MainAct : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_logovariation)
+        setContentView(R.layout.activity_main)
         preferences = Preferences(this)
 
         start()
-
-    }
-
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        return super.onCreateView(name, context, attrs)
-        configureInitialViews()
 
     }
 
@@ -65,12 +59,6 @@ class MainAct : AppCompatActivity() {
             startActivity(Intent(this, HomeAct::class.java))
             this.finishAffinity()
         }*/
-
-    }
-
-    fun configureInitialViews(){
-
-
 
     }
 

@@ -6,20 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.DrawerContainerAct">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:elevation="0dp"
-        app:elevation="0dp"
-        android:background="@color/colorPrimary">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"/>
-    </com.google.android.material.appbar.AppBarLayout>
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_blue" />
 
 
     <androidx.fragment.app.FragmentContainerView

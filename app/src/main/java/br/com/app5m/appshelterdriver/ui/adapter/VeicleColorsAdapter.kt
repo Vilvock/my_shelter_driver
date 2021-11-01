@@ -22,7 +22,7 @@ class VeicleColorsAdapter(private val context: Context, private val listVehicleC
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VeicleColorViewHolder {
         val listItem: View = LayoutInflater.from(parent.context)
             .inflate(
-                R.layout.adapter_veicle_color,
+                R.layout.adapter_vehicle_color,
                 parent,
                 false
             ) // vai conectar com os ids abaixo

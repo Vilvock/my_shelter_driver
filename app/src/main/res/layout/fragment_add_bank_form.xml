@@ -25,7 +25,6 @@ tools:context=".ui.fragment.bankaccount.AddBankFormFrag"
 
         <TextView
             android:id="@+id/textView49"
-            style="@style/fontTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -135,7 +134,7 @@ tools:context=".ui.fragment.bankaccount.AddBankFormFrag"
 
         <Button
             android:id="@+id/save_bt_addBank"
-            style="@style/StyleButtonMedium"
+            style="@style/StyleButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

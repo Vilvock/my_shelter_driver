@@ -33,7 +33,7 @@ class PhoneValidate1Frag : Fragment() {
 
         useful = Useful(requireContext())
 
-        next_phonevalidation_bt.setOnClickListener {
+        next_bt.setOnClickListener {
 
             activity?.let { it1 -> useful.startFragmentOnBack(PhoneValidate2Frag(), it1.supportFragmentManager) }
 

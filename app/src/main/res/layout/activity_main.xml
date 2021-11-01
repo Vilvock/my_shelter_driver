@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient2_background">
+    android:background="@drawable/gradient2_background"
+    tools:context=".MainAct">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline24"
@@ -13,25 +14,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:srcCompat="@drawable/main_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline24">
+        app:layout_constraintTop_toTopOf="@+id/guideline24" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/sheltericone2" />
-
-    </androidx.cardview.widget.CardView>
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -43,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@+id/authButtons_ll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.1">
 
         <include layout="@layout/loading" />
@@ -59,58 +52,35 @@
         android:layout_marginBottom="24dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <Button
+            android:id="@+id/signUp_bt"
+            style="@style/StyleButton2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:text="Cadastrar-se"
+            android:textColor="@color/colorPrimaryDark" />
 
-            <Button
-                android:id="@+id/signUp_bt"
-                style="@style/StyleButtonMedium"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="1"
-                android:autoSizeMinTextSize="12sp"
-                android:autoSizeMaxTextSize="14sp"
-                android:autoSizeTextType="uniform"
-                android:backgroundTint="@color/white"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:text="Cadastrar-se"
-                android:textColor="@color/colorPrimaryDark"
-                app:layout_constraintBottom_toBottomOf="@+id/login_bt"
-                app:layout_constraintEnd_toStartOf="@+id/guideline44"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/login_bt" />
 
-            <Button
-                android:id="@+id/login_bt"
-                style="@style/StyleTextButtonMedium"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:backgroundTint="@android:color/transparent"
-                android:text="Login"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline44"
-                app:strokeColor="@color/white"
-                app:strokeWidth="2dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline44"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.51" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/login_bt"
+            style="@style/StyleButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Login"
+            android:textColor="@color/white"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
 
 
     </LinearLayout>

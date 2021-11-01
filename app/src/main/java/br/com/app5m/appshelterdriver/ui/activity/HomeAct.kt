@@ -20,10 +20,11 @@ import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_home.*
-import kotlinx.android.synthetic.main.baseboard_acept_race.*
+import kotlinx.android.synthetic.main.baseboard_accept_race.*
 import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.loading.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
+import kotlinx.android.synthetic.main.toolbar_custom.*
 
 class HomeAct : AppCompatActivity() {
     private var preferences: Preferences? = null
@@ -99,7 +100,9 @@ class HomeAct : AppCompatActivity() {
 
         switchCustom.setOnClickListener{
             if(switchCustom.isChecked){
-                useful.showDefaultDialogView(supportFragmentManager, AceptRaceFragDialog())
+                useful.showDefaultDialogView(supportFragmentManager,
+                    AceptRaceFragDialog().toString()
+                )
             }
             else{
 

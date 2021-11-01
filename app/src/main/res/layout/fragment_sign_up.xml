@@ -39,7 +39,6 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                style="@style/fontTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cadastrar"
@@ -218,7 +217,7 @@
 
             <Button
                 android:id="@+id/next_bt"
-                style="@style/StyleButtonMedium"
+                style="@style/StyleButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"

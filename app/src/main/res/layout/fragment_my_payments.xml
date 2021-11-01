@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.MyPayments">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView3"
         android:layout_width="match_parent"
@@ -29,7 +27,6 @@
             android:paddingBottom="34dp">
 
             <TextView
-                style="@style/fontTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -48,7 +45,7 @@
 
     <Button
         android:id="@+id/filter_bt_payments"
-        style="@style/StyleButtonMedium"
+        style="@style/StyleButton2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

@@ -2,6 +2,7 @@ package br.com.app5m.appshelterdriver.controller
 
 import android.content.Context
 import android.util.Log
+import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.controller.webservice.WebService
 import br.com.app5m.appshelterdriver.helper.Preferences
@@ -45,7 +46,7 @@ class DocumentControl(context: Context, private val result: WSResult): Callback<
 
         type = "listDoc"
 
-        document.token = WSConstants().TOKEN
+        document.token = WSConstants.TOKEN
 
         val param: Call<List<Document>> = service.listDocDriver("", document)
         param.enqueue(this)
