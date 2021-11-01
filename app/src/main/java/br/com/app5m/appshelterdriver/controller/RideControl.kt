@@ -128,16 +128,13 @@ class RideControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
     }
 
-    fun findAllDriver(ride: Ride){
+    fun findAllDriver(){
 
         type = "findAll"
 
-/*        {
-{
-	"id_motorista": 4,
-	"token": "shelter_movel#2021"
-}  }*/
+        ride = Ride()
 
+        ride.driverId = preferences.getUserData()!!.id
         ride.token = WSConstants.TOKEN
 
         val param: Call<List<Ride>> = service.findAllDriver(ride)

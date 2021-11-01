@@ -9,6 +9,10 @@ import java.io.Serializable
 @Parcelize
 class User : Parcelable {
 
+
+    @field:SerializedName("avatar")
+    var avatar: String? = null
+
     @field:SerializedName("id")
     var id: String? = null
 
@@ -18,14 +22,29 @@ class User : Parcelable {
     @field:SerializedName("password")
     var password: String? = null
 
+    @field:SerializedName("genero")
+    var gender: String? = null
+
     @field:SerializedName("rows")
     var rows: String? = null
 
     @field:SerializedName("fcm")
     var fcm: String? = null
 
+    @field:SerializedName("tipo")
+    var typeUser: String? = null
+
     @field:SerializedName("type")
     var type: String? = null
+
+    @field:SerializedName("tipo_pessoa")
+    var typePerson: String? = null
+
+    @field:SerializedName("cpf")
+    var cpf: String? = null
+
+    @field:SerializedName("data_nascimento")
+    var birth: String? = null
 
     @field:SerializedName("msg")
     var msg: String? = null
@@ -39,6 +58,9 @@ class User : Parcelable {
     @field:SerializedName("nome")
     var name: String? = null
 
+    @field:SerializedName("documento")
+    var document: String? = null
+
     @field:SerializedName("endereco")
     var address: String? = null
 
@@ -51,10 +73,16 @@ class User : Parcelable {
     @field:SerializedName("estado")
     var state: String? = null
 
+    @field:SerializedName("bairro")
+    var neighborhood: String? = null
+
     @field:SerializedName("celular")
-    var phone: String? = null
+    var cellphone: String? = null
 
     @field:SerializedName("token_senha")
     var tokenPassword: String? = null
+
+    @field:SerializedName("registration_id")
+    var registrationId: String? = null
 
 }

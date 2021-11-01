@@ -7,10 +7,10 @@ import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.controller.webservice.WebService
-import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
+import br.com.app5m.appshelterdriver.models.User
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -253,29 +253,15 @@ class UserControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
     }
 
-    fun fcm(user: User) {
+
+    fun saveFcm(user: User) {
 
         type = "fcm"
 
         user.id = preferences.getUserData()!!.id
 
         val param: Call<List<User>> = service.fcm(user)
-        param.enqueue(object : Callback<List<User>> {
-            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                if (response.isSuccessful) {
-                    if (response.body() != null) {
-                        response.body()?.let { result.uResponse(it, type) }
-                        //testando com list no result
-                    }
-                } else {
-                    Log.i("erro", "Erro não esperado.")
-                }
-            }
-
-            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                Log.i("erro", "Não foi possível contatar o servidor.")
-            }
-        })
+        param.enqueue(this)
 
 
     }
