@@ -7,7 +7,7 @@ import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.fragment.auth.LoginFrag
 import br.com.app5m.appshelterdriver.ui.fragment.auth.SignUpFrag
 import br.com.app5m.appshelterdriver.util.Useful
-import kotlinx.android.synthetic.main.toolbar_blue.*
+import kotlinx.android.synthetic.main.toolbar_yellow.*
 
 class AuthContainerAct() : AppCompatActivity() {
 

@@ -11,7 +11,7 @@ import br.com.app5m.appshelterdriver.ui.fragment.auth.UploadDocumentsFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UpdateVehicleFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserProfileFrag
 import br.com.app5m.appshelterdriver.util.Useful
-import kotlinx.android.synthetic.main.toolbar_blue.*
+import kotlinx.android.synthetic.main.toolbar_yellow.*
 
 
 class DrawerContainerAct : AppCompatActivity() {

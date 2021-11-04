@@ -9,7 +9,7 @@ import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.activity_documentpdf_webview.*
 import kotlinx.android.synthetic.main.activity_drawer_container.*
-import kotlinx.android.synthetic.main.toolbar_blue.*
+import kotlinx.android.synthetic.main.toolbar_yellow.*
 
 class DocumentPdfWebViewAct : AppCompatActivity() {
 

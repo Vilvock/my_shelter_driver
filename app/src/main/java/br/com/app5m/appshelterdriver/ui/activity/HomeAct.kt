@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.widget.CompoundButton
 import androidx.appcompat.app.ActionBarDrawerToggle
 
 import androidx.appcompat.app.AppCompatActivity
@@ -53,6 +54,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     private lateinit var useful: Useful
     private lateinit var preferences: Preferences
     private lateinit var rideControl: RideControl
+    private lateinit var userControl: UserControl
 
     private lateinit var myLocation: MyLocation
     private lateinit var locationResult: MyLocation.LocationResult
@@ -100,6 +102,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         useful = Useful(this)
         preferences = Preferences(this)
         rideControl = RideControl(this, this, useful)
+        userControl = UserControl(this, this, useful)
         myLocation = MyLocation(this)
 
         val mapFragment =
@@ -107,6 +110,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         mapFragment.getMapAsync(this)
 
         saveFcm()
+
+        imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
+//
+//            if (isChecked) {
+//                userControl.updateStatusOnline()
+//            } else {
+//                userControl.updateStatusOnline()
+//            }
+
+        }
 
     }
 

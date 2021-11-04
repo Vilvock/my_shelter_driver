@@ -17,7 +17,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/toolbar_blue"
+        layout="@layout/toolbar_yellow"
         app:layout_scrollFlags="scroll|enterAlways"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
