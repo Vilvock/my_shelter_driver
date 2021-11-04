@@ -1,54 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    android:fillViewport="true">
+    android:overScrollMode="never"
+    android:fillViewport="true"
+    tools:context=".ui.fragment.auth.SignUpFrag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.96" />
+        android:layout_height="wrap_content"
+        android:padding="12dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:text="Criar conta"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size17"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/main_logo" />
+
+
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cadastrar"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size17" />
+                android:layout_marginTop="24dp"
+                android:text="Dados"
+                android:textAllCaps="true"
+                android:textColor="@color/gray100"
+                android:visibility="visible" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape_main_spinner">
+
+                <Spinner
+                    android:id="@+id/gender_sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/type_genre"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp" />
+
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
 
@@ -60,7 +93,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/shape_main_et"
                     android:ems="10"
-                    android:hint="Nome" />
+                    android:hint="Nome"
+                    android:maxLines="1" />
 
 
                 <EditText
@@ -71,10 +105,24 @@
                     android:layout_weight="1"
                     android:background="@drawable/shape_main_et"
                     android:ems="10"
-                    android:hint="Sobrenome" />
+                    android:hint="Sobrenome"
+                    android:maxLines="1" />
 
 
             </LinearLayout>
+
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/birth_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_main_et"
+                android:ems="10"
+                android:hint="Data de nascimento"
+                android:inputType="number"
+                android:maxLines="1"
+                app:met_mask="##/##/####" />
 
             <EditText
                 android:id="@+id/email_et"
@@ -84,53 +132,89 @@
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
                 android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
 
-            <EditText
-                android:id="@+id/password_et3"
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/cellphone_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_weight="1"
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
-                android:hint="CPF"
-                android:inputType="textPassword" />
+                android:hint="Celular"
+                android:inputType="number"
+                android:maxLines="1"
+                app:met_mask="(##) #####-####" />
 
-            <EditText
-                android:id="@+id/password_et2"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/shape_main_et"
-                android:ems="10"
-                android:hint="Senha"
-                android:inputType="textPassword" />
+                android:background="@drawable/shape_main_spinner">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/bg_title_round"
-                    android:fontFamily="@font/sf_ui_display_heavy"
-                    android:text="veículo"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    app:boxStrokeWidth="2dp" />
-
-                <LinearLayout
+                <Spinner
+                    android:id="@+id/typePerson_sp"
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="bottom"
-                    android:background="@color/colorSecondary"
-                    android:orientation="horizontal"></LinearLayout>
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:entries="@array/type_person"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp" />
+
+            </FrameLayout>
+
+
+            <EditText
+                android:id="@+id/document_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape_main_et"
+                android:ems="10"
+                android:hint="Documento"
+                android:inputType="number"
+                android:maxLines="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Senha"
+                android:textAllCaps="true"
+                android:textColor="@color/gray100"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/password_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape_main_et"
+                android:ems="10"
+                android:hint="Digite sua Senha"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/coPassword_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape_main_et"
+                android:ems="10"
+                android:hint="Confirmar Senha"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Veículo"
+                android:textAllCaps="true"
+                android:textColor="@color/gray100"
+                android:visibility="visible" />
 
             <EditText
                 android:id="@+id/brand_et"
@@ -139,8 +223,8 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
-                android:hint="Marca "
-                android:inputType="textPassword" />
+                android:hint="Marca"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/model_et"
@@ -150,7 +234,7 @@
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
                 android:hint="Modelo"
-                android:inputType="textPassword" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/plate_et"
@@ -160,7 +244,7 @@
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
                 android:hint="Placa"
-                android:inputType="textPassword" />
+                android:inputType="text" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -196,6 +280,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/terms_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -209,18 +294,16 @@
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <Button
                 android:id="@+id/next_bt"
-                style="@style/StyleButton2"
+                style="@style/StyleButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="Avançar" />
         </LinearLayout>

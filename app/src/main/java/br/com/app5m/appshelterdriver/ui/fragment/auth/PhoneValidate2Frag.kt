@@ -1,19 +1,13 @@
-package br.com.app5m.appshelterdriver.ui.fragment.auth.phonevalidation
+package br.com.app5m.appshelterdriver.ui.fragment.auth
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
-import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
-import br.com.app5m.appshelterdriver.ui.fragment.signin.GetStartedFrag
-import br.com.app5m.appshelterdriver.ui.fragment.signin.UploadDocumentsFrag
-import br.com.app5m.appshelterdriver.ui.fragment.signin.WaitingApproval
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.fragment_phone_validate1.*
 import kotlinx.android.synthetic.main.fragment_phone_validate2.*

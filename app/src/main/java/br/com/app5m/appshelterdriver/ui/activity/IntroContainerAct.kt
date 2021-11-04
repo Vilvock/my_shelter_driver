@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.fragment.MultiIntroFrag
+import br.com.app5m.appshelterdriver.ui.fragment.intro.MultiIntroFrag
 import kotlinx.android.synthetic.main.activity_intro_container.*
 
 class IntroContainerAct : AppCompatActivity() {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="12dp"
-    tools:context=".ui.fragment.MultiIntroFrag">
+    tools:context=".ui.fragment.intro.MultiIntroFrag">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"

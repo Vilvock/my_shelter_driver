@@ -7,43 +7,29 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@drawable/solid_background"
-    tools:context=".ui.fragment.driveracesinfo.DriverRacesInfoContainerFrag">
+    tools:context=".ui.fragment.drawer.user.UserRidesInfoContainerFrag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.96" />
+        android:layout_height="wrap_content"
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="Minhas viagens"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/text_size11"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            android:textSize="@dimen/text_size17"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,8 +66,8 @@
             </com.google.android.material.tabs.TabLayout>
 
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/mPager"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/containerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0" />

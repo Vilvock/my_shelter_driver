@@ -23,7 +23,6 @@ import br.com.app5m.appshelterdriver.util.MyLocation
 import br.com.app5m.appshelterdriver.util.Preferences
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_home.*
-import kotlinx.android.synthetic.main.fragment_get_started.*
 import kotlinx.android.synthetic.main.loading.*
 
 
@@ -116,7 +115,7 @@ class MainAct : AppCompatActivity() {
             authButtons_ll.visibility = View.VISIBLE
 
             if (preferences.getInt(
-                    preferences.ENTERING_FIRST_TIME, 1) == 1) {
+                    Preferences.ENTERING_FIRST_TIME, 1) == 1) {
 
                 signUp_bt.setOnClickListener {
 

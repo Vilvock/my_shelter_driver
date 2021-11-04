@@ -67,24 +67,30 @@ class UserControl(private val context: Context, private val result: WSResult, pr
 
         type = "register"
 
-/*        "token": "shelter_movel#2021",
-        "nome": "José",
-        "genero": 1,
-        "email": "jose@gmail.com",
-        "tipo_pessoa": 1,
-        "cpf": "761.548.216-08",
-        "data_nascimento": "12/08/1991",
-        "telefone": "(51)34432000",
-        "celular": "(51)995087890",
-        "latitude": "-29.9980309",
-        "longitude": "-51.0760357",
-        "veiculo":{
-            "marca": "Ford",
-            "modelo": "Mustang",
-            "placa": "IQQ3344",
-            "cor": "Vermelho",
-            "ano": "2015",
-            "ano_modelo": "2015"
+/*
+
+{
+    "token": "shelter_movel#2021",
+    "nome": "José",
+    "genero": 1,
+    "email": "jose@gmail.com",
+    "tipo_pessoa": 1,
+    "cpf": "761.548.216-08",
+    "data_nascimento": "12/08/1991",
+    "telefone": "(51)34432000",
+    "celular": "(51)995087890",
+    "latitude": "-29.9980309",
+    "longitude": "-51.0760357",
+    "veiculo":{
+        "marca": "Ford",
+        "modelo": "Mustang",
+        "placa": "IQQ3344",
+        "cor": "Vermelho",
+        "ano": "2015",
+        "ano_modelo": "2015"
+    }
+}
+
         }*/
 
 

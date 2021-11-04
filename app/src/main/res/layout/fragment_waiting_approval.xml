@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".ui.fragment.signin.WaitingApproval">
+    tools:context=".ui.fragment.auth.WaitingApprovalFrag">
 
     <Button
         android:id="@+id/exit_bt"

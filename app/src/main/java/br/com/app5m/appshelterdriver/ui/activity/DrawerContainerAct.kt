@@ -7,9 +7,10 @@ import android.view.MenuItem
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.fragment.*
-import br.com.app5m.appshelterdriver.ui.fragment.signin.UploadDocumentsFrag
+import br.com.app5m.appshelterdriver.ui.fragment.auth.UploadDocumentsFrag
+import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UpdateVehicleFrag
+import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserProfileFrag
 import br.com.app5m.appshelterdriver.util.Useful
-import kotlinx.android.synthetic.main.activity_drawer_container.*
 import kotlinx.android.synthetic.main.toolbar_blue.*
 
 

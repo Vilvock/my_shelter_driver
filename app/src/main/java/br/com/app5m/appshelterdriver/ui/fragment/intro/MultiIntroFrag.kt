@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.ui.fragment
+package br.com.app5m.appshelterdriver.ui.fragment.intro
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

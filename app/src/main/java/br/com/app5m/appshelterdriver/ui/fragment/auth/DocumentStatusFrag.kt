@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.ui.fragment.signin
+package br.com.app5m.appshelterdriver.ui.fragment.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

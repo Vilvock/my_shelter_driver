@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@drawable/solid_background"
-    tools:context=".ui.fragment.UserProfileFrag">
+    tools:context=".ui.fragment.drawer.user.UserProfileFrag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -184,6 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Senha"
+                    android:visibility="gone"
                     android:textAllCaps="true"
                     android:textColor="@color/gray400" />
 
@@ -191,6 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <EditText
@@ -213,7 +215,8 @@
                     android:id="@+id/changePassword_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="@dimen/text_size5"
                     android:text="Alterar senha atual"
                     android:textColor="@color/colorPrimary" />
             </LinearLayout>
