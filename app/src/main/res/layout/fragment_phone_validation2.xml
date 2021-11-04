@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:overScrollMode="never"
     android:fillViewport="true"
-    tools:context=".ui.fragment.auth.PhoneValidate2Frag">
+    tools:context=".ui.fragment.auth.PhoneValidation2Frag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

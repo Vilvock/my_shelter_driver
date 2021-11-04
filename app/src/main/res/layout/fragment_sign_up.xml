@@ -224,7 +224,8 @@
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
                 android:hint="Marca"
-                android:inputType="text" />
+                android:inputType="text"
+                android:maxLines="1" />
 
             <EditText
                 android:id="@+id/model_et"
@@ -234,7 +235,8 @@
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
                 android:hint="Modelo"
-                android:inputType="text" />
+                android:inputType="text"
+                android:maxLines="1"/>
 
             <EditText
                 android:id="@+id/plate_et"
@@ -244,39 +246,38 @@
                 android:background="@drawable/shape_main_et"
                 android:ems="10"
                 android:hint="Placa"
-                android:inputType="text" />
+                android:inputType="text"
+                android:maxLines="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/year_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/shape_main_et"
                     android:ems="10"
                     android:hint="Ano"
-                    android:inputType="textPassword" />
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
-                <EditText
-                    android:id="@+id/color_et"
+                <TextView
+                    android:id="@+id/color_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
                     android:layout_weight="1"
                     android:background="@drawable/shape_main_et"
-                    android:drawableEnd="@drawable/blue_circle"
                     android:ems="10"
                     android:focusableInTouchMode="false"
                     android:hint="Cor"
-                    android:inputType="textPassword"
-                    android:paddingEnd="10dp" />
+                    android:maxLines="1" />
             </LinearLayout>
 
             <TextView

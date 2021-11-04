@@ -10,6 +10,15 @@ import java.io.Serializable
 class User : Parcelable {
 
 
+    @field:SerializedName("veiculo")
+    var vehicle: Vehicle? = null
+
+    @field:SerializedName("latitude")
+    var latitude: String? = null
+
+    @field:SerializedName("longitude")
+    var longitude: String? = null
+
     @field:SerializedName("avatar")
     var avatar: String? = null
 

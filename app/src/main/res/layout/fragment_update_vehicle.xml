@@ -80,7 +80,6 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:background="@drawable/shape_main_et"
-            android:drawableEnd="@drawable/blue_circle"
             android:ems="10"
             android:focusableInTouchMode="false"
             android:hint="Cor"
