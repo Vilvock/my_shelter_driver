@@ -110,20 +110,20 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        val headerView: View = nav_view.getHeaderView(0)
-        headerView.nameUser_tv.text = "Android Lorem"
-        headerView.emailUser_tv.text = "android@android.com"
-
-        headerView.profile_ib.setOnClickListener {
-            val intent = Intent(this, DrawerContainerAct::class.java)
-            intent.putExtra("key", "profile")
-            startActivity(intent)
-        }
-
-    }
+//    override fun onResume() {
+//        super.onResume()
+//
+//        val headerView: View = nav_view.getHeaderView(0)
+//        headerView.nameUser_tv.text = preferences.getUserData()!!.name
+//        headerView.emailUser_tv.text = preferences.getUserData()!!.email
+//
+//        headerView.profile_ib.setOnClickListener {
+//            val intent = Intent(this, DrawerContainerAct::class.java)
+//            intent.putExtra("key", "profile")
+//            startActivity(intent)
+//        }
+//
+//    }
 
     override fun onRestart() {
         super.onRestart()
@@ -263,23 +263,29 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
         FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult: InstanceIdResult ->
 
+            if (instanceIdResult.token == "") {
+
+                Log.d("TAG", "token vazio")
+            }
+
             if (preferences.getInstanceTokenFcm() == instanceIdResult.token) {
 
-                Log.d("TAG", "uResponse: não salvou")
+                Log.d("TAG", "não salvou")
 
             } else {
 
-                preferences.saveInstanceTokenFcm("token", instanceIdResult.token)
 
                 val user = User()
 
-                user.typeUser = "1"
+                user.typeUser = "2"
                 user.type = WSConstants.TYPE_FCM
-                user.registrationId = preferences.getInstanceTokenFcm()
+                user.registrationId = instanceIdResult.token
+
+                preferences.saveInstanceTokenFcm("token", instanceIdResult.token)
 
                 val userControl = UserControl(this, object : WSResult{
                     override fun uResponse(list: List<User>, type: String) {
-                        Log.d("TAG", "uResponse: salve")
+                        Log.d("TAG", "salve")
 
                     }
                 }, useful)
