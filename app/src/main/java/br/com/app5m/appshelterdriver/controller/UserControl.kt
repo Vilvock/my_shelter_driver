@@ -104,6 +104,8 @@ class UserControl(private val context: Context, private val result: WSResult, pr
 
         type = "listId"
 
+        user = User()
+
         user.id = preferences.getUserData()!!.id
         user.token = WSConstants.TOKEN
 

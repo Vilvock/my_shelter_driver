@@ -11,7 +11,7 @@ class User : Parcelable {
 
 
     @field:SerializedName("veiculo")
-    var vehicle: Vehicle? = null
+    var vehicle: Vehicle = Vehicle()
 
     @field:SerializedName("latitude")
     var latitude: String? = null

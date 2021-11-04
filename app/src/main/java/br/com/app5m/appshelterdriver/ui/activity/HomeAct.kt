@@ -110,20 +110,20 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//
-//        val headerView: View = nav_view.getHeaderView(0)
-//        headerView.nameUser_tv.text = preferences.getUserData()!!.name
-//        headerView.emailUser_tv.text = preferences.getUserData()!!.email
-//
-//        headerView.profile_ib.setOnClickListener {
-//            val intent = Intent(this, DrawerContainerAct::class.java)
-//            intent.putExtra("key", "profile")
-//            startActivity(intent)
-//        }
-//
-//    }
+    override fun onResume() {
+        super.onResume()
+
+        val headerView: View = nav_view.getHeaderView(0)
+        headerView.nameUser_tv.text = preferences.getUserData()!!.name
+        headerView.emailUser_tv.text = preferences.getUserData()!!.email
+
+        headerView.profile_ib.setOnClickListener {
+            val intent = Intent(this, DrawerContainerAct::class.java)
+            intent.putExtra("key", "profile")
+            startActivity(intent)
+        }
+
+    }
 
     override fun onRestart() {
         super.onRestart()
