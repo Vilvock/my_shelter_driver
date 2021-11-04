@@ -91,7 +91,7 @@
                     android:elevation="0dp"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Confimar"
+                    android:text="Confirmar"
                     android:textColor="@color/colorPrimary" />
             </LinearLayout>
 

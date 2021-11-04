@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:overScrollMode="never"
     android:fillViewport="true"
-    tools:context=".ui.fragment.auth.PhoneValidate2Frag">
+    android:overScrollMode="never"
+    tools:context=".ui.fragment.auth.VerifyTokenFrag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,9 +18,8 @@
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_weight="1"
-                    android:text="Código enviado!"
+                    android:text="Verificação de Token"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size17"
                     android:textStyle="bold"
@@ -53,45 +52,34 @@
 
             </LinearLayout>
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text='Verifique suas mensagens de SMS. Enviamos o PIN no número 9898989898989. Após inserir o código prossiga clicando em "VALIDAR CÓDIGO"'
-                android:textColor="@color/gray100"
-                android:visibility="visible" />
+                android:layout_marginTop="16dp"
+                android:text="Token"
+                android:textAllCaps="true"
+                android:textColor="@color/gray100" />
 
-            <com.fraggjkee.smsconfirmationview.SmsConfirmationView
-                android:id="@+id/sms_code_view"
+            <EditText
+                android:id="@+id/token_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                app:scv_symbolBorderColor="@color/colorPrimaryDark"
-                app:scv_symbolBorderWidth="1dp"
-                app:scv_symbolHeight="60dp"
-                app:scv_symbolWidth="50dp"
-                app:scv_symbolsSpacing="10dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+                android:layout_marginTop="4dp"
+                android:background="@drawable/shape_main_et"
+                android:ems="10"
+                android:inputType="text"
+                android:maxLines="1" />
 
             <Button
                 android:id="@+id/verify_bt"
                 style="@style/StyleButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="Validar código" />
+                android:text="Validar token" />
+
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

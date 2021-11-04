@@ -78,6 +78,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_phone_validate1.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_phone_validate2.xml" value="0.36102564102564105" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_rating_driver.xml" value="0.1796875" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_recover_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_sign_in.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_splash.xml" value="0.1796875" />
@@ -86,11 +87,13 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_tab_scheduled.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_travel_history_filter_frag_drialog.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_update_favorite_place.xml" value="0.1796875" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_update_password_by_token.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_update_vehicle.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_upload_documents.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_address.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_profile.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_rides_info_container.xml" value="0.1796875" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_verify_token.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_waiting_approval.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/header_chose_adestination.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/home_baseboard.xml" value="0.1796875" />

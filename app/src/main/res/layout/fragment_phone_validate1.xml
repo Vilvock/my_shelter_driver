@@ -91,7 +91,7 @@
                 style="@style/StyleButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorAccent"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="Avançar" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

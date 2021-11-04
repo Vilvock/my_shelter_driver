@@ -188,7 +188,7 @@ class UserControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
     }
 
-    fun updateTokenPassword(user: User){
+    fun updatePasswordByToken(user: User){
 
         type = "updateTokenPassword"
 /*
