@@ -107,7 +107,7 @@ class MainAct : AppCompatActivity() {
         if (preferences.getLogin()) {
 
             startActivity(Intent(this, HomeAct::class.java))
-            finishAffinity()
+            finish()
 
         } else {
 

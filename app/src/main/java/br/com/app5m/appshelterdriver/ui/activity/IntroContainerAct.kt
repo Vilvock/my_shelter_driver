@@ -3,21 +3,27 @@ package br.com.app5m.appshelterdriver.ui.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.fragment.intro.MultiIntroFrag
+import br.com.app5m.appshelterdriver.util.Preferences
 import kotlinx.android.synthetic.main.activity_intro_container.*
 
 class IntroContainerAct : AppCompatActivity() {
+
+    private lateinit var preferences: Preferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_container)
 
         if (intent.extras != null) {
+
+            preferences = Preferences(this)
+            preferences.storeInt(Preferences.ENTERING_FIRST_TIME, 0)
 
             configInitialViews()
 
@@ -58,7 +64,7 @@ class IntroContainerAct : AppCompatActivity() {
                         startActivity(Intent(this@IntroContainerAct,
                             AuthContainerAct::class.java).putExtra("key", intent.extras!!.getInt("key")))
 
-                        finishAffinity()
+                        finish()
                     }
                 } else {
                     next_intro_bt.setOnClickListener {
@@ -85,9 +91,9 @@ class IntroContainerAct : AppCompatActivity() {
 
 
             startActivity(Intent(this@IntroContainerAct,
-                AuthContainerAct::class.java).putExtra("key", 0))
+                AuthContainerAct::class.java).putExtra("key", intent.extras!!.getInt("key")))
 
-            finishAffinity()
+            finish()
 
         }
 
