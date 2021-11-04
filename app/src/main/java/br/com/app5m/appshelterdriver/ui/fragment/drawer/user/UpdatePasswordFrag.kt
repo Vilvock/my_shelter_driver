@@ -14,7 +14,10 @@ import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.Validation
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 import kotlinx.android.synthetic.main.fragment_update_password.*
+import kotlinx.android.synthetic.main.fragment_update_password.coPassword_et
+import kotlinx.android.synthetic.main.fragment_update_password.password_et
 
 /**
  * A simple [Fragment] subclass.
