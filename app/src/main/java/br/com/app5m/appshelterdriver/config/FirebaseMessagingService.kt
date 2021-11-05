@@ -10,22 +10,27 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.util.Preferences
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
 class FirebaseMessagingService: FirebaseMessagingService() {
+    var TAG = "notifica"
+
+    private var preferencesU: Preferences? = null
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
         Log.i(TAG, "onMessageReceived: " + remoteMessage.data)
+        preferencesU = Preferences(this)
 
         if (remoteMessage.data.isNotEmpty()) {
 
             val title = remoteMessage.data["titulo"]
             val body = remoteMessage.data["descricao"]
 
-            setMessage("body", "title")
+            setMessage(body, title)
         }
     }
 
@@ -58,12 +63,8 @@ class FirebaseMessagingService: FirebaseMessagingService() {
             notificationManager.createNotificationChannel(nChannel)
         }
 
-        notificationManager.notify(0, notification.build())
+        notificationManager?.notify(0, notification.build())
 
-    }
-
-    companion object {
-        private const val TAG = "notifica"
     }
 
 }
