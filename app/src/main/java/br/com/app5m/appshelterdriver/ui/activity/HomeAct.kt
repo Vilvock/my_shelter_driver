@@ -11,6 +11,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,7 @@ import br.com.app5m.appshelterdriver.util.DialogMessages
 import br.com.app5m.appshelterdriver.util.MyLocation
 import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
+import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -112,13 +114,21 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         saveFcm()
 
         imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
-//
-//            if (isChecked) {
-//                userControl.updateStatusOnline()
-//            } else {
-//                userControl.updateStatusOnline()
-//            }
 
+            val driverStatus = User()
+
+            driverStatus.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
+            driverStatus.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+
+            if (isChecked) {
+                //online
+                driverStatus.online = "1"
+            } else {
+                //offline
+                driverStatus.online = "2"
+            }
+
+            userControl.updateStatusOnline(driverStatus)
         }
 
     }
@@ -201,6 +211,28 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     override fun rResponse(list: List<Ride>, type: String) {
 
         val rideInfo = list[0]
+
+    }
+
+    override fun uResponse(list: List<User>, type: String) {
+
+        val userInfo = list[0]
+
+        if (type == "updateStatus") {
+            if (userInfo.status == "01") {
+
+                val driverLocation = User()
+
+                driverLocation.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
+                driverLocation.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+
+                userControl.updateLocation(driverLocation)
+
+           } else {
+                imAvailable_sw.isChecked = false
+                SingleToast.INSTANCE.show(this, userInfo.msg!! , Toast.LENGTH_LONG)
+           }
+        }
 
     }
 
@@ -386,7 +418,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             MainScreenStage.ONGOING_RIDE -> {
 
-                rideControl.findAllDriver()
+//                rideControl.findAllDriver()
 
             }
 
@@ -409,7 +441,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         mapPlotData?.userPosition?.let {
 
             mMap?.addMarker(
-                MarkerOptions().icon(useful.bitmapDescriptorFromVector(R.drawable.ic_person_walk))
+                MarkerOptions().icon(useful.bitmapDescriptorFromVector(R.drawable.ic_car))
                     .position(it)
                     .title("Localização atual")
                     .anchor(0.5f, 0.5f)
@@ -461,16 +493,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 //            }
 //        }
 
-        mapPlotData?.vehicleLatLng?.let {
-            mMap?.addMarker(
-                MarkerOptions().icon(useful.bitmapDescriptorFromVector(R.drawable.ic_car))
-                    .position(it)
-                    .title("Motorista")
-                    .rotation(mapPlotData.vehicleAngle ?: 0f)
-                    .anchor(0.5f, 0.5f)
-            )!!.showInfoWindow()
-            boundsLatLng.add(it)
-        }
+//        mapPlotData?.vehicleLatLng?.let {
+//            mMap?.addMarker(
+//                MarkerOptions().icon(useful.bitmapDescriptorFromVector(R.drawable.ic_car))
+//                    .position(it)
+//                    .title("Motorista")
+//                    .rotation(mapPlotData.vehicleAngle ?: 0f)
+//                    .anchor(0.5f, 0.5f)
+//            )!!.showInfoWindow()
+//            boundsLatLng.add(it)
+//        }
 
         mapPlotData?.polyline?.let { lineList ->
             mMap?.addPolyline(

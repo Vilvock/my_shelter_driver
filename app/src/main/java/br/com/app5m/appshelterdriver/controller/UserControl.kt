@@ -213,6 +213,7 @@ class UserControl(private val context: Context, private val result: WSResult, pr
             "id_motorista": "9"
         }*/
 
+        user.driverId = preferences.getUserData()!!.id
 
         val param: Call<List<User>> = service.updateLocation(user)
         param.enqueue(this)
@@ -221,13 +222,9 @@ class UserControl(private val context: Context, private val result: WSResult, pr
     fun updateStatusOnline(user: User){
 
         type = "updateStatus"
-/*        {
-            "id_motorista": 9,
-            "token": "shelter_movel#2021",
-            "online": 2,
-            "latitude": "-30.0036668",
-            "longitude": "-51.0546295"
-        }*/
+
+        user.driverId = preferences.getUserData()!!.id
+        user.token = WSConstants.TOKEN
 
 
         val param: Call<List<User>> = service.updateOnline(user)

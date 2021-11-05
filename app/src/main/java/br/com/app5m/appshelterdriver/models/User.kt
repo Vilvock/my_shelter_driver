@@ -22,8 +22,14 @@ class User : Parcelable {
     @field:SerializedName("avatar")
     var avatar: String? = null
 
+    @field:SerializedName("online")
+    var online: String? = null
+
     @field:SerializedName("id")
     var id: String? = null
+
+    @field:SerializedName("id_motorista")
+    var driverId: String? = null
 
     @field:SerializedName("email")
     var email: String? = null
