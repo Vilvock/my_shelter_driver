@@ -264,7 +264,7 @@ class UserControl(private val context: Context, private val result: WSResult, pr
 
         type = "fcm"
 
-        user.id = preferences.getUserData()!!.id
+        user.idUser = preferences.getUserData()!!.id
 
         val param: Call<List<User>> = service.fcm(user)
         param.enqueue(this)

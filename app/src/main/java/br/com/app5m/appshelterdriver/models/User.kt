@@ -28,6 +28,9 @@ class User : Parcelable {
     @field:SerializedName("id")
     var id: String? = null
 
+    @field:SerializedName("id_user")
+    var idUser: String? = null
+
     @field:SerializedName("id_motorista")
     var driverId: String? = null
 
