@@ -10,6 +10,7 @@ import br.com.app5m.appshelterdriver.ui.fragment.*
 import br.com.app5m.appshelterdriver.ui.fragment.auth.UploadDocumentsFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UpdateVehicleFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserProfileFrag
+import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserRidesInfoContainerFrag
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.toolbar_yellow.*
 
@@ -36,8 +37,8 @@ class DrawerContainerAct : AppCompatActivity() {
                     useful.startFragment(UpdateVehicleFrag(), supportFragmentManager)
 
                 }
-                "myTrips" -> {
-//                    useful.startFragment(DriverRacesInfoContainerFrag(), supportFragmentManager)
+                "rides" -> {
+                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
 
                 }
 
@@ -50,17 +51,6 @@ class DrawerContainerAct : AppCompatActivity() {
 
                 }
 
-                "logOut" -> {
-                    this.finishAffinity()
-                    val intent = Intent(this, MainAct::class.java)
-                    startActivity(intent)
-
-
-                }
-                "upload_documents" -> {
-                    useful.startFragment(UploadDocumentsFrag(), supportFragmentManager)
-
-                }
 
             }
 

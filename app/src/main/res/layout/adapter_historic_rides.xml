@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="8dp">
+
+    <RelativeLayout
+        android:id="@+id/container_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/shape_gray_button"
+        android:gravity="center_vertical"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <LinearLayout
+            android:id="@+id/info_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00/00/0000"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/lite_listrow_map"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                />
+            <!--map:liteMode="true" map:mapType="none"-->
+            <TextView
+                android:id="@+id/info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:text="@string/lorem_ipsum"
+                android:maxLines="2"
+                android:minLines="2"
+                android:ellipsize="end"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="@dimen/text_size3" />
+
+
+            <TextView
+                android:id="@+id/price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_weight="0"
+                android:text="$ 10,00"
+                android:layout_gravity="end"
+                android:textColor="@color/green500"
+                android:textSize="@dimen/text_size5" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

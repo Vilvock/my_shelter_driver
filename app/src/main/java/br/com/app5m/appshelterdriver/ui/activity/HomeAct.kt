@@ -2,25 +2,18 @@ package br.com.app5m.appshelterdriver.ui.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import android.media.RingtoneManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.LiveData
@@ -148,21 +141,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        val headerView: View = nav_view.getHeaderView(0)
-        headerView.nameUser_tv.text = preferences.getUserData()!!.name
-        headerView.emailUser_tv.text = preferences.getUserData()!!.email
-
-        headerView.profile_ib.setOnClickListener {
-            val intent = Intent(this, DrawerContainerAct::class.java)
-            intent.putExtra("key", "profile")
-            startActivity(intent)
-        }
-
-    }
-
     override fun onRestart() {
         super.onRestart()
 
@@ -286,13 +264,14 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 R.id.nav_changeVeicle -> {
                     intent.putExtra("key", "change_vehicle")
                 }
-                R.id.nav_myTrips -> {
-                    intent.putExtra("key", "myTrips")
+                R.id.nav_myRides -> {
+                    intent.putExtra("key", "rides")
                 }
 
                 R.id.nav_myPayments-> {
                     intent.putExtra("key", "myPayments")
                 }
+
                 R.id.nav_bankAccount -> {
                     intent.putExtra("key", "bank_account")
                 }
@@ -315,6 +294,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             // Close the drawer
             drawer_layout.closeDrawer(GravityCompat.START)
             true
+        }
+
+        val headerView: View = nav_view.getHeaderView(0)
+        headerView.nameUser_tv.text = preferences.getUserData()!!.name
+        headerView.emailUser_tv.text = preferences.getUserData()!!.email
+
+        headerView.profile_ib.setOnClickListener {
+            val intent = Intent(this, DrawerContainerAct::class.java)
+            intent.putExtra("key", "profile")
+            startActivity(intent)
         }
 
     }

@@ -18,6 +18,7 @@ import com.google.firebase.messaging.RemoteMessage
 
 class FirebaseMessagingService: FirebaseMessagingService() {
 
+
     private val TAG = "notifica"
     private var intent: Intent? = null
 
@@ -128,5 +129,6 @@ class FirebaseMessagingService: FirebaseMessagingService() {
         notificationManager.notify(0, notification.build())
 
     }
+
 
 }

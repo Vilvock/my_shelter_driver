@@ -28,6 +28,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_add_pix_form.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_document_status.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_drive_race_info.xml" value="0.1796875" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_historic_rides.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_last_destination.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_my_adresses.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_my_bank.xml" value="0.1796875" />
@@ -94,6 +95,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_update_vehicle.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_upload_documents.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_address.xml" value="0.36666666666666664" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_historic_rides.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_profile.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_rides_info_container.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_verify_token.xml" value="0.36666666666666664" />
@@ -105,6 +107,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/pickup_at.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/race_details_frag_dialog.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/toolbar_blue.xml" value="0.1796875" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable/bg_all_round34.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/drawable/bg_all_round_blue.xml" value="0.20694444444444443" />
         <entry key="app/src/main/res/drawable/bg_all_round_white_6.xml" value="0.15520833333333334" />

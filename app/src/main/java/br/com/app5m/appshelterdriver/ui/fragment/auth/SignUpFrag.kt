@@ -104,12 +104,12 @@ class SignUpFrag :  Fragment(){
 
             //carro
 
-            user.vehicle.mark = ""
-            user.vehicle.model = ""
-            user.vehicle.board = ""
-            user.vehicle.color = ""
-            user.vehicle.year = ""
-            user.vehicle.modelYear = ""
+            user.vehicle.mark = "Ford"
+            user.vehicle.model = "Mustang"
+            user.vehicle.board = "IQQ3344"
+            user.vehicle.color = "Vermelho"
+            user.vehicle.year = "2015"
+            user.vehicle.modelYear = "2015"
 
             useful.startFragmentOnBack(PhoneValidation1Frag(user), requireActivity().supportFragmentManager)
 
