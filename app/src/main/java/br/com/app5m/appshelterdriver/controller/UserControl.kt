@@ -33,6 +33,7 @@ class UserControl(private val context: Context, private val result: WSResult, pr
         if (response.isSuccessful){
             response.body()?.let { result.uResponse(it, type) }
         }else{
+            useful.closeLoading()
             SingleToast.INSTANCE.show(context, "Ocorreu um erro não esperado, tente novamente mais tarde.",
                 Toast.LENGTH_LONG)
             Log.d("error", "onFailure: " + response.message())
