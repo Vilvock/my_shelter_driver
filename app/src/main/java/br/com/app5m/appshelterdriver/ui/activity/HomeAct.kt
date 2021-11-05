@@ -137,30 +137,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             userControl.updateStatusOnline(driverStatus)
         }
 
-        val channel = getString(R.string.default_notification_channel_id)
-        val uriSom = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-
-        val intent = Intent(this, MainAct::class.java)
-
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
-
-        val notification = NotificationCompat.Builder(this, channel)
-            .setContentTitle(title)
-            .setContentText("body")
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setSound(uriSom)
-            .setAutoCancel(true)
-            .setContentIntent(pendingIntent)
-
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val nChannel = NotificationChannel(channel, "channel", NotificationManager.IMPORTANCE_DEFAULT)
-            notificationManager.createNotificationChannel(nChannel)
-        }
-
-        notificationManager?.notify(0, notification.build())
-
     }
 
     override fun onResume() {
