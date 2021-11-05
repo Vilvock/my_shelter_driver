@@ -54,7 +54,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 //1
                 //id_corrida para o motorista aceitar
                 intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("", "")
+                intent!!.putExtra("rideId", "")
                 pendingIntent = PendingIntent.getActivity(
                     this,
                     0, intent, PendingIntent.FLAG_UPDATE_CURRENT
@@ -62,9 +62,9 @@ class FirebaseMessagingService: FirebaseMessagingService() {
             }
             "ACEITA" -> {
                 //2
-                //id_corrida para o motorista iniciar
+                //envia algum dado chave para colocar a tela em waiting Pickup
                 intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("", "")
+                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.WAITING_PICKUP)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
@@ -72,7 +72,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 //3
                 // envia algum dado chave para colocar a tela em ongoing
                 intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("", "")
+                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.ONGOING_RIDE)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
@@ -80,7 +80,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 //4
                 // envia algum dado chave para colocar a tela em finish
                 intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("", "")
+                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.FINISH_RIDE)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
@@ -88,7 +88,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 //5
                 // envia algum dado chave para colocar a tela em overview e mostrar mensagem q cancelou
                 intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("", "")
+                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.OVERVIEW)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
@@ -96,7 +96,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 //6
                 // envia algum dado chave para colocar a tela em overview e mostrar mensagem q cancelou
                 intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("", "")
+                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.OVERVIEW)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }

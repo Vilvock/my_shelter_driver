@@ -119,6 +119,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
         saveFcm()
 
+        if (intent.extras != null) {
+
+            val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
+
+            if (screenStage != null) {
+                notifyScreenStageChanged(screenStage)
+            }
+        }
+
         imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
 
             val driverStatus = User()
