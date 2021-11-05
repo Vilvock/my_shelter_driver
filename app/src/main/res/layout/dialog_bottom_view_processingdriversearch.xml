@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="@drawable/solid_background">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/loading"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Procurando motoristas nas proximidades"
+                android:textAllCaps="true"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sua corrida começará em breve..."
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+        <com.ebanx.swipebtn.SwipeButton
+            android:id="@+id/swipe_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="32dp"
+            app:button_background="@drawable/shape_swiped_button_background"
+            app:button_image_disabled="@drawable/ic_close"
+            app:button_image_enabled="@drawable/ic_check"
+            app:button_left_padding="10dp"
+            app:button_right_padding="10dp"
+            app:button_bottom_padding="12dp"
+            app:button_top_padding="12dp"
+            app:inner_text="DESLIZE PARA CANCELAR"
+            app:inner_text_background="@drawable/shape_swiped_button"
+            app:inner_text_bottom_padding="18dp"
+            app:inner_text_top_padding="17dp"
+            app:inner_text_color="@color/white"
+
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

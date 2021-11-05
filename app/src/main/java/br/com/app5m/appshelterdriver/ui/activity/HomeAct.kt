@@ -41,6 +41,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.InstanceIdResult
+import com.google.gson.Gson
+import com.google.maps.android.PolyUtil
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -64,6 +66,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     enum class MainScreenStage {
         OVERVIEW,
+        STARTING_POINT_SELECTION,
+        VEHICLE_PAYMENT_SELECTION,
+        DRIVER_SEARCH,
         WAITING_PICKUP,
         ONGOING_RIDE,
         FINISH_RIDE
@@ -88,13 +93,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     val _mapPlotDateLiveData = MutableLiveData<MapPlotData?>()
     val mapPlotDateLiveData: LiveData<MapPlotData?> = _mapPlotDateLiveData
 
-    private lateinit var oldOrigin: String
-    private lateinit var oldDestination: String
-
     private lateinit var initialsRideInfo: Ride
+    private lateinit var lastRideInfo: Ride
+
+    var isCameraLock: Boolean = true
+    private var isRatingDialogShowed: Boolean = true
+
+    private lateinit var mapFragment: SupportMapFragment
 
     private val handler = Handler()
-    private var runnable = Runnable { getRealTimeLocation() }
+    private var runnable = Runnable { notifyScreenStageChanged(MainScreenStage.OVERVIEW)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,20 +114,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         userControl = UserControl(this, this, useful)
         myLocation = MyLocation(this)
 
-        val mapFragment =
-            supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
         saveFcm()
-
-        if (intent.extras != null) {
-
-            val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
-
-            if (screenStage != null) {
-                notifyScreenStageChanged(screenStage)
-            }
-        }
 
         imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
 
@@ -162,7 +160,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 })
         } else {
             if (screenStageLiveData.value == MainScreenStage.OVERVIEW) {
-                getRealTimeLocation()
+                isCameraLock = true
+                mapFragment.getMapAsync(this)
             }
         }
     }
@@ -197,13 +196,119 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 //        )
 
         //por enquanto deixa aqui
-        notifyScreenStageChanged(MainScreenStage.OVERVIEW)
+        if (intent.extras != null) {
+
+            val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
+
+            if (screenStage != null) {
+                notifyScreenStageChanged(screenStage)
+            }
+        } else {
+
+            notifyScreenStageChanged(MainScreenStage.OVERVIEW)
+        }
 
     }
 
     override fun rResponse(list: List<Ride>, type: String) {
 
-        val rideInfo = list[0]
+        lastRideInfo = list[0]
+
+        if (type == "findAll") {
+
+            //    pra pegar localizacao do motora eu faco como?
+//    {
+//        "id":7,
+//        "tipo_carro":1,
+//        "id_tipo_pagamento":2,
+//        "nome_tipo_pagamento":"Dinheiro",
+//        "motorista_nome":null,
+//        "motorista_avatar":null,
+//        "endereco_in":"Av. Pres. Get\u00falio Vargas 5019 Alvorada",
+//        "endereco_out":"Av. Tiradentes 81 Alvorada",
+//        "latitude_in":"-30.003922",
+//        "longitude_in":"-51.052373",
+//        "latitude_out":"-30.0137134",
+//        "longitude_out":"-51.0847039",
+//        "distancia":4,
+//        "distancia_sigla":"km",
+//        "tempo_rota":10,
+//        "polyline":"",
+//        "valor_total":" R$ 5,50",
+//        "valor_motorista":" R$ 4,95",
+//        "valor_dinamica":" R$ 0,00",
+//        "data":"21\/10\/2021 - 22:09:17",
+//        "status_corrida":"Solicitada",
+//        "rows":1
+//    }
+
+            if (lastRideInfo.rows != "0") {
+
+//            for (ride in list) {
+                when(lastRideInfo.rideStatus) {
+                    "Solicitada" -> {
+                        _rideLiveData.value = lastRideInfo
+
+                        notifyScreenStageChanged(MainScreenStage.DRIVER_SEARCH)
+                    }
+                    "Aceita" -> {
+                        _rideLiveData.value = lastRideInfo
+
+                        notifyScreenStageChanged(MainScreenStage.WAITING_PICKUP)
+                        //mapupdate aqui quando poly parar de ser null
+                    }
+
+                    "Em andamento" -> {
+
+                        _rideLiveData.value = lastRideInfo
+
+                        val findRideProcess = Ride()
+
+                        findRideProcess.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
+                        findRideProcess.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+                        findRideProcess.carType = rideLiveData.value!!.carType
+
+                        rideControl.findProcess(findRideProcess)
+
+
+                    }
+
+                    "Finalizada" -> {
+
+                        /*if(isRatingDialogShowed) {
+                            isRatingDialogShowed = false
+                            notifyScreenStageChanged(MainScreenStage.FINISH_RIDE)
+                        }else {*/
+
+                            handler.postDelayed(runnable, 5000)
+                       /* }*/
+
+                    }
+
+                    else -> {
+                        //cancelada
+                        handler.postDelayed(runnable, 5000)
+                    }
+                }
+
+//            }
+
+            } else {
+                handler.postDelayed(runnable, 5000)
+            }
+
+
+            //find andamento
+        } else {
+            if (lastRideInfo.rows != "0") {
+                _rideLiveData.value = lastRideInfo
+
+                notifyScreenStageChanged(MainScreenStage.ONGOING_RIDE)
+            }
+
+        }
+
+
 
     }
 
@@ -357,14 +462,18 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     handler.removeCallbacks(runnable)
                 } else {
 
-                    //lat longe dos veiculos em volta dps
                     _mapPlotDateLiveData.value = MapPlotData(
                         userPosition = LatLng(location.latitude, location.longitude),
                     )
 
-                    mapPlotUpdated(mapPlotDateLiveData.value)
-
-                    handler.postDelayed(runnable, 5000)
+                    if (isCameraLock) {
+                        if (screenStageLiveData.value == MainScreenStage.OVERVIEW) {
+                            mapPlotUpdated(mapPlotDateLiveData.value)
+                            handler.postDelayed(runnable, 5000)
+                        }
+                    } else {
+                        rideControl.findAllDriver()
+                    }
 
                 }
             }
@@ -387,7 +496,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     private fun statusCheck() {
 
         //colocar verificacao de internet aqui
-        val lm = getSystemService(AppCompatActivity.LOCATION_SERVICE) as LocationManager
+        val lm = getSystemService(LOCATION_SERVICE) as LocationManager
         val enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
 
         if (!enabled) {
@@ -399,36 +508,118 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     }
 
 
+
     fun notifyScreenStageChanged(newStage: MainScreenStage) {
 
         _screenStageLiveData.value = newStage
 
         Log.d("TAG", "notifyScreen: " + screenStageLiveData.value)
+        Log.d("TAG", "mapPlotDateLiveData" + mapPlotDateLiveData.value)
+        Log.d("TAG", "ridelivedata" + Gson().toJson(rideLiveData.value))
+
+        configDrawer()
 
         when (newStage) {
             MainScreenStage.OVERVIEW -> {
 
                 getRealTimeLocation()
 
-                configDrawer()
+            }
 
+            MainScreenStage.STARTING_POINT_SELECTION -> {
+
+                handler.removeCallbacks(runnable)
+
+
+                useful.setActionBar(this, supportActionBar!!, "", 0)
+                toolbar.setNavigationOnClickListener{ onBackPressed()}
+
+                //ver pq n ta aparecendo local de origem dps
+                _mapPlotDateLiveData.value = MapPlotData(
+//                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                    originLatLng = LatLng(initialsRideInfo.originLatitude!!.toDouble(),
+                        initialsRideInfo.originLongitude!!.toDouble())
+                )
+
+                mapPlotUpdated(mapPlotDateLiveData.value)
+            }
+
+            //na real ta a mesma coisa, mas deix aassim por enquanto
+            MainScreenStage.VEHICLE_PAYMENT_SELECTION -> {
+
+
+                useful.showDefaultDialogView(supportFragmentManager, "typeVehiclePayment")
+            }
+
+            MainScreenStage.DRIVER_SEARCH -> {
+
+                useful.showDefaultDialogView(supportFragmentManager, "processing")
+
+                _mapPlotDateLiveData.value = MapPlotData(
+//                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                    originLatLng = LatLng(rideLiveData.value!!.originLatitude?.toDouble()!!, rideLiveData.value!!.originLongitude?.toDouble()!!),
+                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
+//                    polyline = PolyUtil.decode(lastRideInfo.finalRoute.overViewPolyLine.polyLinePoints),
+////                polyline = PolyUtil.decode("bbcvDhcrvHp@wA~AnBVNTHzNA`FE~DG|C?`AC?~@AjFAdCAXhB?nAJZDbAXPJb@ZNRLd@GfBGTd@~@hAzBnBdDpCdE`BlCp@" +
+////                        "|@jBrCbBlCM`@z@f@~@f@b@ZbArAT^b@z@x@xBAHMx@Gf@aDjAe@Je@Pa@Tq@p@iCnEu@dBAR@XJTr@hAv@`AlEtEtAvOTrAt@fCXjADZAv@a@bB[p@i@f@w@b@wAh@sC" +
+////                        "f@m@PQHWXc@b@aBzB{@hAeBrDSh@Mt@Cb@?d@JhAh@bFVnCFhB?pBMp@Wl@eAzAmA~AOZWjAa@bC]hCf@JjAHfAFr@@z@C"),
+//                    vehicleAngle = null,
+//                    vehicleLatLng = null,
+//                    freeVehiclesLatLng = null
+                )
+
+                mapPlotUpdated(mapPlotDateLiveData.value)
 
             }
 
             MainScreenStage.WAITING_PICKUP -> {
 
 
+                useful.showDefaultDialogView(supportFragmentManager, "found")
+
+                _mapPlotDateLiveData.value = MapPlotData(
+                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                    originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
+//                    polyline = PolyUtil.decode(lastRideInfo.finalRoute.overViewPolyLine.polyLinePoints),
+////                polyline = PolyUtil.decode("bbcvDhcrvHp@wA~AnBVNTHzNA`FE~DG|C?`AC?~@AjFAdCAXhB?nAJZDbAXPJb@ZNRLd@GfBGTd@~@hAzBnBdDpCdE`BlCp@" +
+////                        "|@jBrCbBlCM`@z@f@~@f@b@ZbArAT^b@z@x@xBAHMx@Gf@aDjAe@Je@Pa@Tq@p@iCnEu@dBAR@XJTr@hAv@`AlEtEtAvOTrAt@fCXjADZAv@a@bB[p@i@f@w@b@wAh@sC" +
+////                        "f@m@PQHWXc@b@aBzB{@hAeBrDSh@Mt@Cb@?d@JhAh@bFVnCFhB?pBMp@Wl@eAzAmA~AOZWjAa@bC]hCf@JjAHfAFr@@z@C"),
+//                    vehicleAngle = null,
+//                    vehicleLatLng = null,
+//                    freeVehiclesLatLng = null
+                )
+
+                mapPlotUpdated(mapPlotDateLiveData.value)
+
             }
 
             MainScreenStage.ONGOING_RIDE -> {
 
-//                rideControl.findAllDriver()
+
+                useful.showDefaultDialogView(supportFragmentManager, "ongoing")
+
+                _mapPlotDateLiveData.value = MapPlotData(
+                    originLatLng = LatLng(lastRideInfo.originLatitude!!.toDouble(), lastRideInfo.originLongitude!!.toDouble()),
+                    destinationLatLng = LatLng(lastRideInfo.destinationLatitude!!.toDouble(), lastRideInfo.destinationLongitude!!.toDouble()),
+                    polyline = PolyUtil.decode(lastRideInfo.finalRoute.overViewPolyLine.polyLinePoints),
+//                polyline = PolyUtil.decode("bbcvDhcrvHp@wA~AnBVNTHzNA`FE~DG|C?`AC?~@AjFAdCAXhB?nAJZDbAXPJb@ZNRLd@GfBGTd@~@hAzBnBdDpCdE`BlCp@" +
+//                        "|@jBrCbBlCM`@z@f@~@f@b@ZbArAT^b@z@x@xBAHMx@Gf@aDjAe@Je@Pa@Tq@p@iCnEu@dBAR@XJTr@hAv@`AlEtEtAvOTrAt@fCXjADZAv@a@bB[p@i@f@w@b@wAh@sC" +
+//                        "f@m@PQHWXc@b@aBzB{@hAeBrDSh@Mt@Cb@?d@JhAh@bFVnCFhB?pBMp@Wl@eAzAmA~AOZWjAa@bC]hCf@JjAHfAFr@@z@C"),
+                    vehicleAngle = null,
+                    vehicleLatLng = null,
+                    freeVehiclesLatLng = null
+                )
+
+                mapPlotUpdated(mapPlotDateLiveData.value)
 
             }
 
             MainScreenStage.FINISH_RIDE -> {
 
-                notifyScreenStageChanged(MainScreenStage.OVERVIEW)
+                handler.removeCallbacks(runnable)
+
+                useful.showDefaultDialogView(supportFragmentManager, "finish")
 
             }
 
@@ -497,16 +688,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 //            }
 //        }
 
-//        mapPlotData?.vehicleLatLng?.let {
-//            mMap?.addMarker(
-//                MarkerOptions().icon(useful.bitmapDescriptorFromVector(R.drawable.ic_car))
-//                    .position(it)
-//                    .title("Motorista")
-//                    .rotation(mapPlotData.vehicleAngle ?: 0f)
-//                    .anchor(0.5f, 0.5f)
-//            )!!.showInfoWindow()
-//            boundsLatLng.add(it)
-//        }
+        mapPlotData?.vehicleLatLng?.let {
+            mMap?.addMarker(
+                MarkerOptions().icon(useful.bitmapDescriptorFromVector(R.drawable.ic_car))
+                    .position(it)
+                    .title("Motorista")
+                    .rotation(mapPlotData.vehicleAngle ?: 0f)
+                    .anchor(0.5f, 0.5f)
+            )!!.showInfoWindow()
+            boundsLatLng.add(it)
+        }
 
         mapPlotData?.polyline?.let { lineList ->
             mMap?.addPolyline(
@@ -530,16 +721,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         if (notNullPoints.isEmpty())
             return
 
-        //carrega a visao apenas no usuario
-//        if (key == "1") {
-//            mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 18f))
-//            key2 = "1"
-//            return
-//        } else if (key2 == "1") {
-
-        if (notNullPoints.size == 1) {
-            mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 18f))
-            return
+        if (screenStageLiveData.value == MainScreenStage.OVERVIEW) {
+            if (isCameraLock) {
+                if (notNullPoints.size == 1) {
+                    mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 18f))
+                    isCameraLock = false
+                    return
+                }
+            } else {
+                return
+            }
         }
 
         val builder = LatLngBounds.Builder()
@@ -551,7 +742,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         val bounds = builder.build()
         val padding = resources.getDimension(R.dimen.map_pin_padding).toInt()
         mMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding))
-//        }
+
 
     }
 

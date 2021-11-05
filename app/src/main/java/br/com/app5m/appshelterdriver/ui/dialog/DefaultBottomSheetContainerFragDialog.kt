@@ -17,6 +17,7 @@ import android.util.Log
 import android.view.WindowManager
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
+import br.com.app5m.appshelterdriver.ui.dialog.ride_flow.*
 import br.com.app5m.appshelterdriver.util.Useful
 
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -63,41 +64,41 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
         }
 
         val transaction = childFragmentManager.beginTransaction()
-//
-//        when(tag) {
-//
-//            //rideflow
-//            "chooseDestination" -> {
-//                fragment = ChooseDestinationFragDialog(this)
-//            }
-//
-//            "typeVehiclePayment" -> {
-//                fragment = ChooseTypeVehicleFragDialog(this)
-//            }
-//
-//            "processing" -> {
-//                fragment = ProcessingDriverSearchDialog(this)
-//            }
-//
-//            "found" -> {
-//                fragment = FoundDriverFragDialog(this)
-//            }
-//
-//            "ongoing" -> {
-//
-//                fragment = OnGoingRideDialog(this)
-//            }
-//
-//            "finish" -> {
-//                fragment = RateDriverDialog(this)
-//            }
-//
-//            "cancel" -> {
-//                fragment = CancelRideFragDialog(this)
-//            }
-//
-//
-//
+
+        when(tag) {
+
+            //rideflow
+            "chooseDestination" -> {
+                fragment = ChooseDestinationFragDialog(this)
+            }
+
+            "typeVehiclePayment" -> {
+                fragment = ChooseTypeVehicleFragDialog(this)
+            }
+
+            "processing" -> {
+                fragment = ProcessingDriverSearchDialog(this)
+            }
+
+            "found" -> {
+                fragment = FoundDriverFragDialog(this)
+            }
+
+            "ongoing" -> {
+
+                fragment = OnGoingRideDialog(this)
+            }
+
+            "finish" -> {
+                fragment = RateDriverDialog(this)
+            }
+
+            "cancel" -> {
+                fragment = CancelRideFragDialog(this)
+            }
+
+
+
 //            //others
 //
 //            "addAddress" -> {
@@ -108,33 +109,32 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
 //                fragment = TypeCardFragDialog(this)
 //            }
 
-//        }
+        }
 
         transaction.replace(R.id.containerViewChild, fragment).commit()
-//
-//        close_imageButton.setOnClickListener {
-//
-//            val homeActContext = requireActivity() as? HomeAct
-//
-//            if (requireActivity() == homeActContext) {
-//
-//                Log.d("TAG", "onDestroy: " + homeActContext.screenStageLiveData.value)
-//                if (homeActContext.screenStageLiveData.value != HomeAct.MainScreenStage.OVERVIEW) {
-//                    if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
-//                    || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
-//
-//                        useful.showDefaultDialogView(childFragmentManager, "cancel")
-//
-//                        return@setOnClickListener
-//                    } else {
-//
-//                        homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.OVERVIEW)
-//                    }
-//                }
-//            }
-//
-//            this.dismiss()
-//        }
+
+        close_imageButton.setOnClickListener {
+
+            val homeActContext = requireActivity() as? HomeAct
+
+            if (requireActivity() == homeActContext) {
+
+                Log.d("TAG", "onDestroy: " + homeActContext.screenStageLiveData.value)
+                if (homeActContext.screenStageLiveData.value != HomeAct.MainScreenStage.OVERVIEW) {
+                    if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
+                        || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
+
+                        useful.showDefaultDialogView(requireActivity().supportFragmentManager, "cancel")
+
+                    } else {
+
+                        homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.OVERVIEW)
+                    }
+                }
+            }
+
+            this.dismiss()
+        }
 
     }
 

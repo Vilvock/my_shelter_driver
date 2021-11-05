@@ -1,12 +1,34 @@
 package br.com.app5m.appshelterdriver.models
 
-import android.os.Parcel
-import android.os.Parcelable
+import br.com.app5m.appshelterdriver.models.Route
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 class Ride : Serializable {
+
+    @field:SerializedName("id_motorista")
+    var driverId: String? = null
+
+    @field:SerializedName("rota_corrida_final")
+    var finalRoute = Route()
+
+    @field:SerializedName("latitude")
+    var latitude: String? = null
+
+    @field:SerializedName("longitude")
+    var longitude: String? = null
+
+    @field:SerializedName("valor_min")
+    var minValue: String? = null
+
+    @field:SerializedName("valor_km")
+    var kmValue: String? = null
+
+    @field:SerializedName("dinamica")
+    var dinamicPrice: String? = null
+
+    @field:SerializedName("msg")
+    var msg: String? = null
 
     @field:SerializedName("id_moip")
     var moipId: String? = null
@@ -28,6 +50,9 @@ class Ride : Serializable {
 
     @field:SerializedName("rows")
     var rows: String? = null
+
+    @field:SerializedName("id_corrida")
+    var rideId: String? = null
 
     @field:SerializedName("status_corrida")
     var rideStatus: String? = null
@@ -97,9 +122,6 @@ class Ride : Serializable {
 
     @field:SerializedName("token")
     var token: String? = null
-
-    @field:SerializedName("id_motorista")
-    var driverId: String? = null
 
     @field:SerializedName("origem")
     var origin: String? = null
