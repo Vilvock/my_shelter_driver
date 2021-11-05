@@ -2,10 +2,15 @@ package br.com.app5m.appshelterdriver.ui.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.media.RingtoneManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -15,6 +20,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.LiveData
@@ -130,6 +136,30 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             userControl.updateStatusOnline(driverStatus)
         }
+
+        val channel = getString(R.string.default_notification_channel_id)
+        val uriSom = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
+        val intent = Intent(this, MainAct::class.java)
+
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+
+        val notification = NotificationCompat.Builder(this, channel)
+            .setContentTitle(title)
+            .setContentText("body")
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSound(uriSom)
+            .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
+
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val nChannel = NotificationChannel(channel, "channel", NotificationManager.IMPORTANCE_DEFAULT)
+            notificationManager.createNotificationChannel(nChannel)
+        }
+
+        notificationManager?.notify(0, notification.build())
 
     }
 

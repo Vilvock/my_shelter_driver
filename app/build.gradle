@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'com.google.secrets_gradle_plugin' version '0.5'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -93,4 +94,3 @@ dependencies {
     implementation 'com.github.vipulasri:timelineview:1.1.5'
 
 }
-apply plugin: 'com.google.gms.google-services'
