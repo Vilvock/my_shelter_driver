@@ -1,6 +1,14 @@
 
-historico corridas driver v, saldo atual driver home, historico pagmentos driver
+historico corridas driver (configurar),
+saldo atual driver home,
+historico pagmentos driver
 
+
+obrigatorio documento motorista ao entrar na home
+testar url (doc), n ta vindo no list
+
+
+mandar update location driver a cada x momentos
 
 testar notificacoes
 
