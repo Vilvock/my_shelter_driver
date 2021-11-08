@@ -97,14 +97,7 @@ class RideControl(private val context: Context, private val result: WSResult, pr
 
         type = "accept"
 
-/*        {
-{
-	"id": 0,
-	"id_motorista": 4,
-	"token": "shelter_movel#2021"
-}
-        }*/
-
+        ride.driverId = preferences.getUserData()!!.id
         ride.token = WSConstants.TOKEN
 
         val param: Call<List<Ride>> = service.acceptRide(ride)

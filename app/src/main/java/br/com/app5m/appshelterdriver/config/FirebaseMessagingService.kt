@@ -31,8 +31,9 @@ class FirebaseMessagingService: FirebaseMessagingService() {
             val title = remoteMessage.data["titulo"]
             val body = remoteMessage.data["descricao"]
             val type = remoteMessage.data["type"]
+            val rideId = remoteMessage.data["id_corrida"]
 
-            setMessage(title, body, type)
+            setMessage(title, body, type, rideId)
         }
     }
 
@@ -42,7 +43,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
-    private fun setMessage(title: String?, body: String?, type: String?) {
+    private fun setMessage(title: String?, body: String?, type: String?, rideId: String?) {
 
         val channel = getString(R.string.default_notification_channel_id)
         val uriSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
@@ -51,50 +52,50 @@ class FirebaseMessagingService: FirebaseMessagingService() {
         var defaultNotification: String? = null
 
         when (type) {
-            "SOLICITADA" -> {
-                //1
+            "1" -> {
+                //SOLICITADA
                 //id_corrida para o motorista aceitar
                 intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("rideId", "")
+                intent!!.putExtra("rideId", rideId)
                 pendingIntent = PendingIntent.getActivity(
                     this,
                     0, intent, PendingIntent.FLAG_UPDATE_CURRENT
                 )
             }
-            "ACEITA" -> {
-                //2
+            "2" -> {
+                //ACEITA
                 //envia algum dado chave para colocar a tela em waiting Pickup
                 intent = Intent(this, HomeAct::class.java)
                 intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.WAITING_PICKUP)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
-            "EM_ANDAMENTO" -> {
-                //3
+            "3" -> {
+                //EM_ANDAMENTO
                 // envia algum dado chave para colocar a tela em ongoing
                 intent = Intent(this, HomeAct::class.java)
                 intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.ONGOING_RIDE)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
-            "FINALIZADA" -> {
-                //4
+            "4" -> {
+                //FINALIZADA
                 // envia algum dado chave para colocar a tela em finish
                 intent = Intent(this, HomeAct::class.java)
                 intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.FINISH_RIDE)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
-            "CANCELADA_MOTORISTA" -> {
-                //5
+            "5" -> {
+                //CANCELADA_MOTORISTA
                 // envia algum dado chave para colocar a tela em overview e mostrar mensagem q cancelou
                 intent = Intent(this, HomeAct::class.java)
                 intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.OVERVIEW)
                 intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
-            "CANCELADA_PASSAGEIRO" -> {
-                //6
+            "6" -> {
+                //CANCELADA_PASSAGEIRO
                 // envia algum dado chave para colocar a tela em overview e mostrar mensagem q cancelou
                 intent = Intent(this, HomeAct::class.java)
                 intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.OVERVIEW)

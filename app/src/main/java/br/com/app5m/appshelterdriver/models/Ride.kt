@@ -6,6 +6,12 @@ import java.io.Serializable
 
 class Ride : Serializable {
 
+    @field:SerializedName("modelo_veiculo")
+    var vehicleModel: String? = null
+
+    @field:SerializedName("placa_veiculo")
+    var vehicleBoard: String? = null
+
     @field:SerializedName("id_motorista")
     var driverId: String? = null
 

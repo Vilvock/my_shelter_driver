@@ -199,10 +199,22 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         if (intent.extras != null) {
 
             val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
+            val rideId = intent.extras?.getString("rideId")
 
             if (screenStage != null) {
                 notifyScreenStageChanged(screenStage)
+            }else {
+
+                val acceptRide = Ride()
+
+                acceptRide.id = rideId
+                acceptRide.vehicleBoard = ""
+                acceptRide.vehicleModel = ""
+
+                rideControl.acceptRide(acceptRide)
+
             }
+
         } else {
 
             notifyScreenStageChanged(MainScreenStage.OVERVIEW)
