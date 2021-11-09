@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.*
 /**
  * A simple [Fragment] subclass.
  */
-class OnGoingRideDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) : BottomSheetDialogFragment() {
+class OnGoingRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) : BottomSheetDialogFragment() {
 
     private lateinit var useful: Useful
 

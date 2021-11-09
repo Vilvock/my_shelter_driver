@@ -67,30 +67,17 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
 
         when(tag) {
 
-            //rideflow
-            "chooseDestination" -> {
-                fragment = ChooseDestinationFragDialog(this)
-            }
-
-            "typeVehiclePayment" -> {
-                fragment = ChooseTypeVehicleFragDialog(this)
-            }
-
-            "processing" -> {
-                fragment = ProcessingDriverSearchDialog(this)
-            }
-
-            "found" -> {
+            "accept" -> {
                 fragment = AcceptRideFragDialog(this)
+            }
+
+            "waiting" -> {
+                fragment = InitRideFragDialog(this)
             }
 
             "ongoing" -> {
 
-                fragment = OnGoingRideDialog(this)
-            }
-
-            "finish" -> {
-                fragment = RateDriverDialog(this)
+                fragment = OnGoingRideFragDialog(this)
             }
 
             "cancel" -> {

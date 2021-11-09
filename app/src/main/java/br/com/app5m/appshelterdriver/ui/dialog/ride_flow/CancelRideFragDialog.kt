@@ -47,11 +47,6 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
         continueRide_bt.setOnClickListener {
             when (homeActContext.screenStageLiveData.value) {
-                HomeAct.MainScreenStage.DRIVER_SEARCH -> {
-
-                    useful.showDefaultDialogView(requireActivity().supportFragmentManager, "processing")
-
-                }
                 HomeAct.MainScreenStage.WAITING_PICKUP -> {
 
                     useful.showDefaultDialogView(requireActivity().supportFragmentManager, "found")

@@ -1,27 +1,22 @@
 package br.com.app5m.appshelterdriver.ui.dialog.ride_flow
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
-import kotlinx.android.synthetic.main.dialog_bottom_view_choosedestination.*
-import kotlinx.android.synthetic.main.dialog_bottom_view_processingdriversearch.*
 import kotlinx.android.synthetic.main.loading.*
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class ProcessingDriverSearchDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment)
+class InitRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment)
     : BottomSheetDialogFragment(), WSResult {
 
 //    private lateinit var useful: Useful
@@ -37,7 +32,7 @@ class ProcessingDriverSearchDialog (private val bottomSheetDialogFragment: Botto
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.dialog_bottom_view_processingdriversearch, container, false)
+        return inflater.inflate(R.layout.dialog_bottom_view_initride, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

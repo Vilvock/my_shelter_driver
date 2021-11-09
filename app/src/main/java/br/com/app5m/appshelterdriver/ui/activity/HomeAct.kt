@@ -70,9 +70,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     enum class MainScreenStage {
         OVERVIEW,
-        STARTING_POINT_SELECTION,
-        VEHICLE_PAYMENT_SELECTION,
-        DRIVER_SEARCH,
+        ACCEPT_RIDE,
         WAITING_PICKUP,
         ONGOING_RIDE,
         FINISH_RIDE
@@ -211,25 +209,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
                 val rideId = intent.extras?.getString("rideId")
 
-                if (screenStage != null) {
-                    notifyScreenStageChanged(screenStage)
-
-                    Log.d("TAG", "notify:")
-                } else {
-
-                    notifyScreenStageChanged(MainScreenStage.OVERVIEW)
-
-                    val acceptRide = Ride()
-
-                    acceptRide.id = rideId
-                    acceptRide.vehicleBoard = ""
-                    acceptRide.vehicleModel = ""
-
-                    Log.d("TAG", "accept:")
-
-//                    rideControl.acceptRide(acceptRide)
-
+                if (rideId != null) {
+                    _rideLiveData.value!!.rideId = rideId
                 }
+
+                notifyScreenStageChanged(screenStage!!)
+
             } else {
 
                 notifyScreenStageChanged(MainScreenStage.OVERVIEW)
@@ -273,11 +258,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
 //            for (ride in list) {
                 when(lastRideInfo.rideStatus) {
-                    "Solicitada" -> {
-                        _rideLiveData.value = lastRideInfo
 
-                        notifyScreenStageChanged(MainScreenStage.DRIVER_SEARCH)
-                    }
                     "Aceita" -> {
                         _rideLiveData.value = lastRideInfo
 
@@ -553,56 +534,18 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             }
 
-            MainScreenStage.STARTING_POINT_SELECTION -> {
+            MainScreenStage.ACCEPT_RIDE -> {
 
                 handler.removeCallbacks(runnable)
 
 
-                useful.setActionBar(this, supportActionBar!!, "", 0)
-                toolbar.setNavigationOnClickListener{ onBackPressed()}
-
-                //ver pq n ta aparecendo local de origem dps
-                _mapPlotDateLiveData.value = MapPlotData(
-//                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
-                    originLatLng = LatLng(initialsRideInfo.originLatitude!!.toDouble(),
-                        initialsRideInfo.originLongitude!!.toDouble())
-                )
-
-                mapPlotUpdated(mapPlotDateLiveData.value)
-            }
-
-            //na real ta a mesma coisa, mas deix aassim por enquanto
-            MainScreenStage.VEHICLE_PAYMENT_SELECTION -> {
-
-
-                useful.showDefaultDialogView(supportFragmentManager, "typeVehiclePayment")
-            }
-
-            MainScreenStage.DRIVER_SEARCH -> {
-
-                useful.showDefaultDialogView(supportFragmentManager, "processing")
-
-                _mapPlotDateLiveData.value = MapPlotData(
-//                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
-                    originLatLng = LatLng(rideLiveData.value!!.originLatitude?.toDouble()!!, rideLiveData.value!!.originLongitude?.toDouble()!!),
-                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
-//                    polyline = PolyUtil.decode(lastRideInfo.finalRoute.overViewPolyLine.polyLinePoints),
-////                polyline = PolyUtil.decode("bbcvDhcrvHp@wA~AnBVNTHzNA`FE~DG|C?`AC?~@AjFAdCAXhB?nAJZDbAXPJb@ZNRLd@GfBGTd@~@hAzBnBdDpCdE`BlCp@" +
-////                        "|@jBrCbBlCM`@z@f@~@f@b@ZbArAT^b@z@x@xBAHMx@Gf@aDjAe@Je@Pa@Tq@p@iCnEu@dBAR@XJTr@hAv@`AlEtEtAvOTrAt@fCXjADZAv@a@bB[p@i@f@w@b@wAh@sC" +
-////                        "f@m@PQHWXc@b@aBzB{@hAeBrDSh@Mt@Cb@?d@JhAh@bFVnCFhB?pBMp@Wl@eAzAmA~AOZWjAa@bC]hCf@JjAHfAFr@@z@C"),
-//                    vehicleAngle = null,
-//                    vehicleLatLng = null,
-//                    freeVehiclesLatLng = null
-                )
-
-                mapPlotUpdated(mapPlotDateLiveData.value)
-
+                useful.showDefaultDialogView(supportFragmentManager, "accept")
             }
 
             MainScreenStage.WAITING_PICKUP -> {
 
 
-                useful.showDefaultDialogView(supportFragmentManager, "found")
+                useful.showDefaultDialogView(supportFragmentManager, "waiting")
 
                 _mapPlotDateLiveData.value = MapPlotData(
                     userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
@@ -646,7 +589,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 handler.removeCallbacks(runnable)
 
-                useful.showDefaultDialogView(supportFragmentManager, "finish")
 
             }
 
@@ -782,23 +724,11 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
                 val rideId = intent.extras?.getString("rideId")
 
-                if (screenStage != null) {
-                    notifyScreenStageChanged(screenStage)
-
-                    Log.d("TAG", "notify:")
-                }else {
-
-                    val acceptRide = Ride()
-
-                    acceptRide.id = rideId
-                    acceptRide.vehicleBoard = ""
-                    acceptRide.vehicleModel = ""
-
-                    Log.d("TAG", "accept:")
-
-//                    rideControl.acceptRide(acceptRide)
-
+                if (rideId != null) {
+                    _rideLiveData.value!!.rideId = rideId
                 }
+
+                notifyScreenStageChanged(screenStage!!)
 
             }
         }

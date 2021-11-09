@@ -65,6 +65,8 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 intent!!.putExtra("rideId", rideId)
                 intentBroadcast.putExtra("rideId", rideId)
 
+                notifyScreenValue = HomeAct.MainScreenStage.ACCEPT_RIDE
+
             }
             "2" -> {
                 //ACEITA
