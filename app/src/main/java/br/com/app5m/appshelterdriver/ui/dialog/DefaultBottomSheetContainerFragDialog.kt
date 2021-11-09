@@ -81,7 +81,7 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
             }
 
             "found" -> {
-                fragment = FoundDriverFragDialog(this)
+                fragment = AcceptRideFragDialog(this)
             }
 
             "ongoing" -> {
