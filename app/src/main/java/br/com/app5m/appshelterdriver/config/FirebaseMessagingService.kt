@@ -47,10 +47,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
         val channel = getString(R.string.default_notification_channel_id)
         val uriSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
-        var pendingIntent: PendingIntent? = null
-
         var notifyScreenValue: HomeAct.MainScreenStage? = null
-        var rideIdValue: String? = null
 
         intent = Intent(this, HomeAct::class.java)
 
@@ -105,7 +102,8 @@ class FirebaseMessagingService: FirebaseMessagingService() {
             intentBroadcast.putExtra("notifyScreen", notifyScreenValue)
         }
 
-        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(
+            this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         broadcastManager.sendBroadcast(intentBroadcast)
 
