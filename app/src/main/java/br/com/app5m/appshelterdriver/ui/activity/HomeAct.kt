@@ -2,7 +2,10 @@ package br.com.app5m.appshelterdriver.ui.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
@@ -18,6 +21,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.RideControl
@@ -117,6 +121,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        LocalBroadcastManager.getInstance(this).registerReceiver(myReceiver,
+            IntentFilter("Notification")
+        )
+
         saveFcm()
 
         imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
@@ -196,29 +204,36 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 //        )
 
         //por enquanto deixa aqui
-        if (intent.extras != null) {
+            val bundle = intent.extras
 
-            val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
-            val rideId = intent.extras?.getString("rideId")
+            if (bundle != null) {
 
-            if (screenStage != null) {
-                notifyScreenStageChanged(screenStage)
-            }else {
+                val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
+                val rideId = intent.extras?.getString("rideId")
 
-                val acceptRide = Ride()
+                if (screenStage != null) {
+                    notifyScreenStageChanged(screenStage)
 
-                acceptRide.id = rideId
-                acceptRide.vehicleBoard = ""
-                acceptRide.vehicleModel = ""
+                    Log.d("TAG", "notify:")
+                } else {
 
-                rideControl.acceptRide(acceptRide)
+                    notifyScreenStageChanged(MainScreenStage.OVERVIEW)
 
+                    val acceptRide = Ride()
+
+                    acceptRide.id = rideId
+                    acceptRide.vehicleBoard = ""
+                    acceptRide.vehicleModel = ""
+
+                    Log.d("TAG", "accept:")
+
+//                    rideControl.acceptRide(acceptRide)
+
+                }
+            } else {
+
+                notifyScreenStageChanged(MainScreenStage.OVERVIEW)
             }
-
-        } else {
-
-            notifyScreenStageChanged(MainScreenStage.OVERVIEW)
-        }
 
     }
 
@@ -756,6 +771,37 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         mMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding))
 
 
+    }
+
+    private val myReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val bundle = intent.extras
+
+            if (bundle != null) {
+
+                val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
+                val rideId = intent.extras?.getString("rideId")
+
+                if (screenStage != null) {
+                    notifyScreenStageChanged(screenStage)
+
+                    Log.d("TAG", "notify:")
+                }else {
+
+                    val acceptRide = Ride()
+
+                    acceptRide.id = rideId
+                    acceptRide.vehicleBoard = ""
+                    acceptRide.vehicleModel = ""
+
+                    Log.d("TAG", "accept:")
+
+//                    rideControl.acceptRide(acceptRide)
+
+                }
+
+            }
+        }
     }
 
 }

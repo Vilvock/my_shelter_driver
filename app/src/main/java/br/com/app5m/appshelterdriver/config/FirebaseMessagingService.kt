@@ -9,10 +9,9 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import br.com.app5m.appshelterdriver.MainAct
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
-import br.com.app5m.appshelterdriver.util.Preferences
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -49,68 +48,66 @@ class FirebaseMessagingService: FirebaseMessagingService() {
         val uriSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
         var pendingIntent: PendingIntent? = null
-        var defaultNotification: String? = null
+
+        var notifyScreenValue: HomeAct.MainScreenStage? = null
+        var rideIdValue: String? = null
+
+        intent = Intent(this, HomeAct::class.java)
+
+        val broadcastManager = LocalBroadcastManager.getInstance(this)
+        val intentBroadcast = Intent("Notification")
 
         when (type) {
             "1" -> {
                 //SOLICITADA
                 //id_corrida para o motorista aceitar
-                intent = Intent(this, HomeAct::class.java)
+
                 intent!!.putExtra("rideId", rideId)
-                pendingIntent = PendingIntent.getActivity(
-                    this,
-                    0, intent, PendingIntent.FLAG_UPDATE_CURRENT
-                )
+                intentBroadcast.putExtra("rideId", rideId)
+
             }
             "2" -> {
                 //ACEITA
                 //envia algum dado chave para colocar a tela em waiting Pickup
-                intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.WAITING_PICKUP)
-                intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
+                notifyScreenValue = HomeAct.MainScreenStage.WAITING_PICKUP
             }
             "3" -> {
                 //EM_ANDAMENTO
                 // envia algum dado chave para colocar a tela em ongoing
-                intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.ONGOING_RIDE)
-                intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
+                notifyScreenValue = HomeAct.MainScreenStage.ONGOING_RIDE
             }
             "4" -> {
                 //FINALIZADA
                 // envia algum dado chave para colocar a tela em finish
-                intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.FINISH_RIDE)
-                intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
+                notifyScreenValue = HomeAct.MainScreenStage.FINISH_RIDE
             }
             "5" -> {
                 //CANCELADA_MOTORISTA
                 // envia algum dado chave para colocar a tela em overview e mostrar mensagem q cancelou
-                intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.OVERVIEW)
-                intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
+                notifyScreenValue = HomeAct.MainScreenStage.OVERVIEW
             }
             "6" -> {
                 //CANCELADA_PASSAGEIRO
                 // envia algum dado chave para colocar a tela em overview e mostrar mensagem q cancelou
-                intent = Intent(this, HomeAct::class.java)
-                intent!!.putExtra("notifyScreen", HomeAct.MainScreenStage.OVERVIEW)
-                intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
+                notifyScreenValue = HomeAct.MainScreenStage.OVERVIEW
             }
             //DEFAULT NOTIFICATIONS
             else -> {
-//                intent = Intent(this, NotificationAct::class.java)
-//                pendingIntent = PendingIntent.getActivity(
-//                    this,
-//                    0, intent, PendingIntent.FLAG_UPDATE_CURRENT
-//                )
+
             }
         }
+
+        if (notifyScreenValue != null) {
+
+            intent!!.putExtra("notifyScreen", notifyScreenValue)
+            intentBroadcast.putExtra("notifyScreen", notifyScreenValue)
+        }
+
+        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        broadcastManager.sendBroadcast(intentBroadcast)
+
+
         val notification = NotificationCompat.Builder(this, channel)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentTitle(title)
