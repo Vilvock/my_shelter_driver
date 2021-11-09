@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.fragment.auth.UploadDocumentsFrag
 import br.com.app5m.appshelterdriver.util.Useful
 import kotlinx.android.synthetic.main.fragment_update_vehicle.*
 
@@ -31,10 +30,7 @@ class UpdateVehicleFrag : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         useful = Useful(requireContext())
-        next_bt2.setOnClickListener {
-            activity?.let { it1 -> useful.startFragmentOnBack(UploadDocumentsFrag(), it1.supportFragmentManager) }
 
-        }
     }
 
 }

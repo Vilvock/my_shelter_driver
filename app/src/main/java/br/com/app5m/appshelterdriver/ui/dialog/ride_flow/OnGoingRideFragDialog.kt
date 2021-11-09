@@ -36,7 +36,7 @@ class OnGoingRideFragDialog (private val bottomSheetDialogFragment: BottomSheetD
 
         val homeActContext = requireActivity() as HomeAct
 
-        detailsDriver_tv.setOnClickListener{
+        finish_bt.setOnClickListener{
 
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.FINISH_RIDE)
             bottomSheetDialogFragment.dismiss()

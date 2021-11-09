@@ -31,20 +31,6 @@ class WaitingApprovalFrag : Fragment() {
 
         useful = Useful(requireContext())
 
-        docStatus_bt.setOnClickListener {
-
-            activity?.let { it1 -> useful.startFragmentOnBack(DocumentStatusFrag(), it1.supportFragmentManager) }
-
-        }
-
-
-        /*   verify_bt.setOnClickListener {
-
-               startActivity(Intent(requireContext(), HomeAct::class.java))
-               requireActivity().finishAffinity()
-
-           }*/
-
     }
 
 }
