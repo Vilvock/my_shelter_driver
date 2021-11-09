@@ -55,8 +55,10 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
             //diogo precisa me trazer vehicleboard e vehicle model no login
             acceptRide.id = homeActContext.rideLiveData.value!!.rideId
-            acceptRide.vehicleBoard = preferences.getUserData()!!.vehicle.board
-            acceptRide.vehicleModel = preferences.getUserData()!!.vehicle.model
+            acceptRide.vehicleBoard = "teste"
+            acceptRide.vehicleModel = "teste"
+//            acceptRide.vehicleBoard = preferences.getUserData()!!.vehicle.board
+//            acceptRide.vehicleModel = preferences.getUserData()!!.vehicle.model
 
             Log.d("TAG", "accept:")
 
@@ -79,9 +81,6 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
         SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
         bottomSheetDialogFragment.dismiss()
 
-//        [{"status":"01","msg":"Corrida aceita \n dirija-se at\u00e9 o ponto de partida para dar in\u00edcio \u00e0 corrida."}]
-//
-//
     }
 
 }

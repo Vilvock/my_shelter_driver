@@ -202,15 +202,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 //        )
 
         //por enquanto deixa aqui
-            val bundle = intent.extras
-
-            if (bundle != null) {
+            if (intent.extras != null) {
 
                 val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
                 val rideId = intent.extras?.getString("rideId")
 
                 if (rideId != null) {
                     _rideLiveData.value!!.rideId = rideId
+                } else {
+                    return
                 }
 
                 notifyScreenStageChanged(screenStage!!)
@@ -256,7 +256,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             if (lastRideInfo.rows != "0") {
 
-//            for (ride in list) {
                 when(lastRideInfo.rideStatus) {
 
                     "Aceita" -> {
@@ -283,13 +282,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                     "Finalizada" -> {
 
-                        /*if(isRatingDialogShowed) {
-                            isRatingDialogShowed = false
-                            notifyScreenStageChanged(MainScreenStage.FINISH_RIDE)
-                        }else {*/
-
                             handler.postDelayed(runnable, 5000)
-                       /* }*/
 
                     }
 
@@ -298,8 +291,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         handler.postDelayed(runnable, 5000)
                     }
                 }
-
-//            }
 
             } else {
                 handler.postDelayed(runnable, 5000)
@@ -374,7 +365,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             when (it.itemId) {
 
-                R.id.nav_changeVeicle -> {
+                R.id.nav_changeVehicle -> {
                     intent.putExtra("key", "change_vehicle")
                 }
                 R.id.nav_myRides -> {
@@ -587,8 +578,11 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             MainScreenStage.FINISH_RIDE -> {
 
+
+                //dialog fim da corrida
                 handler.removeCallbacks(runnable)
 
+                notifyScreenStageChanged(MainScreenStage.OVERVIEW)
 
             }
 
@@ -717,15 +711,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     private val myReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            val bundle = intent.extras
 
-            if (bundle != null) {
+            if (intent.extras != null) {
 
                 val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
                 val rideId = intent.extras?.getString("rideId")
 
                 if (rideId != null) {
                     _rideLiveData.value!!.rideId = rideId
+                } else {
+                    return
                 }
 
                 notifyScreenStageChanged(screenStage!!)
