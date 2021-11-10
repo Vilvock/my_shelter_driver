@@ -23,6 +23,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".ui.activity.SendDocumentAct"/>
         <activity android:name=".ui.activity.SucessInfoAct"/>
         <activity android:name=".ui.activity.PermissionLocalizationAct"/>
         <activity android:name=".ui.activity.DocumentPdfWebViewAct"/>

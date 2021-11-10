@@ -68,7 +68,7 @@ class DocumentControl(private val context: Context, private val result: WSResult
         val doc: MultipartBody.Part
 
         val requestFile: RequestBody = file.asRequestBody("image/".toMediaTypeOrNull())
-        doc = MultipartBody.Part.createFormData("document", file.name, requestFile)
+        doc = MultipartBody.Part.createFormData("doc", file.name, requestFile)
 
 
         val param: Call<List<Document>> = service.updateDoc(id, doc)
