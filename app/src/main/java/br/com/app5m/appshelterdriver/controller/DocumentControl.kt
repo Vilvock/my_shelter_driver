@@ -59,11 +59,11 @@ class DocumentControl(private val context: Context, private val result: WSResult
         param.enqueue(this)
     }
 
-    fun updateDocument(file: File){
+    fun updateDocument(file: File, idFile: String){
 
         type = "updateDoc"
 
-        val id: RequestBody = preferences.getUserData()!!.id!!.toRequestBody(MultipartBody.FORM)
+        val id: RequestBody = idFile.toRequestBody(MultipartBody.FORM)
 
         val doc: MultipartBody.Part
 

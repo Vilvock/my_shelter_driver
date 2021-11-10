@@ -18,10 +18,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.DocumentControl
-import br.com.app5m.appshelterdriver.controller.UserControl
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Document
-import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.util.DialogMessages
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
@@ -36,7 +34,13 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
     private lateinit var useful: Useful
     private lateinit var documentControl: DocumentControl
 
-    private var finalFile: File? = null
+    private var finalFileCrlv: File? = null
+    private var finalFileCnh: File? = null
+
+    private var isDocumentID: Boolean = false
+
+    private lateinit var docInfo1: Document
+    private lateinit var docInfo2: Document
 
     private val permissions = arrayOf(
         Manifest.permission.CAMERA,
@@ -51,16 +55,31 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
         useful = Useful(this)
         documentControl = DocumentControl(this, this, useful)
 
-        addPhoto_bt.setOnClickListener {
+        addPhotoCnh_bt.setOnClickListener {
             openDialogGalleryCamera()
+            isDocumentID = false
         }
 
-        sendDocument_bt.setOnClickListener {
+        sendCnh_bt.setOnClickListener {
 
-            if (finalFile == null) return@setOnClickListener
+            if (finalFileCnh == null) return@setOnClickListener
 
             useful.openLoading()
-            documentControl.updateDocument(finalFile!!)
+            documentControl.updateDocument(finalFileCnh!!, docInfo1.id!!)
+        }
+
+
+        addPhotoCrlv_bt.setOnClickListener {
+            openDialogGalleryCamera()
+            isDocumentID = true
+        }
+
+        sendDocumentCrlv_bt.setOnClickListener {
+
+            if (finalFileCrlv == null) return@setOnClickListener
+
+            useful.openLoading()
+            documentControl.updateDocument(finalFileCrlv!!, docInfo2.id!!)
         }
 
     }
@@ -74,20 +93,30 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
 
         useful.closeLoading()
 
-        val docInfo = list[0]
+        docInfo1 = list[0]
 
         if (type == "listDoc") {
-            if (docInfo.rows != "0") {
+
+            docInfo2 = list[1]
+            if (docInfo1.rows != "0") {
 
                 //pegar url e glid
-                msg_tv.visibility = View.GONE
+                statusCnh_tv.text = docInfo1.status
+                msg_tv2.visibility = View.GONE
+            }
+
+            if (docInfo2.rows != "0") {
+
+                //pegar url e glid
+                statusCrlv_tv.text = docInfo2.status
+                msg_tv2.visibility = View.GONE
             }
         } else {
 
-            SingleToast.INSTANCE.show(this, docInfo.msg!!, Toast.LENGTH_LONG)
+            SingleToast.INSTANCE.show(this, docInfo1.msg!!, Toast.LENGTH_LONG)
 
-            if (docInfo.status == "01") {
-                finish()
+            if (docInfo1.status == "01") {
+//                finish()
             }
         }
 
@@ -107,10 +136,19 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
                         val tempUri = getImageUri(this, photo)
 
                         // CALL THIS METHOD TO GET THE ACTUAL PATH
-                        finalFile = File(getRealPathFromURI(tempUri))
 
-                        document_iv.setImageURI(tempUri)
-                        msg_tv.visibility = View.GONE
+                        if (isDocumentID) {
+
+                            finalFileCrlv = File(getRealPathFromURI(tempUri))
+                            msg_tv2.visibility = View.GONE
+                            documentCrlv_iv.setImageURI(tempUri)
+                        } else {
+
+                            finalFileCnh = File(getRealPathFromURI(tempUri))
+                            msg_tv.visibility = View.GONE
+                            documentCnh_iv.setImageURI(tempUri)
+                        }
+
                     }
                     1 -> {
 
@@ -122,10 +160,18 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
 
                         val imgPath = getRealPathFromURI(selectedImage)
-                        finalFile = File(imgPath.toString())
 
-                        document_iv.setImageURI(selectedImage)
-                        msg_tv.visibility = View.GONE
+                        if (isDocumentID) {
+
+                            finalFileCrlv = File(imgPath.toString())
+                            msg_tv2.visibility = View.GONE
+                            documentCrlv_iv.setImageURI(selectedImage)
+                        } else {
+
+                            finalFileCnh = File(imgPath.toString())
+                            msg_tv.visibility = View.GONE
+                            documentCnh_iv.setImageURI(selectedImage)
+                        }
 
                     }
                 }

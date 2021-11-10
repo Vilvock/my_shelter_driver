@@ -16,4 +16,7 @@ class Document {
     @field:SerializedName("rows")
     var rows: String? = null
 
+    @field:SerializedName("id")
+    var id: String? = null
+
 }
