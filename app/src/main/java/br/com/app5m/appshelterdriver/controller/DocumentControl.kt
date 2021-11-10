@@ -51,6 +51,8 @@ class DocumentControl(private val context: Context, private val result: WSResult
 
         type = "listDoc"
 
+        document = Document()
+
         document.token = WSConstants.TOKEN
 
         val param: Call<List<Document>> = service.listDocDriver(preferences.getUserData()!!.id!!, document)
