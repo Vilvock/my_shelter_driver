@@ -53,16 +53,15 @@ class DocumentControl(private val context: Context, private val result: WSResult
 
         document.token = WSConstants.TOKEN
 
-        val param: Call<List<Document>> = service.listDocDriver("", document)
+        val param: Call<List<Document>> = service.listDocDriver(preferences.getUserData()!!.id!!, document)
         param.enqueue(this)
     }
 
-    fun updateDocument(idUser: String, file: File){
+    fun updateDocument(file: File){
 
         type = "updateDoc"
 
-        val id: RequestBody = idUser.toRequestBody(MultipartBody.FORM)
-//        val token = WSConstants().token.toRequestBody(MultipartBody.FORM)
+        val id: RequestBody = preferences.getUserData()!!.id!!.toRequestBody(MultipartBody.FORM)
 
         val doc: MultipartBody.Part
 
@@ -70,7 +69,7 @@ class DocumentControl(private val context: Context, private val result: WSResult
         doc = MultipartBody.Part.createFormData("document", file.name, requestFile)
 
 
-        val param: Call<List<Document>> = service.updateDoc(id, /*token,*/ doc)
+        val param: Call<List<Document>> = service.updateDoc(id, doc)
         param.enqueue(this)
     }
 

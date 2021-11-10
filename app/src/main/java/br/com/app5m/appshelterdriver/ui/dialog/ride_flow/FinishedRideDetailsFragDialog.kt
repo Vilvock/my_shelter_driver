@@ -16,13 +16,13 @@ import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.dialog_bottom_view_acceptride.*
+import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.*
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) :
+class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) :
     BottomSheetDialogFragment(), WSResult {
 
     private lateinit var useful: Useful
@@ -49,20 +49,11 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
         val homeActContext = requireActivity() as HomeAct
 
-        accept_bt.setOnClickListener {
+        ok_bt.setOnClickListener {
 
-            val acceptRide = Ride()
 
-            //diogo precisa me trazer vehicleboard e vehicle model no login
-            acceptRide.id = homeActContext.rideLiveData.value!!.rideId
-            acceptRide.vehicleBoard = "teste"
-            acceptRide.vehicleModel = "teste"
-//            acceptRide.vehicleBoard = preferences.getUserData()!!.vehicle.board
-//            acceptRide.vehicleModel = preferences.getUserData()!!.vehicle.model
-
-            Log.d("TAG", "accept:")
-
-            rideControl.acceptRide(acceptRide)
+            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.FINISH_RIDE)
+            bottomSheetDialogFragment.dismiss()
         }
 
 
@@ -72,13 +63,7 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
         val rideInfo = list[0]
 
-        if (rideInfo.status == "01") {
-            homeActContext.isCameraLock = true
-            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.WAITING_PICKUP)
-
-        }
-
-        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
+        //info
         bottomSheetDialogFragment.dismiss()
 
     }

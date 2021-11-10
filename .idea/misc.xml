@@ -27,6 +27,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/activity_main_logovariation.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/activity_permission_localization.xml" value="0.11041666666666666" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/activity_send_document.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/activity_sucess_info.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_add_bank_form.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_add_pix_form.xml" value="0.1796875" />
@@ -57,6 +58,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_acepit_race.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_cancelride.xml" value="0.2546875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_choose_typepickup.xml" value="0.22" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_finishedridedetails.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_initride.xml" value="0.22" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_ongoing.xml" value="0.22" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_processingdriversearch.xml" value="0.36666666666666664" />

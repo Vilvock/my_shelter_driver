@@ -93,7 +93,6 @@ interface WebService {
     @Multipart
     @POST("/documentos/updatedocumento")
     fun updateDoc(@Part("id") id: RequestBody,
-        /*@Part("token") token: RequestBody,*/
                      @Part doc: MultipartBody.Part): Call<List<Document>>
 
 

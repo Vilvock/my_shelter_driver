@@ -24,10 +24,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.controller.DocumentControl
 import br.com.app5m.appshelterdriver.controller.RideControl
 import br.com.app5m.appshelterdriver.controller.UserControl
 import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
+import br.com.app5m.appshelterdriver.models.Document
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.util.DialogMessages
@@ -62,6 +64,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     private lateinit var preferences: Preferences
     private lateinit var rideControl: RideControl
     private lateinit var userControl: UserControl
+    private lateinit var documentControl: DocumentControl
 
     private lateinit var myLocation: MyLocation
     private lateinit var locationResult: MyLocation.LocationResult
@@ -114,6 +117,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         preferences = Preferences(this)
         rideControl = RideControl(this, this, useful)
         userControl = UserControl(this, this, useful)
+        documentControl = DocumentControl(this, this, useful)
         myLocation = MyLocation(this)
 
         mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -124,6 +128,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         )
 
         saveFcm()
+        documentControl.listDocDriver()
 
         imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
 
@@ -220,6 +225,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 notifyScreenStageChanged(MainScreenStage.OVERVIEW)
             }
 
+    }
+
+    override fun dResponse(list: List<Document>, type: String) {
+
+        val docInfo = list[0]
+
+        if (docInfo.rows != "0") {
+            startActivity(Intent(this, SendDocumentAct::class.java))
+
+        }
     }
 
     override fun rResponse(list: List<Ride>, type: String) {
@@ -688,7 +703,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             if (isCameraLock) {
                 if (notNullPoints.size == 1) {
                     mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 18f))
-                    isCameraLock = false
+//                    isCameraLock = false
                     return
                 }
             } else {

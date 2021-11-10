@@ -18,12 +18,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Corrida solicitada"
+            android:text="Corrida finalizada"
             android:textAllCaps="true"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark" />
@@ -32,18 +31,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Uma corrida foi solicitada perto da sua localização."
-            android:textAlignment="center"
+            android:text="@string/lorem_ipsum"
             android:textColor="@color/colorPrimaryDark" />
 
         <Button
-            android:id="@+id/accept_bt"
+            android:id="@+id/ok_bt"
             style="@style/StyleButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/colorAccent"
-            android:text="Aceitar" />
+            android:text="OK" />
 
     </LinearLayout>
 
