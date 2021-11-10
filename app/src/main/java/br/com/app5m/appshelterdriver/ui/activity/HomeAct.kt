@@ -111,6 +111,18 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     private var runnableFindLocationPickUp = Runnable {notifyScreenStageChanged(MainScreenStage.WAITING_PICKUP)}
     private var runnableFindProcess = Runnable {notifyScreenStageChanged(MainScreenStage.ONGOING_RIDE)}
 
+
+
+
+
+
+
+
+
+
+    private var int = 1
+    private var int2 = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -281,9 +293,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 //                    }
                     "Aceita" -> {
 
-                        if (_rideLiveData.value == null) {
-                            //aparecer msg so quando se aproximar do ponto de embarque depois
+                        if (int == 1) {
+                            //botar para aparecer msg so quando se aproximar do ponto de embarque depois
                             useful.showDefaultDialogView(supportFragmentManager, "waiting")
+                            int++
                         }
 
                         _rideLiveData.value = lastRideInfo
@@ -342,8 +355,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         } else {
             if (lastRideInfo.rows != "0") {
 
-                if (_rideLiveData.value == null) {
+                if (int2 == 1) {
+                    //botar para aparecer msg so quando se aproximar do ponto de embarque depois
                     useful.showDefaultDialogView(supportFragmentManager, "ongoing")
+                    int2++
                 }
 
                 _rideLiveData.value = lastRideInfo

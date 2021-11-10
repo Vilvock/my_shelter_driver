@@ -18,7 +18,6 @@ import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.*
 
-
 /**
  * A simple [Fragment] subclass.
  */
@@ -54,15 +53,14 @@ class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: Bott
             bottomSheetDialogFragment.dismiss()
         }
 
-//        val destination = getString(R.string.trip_info_destination, flowViewModel.currentRideByDriver2.destinationAddress)
-//        val distance =
-//            getString(R.string.trip_info_distance,
-//                (flowViewModel.currentRideByDriver2.estimatedDistance?.toDouble() ?: 0.0) / 1000f)
-//        val duration = getString(R.string.trip_info_eta, flowViewModel.currentRideByDriver2.getFormattedArrivalETA())
-//        val payment = "Dinheiro"
-//
-//
-//        tripDataLabel.text = "$destination\n$distance\n$duration\n$payment"
+        val destination = "Destino: " + homeActContext.rideLiveData.value!!.destinationAddress
+        val distance = "Distancia: " + homeActContext.rideLiveData.value!!.distance + homeActContext.rideLiveData.value!!.distanceInitials
+        val duration = "Tempo estimado: " + homeActContext.rideLiveData.value!!.routeTime
+        val payment = "Tipo de pagamento: " + homeActContext.rideLiveData.value!!.nameTypePayment
+
+
+        rideInfo_tv.text = "$destination\n$distance\n$duration\n$payment"
+
 
     }
 

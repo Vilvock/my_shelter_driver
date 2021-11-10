@@ -15,7 +15,9 @@ import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
+import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.*
 import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.*
+import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.rideInfo_tv
 
 
 /**
@@ -60,6 +62,15 @@ class OnGoingRideFragDialog (private val bottomSheetDialogFragment: BottomSheetD
             rideControl.finishRide(finishRide)
 
         }
+
+        val destination = "Destino: " + homeActContext.rideLiveData.value!!.destinationAddress
+        val distance = "Distancia: " + homeActContext.rideLiveData.value!!.distance + homeActContext.rideLiveData.value!!.distanceInitials
+        val duration = "Tempo estimado: " + homeActContext.rideLiveData.value!!.routeTime
+        val payment = "Tipo de pagamento: " + homeActContext.rideLiveData.value!!.nameTypePayment
+
+
+        rideInfo_tv.text = "$destination\n$distance\n$duration\n$payment"
+
 
     }
 
