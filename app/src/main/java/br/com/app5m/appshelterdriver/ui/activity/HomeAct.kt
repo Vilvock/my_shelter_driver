@@ -108,6 +108,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     private val handler = Handler()
     private var runnable = Runnable { notifyScreenStageChanged(MainScreenStage.OVERVIEW)}
+    private var runnableFindLocationPickUp = Runnable {notifyScreenStageChanged(MainScreenStage.WAITING_PICKUP)}
+    private var runnableFindProcess = Runnable {notifyScreenStageChanged(MainScreenStage.ONGOING_RIDE)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -238,7 +240,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     }
 
     override fun rResponse(list: List<Ride>, type: String) {
-
         lastRideInfo = list[0]
 
         if (type == "findAll") {
@@ -271,24 +272,41 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             if (lastRideInfo.rows != "0") {
 
+//            for (ride in list) {
                 when(lastRideInfo.rideStatus) {
-
+//                    "Solicitada" -> {
+//                        _rideLiveData.value = lastRideInfo
+//
+//                        notifyScreenStageChanged(MainScreenStage.DRIVER_SEARCH)
+//                    }
                     "Aceita" -> {
+
+                        if (_rideLiveData.value == null) {
+                            //aparecer msg so quando se aproximar do ponto de embarque depois
+                            useful.showDefaultDialogView(supportFragmentManager, "waiting")
+                        }
+
                         _rideLiveData.value = lastRideInfo
 
-                        notifyScreenStageChanged(MainScreenStage.WAITING_PICKUP)
                         //mapupdate aqui quando poly parar de ser null
+                        _mapPlotDateLiveData.value = MapPlotData(
+                            userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                            originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                            destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()))
+
+                        mapPlotUpdated(mapPlotDateLiveData.value)
+
+
+                        handler.postDelayed(runnableFindLocationPickUp, 5000)
                     }
 
                     "Em andamento" -> {
 
-                        _rideLiveData.value = lastRideInfo
-
                         val findRideProcess = Ride()
 
-                        findRideProcess.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
-                        findRideProcess.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
-                        findRideProcess.carType = rideLiveData.value!!.carType
+                        findRideProcess.latitude = "-30.0166311"
+                        findRideProcess.longitude = "-51.0544592"
+                        findRideProcess.carType = lastRideInfo.carType
 
                         rideControl.findProcess(findRideProcess)
 
@@ -297,7 +315,13 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                     "Finalizada" -> {
 
+//                        if(isRatingDialogShowed) {
+//                            isRatingDialogShowed = false
+//                            notifyScreenStageChanged(MainScreenStage.FINISH_RIDE)
+//                        }else {
+
                             handler.postDelayed(runnable, 5000)
+//                        }
 
                     }
 
@@ -307,6 +331,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     }
                 }
 
+//            }
+
             } else {
                 handler.postDelayed(runnable, 5000)
             }
@@ -315,13 +341,25 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             //find andamento
         } else {
             if (lastRideInfo.rows != "0") {
+
+                if (_rideLiveData.value == null) {
+                    useful.showDefaultDialogView(supportFragmentManager, "ongoing")
+                }
+
                 _rideLiveData.value = lastRideInfo
 
-                notifyScreenStageChanged(MainScreenStage.ONGOING_RIDE)
+                _mapPlotDateLiveData.value = MapPlotData(
+                    originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
+                    polyline = PolyUtil.decode(rideLiveData.value!!.finalRoute.overViewPolyLine.polyLinePoints))
+
+                mapPlotUpdated(mapPlotDateLiveData.value)
+
+
+                handler.postDelayed(runnableFindProcess, 5000)
             }
 
         }
-
 
 
     }
@@ -487,6 +525,14 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         }
                     } else {
                         rideControl.findAllDriver()
+
+
+                        val driverLocation = User()
+
+                        driverLocation.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
+                        driverLocation.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+
+                        userControl.updateLocation(driverLocation)
                     }
 
                 }
@@ -551,43 +597,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             MainScreenStage.WAITING_PICKUP -> {
 
 
-                useful.showDefaultDialogView(supportFragmentManager, "waiting")
+                rideControl.findAllDriver()
 
-                _mapPlotDateLiveData.value = MapPlotData(
-                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
-                    originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
-//                    polyline = PolyUtil.decode(lastRideInfo.finalRoute.overViewPolyLine.polyLinePoints),
-////                polyline = PolyUtil.decode("bbcvDhcrvHp@wA~AnBVNTHzNA`FE~DG|C?`AC?~@AjFAdCAXhB?nAJZDbAXPJb@ZNRLd@GfBGTd@~@hAzBnBdDpCdE`BlCp@" +
-////                        "|@jBrCbBlCM`@z@f@~@f@b@ZbArAT^b@z@x@xBAHMx@Gf@aDjAe@Je@Pa@Tq@p@iCnEu@dBAR@XJTr@hAv@`AlEtEtAvOTrAt@fCXjADZAv@a@bB[p@i@f@w@b@wAh@sC" +
-////                        "f@m@PQHWXc@b@aBzB{@hAeBrDSh@Mt@Cb@?d@JhAh@bFVnCFhB?pBMp@Wl@eAzAmA~AOZWjAa@bC]hCf@JjAHfAFr@@z@C"),
-//                    vehicleAngle = null,
-//                    vehicleLatLng = null,
-//                    freeVehiclesLatLng = null
-                )
-
-                mapPlotUpdated(mapPlotDateLiveData.value)
 
             }
 
             MainScreenStage.ONGOING_RIDE -> {
 
 
-                useful.showDefaultDialogView(supportFragmentManager, "ongoing")
-
-                _mapPlotDateLiveData.value = MapPlotData(
-                    originLatLng = LatLng(lastRideInfo.originLatitude!!.toDouble(), lastRideInfo.originLongitude!!.toDouble()),
-                    destinationLatLng = LatLng(lastRideInfo.destinationLatitude!!.toDouble(), lastRideInfo.destinationLongitude!!.toDouble()),
-                    polyline = PolyUtil.decode(lastRideInfo.finalRoute.overViewPolyLine.polyLinePoints),
-//                polyline = PolyUtil.decode("bbcvDhcrvHp@wA~AnBVNTHzNA`FE~DG|C?`AC?~@AjFAdCAXhB?nAJZDbAXPJb@ZNRLd@GfBGTd@~@hAzBnBdDpCdE`BlCp@" +
-//                        "|@jBrCbBlCM`@z@f@~@f@b@ZbArAT^b@z@x@xBAHMx@Gf@aDjAe@Je@Pa@Tq@p@iCnEu@dBAR@XJTr@hAv@`AlEtEtAvOTrAt@fCXjADZAv@a@bB[p@i@f@w@b@wAh@sC" +
-//                        "f@m@PQHWXc@b@aBzB{@hAeBrDSh@Mt@Cb@?d@JhAh@bFVnCFhB?pBMp@Wl@eAzAmA~AOZWjAa@bC]hCf@JjAHfAFr@@z@C"),
-                    vehicleAngle = null,
-                    vehicleLatLng = null,
-                    freeVehiclesLatLng = null
-                )
-
-                mapPlotUpdated(mapPlotDateLiveData.value)
+                rideControl.findAllDriver()
 
             }
 
@@ -597,7 +615,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 //dialog fim da corrida
                 handler.removeCallbacks(runnable)
 
-                notifyScreenStageChanged(MainScreenStage.OVERVIEW)
+                useful.showDefaultDialogView(supportFragmentManager, "finish")
 
             }
 
@@ -703,7 +721,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             if (isCameraLock) {
                 if (notNullPoints.size == 1) {
                     mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 18f))
-//                    isCameraLock = false
+                    isCameraLock = false
                     return
                 }
             } else {
@@ -730,10 +748,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             if (intent.extras != null) {
 
                 val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
-                val rideId = intent.extras?.getString("rideId")
+                val rideId = intent.getStringExtra("rideId")
+
+                Log.d("TAG", "onReceive: " + rideId)
 
                 if (rideId != null) {
-                    _rideLiveData.value!!.rideId = rideId
+                    val acceptRide = Ride()
+
+                    acceptRide.rideId = rideId
+
+                    _rideLiveData.value = acceptRide
                 } else {
                     return
                 }

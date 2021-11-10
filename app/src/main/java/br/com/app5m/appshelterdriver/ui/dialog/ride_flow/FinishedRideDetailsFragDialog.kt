@@ -23,10 +23,9 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.*
  * A simple [Fragment] subclass.
  */
 class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) :
-    BottomSheetDialogFragment(), WSResult {
+    BottomSheetDialogFragment() {
 
     private lateinit var useful: Useful
-    private lateinit var rideControl: RideControl
 
     private lateinit var preferences: Preferences
 
@@ -45,14 +44,13 @@ class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: Bott
 
         useful = Useful(requireContext())
         preferences = Preferences(requireContext())
-        rideControl = RideControl(requireContext(), this, useful)
 
         val homeActContext = requireActivity() as HomeAct
 
         ok_bt.setOnClickListener {
 
 
-            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.FINISH_RIDE)
+            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.OVERVIEW)
             bottomSheetDialogFragment.dismiss()
         }
 
@@ -68,13 +66,5 @@ class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: Bott
 
     }
 
-    override fun rResponse(list: List<Ride>, type: String) {
-
-        val rideInfo = list[0]
-
-        //info
-        bottomSheetDialogFragment.dismiss()
-
-    }
 
 }

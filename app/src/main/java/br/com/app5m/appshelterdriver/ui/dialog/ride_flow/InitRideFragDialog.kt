@@ -48,18 +48,24 @@ class InitRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDial
         preferences = Preferences(requireContext())
         rideControl = RideControl(requireContext(), this, useful)
 
-        val homeActContext = requireActivity() as HomeAct
+        homeActContext = requireActivity() as HomeAct
 
         init_bt.setOnClickListener {
 
             val initRide = Ride()
 
             //diogo precisa me trazer vehicleboard e vehicle model no login
-            initRide.id = homeActContext.rideLiveData.value!!.rideId
+            if (homeActContext.rideLiveData.value!!.rideId == null) {
+
+                initRide.id = homeActContext.rideLiveData.value!!.id
+            } else {
+
+                initRide.id = homeActContext.rideLiveData.value!!.rideId
+            }
 
             Log.d("TAG", "init:")
 
-            rideControl.acceptRide(initRide)
+            rideControl.startRide(initRide)
         }
 
 
@@ -71,15 +77,12 @@ class InitRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDial
 
         if (rideInfo.status == "01") {
             homeActContext.isCameraLock = true
-            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.WAITING_PICKUP)
+            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.ONGOING_RIDE)
 
         }
 
         SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
         bottomSheetDialogFragment.dismiss()
 
-//        [{"status":"01","msg":"Corrida aceita \n dirija-se at\u00e9 o ponto de partida para dar in\u00edcio \u00e0 corrida."}]
-//
-//
     }
 }

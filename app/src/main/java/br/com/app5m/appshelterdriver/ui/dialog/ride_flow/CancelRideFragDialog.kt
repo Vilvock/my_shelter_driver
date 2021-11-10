@@ -49,7 +49,7 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
             when (homeActContext.screenStageLiveData.value) {
                 HomeAct.MainScreenStage.WAITING_PICKUP -> {
 
-                    useful.showDefaultDialogView(requireActivity().supportFragmentManager, "found")
+                    useful.showDefaultDialogView(requireActivity().supportFragmentManager, "waiting")
 
                 }
 
@@ -65,7 +65,13 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
             ) {
 
                 val cancelRide = Ride()
-                cancelRide.id = homeActContext.rideLiveData.value!!.id
+                if (homeActContext.rideLiveData.value!!.rideId == null) {
+
+                    cancelRide.id = homeActContext.rideLiveData.value!!.id
+                } else {
+
+                    cancelRide.id = homeActContext.rideLiveData.value!!.rideId
+                }
 
                 rideControl.cancelRidePassenger(cancelRide)
 

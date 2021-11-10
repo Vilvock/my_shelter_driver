@@ -80,6 +80,11 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
                 fragment = OnGoingRideFragDialog(this)
             }
 
+            "finish" -> {
+
+                fragment =FinishedRideDetailsFragDialog(this)
+            }
+
             "cancel" -> {
                 fragment = CancelRideFragDialog(this)
             }
@@ -135,10 +140,10 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
             val bottomSheet: View = dialog.findViewById(R.id.sheet_container)
             bottomSheet.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
 
-            if (tag.equals("ongoing")) {
+//            if (tag.equals("ongoing")) {
 
                 dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-            }
+//            }
         }
         val view = view
         view!!.post {

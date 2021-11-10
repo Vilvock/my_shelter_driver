@@ -60,16 +60,7 @@ class RideControl(private val context: Context, private val result: WSResult, pr
 
         type = "findProcess"
 
-/*        {
-{
-	"id_motorista": 4,
-	"tipo_carro": 1,
-	"latitude": "-30.0166311",
-	"longitude": "-51.0544592",
-	"token": "shelter_movel#2021"
-}
-        }*/
-
+        ride.driverId = preferences.getUserData()!!.id
         ride.token = WSConstants.TOKEN
 
         val param: Call<List<Ride>> = service.findProcessDriver(ride)
@@ -79,13 +70,6 @@ class RideControl(private val context: Context, private val result: WSResult, pr
     fun startRide(ride: Ride){
 
         type = "start"
-
-/*        {
-{
-	"id": 0,
-	"token": "shelter_movel#2021"
-}
-        }*/
 
         ride.token = WSConstants.TOKEN
 
@@ -108,13 +92,8 @@ class RideControl(private val context: Context, private val result: WSResult, pr
 
         type = "finish"
 
-/*        {
-{
-	"id": 1,
-	"id_motorista": 4,
-	"token": "shelter_movel#2021"
-}
-        }*/
+        ride.driverId = preferences.getUserData()!!.id
+        ride.token = WSConstants.TOKEN
 
         ride.token = WSConstants.TOKEN
 

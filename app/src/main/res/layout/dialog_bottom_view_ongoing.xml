@@ -47,16 +47,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="8 km restantes"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/text_size3" />
+                android:text="8 km restantes até o fim da sua corrida"
+                android:textColor="@color/colorAccent" />
 
             <Button
                 android:id="@+id/openMapNavigation_bt"
                 style="@style/StyleButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="12dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="Abrir mapa de navegação"
                 android:drawableRight="@drawable/ic_map_navigation"/>
