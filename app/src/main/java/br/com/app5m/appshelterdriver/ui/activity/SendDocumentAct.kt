@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -24,6 +25,7 @@ import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.util.DialogMessages
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
+import kotlinx.android.synthetic.main.activity_send_document.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.lang.Exception
@@ -33,6 +35,8 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
 
     private lateinit var useful: Useful
     private lateinit var documentControl: DocumentControl
+
+    private var finalFile: File? = null
 
     private val permissions = arrayOf(
         Manifest.permission.CAMERA,
@@ -47,17 +51,44 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
         useful = Useful(this)
         documentControl = DocumentControl(this, this, useful)
 
+        addPhoto_bt.setOnClickListener {
+            openDialogGalleryCamera()
+        }
 
+        sendDocument_bt.setOnClickListener {
+
+            if (finalFile == null) return@setOnClickListener
+
+            useful.openLoading()
+            documentControl.updateDocument(finalFile!!)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        documentControl.listDocDriver()
     }
 
     override fun dResponse(list: List<Document>, type: String) {
 
+        useful.closeLoading()
+
         val docInfo = list[0]
 
-        SingleToast.INSTANCE.show(this, docInfo.msg!!, Toast.LENGTH_LONG)
+        if (type == "listDoc") {
+            if (docInfo.rows != "0") {
 
-        if (docInfo.status == "01") {
-            finish()
+                //pegar url e glid
+                msg_tv.visibility = View.GONE
+            }
+        } else {
+
+            SingleToast.INSTANCE.show(this, docInfo.msg!!, Toast.LENGTH_LONG)
+
+            if (docInfo.status == "01") {
+                finish()
+            }
         }
 
     }
@@ -76,11 +107,10 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
                         val tempUri = getImageUri(this, photo)
 
                         // CALL THIS METHOD TO GET THE ACTUAL PATH
-                        val finalFile = File(getRealPathFromURI(tempUri))
+                        finalFile = File(getRealPathFromURI(tempUri))
 
-                        useful.openLoading()
-                        documentControl.updateDocument(finalFile)
-
+                        document_iv.setImageURI(tempUri)
+                        msg_tv.visibility = View.GONE
                     }
                     1 -> {
 
@@ -92,10 +122,10 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
 
                         val imgPath = getRealPathFromURI(selectedImage)
-                        val finalFile = File(imgPath.toString())
+                        finalFile = File(imgPath.toString())
 
-                        useful.openLoading()
-                        documentControl.updateDocument(finalFile)
+                        document_iv.setImageURI(selectedImage)
+                        msg_tv.visibility = View.GONE
 
                     }
                 }

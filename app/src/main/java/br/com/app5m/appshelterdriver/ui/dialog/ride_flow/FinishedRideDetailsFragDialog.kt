@@ -56,6 +56,15 @@ class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: Bott
             bottomSheetDialogFragment.dismiss()
         }
 
+//        val destination = getString(R.string.trip_info_destination, flowViewModel.currentRideByDriver2.destinationAddress)
+//        val distance =
+//            getString(R.string.trip_info_distance,
+//                (flowViewModel.currentRideByDriver2.estimatedDistance?.toDouble() ?: 0.0) / 1000f)
+//        val duration = getString(R.string.trip_info_eta, flowViewModel.currentRideByDriver2.getFormattedArrivalETA())
+//        val payment = "Dinheiro"
+//
+//
+//        tripDataLabel.text = "$destination\n$distance\n$duration\n$payment"
 
     }
 
