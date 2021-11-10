@@ -52,19 +52,19 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginTop="12dp"
-                android:background="#F8F8F8">
+                android:background="@color/gray200">
 
                 <TextView
-                    android:id="@+id/msgTxt"
+                    android:id="@+id/msg_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:visibility="gone"
                     android:text="Adicione uma foto (CNH OU Identidade)"
+                    android:textColor="@color/colorPrimary"
                     android:textAlignment="center" />
 
                 <ImageView
-                    android:id="@+id/imgProduct"
+                    android:id="@+id/document_iv"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_gravity="center"

@@ -12,7 +12,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
     <include
-        layout="@layout/baseboard_accept_race"
+        layout="@layout/bottom_im_available"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
