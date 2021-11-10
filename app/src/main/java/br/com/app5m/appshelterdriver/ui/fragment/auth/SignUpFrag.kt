@@ -110,6 +110,7 @@ class SignUpFrag :  Fragment(){
             user.vehicle.color = "Vermelho"
             user.vehicle.year = "2015"
             user.vehicle.modelYear = "2015"
+            user.vehicle.typeCar = (typeCar_sp.selectedItemPosition + 1).toString()
 
             useful.startFragmentOnBack(PhoneValidation1Frag(user), requireActivity().supportFragmentManager)
 

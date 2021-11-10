@@ -280,6 +280,22 @@
                     android:maxLines="1" />
             </LinearLayout>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape_main_spinner">
+
+                <Spinner
+                    android:id="@+id/typeCar_sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/type_car"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp" />
+
+            </FrameLayout>
+
             <TextView
                 android:id="@+id/terms_tv"
                 android:layout_width="match_parent"

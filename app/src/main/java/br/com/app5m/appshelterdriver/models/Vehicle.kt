@@ -27,4 +27,7 @@ class Vehicle : Parcelable {
 
     @field:SerializedName("ano_modelo")
     var modelYear: String? = null
+
+    @field:SerializedName("tipo_carro")
+    var typeCar: String? = null
 }
