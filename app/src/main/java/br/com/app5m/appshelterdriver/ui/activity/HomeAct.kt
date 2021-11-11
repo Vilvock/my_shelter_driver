@@ -196,9 +196,11 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 val rideId = intent.extras?.getString("rideId")
 
                 if (rideId != null) {
-                    _rideLiveData.value!!.rideId = rideId
-                } else {
-                    return
+                    val acceptRide = Ride()
+
+                    acceptRide.rideId = rideId
+
+                    _rideLiveData.value = acceptRide
                 }
 
                 notifyScreenStageChanged(screenStage!!)
