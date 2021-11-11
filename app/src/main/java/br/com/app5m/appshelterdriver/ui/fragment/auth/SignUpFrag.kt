@@ -104,9 +104,9 @@ class SignUpFrag :  Fragment(){
 
             //carro
 
-            user.vehicle.mark = brand_et.text.toString()
+            user.vehicle.mark = mark_et.text.toString()
             user.vehicle.model = model_et.text.toString()
-            user.vehicle.board = plate_et.text.toString()
+            user.vehicle.board = board_et.text.toString()
             user.vehicle.color = "Vermelho"
             user.vehicle.year = year_et.text.toString()
             user.vehicle.modelYear = year_et.text.toString()
@@ -116,14 +116,13 @@ class SignUpFrag :  Fragment(){
 
         }
 
-
-
         terms_tv.setOnClickListener {
             startActivity(Intent(requireContext(), DocumentPdfWebViewAct::class.java ))
         }
 
     }
 
+    //validacao para carro dps
     private fun validate() : Boolean {
         if (!validation.name(name_et)) return false
         if (!validation.lastName(lastName_et)) return false

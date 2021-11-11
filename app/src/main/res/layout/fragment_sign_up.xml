@@ -217,7 +217,7 @@
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/brand_et"
+                android:id="@+id/mark_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -239,7 +239,7 @@
                 android:maxLines="1"/>
 
             <EditText
-                android:id="@+id/plate_et"
+                android:id="@+id/board_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

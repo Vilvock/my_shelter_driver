@@ -51,6 +51,7 @@ import com.google.gson.Gson
 import com.google.maps.android.PolyUtil
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_send_document.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.bottom_im_available.*
 import kotlinx.android.synthetic.main.content_home.*
@@ -98,30 +99,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     val _mapPlotDateLiveData = MutableLiveData<MapPlotData?>()
     val mapPlotDateLiveData: LiveData<MapPlotData?> = _mapPlotDateLiveData
 
-    private lateinit var initialsRideInfo: Ride
     private lateinit var lastRideInfo: Ride
 
     var isCameraLock: Boolean = true
-    private var isRatingDialogShowed: Boolean = true
 
     private lateinit var mapFragment: SupportMapFragment
 
     private val handler = Handler()
-    private var runnable = Runnable { notifyScreenStageChanged(MainScreenStage.OVERVIEW)}
-    private var runnableFindLocationPickUp = Runnable {notifyScreenStageChanged(MainScreenStage.WAITING_PICKUP)}
-    private var runnableFindProcess = Runnable {notifyScreenStageChanged(MainScreenStage.ONGOING_RIDE)}
+    private var runnable = Runnable { getRealTimeLocation()}
 
-
-
-
-
-
-
-
-
-
-    private var int = 1
-    private var int2 = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -144,23 +130,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         saveFcm()
         documentControl.listDocDriver()
 
-        imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
-
-            val driverStatus = User()
-
-            driverStatus.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
-            driverStatus.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
-
-            if (isChecked) {
-                //online
-                driverStatus.online = "1"
-            } else {
-                //offline
-                driverStatus.online = "2"
-            }
-
-            userControl.updateStatusOnline(driverStatus)
-        }
 
     }
 
@@ -243,139 +212,110 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     override fun dResponse(list: List<Document>, type: String) {
 
-        val docInfo = list[0]
+        val docInfo1 = list[0]
+        val docInfo2 = list[1]
 
-        if (docInfo.rows != "0") {
-            startActivity(Intent(this, SendDocumentAct::class.java))
+        if (type == "listDoc") {
 
+            if (docInfo1.status == "Aprovado" && docInfo2.status == "Aprovado") {
+
+                imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
+
+                val driverStatus = User()
+
+                driverStatus.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
+                driverStatus.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+
+                if (isChecked) {
+                    //online
+                    driverStatus.online = "1"
+                } else {
+                    //offline
+                    driverStatus.online = "2"
+                }
+
+                userControl.updateStatusOnline(driverStatus)
+            }
+
+            } else {
+
+                imAvailable_sw.setOnClickListener {
+
+                    startActivity(Intent(this, SendDocumentAct::class.java))
+
+                    SingleToast.INSTANCE.show(this,
+                        "É necessário ter todos os seus documentos aprovados apra poder realizar viagens pela Shelter.", Toast.LENGTH_LONG)
+                }
+
+            }
         }
+
     }
 
     override fun rResponse(list: List<Ride>, type: String) {
+
         lastRideInfo = list[0]
 
         if (type == "findAll") {
-
-            //    pra pegar localizacao do motora eu faco como?
-//    {
-//        "id":7,
-//        "tipo_carro":1,
-//        "id_tipo_pagamento":2,
-//        "nome_tipo_pagamento":"Dinheiro",
-//        "motorista_nome":null,
-//        "motorista_avatar":null,
-//        "endereco_in":"Av. Pres. Get\u00falio Vargas 5019 Alvorada",
-//        "endereco_out":"Av. Tiradentes 81 Alvorada",
-//        "latitude_in":"-30.003922",
-//        "longitude_in":"-51.052373",
-//        "latitude_out":"-30.0137134",
-//        "longitude_out":"-51.0847039",
-//        "distancia":4,
-//        "distancia_sigla":"km",
-//        "tempo_rota":10,
-//        "polyline":"",
-//        "valor_total":" R$ 5,50",
-//        "valor_motorista":" R$ 4,95",
-//        "valor_dinamica":" R$ 0,00",
-//        "data":"21\/10\/2021 - 22:09:17",
-//        "status_corrida":"Solicitada",
-//        "rows":1
-//    }
-
             if (lastRideInfo.rows != "0") {
 
-//            for (ride in list) {
+                _rideLiveData.value = lastRideInfo
+
                 when(lastRideInfo.rideStatus) {
-//                    "Solicitada" -> {
-//                        _rideLiveData.value = lastRideInfo
-//
-//                        notifyScreenStageChanged(MainScreenStage.DRIVER_SEARCH)
-//                    }
                     "Aceita" -> {
 
-                        if (int == 1) {
-                            //botar para aparecer msg so quando se aproximar do ponto de embarque depois
+                        //primeira vez q entrar vai overview  e so vai aparecer uma vez a dialog
+                        if (screenStageLiveData.value != MainScreenStage.WAITING_PICKUP) {
                             useful.showDefaultDialogView(supportFragmentManager, "waiting")
-                            int++
                         }
 
-                        _rideLiveData.value = lastRideInfo
 
-                        //mapupdate aqui quando poly parar de ser null
-                        _mapPlotDateLiveData.value = MapPlotData(
-                            userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
-                            originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-                            destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()))
+                        notifyScreenStageChanged(MainScreenStage.WAITING_PICKUP)
 
-                        mapPlotUpdated(mapPlotDateLiveData.value)
-
-
-                        handler.postDelayed(runnableFindLocationPickUp, 5000)
                     }
 
                     "Em andamento" -> {
 
                         val findRideProcess = Ride()
 
-                        findRideProcess.latitude = "-30.0166311"
-                        findRideProcess.longitude = "-51.0544592"
-                        findRideProcess.carType = lastRideInfo.carType
+                        findRideProcess.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
+                        findRideProcess.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+                        findRideProcess.carType = rideLiveData.value!!.carType
 
                         rideControl.findProcess(findRideProcess)
-
 
                     }
 
                     "Finalizada" -> {
 
-//                        if(isRatingDialogShowed) {
-//                            isRatingDialogShowed = false
-//                            notifyScreenStageChanged(MainScreenStage.FINISH_RIDE)
-//                        }else {
+                        if (screenStageLiveData.value != MainScreenStage.FINISH_RIDE) {
+                            useful.showDefaultDialogView(supportFragmentManager, "finish")
+                        }
 
-                            handler.postDelayed(runnable, 5000)
-//                        }
-
+                        notifyScreenStageChanged(MainScreenStage.FINISH_RIDE)
                     }
 
                     else -> {
                         //cancelada
-                        handler.postDelayed(runnable, 5000)
+                        notifyScreenStageChanged(MainScreenStage.OVERVIEW)
                     }
                 }
 
-//            }
-
             } else {
-                handler.postDelayed(runnable, 5000)
+                notifyScreenStageChanged(MainScreenStage.OVERVIEW)
             }
-
 
             //find andamento
         } else {
             if (lastRideInfo.rows != "0") {
 
-                if (int2 == 1) {
-                    //botar para aparecer msg so quando se aproximar do ponto de embarque depois
+                if (screenStageLiveData.value != MainScreenStage.ONGOING_RIDE) {
                     useful.showDefaultDialogView(supportFragmentManager, "ongoing")
-                    int2++
                 }
 
-                _rideLiveData.value = lastRideInfo
-
-                _mapPlotDateLiveData.value = MapPlotData(
-                    originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
-                    polyline = PolyUtil.decode(rideLiveData.value!!.finalRoute.overViewPolyLine.polyLinePoints))
-
-                mapPlotUpdated(mapPlotDateLiveData.value)
-
-
-                handler.postDelayed(runnableFindProcess, 5000)
+                notifyScreenStageChanged(MainScreenStage.ONGOING_RIDE)
             }
-
         }
-
 
     }
 
@@ -527,6 +467,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 if (location == null) {
                     statusCheck()
                     handler.removeCallbacks(runnable)
+
+                    rideControl.findAllDriver()
                 } else {
 
                     _mapPlotDateLiveData.value = MapPlotData(
@@ -536,12 +478,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     if (isCameraLock) {
                         if (screenStageLiveData.value == MainScreenStage.OVERVIEW) {
                             mapPlotUpdated(mapPlotDateLiveData.value)
-                            handler.postDelayed(runnable, 5000)
                         }
                     } else {
-                        rideControl.findAllDriver()
-
-
+                        //atualizar localizacao a cada 5 segundos
                         val driverLocation = User()
 
                         driverLocation.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
@@ -550,6 +489,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         userControl.updateLocation(driverLocation)
                     }
 
+                    rideControl.findAllDriver()
                 }
             }
         }
@@ -587,54 +527,58 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     fun notifyScreenStageChanged(newStage: MainScreenStage) {
 
         _screenStageLiveData.value = newStage
+        configDrawer()
 
         Log.d("TAG", "notifyScreen: " + screenStageLiveData.value)
         Log.d("TAG", "mapPlotDateLiveData" + mapPlotDateLiveData.value)
         Log.d("TAG", "ridelivedata" + Gson().toJson(rideLiveData.value))
 
-        configDrawer()
-
         when (newStage) {
             MainScreenStage.OVERVIEW -> {
 
-                getRealTimeLocation()
+                //
 
             }
 
             MainScreenStage.ACCEPT_RIDE -> {
 
-                handler.removeCallbacks(runnable)
-
-
                 useful.showDefaultDialogView(supportFragmentManager, "accept")
-            }
-
-            MainScreenStage.WAITING_PICKUP -> {
-
-
-                rideControl.findAllDriver()
-
 
             }
 
+            MainScreenStage.WAITING_PICKUP  -> {
+
+                //mapupdate aqui quando poly parar de ser null
+                _mapPlotDateLiveData.value = MapPlotData(
+                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                    originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()))
+
+                mapPlotUpdated(mapPlotDateLiveData.value)
+
+            }
             MainScreenStage.ONGOING_RIDE -> {
 
+                _mapPlotDateLiveData.value = MapPlotData(
+                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                    originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
+                    polyline = PolyUtil.decode(rideLiveData.value!!.finalRoute.overViewPolyLine.polyLinePoints))
 
-                rideControl.findAllDriver()
+                mapPlotUpdated(mapPlotDateLiveData.value)
 
             }
-
             MainScreenStage.FINISH_RIDE -> {
 
 
-                //dialog fim da corrida
-                handler.removeCallbacks(runnable)
-
-                useful.showDefaultDialogView(supportFragmentManager, "finish")
+//
+//                rideControl.findAllDriver()
 
             }
 
         }
+
+        handler.postDelayed(runnable, 5000)
     }
 
 
@@ -773,8 +717,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     acceptRide.rideId = rideId
 
                     _rideLiveData.value = acceptRide
-                } else {
-                    return
                 }
 
                 notifyScreenStageChanged(screenStage!!)

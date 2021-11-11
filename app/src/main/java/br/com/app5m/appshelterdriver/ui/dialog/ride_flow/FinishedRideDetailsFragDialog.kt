@@ -44,17 +44,15 @@ class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: Bott
         useful = Useful(requireContext())
         preferences = Preferences(requireContext())
 
-        val homeActContext = requireActivity() as HomeAct
+        homeActContext = requireActivity() as HomeAct
 
         ok_bt.setOnClickListener {
 
-
-            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.OVERVIEW)
             bottomSheetDialogFragment.dismiss()
         }
 
         val destination = "Destino: " + homeActContext.rideLiveData.value!!.destinationAddress
-        val distance = "Distancia: " + homeActContext.rideLiveData.value!!.distance + homeActContext.rideLiveData.value!!.distanceInitials
+        val distance = "Distância: " + homeActContext.rideLiveData.value!!.distance + " " + homeActContext.rideLiveData.value!!.distanceInitials
         val duration = "Tempo estimado: " + homeActContext.rideLiveData.value!!.routeTime
         val payment = "Tipo de pagamento: " + homeActContext.rideLiveData.value!!.nameTypePayment
 

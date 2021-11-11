@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -24,6 +25,7 @@ import br.com.app5m.appshelterdriver.util.DialogMessages
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import kotlinx.android.synthetic.main.activity_send_document.*
+import kotlinx.android.synthetic.main.toolbar_yellow.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.lang.Exception
@@ -37,7 +39,7 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
     private var finalFileCrlv: File? = null
     private var finalFileCnh: File? = null
 
-    private var isDocumentID: Boolean = false
+    private var documentType: Int? = null
 
     private lateinit var docInfo1: Document
     private lateinit var docInfo2: Document
@@ -47,17 +49,27 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
+
+    companion object {
+        private const val CNH_TYPE = 0
+        private const val CRLV_TYPE = 1
+    }
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_document)
+        setSupportActionBar(toolbar)
 
         useful = Useful(this)
+
+        useful.setActionBar(this, supportActionBar!!, "", 0)
+
         documentControl = DocumentControl(this, this, useful)
+        documentControl.listDocDriver()
 
         addPhotoCnh_bt.setOnClickListener {
             openDialogGalleryCamera()
-            isDocumentID = false
+            documentType = CNH_TYPE
         }
 
         sendCnh_bt.setOnClickListener {
@@ -71,7 +83,7 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
 
         addPhotoCrlv_bt.setOnClickListener {
             openDialogGalleryCamera()
-            isDocumentID = true
+            documentType = CRLV_TYPE
         }
 
         sendDocumentCrlv_bt.setOnClickListener {
@@ -84,9 +96,15 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        documentControl.listDocDriver()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun dResponse(list: List<Document>, type: String) {
@@ -111,11 +129,13 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
                 statusCrlv_tv.text = docInfo2.status
                 msg_tv2.visibility = View.GONE
             }
+
         } else {
 
             SingleToast.INSTANCE.show(this, docInfo1.msg!!, Toast.LENGTH_LONG)
 
             if (docInfo1.status == "01") {
+                documentControl.listDocDriver()
 //                finish()
             }
         }
@@ -137,7 +157,7 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
 
                         // CALL THIS METHOD TO GET THE ACTUAL PATH
 
-                        if (isDocumentID) {
+                        if (documentType == CRLV_TYPE) {
 
                             finalFileCrlv = File(getRealPathFromURI(tempUri))
                             msg_tv2.visibility = View.GONE
@@ -161,7 +181,7 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
 
                         val imgPath = getRealPathFromURI(selectedImage)
 
-                        if (isDocumentID) {
+                        if (documentType == CRLV_TYPE) {
 
                             finalFileCrlv = File(imgPath.toString())
                             msg_tv2.visibility = View.GONE
@@ -285,4 +305,5 @@ class SendDocumentAct : AppCompatActivity(), WSResult {
         }
         return path
     }
+
 }
