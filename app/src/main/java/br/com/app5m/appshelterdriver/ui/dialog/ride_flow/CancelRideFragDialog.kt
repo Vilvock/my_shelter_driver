@@ -73,13 +73,10 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
                     cancelRide.id = homeActContext.rideLiveData.value!!.rideId
                 }
 
-                rideControl.cancelRidePassenger(cancelRide)
-
-            } else {
+            }  else {
 
                 homeActContext.isCameraLock = true
                 homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.OVERVIEW)
-
                 bottomSheetDialogFragment.dismiss()
             }
 

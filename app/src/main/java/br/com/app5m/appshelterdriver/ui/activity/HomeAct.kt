@@ -102,6 +102,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     private lateinit var lastRideInfo: Ride
 
     var isCameraLock: Boolean = true
+    private var isRatingDialogShowed: Boolean = true
 
     private lateinit var mapFragment: SupportMapFragment
 
@@ -203,6 +204,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     _rideLiveData.value = acceptRide
                 }
 
+                if (screenStageLiveData.value != null) {
+                    if (screenStageLiveData.value == screenStage) {
+                        return
+                    }
+                }
+
                 notifyScreenStageChanged(screenStage!!)
 
             } else {
@@ -258,10 +265,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
         lastRideInfo = list[0]
 
+        _rideLiveData.value = lastRideInfo
+
         if (type == "findAll") {
             if (lastRideInfo.rows != "0") {
-
-                _rideLiveData.value = lastRideInfo
 
                 when(lastRideInfo.rideStatus) {
                     "Aceita" -> {
@@ -290,8 +297,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                     "Finalizada" -> {
 
-                        if (screenStageLiveData.value != MainScreenStage.FINISH_RIDE) {
+                        if (isRatingDialogShowed) {
                             useful.showDefaultDialogView(supportFragmentManager, "finish")
+                            isRatingDialogShowed = false
                         }
 
                         notifyScreenStageChanged(MainScreenStage.FINISH_RIDE)
@@ -551,23 +559,28 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             MainScreenStage.WAITING_PICKUP  -> {
 
                 //mapupdate aqui quando poly parar de ser null
-                _mapPlotDateLiveData.value = MapPlotData(
-                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
-                    originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()))
 
-                mapPlotUpdated(mapPlotDateLiveData.value)
+                if (rideLiveData.value != null) {
+                    _mapPlotDateLiveData.value = MapPlotData(
+//                        userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                        destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()))
+
+                    mapPlotUpdated(mapPlotDateLiveData.value)
+                }
 
             }
             MainScreenStage.ONGOING_RIDE -> {
 
-                _mapPlotDateLiveData.value = MapPlotData(
-                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
-                    originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-                    destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
-                    polyline = PolyUtil.decode(rideLiveData.value!!.finalRoute.overViewPolyLine.polyLinePoints))
+                if (rideLiveData.value != null) {
+                    _mapPlotDateLiveData.value = MapPlotData(
+    //                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                        destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
+                        polyline = PolyUtil.decode(rideLiveData.value!!.finalRoute.overViewPolyLine.polyLinePoints))
 
-                mapPlotUpdated(mapPlotDateLiveData.value)
+                    mapPlotUpdated(mapPlotDateLiveData.value)
+                }
 
             }
             MainScreenStage.FINISH_RIDE -> {
@@ -719,6 +732,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     acceptRide.rideId = rideId
 
                     _rideLiveData.value = acceptRide
+                }
+
+                if (screenStageLiveData.value != null) {
+                    if (screenStageLiveData.value == screenStage) {
+                        return
+                    }
                 }
 
                 notifyScreenStageChanged(screenStage!!)
