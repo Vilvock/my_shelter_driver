@@ -714,8 +714,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     isCameraLock = false
                     return
                 }
-            } else {
-                return
             }
         }
 

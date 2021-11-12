@@ -12,6 +12,14 @@
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
     <include
+        android:id="@+id/top_credit_available"
+        layout="@layout/top_credit_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="top|end" />
+
+    <include
         android:id="@+id/bottom_im_available"
         layout="@layout/bottom_im_available"
         android:layout_width="match_parent"
