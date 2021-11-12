@@ -76,7 +76,7 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
             }  else {
 
                 homeActContext.isCameraLock = true
-                homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.OVERVIEW)
+                homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                 bottomSheetDialogFragment.dismiss()
             }
 
@@ -90,7 +90,7 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
         if (rideInfo.status == "01") {
             homeActContext.isCameraLock = true
-            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.OVERVIEW)
+            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 
             bottomSheetDialogFragment.dismiss()
         } else {

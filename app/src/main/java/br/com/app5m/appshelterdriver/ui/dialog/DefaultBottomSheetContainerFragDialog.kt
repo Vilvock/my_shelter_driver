@@ -112,7 +112,7 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
             if (requireActivity() == homeActContext) {
 
                 Log.d("TAG", "onDestroy: " + homeActContext.screenStageLiveData.value)
-                if (homeActContext.screenStageLiveData.value != HomeAct.MainScreenStage.OVERVIEW) {
+                if (homeActContext.screenStageLiveData.value != HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
                     if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
                         || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
 
@@ -120,7 +120,7 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
 
                     } else {
 
-                        homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.OVERVIEW)
+                        homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                     }
                 }
             }

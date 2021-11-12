@@ -65,30 +65,14 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 notifyScreenValue = HomeAct.MainScreenStage.ACCEPT_RIDE
 
             }
-            "2" -> {
-                //ACEITA
-                //envia algum dado chave para colocar a tela em waiting Pickup
-                notifyScreenValue = HomeAct.MainScreenStage.WAITING_PICKUP
-            }
-            "3" -> {
-                //EM_ANDAMENTO
-                // envia algum dado chave para colocar a tela em ongoing
-                notifyScreenValue = HomeAct.MainScreenStage.ONGOING_RIDE
-            }
-            "4" -> {
-                //FINALIZADA
-                // envia algum dado chave para colocar a tela em finish
-                notifyScreenValue = HomeAct.MainScreenStage.FINISH_RIDE
-            }
-            "5" -> {
-                //CANCELADA_MOTORISTA
-                // envia algum dado chave para colocar a tela em overview e mostrar mensagem q cancelou
-                notifyScreenValue = HomeAct.MainScreenStage.OVERVIEW
-            }
+            "2", //ACEITA
+            "3", //EM ANDAMENTO
+            "4", //FINALZIADA
+            "5", // CANCELADA PELO MOTORA
             "6" -> {
                 //CANCELADA_PASSAGEIRO
                 // envia algum dado chave para colocar a tela em overview e mostrar mensagem q cancelou
-                notifyScreenValue = HomeAct.MainScreenStage.OVERVIEW
+                notifyScreenValue = HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT
             }
             //DEFAULT NOTIFICATIONS
             else -> {

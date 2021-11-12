@@ -73,7 +73,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     private var mMap: GoogleMap? = null
 
     enum class MainScreenStage {
-        OVERVIEW,
+        RELOAD_OVERVIEW_STATEMENT,
         ACCEPT_RIDE,
         WAITING_PICKUP,
         ONGOING_RIDE,
@@ -102,7 +102,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     private lateinit var lastRideInfo: Ride
 
     var isCameraLock: Boolean = true
-    private var isRatingDialogShowed: Boolean = true
 
     private lateinit var mapFragment: SupportMapFragment
 
@@ -154,7 +153,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     }
                 })
         } else {
-            if (screenStageLiveData.value == MainScreenStage.OVERVIEW) {
+            if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
                 isCameraLock = true
                 mapFragment.getMapAsync(this)
             }
@@ -196,25 +195,22 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
                 val rideId = intent.extras?.getString("rideId")
 
-                if (rideId != null) {
-                    val acceptRide = Ride()
+                if (screenStage == MainScreenStage.ACCEPT_RIDE) {
+                    if (rideId != null) {
+                        val acceptRide = Ride()
 
-                    acceptRide.rideId = rideId
+                        acceptRide.rideId = rideId
 
-                    _rideLiveData.value = acceptRide
-                }
-
-                if (screenStageLiveData.value != null) {
-                    if (screenStageLiveData.value == screenStage) {
-                        return
+                        _rideLiveData.value = acceptRide
                     }
-                }
 
-                notifyScreenStageChanged(screenStage!!)
+                    notifyScreenStageChanged(screenStage)
+
+                }
 
             } else {
 
-                notifyScreenStageChanged(MainScreenStage.OVERVIEW)
+                notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
             }
 
     }
@@ -297,22 +293,21 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                     "Finalizada" -> {
 
-                        if (isRatingDialogShowed) {
+                        if (screenStageLiveData.value == MainScreenStage.FINISH_RIDE) {
                             useful.showDefaultDialogView(supportFragmentManager, "finish")
-                            isRatingDialogShowed = false
                         }
 
-                        notifyScreenStageChanged(MainScreenStage.FINISH_RIDE)
+                        notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                     }
 
                     else -> {
                         //cancelada
-                        notifyScreenStageChanged(MainScreenStage.OVERVIEW)
+                        notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                     }
                 }
 
             } else {
-                notifyScreenStageChanged(MainScreenStage.OVERVIEW)
+                notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
             }
 
             //find andamento
@@ -486,7 +481,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     )
 
                     if (isCameraLock) {
-                        if (screenStageLiveData.value == MainScreenStage.OVERVIEW) {
+                        if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
                             mapPlotUpdated(mapPlotDateLiveData.value)
                         }
                     } else {
@@ -536,6 +531,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     fun notifyScreenStageChanged(newStage: MainScreenStage) {
 
+        handler.removeCallbacks(runnable)
+
         _screenStageLiveData.value = newStage
         configDrawer()
 
@@ -544,9 +541,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         Log.d("TAG", "ridelivedata" + Gson().toJson(rideLiveData.value))
 
         when (newStage) {
-            MainScreenStage.OVERVIEW -> {
-
-                //
+            MainScreenStage.RELOAD_OVERVIEW_STATEMENT -> {
 
             }
 
@@ -586,8 +581,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             MainScreenStage.FINISH_RIDE -> {
 
 
-//
-//                rideControl.findAllDriver()
 
             }
 
@@ -691,7 +684,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         if (notNullPoints.isEmpty())
             return
 
-        if (screenStageLiveData.value == MainScreenStage.OVERVIEW) {
+        if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
             if (isCameraLock) {
                 if (notNullPoints.size == 1) {
                     mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 18f))
@@ -726,21 +719,18 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 Log.d("TAG", "onReceive: " + rideId)
 
-                if (rideId != null) {
-                    val acceptRide = Ride()
+                if (screenStage == MainScreenStage.ACCEPT_RIDE) {
+                    if (rideId != null) {
+                        val acceptRide = Ride()
 
-                    acceptRide.rideId = rideId
+                        acceptRide.rideId = rideId
 
-                    _rideLiveData.value = acceptRide
-                }
-
-                if (screenStageLiveData.value != null) {
-                    if (screenStageLiveData.value == screenStage) {
-                        return
+                        _rideLiveData.value = acceptRide
                     }
-                }
 
-                notifyScreenStageChanged(screenStage!!)
+                    notifyScreenStageChanged(screenStage)
+
+                }
 
             }
         }

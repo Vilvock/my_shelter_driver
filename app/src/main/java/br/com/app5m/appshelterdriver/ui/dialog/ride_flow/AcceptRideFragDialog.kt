@@ -74,6 +74,7 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
             rideControl.acceptRide(acceptRide)
         }
 
+        rideInfo_tv.visibility = View.GONE
 
         val origin = "Embarque: " + homeActContext.rideLiveData.value!!.originAddress
         val destination = "Destino: " + homeActContext.rideLiveData.value!!.destinationAddress
@@ -92,7 +93,7 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
         if (rideInfo.status == "01") {
             homeActContext.isCameraLock = true
-            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.WAITING_PICKUP)
+            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 
         }
 
