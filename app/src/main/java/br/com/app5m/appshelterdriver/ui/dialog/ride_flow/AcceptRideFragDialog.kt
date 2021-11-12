@@ -56,7 +56,7 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
             val acceptRide = Ride()
 
             Log.d("TAG", "accept:" )
-            acceptRide.id = homeActContext.rideLiveData.value!!.rideId
+            acceptRide.id = homeActContext.notificationRideId
 
 
             acceptRide.vehicleBoard = "teste"

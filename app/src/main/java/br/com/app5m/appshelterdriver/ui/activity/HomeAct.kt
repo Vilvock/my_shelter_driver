@@ -102,6 +102,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     private lateinit var lastRideInfo: Ride
 
     var isCameraLock: Boolean = true
+    lateinit var notificationRideId: String
 
     private lateinit var mapFragment: SupportMapFragment
 
@@ -729,11 +730,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 if (screenStage == MainScreenStage.ACCEPT_RIDE) {
                     if (rideId != null) {
-                        val acceptRide = Ride()
 
-                        acceptRide.rideId = rideId
+                        notificationRideId = rideId
 
-                        _rideLiveData.value = acceptRide
                     }
 
 
