@@ -277,6 +277,7 @@
                     android:ems="10"
                     android:focusableInTouchMode="false"
                     android:hint="Cor"
+                    android:text="Vermelho"
                     android:maxLines="1" />
             </LinearLayout>
 
@@ -290,7 +291,6 @@
                     android:id="@+id/typeCar_sp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:entries="@array/type_car"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp" />
 

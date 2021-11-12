@@ -12,10 +12,21 @@
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
     <include
+        android:id="@+id/bottom_im_available"
         layout="@layout/bottom_im_available"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:visibility="gone"
+        android:layout_gravity="bottom|center_horizontal" />
+
+    <include
+        android:id="@+id/bottom_documentation_off"
+        layout="@layout/bottom_documentation_off"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="gone"
         android:layout_gravity="bottom|center_horizontal" />
 
 </FrameLayout>

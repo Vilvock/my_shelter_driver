@@ -8,7 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.controller.RideControl
+import br.com.app5m.appshelterdriver.controller.webservice.WSResult
+import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.ui.activity.DocumentPdfWebViewAct
 import br.com.app5m.appshelterdriver.util.Mask
@@ -21,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_sign_up.*
 /**
  * A simple [Fragment] subclass.
  */
-class SignUpFrag :  Fragment(){
+class SignUpFrag :  Fragment(), WSResult{
 
 
     private lateinit var useful: Useful
@@ -30,6 +34,8 @@ class SignUpFrag :  Fragment(){
 
     private lateinit var cpfMask: TextWatcher
     private lateinit var cnpjMask: TextWatcher
+
+    private lateinit var rideControl: RideControl
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +51,11 @@ class SignUpFrag :  Fragment(){
         useful = Useful(requireContext())
         validation = Validation(requireContext())
         preferences = Preferences(requireContext())
+
+        rideControl = RideControl(requireContext(), this, useful)
+
+        useful.openLoading()
+        rideControl.listVehicleTypes()
 
         loadClicks()
         loadMasks()
@@ -70,6 +81,27 @@ class SignUpFrag :  Fragment(){
 
             }
         }
+
+    }
+
+    override fun rResponse(list: List<Ride>, type: String) {
+
+        useful.closeLoading()
+
+        val typeCarNameList = ArrayList<String>()
+
+        for (item in list) {
+            typeCarNameList.add(item.name!!)
+        }
+
+        //sla ta gordo
+        val arrayAdapterSpinner = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            typeCarNameList
+        )
+
+        typeCar_sp.adapter = arrayAdapterSpinner
 
     }
 

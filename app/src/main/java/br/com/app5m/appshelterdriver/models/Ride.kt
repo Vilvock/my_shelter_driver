@@ -90,6 +90,9 @@ class Ride : Serializable {
     @field:SerializedName("id")
     var id: String? = null
 
+    @field:SerializedName("nome")
+    var name: String? = null
+
     @field:SerializedName("tempo_rota")
     var routeTime: String? = null
 

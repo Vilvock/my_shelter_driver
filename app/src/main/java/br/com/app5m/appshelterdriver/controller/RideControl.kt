@@ -55,6 +55,17 @@ class RideControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
     }
 
+    fun listVehicleTypes(){
+
+        type = "vehicleTypes"
+
+        this.ride = Ride()
+        this.ride.token = WSConstants.TOKEN
+
+        val param: Call<List<Ride>> = service.listVehicleTypes(this.ride)
+        param.enqueue(this)
+    }
+
 
     fun findProcess(ride: Ride){
 

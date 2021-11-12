@@ -259,6 +259,19 @@ class UserControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
     }
 
+    fun findCurrentLocationStatus(){
+
+        type = "currentLocationStatus"
+
+        user = User()
+
+        user.id = preferences.getUserData()!!.id
+        user.token = WSConstants.TOKEN
+
+        val param: Call<List<User>> = service.findCurrentLocationStatus(user.id!!, user)
+        param.enqueue(this)
+    }
+
 
     fun saveFcm(user: User) {
 

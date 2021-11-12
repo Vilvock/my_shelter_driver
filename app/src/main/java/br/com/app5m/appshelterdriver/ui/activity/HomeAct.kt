@@ -129,9 +129,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         )
 
         saveFcm()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         documentControl.listDocDriver()
-
-
     }
 
     override fun onRestart() {
@@ -231,34 +234,39 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             if (docInfo1.status == "Aprovado" && docInfo2.status == "Aprovado") {
 
+                bottom_im_available.visibility = View.VISIBLE
+                bottom_documentation_off.visibility = View.GONE
+
                 imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
 
-                val driverStatus = User()
+                    val driverStatus = User()
 
-                driverStatus.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
-                driverStatus.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+                    driverStatus.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
+                    driverStatus.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
 
-                if (isChecked) {
-                    //online
-                    driverStatus.online = "1"
-                } else {
-                    //offline
-                    driverStatus.online = "2"
-                }
+                    if (isChecked) {
+                        //online
+                        driverStatus.online = "1"
+                    } else {
+                        //offline
+                        driverStatus.online = "2"
+                    }
 
                 userControl.updateStatusOnline(driverStatus)
             }
 
             } else {
 
-                imAvailable_sw.setOnClickListener {
+                bottom_im_available.visibility = View.GONE
+                bottom_documentation_off.visibility = View.VISIBLE
 
+                bottom_documentation_off.setOnClickListener {
                     startActivity(Intent(this, SendDocumentAct::class.java))
 
                     SingleToast.INSTANCE.show(this,
-                        "É necessário ter todos os seus documentos aprovados apra poder realizar viagens pela Shelter.", Toast.LENGTH_LONG)
-                }
+                        "É necessário ter todos os seus documentos aprovados para poder realizar viagens pela Shelter.", Toast.LENGTH_LONG)
 
+                }
             }
         }
 
@@ -349,6 +357,14 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 imAvailable_sw.isChecked = false
                 SingleToast.INSTANCE.show(this, userInfo.msg!! , Toast.LENGTH_LONG)
            }
+        } else if (type == "currentLocationStatus"){
+
+            imAvailable_sw.isChecked = userInfo.on == "1"
+
+        } else {
+
+            userControl.findCurrentLocationStatus()
+
         }
 
     }

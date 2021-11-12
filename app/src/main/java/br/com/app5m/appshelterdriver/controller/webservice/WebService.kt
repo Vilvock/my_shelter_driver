@@ -64,6 +64,11 @@ interface WebService {
         @Body u: User
     ): Call<List<User>>
 
+    @POST("motoristas/localizacaoatual/" + "{id}")
+    fun findCurrentLocationStatus(
+        @Path("id") idUser: String,
+        @Body u: User
+    ): Call<List<User>>
 
     //Address
 
@@ -118,6 +123,9 @@ interface WebService {
 
     @POST("corridas/cancelarmotorista")
     fun cancelRideDriver(@Body r: Ride): Call<List<Ride>>
+
+    @POST("corridas/listtiposveiculo")
+    fun listVehicleTypes(@Body r: Ride): Call<List<Ride>>
 
     //Bank
 

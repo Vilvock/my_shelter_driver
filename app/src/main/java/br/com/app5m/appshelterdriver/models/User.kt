@@ -25,6 +25,9 @@ class User : Parcelable {
     @field:SerializedName("online")
     var online: String? = null
 
+    @field:SerializedName("on")
+    var on: String? = null
+
     @field:SerializedName("id")
     var id: String? = null
 
