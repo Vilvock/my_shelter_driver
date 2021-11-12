@@ -206,6 +206,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                     notifyScreenStageChanged(screenStage)
 
+                } else {
+
+                    notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                 }
 
             } else {
@@ -730,6 +733,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                     notifyScreenStageChanged(screenStage)
 
+                } else {
+                    notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                 }
 
             }

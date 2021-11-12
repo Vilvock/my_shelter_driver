@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="8 km restantes até o fim da sua corrida"
+                android:text="0 km restantes até o fim da sua corrida"
                 android:textColor="@color/colorAccent" />
 
             <Button
