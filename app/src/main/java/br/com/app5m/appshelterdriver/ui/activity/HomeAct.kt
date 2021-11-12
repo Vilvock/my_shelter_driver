@@ -204,12 +204,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         _rideLiveData.value = acceptRide
                     }
 
-                    notifyScreenStageChanged(screenStage)
 
-                } else {
-
-                    notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                 }
+
+                notifyScreenStageChanged(screenStage!!)
 
             } else {
 
@@ -731,11 +729,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         _rideLiveData.value = acceptRide
                     }
 
-                    notifyScreenStageChanged(screenStage)
 
-                } else {
-                    notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                 }
+
+                notifyScreenStageChanged(screenStage!!)
 
             }
         }
