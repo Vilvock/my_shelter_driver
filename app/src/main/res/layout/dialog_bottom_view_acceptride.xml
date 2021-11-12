@@ -36,6 +36,16 @@
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark" />
 
+        <TextView
+            android:id="@+id/rideInfo_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/lorem_ipsum"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark" />
+
+
         <Button
             android:id="@+id/accept_bt"
             style="@style/StyleButton"
