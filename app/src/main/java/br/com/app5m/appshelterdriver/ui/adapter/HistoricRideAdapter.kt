@@ -17,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.MapsInitializer
+import kotlinx.android.synthetic.main.dialog_bottom_view_initride.*
 
 
 class HistoricRideAdapter(private val list: List<Ride>,
@@ -28,6 +29,9 @@ class HistoricRideAdapter(private val list: List<Ride>,
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val mapView: MapView = itemView.findViewById(R.id.lite_listrow_map)
+        val rideInfoTv: TextView = itemView.findViewById(R.id.info_tv)
+        val priceTv: TextView = itemView.findViewById(R.id.price_tv)
+        val dateTv: TextView = itemView.findViewById(R.id.date_tv)
 
     }
 
@@ -44,6 +48,17 @@ class HistoricRideAdapter(private val list: List<Ride>,
         holder.mapView.onCreate(null)
         // Set the map ready callback to receive the GoogleMap object
         holder.mapView.getMapAsync(this)
+
+        val origin = "Embarque: " + historicRide.originAddress
+        val destination = "Destino: " + historicRide.destinationAddress
+        val distance = "Distância: " + historicRide.distance + " " + historicRide.distanceInitials
+        val duration = "Tempo estimado: " + historicRide.routeTime
+        val payment = "Tipo de pagamento: " + historicRide.nameTypePayment
+
+        holder.dateTv.text = historicRide.date
+        holder.rideInfoTv.text = "$origin\n$destination\n$distance\n$duration\n$payment"
+        holder.priceTv.text = historicRide.totalValue
+
 
     }
 
