@@ -60,8 +60,7 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
         cancel_bt.setOnClickListener {
 
-            if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
-                || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
+            if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP) {
 
                 val cancelRide = Ride()
 
@@ -72,6 +71,8 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
                     cancelRide.id = homeActContext.rideLiveData.value!!.rideId
                 }
+
+                rideControl.cancelRidePassenger(cancelRide)
 
             }  else {
 

@@ -160,14 +160,19 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
         handler.removeCallbacks(runnable)
+        super.onStop()
+    }
+
+    override fun onPause() {
+        handler.removeCallbacks(runnable)
+        super.onPause()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         handler.removeCallbacks(runnable)
+        super.onDestroy()
     }
 
     @SuppressLint("MissingPermission")
@@ -712,6 +717,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
     private val myReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
+
+            handler.removeCallbacks(runnable)
 
             if (intent.extras != null) {
 

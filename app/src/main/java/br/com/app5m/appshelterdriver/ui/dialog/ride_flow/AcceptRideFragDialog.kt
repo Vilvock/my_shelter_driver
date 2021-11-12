@@ -55,21 +55,15 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
             val acceptRide = Ride()
 
-            //diogo precisa me trazer vehicleboard e vehicle model no login
-            if (homeActContext.rideLiveData.value!!.rideId == null) {
+            Log.d("TAG", "accept:" )
+            acceptRide.id = homeActContext.rideLiveData.value!!.rideId
 
-                acceptRide.id = homeActContext.rideLiveData.value!!.id
-            } else {
-
-                acceptRide.id = homeActContext.rideLiveData.value!!.rideId
-            }
 
             acceptRide.vehicleBoard = "teste"
             acceptRide.vehicleModel = "teste"
 //            acceptRide.vehicleBoard = preferences.getUserData()!!.vehicle.board
 //            acceptRide.vehicleModel = preferences.getUserData()!!.vehicle.model
 
-            Log.d("TAG", "accept:")
 
             rideControl.acceptRide(acceptRide)
         }
