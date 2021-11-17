@@ -68,7 +68,7 @@ class BankControl(private val context: Context, private val result: WSResult, pr
     }
 
 
-    fun listBanksUser(bank: Bank){
+    fun listBanksUser(){
 
         type = "listBanks"
 
