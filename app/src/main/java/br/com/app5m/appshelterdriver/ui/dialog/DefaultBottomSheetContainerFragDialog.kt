@@ -1,27 +1,24 @@
 package br.com.app5m.appshelterdriver.ui.dialog
 
+import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import androidx.fragment.app.Fragment
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-
-import android.app.Dialog
-import android.graphics.Color
-import android.util.Log
 import android.view.WindowManager
+import android.widget.FrameLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.ui.dialog.ride_flow.*
 import br.com.app5m.appshelterdriver.util.Useful
-
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
 
 
 /**
@@ -33,6 +30,10 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
     private lateinit var useful: Useful
 
     private lateinit var fragment: Fragment
+
+    override fun getTheme(): Int {
+        return R.style.AppBottomSheetDialogTheme
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -93,9 +94,9 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
 
 //            //others
 //
-//            "addAddress" -> {
-//                fragment = AddAddressFragDialog(this)
-//            }
+            "add_bank" -> {
+                fragment = AddBankFragDialog(this)
+            }
 //
 //            "card" -> {
 //                fragment = TypeCardFragDialog(this)

@@ -40,6 +40,7 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
         useful = Useful(requireContext())
         bankControl = BankControl(requireContext(), this, useful)
 
+        configRecycler()
 
         swipeRefresh.setOnRefreshListener { bankControl.listBanksUser() }
     }
@@ -59,7 +60,7 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
         when (item.itemId) {
             R.id.action_add -> {
-
+                useful.showDefaultDialogView(requireActivity().supportFragmentManager, "add_bank")
             }
 
         }
