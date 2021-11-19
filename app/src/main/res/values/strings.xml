@@ -5,9 +5,20 @@
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string-array name="type_account">
+        <item>Conta Corrente</item>
+        <item>Conta Poupança</item>
+    </string-array>
+
     <string-array name="type_person">
         <item>Pessoa Física</item>
         <item>Pessoa Jurídica</item>
+    </string-array>
+
+    <string-array name="type_key_pix">
+        <item>CPF</item>
+        <item>CNPJ</item>
+        <item>Outro</item>
     </string-array>
 
     <string-array name="type_car">

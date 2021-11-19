@@ -47,21 +47,8 @@ class BankControl(private val context: Context, private val result: WSResult, pr
 
         type = "save"
 
-/*        {
-{
-	"token": "shelter_movel#2021",
-	"id_user": 11,
-	"type": 1,
-	"tipo_chave_pix": "CPF",
-	"chave_pix": "884.192.000-93",
-	"banco": "Bradesco",
-	"agencia": "0736",
-	"agencia_d": "1",
-	"cc": "0151152",
-	"cc_d": "1",
-	"tipo_conta": "corrente"
-}
-        }*/
+        bank.idUser = preferences.getUserData()!!.id
+        bank.token = WSConstants.TOKEN
 
         val param: Call<List<Bank>> = service.saveBank(bank)
         param.enqueue(this)
@@ -80,21 +67,6 @@ class BankControl(private val context: Context, private val result: WSResult, pr
 
         type = "update"
 
-/*        {
-{
-	"token": "shelter_movel#2021",
-	"id_conta": 1,
-	"type": 1,
-	"tipo_chave_pix": "CPF",
-	"chave_pix": "884.192.000-93",
-	"banco": "NU pagamentos",
-	"agencia": "0736",
-	"agencia_d": "1",
-	"cc": "0151152",
-	"cc_d": "1",
-	"tipo_conta": "corrente"
-}
-        }*/
 
         val param: Call<List<Bank>> = service.updateBank(bank)
         param.enqueue(this)

@@ -39,6 +39,9 @@ class BankAdapter(private val list: List<Bank>,
 
         val bank = list[position]
 
+//        [{"id":1,"type":1,"tipo_chave_pix":"CPF","chave_pix":"884.192.000-93",
+//            "banco":"NU pagamentos","agencia":736,"agencia_d":1,"cc":151152,
+//            "cc_d":1,"tipo_conta":"corrente","rows":1}]
 
     }
 

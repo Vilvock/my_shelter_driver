@@ -95,7 +95,7 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
 //            //others
 //
             "add_bank" -> {
-                fragment = AddBankFragDialog(this)
+                fragment = AddBankFragDialog(this, true)
             }
 //
 //            "card" -> {
