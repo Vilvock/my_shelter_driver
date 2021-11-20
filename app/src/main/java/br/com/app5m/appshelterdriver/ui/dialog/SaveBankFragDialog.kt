@@ -45,6 +45,12 @@ class SaveBankFragDialog (private val bottomSheetDialogFragment: BottomSheetDial
         preferences = Preferences(requireContext())
         bankControl = BankControl(requireContext(), this, useful)
 
+        userBanksFrag = requireActivity().supportFragmentManager.fragments[0] as UserBanksFrag
+
+        if (!isSave) {
+            title_tv.text = "Atualizar conta bancária"
+        }
+
         save_bt.setOnClickListener {
 
             //falta validation
@@ -83,7 +89,7 @@ class SaveBankFragDialog (private val bottomSheetDialogFragment: BottomSheetDial
                 bankControl.saveBank(saveBank)
             } else {
 
-                saveBank.idAccount = userBanksFrag.bankList[userBanksFrag.position!!].idAccount
+                saveBank.idAccount = userBanksFrag.bankList[userBanksFrag.position!!].id
 
 //                {
 //                    "token": "shelter_movel#2021",v
@@ -119,8 +125,4 @@ class SaveBankFragDialog (private val bottomSheetDialogFragment: BottomSheetDial
 
     }
 
-    override fun onAttachFragment(childFragment: Fragment) {
-        super.onAttachFragment(childFragment)
-        userBanksFrag = childFragment as UserBanksFrag
-    }
 }

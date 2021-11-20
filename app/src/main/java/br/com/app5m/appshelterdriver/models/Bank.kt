@@ -44,6 +44,9 @@ class Bank : Parcelable {
     @field:SerializedName("tipo_conta")
     var typeAccount: String? = null
 
+    @field:SerializedName("id")
+    var id: String? = null
+
     @field:SerializedName("id_conta")
     var idAccount: String? = null
 

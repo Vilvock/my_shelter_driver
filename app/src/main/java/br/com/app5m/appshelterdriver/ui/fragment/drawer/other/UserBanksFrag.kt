@@ -104,7 +104,7 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
         this.position = positionBank
 
-        useful.showDefaultDialogView(requireActivity().supportFragmentManager, "update_bank")
+        useful.showDefaultDialogView(parentFragmentManager, "update_bank")
 
 
     }
