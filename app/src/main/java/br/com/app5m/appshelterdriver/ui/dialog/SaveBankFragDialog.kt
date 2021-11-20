@@ -106,6 +106,7 @@ class SaveBankFragDialog (private val bottomSheetDialogFragment: BottomSheetDial
                         keyPix_et.addTextChangedListener(cnpjMask)
                     }
                     else -> {
+                        keyPix_et.hint = ("Outro")
                         keyPix_et.removeTextChangedListener(cnpjMask)
                         keyPix_et.removeTextChangedListener(cpfMask)
                     }
