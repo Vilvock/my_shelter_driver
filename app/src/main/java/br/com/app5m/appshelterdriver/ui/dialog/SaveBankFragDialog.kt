@@ -49,11 +49,13 @@ class SaveBankFragDialog (private val bottomSheetDialogFragment: BottomSheetDial
 
         if (!isSave) {
             title_tv.text = "Atualizar conta bancária"
+
+
         }
 
         save_bt.setOnClickListener {
 
-            //falta validation
+            //falta validation e printar
 
             val saveBank = Bank()
 
