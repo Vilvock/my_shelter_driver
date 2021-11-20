@@ -23,6 +23,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.MapsInitializer
 import kotlinx.android.synthetic.main.dialog_bottom_view_initride.*
+import kotlinx.android.synthetic.main.dialog_bottom_view_savebankaccount.*
 
 
 class BankAdapter(private val list: List<Bank>,
@@ -32,7 +33,11 @@ class BankAdapter(private val list: List<Bank>,
 
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
+        val bankTv: TextView = itemView.findViewById(R.id.bank_tv)
+        val ccTv: TextView = itemView.findViewById(R.id.cc_tv)
+        val ccDTv: TextView = itemView.findViewById(R.id.ccD_tv)
+        val agencyTv: TextView = itemView.findViewById(R.id.agency_tv)
+        val agencyDTv: TextView = itemView.findViewById(R.id.agencyD_tv)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -44,11 +49,11 @@ class BankAdapter(private val list: List<Bank>,
 
         val bank = list[position]
 
-//        [{"id":1,"type":1,"tipo_chave_pix":"CPF","chave_pix":"884.192.000-93",
-//            "banco":"NU pagamentos","agencia":736,"agencia_d":1,"cc":151152,
-//            "cc_d":1,"tipo_conta":"corrente","rows":1}]
-
-
+        holder.bankTv.text = bank.bank
+        holder.ccTv.text = bank.cc
+        holder.ccDTv.text = bank.ccDigit
+        holder.agencyTv.text = bank.agency
+        holder.agencyDTv.text = bank.agencyDigit
 
         holder.itemView.setOnClickListener {
             recyclerItemClickListener.onClickListenerBank(position)

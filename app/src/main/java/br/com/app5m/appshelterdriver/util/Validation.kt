@@ -280,17 +280,18 @@ class Validation (context: Context) {
         return true
     }
 
-    private fun error(editText: EditText?, texto: String) {
+    private fun error(editText: EditText?, text: String) {
         if (editText == null) {
             return
         }
-        editText.error = texto
+        editText.error = text
         editText.requestFocus()
     }
 
     fun validateTextField(editText: EditText): Boolean {
         if (!isEmpty(editText) || editText.error != null) {
             animation.shake(editText)
+            error(editText, "Este campo deve ser preenchido!")
             return false
         }
         return true
