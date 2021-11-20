@@ -23,7 +23,8 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
     private lateinit var useful: Useful
     private lateinit var bankControl: BankControl
 
-    private var bankList = ArrayList<Bank>()
+    val bankList = ArrayList<Bank>()
+    var position: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,19 +78,34 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
         bankList.clear()
         bankList.addAll(list)
 
-        banks_rv.visibility = View.VISIBLE
-        banks_rv.adapter!!.notifyDataSetChanged()
+        if (bankList[0].rows != "0") {
+            banks_rv.visibility = View.VISIBLE
+            banks_rv.adapter!!.notifyDataSetChanged()
+        } else {
+
+            banks_rv.visibility = View.GONE
+        }
+
 
     }
 
     private fun configRecycler() {
 
-        val bankAdapter = BankAdapter(bankList, requireContext())
+        val bankAdapter = BankAdapter(bankList, requireContext(), this)
 
         banks_rv.apply {
             setHasFixedSize(false)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = bankAdapter
         }
+    }
+
+    override fun onClickListenerBank(positionBank: Int) {
+
+        this.position = positionBank
+
+        useful.showDefaultDialogView(requireActivity().supportFragmentManager, "update_bank")
+
+
     }
 }

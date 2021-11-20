@@ -59,7 +59,10 @@ class BankControl(private val context: Context, private val result: WSResult, pr
 
         type = "listBanks"
 
-        val param: Call<List<Bank>> = service.listBanks(preferences.getUserData()!!.id!!)
+        bank = Bank()
+        bank.token = WSConstants.TOKEN
+
+        val param: Call<List<Bank>> = service.listBanks(preferences.getUserData()!!.id!!, bank)
         param.enqueue(this)
     }
 
@@ -67,6 +70,7 @@ class BankControl(private val context: Context, private val result: WSResult, pr
 
         type = "update"
 
+        bank.token = WSConstants.TOKEN
 
         val param: Call<List<Bank>> = service.updateBank(bank)
         param.enqueue(this)

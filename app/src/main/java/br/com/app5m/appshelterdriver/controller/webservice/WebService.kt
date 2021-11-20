@@ -134,7 +134,8 @@ interface WebService {
 
     @POST("bancos/listbancos/" + "{id}")
     fun listBanks(
-        @Path("id") idUser: String
+        @Path("id") idUser: String,
+        @Body b: Bank
     ): Call<List<Bank>>
 
     @POST("bancos/save")

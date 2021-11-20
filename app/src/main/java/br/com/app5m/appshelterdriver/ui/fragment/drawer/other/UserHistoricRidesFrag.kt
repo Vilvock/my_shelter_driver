@@ -53,9 +53,11 @@ class UserHistoricRidesFrag : Fragment(), WSResult {
         if (type == "findAll") {
 
             if (historicRides[0].rows != "0") {
-
+                historicRides_rv.visibility = View.VISIBLE
                 historicRides_rv.adapter!!.notifyDataSetChanged()
 
+            } else {
+                historicRides_rv.visibility = View.GONE
             }
 
         }

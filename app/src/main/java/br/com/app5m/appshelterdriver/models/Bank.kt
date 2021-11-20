@@ -8,6 +8,12 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class Bank : Parcelable {
 
+    @field:SerializedName("status")
+    var status: String? = null
+
+    @field:SerializedName("msg")
+    var msg: String? = null
+
     @field:SerializedName("id_user")
     var idUser: String? = null
 
@@ -38,7 +44,13 @@ class Bank : Parcelable {
     @field:SerializedName("tipo_conta")
     var typeAccount: String? = null
 
+    @field:SerializedName("id_conta")
+    var idAccount: String? = null
+
     @field:SerializedName("token")
     var token: String? = null
+
+    @field:SerializedName("rows")
+    var rows: String? = null
 
 }
