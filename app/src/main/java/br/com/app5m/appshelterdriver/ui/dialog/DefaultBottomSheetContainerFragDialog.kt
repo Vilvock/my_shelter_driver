@@ -108,7 +108,7 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
 
         }
 
-        transaction.replace(R.id.containerViewChild, fragment).commit()
+        transaction.replace(R.id.containerViewChild, fragment).commitAllowingStateLoss()
 
         close_imageButton.setOnClickListener {
 

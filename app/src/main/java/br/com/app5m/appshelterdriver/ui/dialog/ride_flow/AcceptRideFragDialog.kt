@@ -70,14 +70,14 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
         rideInfo_tv.visibility = View.GONE
 
-        val origin = "Embarque: " + homeActContext.rideLiveData.value!!.originAddress
-        val destination = "Destino: " + homeActContext.rideLiveData.value!!.destinationAddress
-        val distance = "Distância: " + homeActContext.rideLiveData.value!!.distance + " " + homeActContext.rideLiveData.value!!.distanceInitials
-        val duration = "Tempo estimado: " + homeActContext.rideLiveData.value!!.routeTime
-        val payment = "Tipo de pagamento: " + homeActContext.rideLiveData.value!!.nameTypePayment
-        val value = "Valor da corrida: " + homeActContext.rideLiveData.value!!.totalValue
-
-        rideInfo_tv.text = "$origin\n$destination\n$distance\n$duration\n$payment\n$value"
+//        val origin = "Embarque: " + homeActContext.rideLiveData.value!!.originAddress
+//        val destination = "Destino: " + homeActContext.rideLiveData.value!!.destinationAddress
+//        val distance = "Distância: " + homeActContext.rideLiveData.value!!.distance + " " + homeActContext.rideLiveData.value!!.distanceInitials
+//        val duration = "Tempo estimado: " + homeActContext.rideLiveData.value!!.routeTime
+//        val payment = "Tipo de pagamento: " + homeActContext.rideLiveData.value!!.nameTypePayment
+//        val value = "Valor da corrida: " + homeActContext.rideLiveData.value!!.totalValue
+//
+//        rideInfo_tv.text = "$origin\n$destination\n$distance\n$duration\n$payment\n$value"
 
     }
 

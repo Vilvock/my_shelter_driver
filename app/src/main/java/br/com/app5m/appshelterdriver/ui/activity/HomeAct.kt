@@ -99,6 +99,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
     val _mapPlotDateLiveData = MutableLiveData<MapPlotData?>()
     val mapPlotDateLiveData: LiveData<MapPlotData?> = _mapPlotDateLiveData
 
+    private var userLatLng: LatLng? = null
+
     private lateinit var lastRideInfo: Ride
 
     var isCameraLock: Boolean = true
@@ -130,11 +132,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
         saveFcm()
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        documentControl.listDocDriver()
     }
 
     override fun onRestart() {
@@ -206,14 +203,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 if (screenStage == MainScreenStage.ACCEPT_RIDE) {
                     if (rideId != null) {
-                        val acceptRide = Ride()
 
-                        acceptRide.rideId = rideId
+                        notificationRideId = rideId
 
-                        _rideLiveData.value = acceptRide
                     }
-
-
                 }
 
                 notifyScreenStageChanged(screenStage!!)
@@ -243,8 +236,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                     val driverStatus = User()
 
-                    driverStatus.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
-                    driverStatus.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+                    driverStatus.latitude = userLatLng!!.latitude.toString()
+                    driverStatus.longitude = userLatLng!!.longitude.toString()
 
                     if (isChecked) {
                         //online
@@ -290,8 +283,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 val driverLocation = User()
 
-                driverLocation.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
-                driverLocation.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+                driverLocation.latitude = userLatLng!!.latitude.toString()
+                driverLocation.longitude = userLatLng!!.longitude.toString()
 
                 userControl.updateLocation(driverLocation)
 
@@ -512,6 +505,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         isCameraLock = true
                     }
 
+                    userLatLng = LatLng (location.latitude, location.latitude)
+
                     _mapPlotDateLiveData.value = MapPlotData(
                         userPosition = LatLng(location.latitude, location.longitude),
                     )
@@ -527,6 +522,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         driverLocation.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
 
                         userControl.updateLocation(driverLocation)
+                        documentControl.listDocDriver()
 
                     }
 
@@ -768,8 +764,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         notificationRideId = rideId
 
                     }
-
-
                 }
 
                 notifyScreenStageChanged(screenStage!!)
