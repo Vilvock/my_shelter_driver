@@ -88,7 +88,6 @@ class Useful (private val context: Context) {
 
     @SuppressLint("SetTextI18n")
     fun showDefaultDialogView(fragmentManager: FragmentManager, tag: String) {
-        fragmentManager.executePendingTransactions()
         val bottomSheetDialog = DefaultBottomSheetContainerFragDialog()
         bottomSheetDialog.show(fragmentManager, tag)
     }

@@ -506,15 +506,20 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     rideControl.findAllDriver()
                 } else {
 
+                    if (location.latitude != mapPlotDateLiveData.value?.userPosition?.latitude
+                        && location.longitude != mapPlotDateLiveData.value?.userPosition?.longitude) {
+
+                        isCameraLock = true
+                    }
+
                     _mapPlotDateLiveData.value = MapPlotData(
                         userPosition = LatLng(location.latitude, location.longitude),
                     )
 
-                    if (isCameraLock) {
-                        if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
-                            mapPlotUpdated(mapPlotDateLiveData.value)
-                        }
-                    } else {
+                    if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
+
+                        mapPlotUpdated(mapPlotDateLiveData.value)
+
                         //atualizar localizacao a cada 5 segundos
                         val driverLocation = User()
 
@@ -522,6 +527,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         driverLocation.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
 
                         userControl.updateLocation(driverLocation)
+
                     }
 
                     rideControl.findAllDriver()
@@ -598,11 +604,18 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             MainScreenStage.ONGOING_RIDE -> {
 
                 if (rideLiveData.value != null) {
+
+                    var polyLineFormatted: List<LatLng>? = null
+
+                    if (rideLiveData.value?.finalRoute?.overViewPolyLine?.polyLinePoints != null) {
+                       polyLineFormatted = PolyUtil.decode(rideLiveData.value?.finalRoute?.overViewPolyLine?.polyLinePoints)
+                    }
+
                     _mapPlotDateLiveData.value = MapPlotData(
     //                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
                         originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
                         destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
-                        polyline = PolyUtil.decode(rideLiveData.value!!.finalRoute.overViewPolyLine.polyLinePoints))
+                        polyline = polyLineFormatted)
 
                     mapPlotUpdated(mapPlotDateLiveData.value)
                 }
@@ -696,7 +709,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
             mMap?.addPolyline(
                 PolylineOptions()
                     .addAll(lineList)
-                    .color(ContextCompat.getColor(this, R.color.colorAccent))
+                    .color(ContextCompat.getColor(this, R.color.colorPrimary))
             )
         }
 
@@ -719,21 +732,21 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 if (notNullPoints.size == 1) {
                     mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 18f))
                     isCameraLock = false
-                    return
                 }
             }
+        } else {
+
+            val builder = LatLngBounds.Builder()
+
+            notNullPoints.forEach { position ->
+                builder.include(LatLng(position.latitude, position.longitude))
+            }
+
+            val bounds = builder.build()
+            val padding = resources.getDimension(R.dimen.map_pin_padding).toInt()
+            mMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding))
+
         }
-
-        val builder = LatLngBounds.Builder()
-
-        notNullPoints.forEach { position ->
-            builder.include(LatLng(position.latitude, position.longitude))
-        }
-
-        val bounds = builder.build()
-        val padding = resources.getDimension(R.dimen.map_pin_padding).toInt()
-        mMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding))
-
 
     }
 
