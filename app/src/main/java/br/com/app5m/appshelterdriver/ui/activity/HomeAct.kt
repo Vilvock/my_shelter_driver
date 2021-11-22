@@ -239,6 +239,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
 
+                    imAvailable_sw.isClickable = false
+
                     val driverStatus = User()
 
                     driverStatus.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
@@ -252,8 +254,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         driverStatus.online = "2"
                     }
 
-                userControl.updateStatusOnline(driverStatus)
-            }
+                    userControl.updateStatusOnline(driverStatus)
+                }
 
             } else {
 
@@ -268,6 +270,41 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 }
             }
+        }
+
+    }
+
+
+    override fun uResponse(list: List<User>, type: String) {
+
+        val userInfo = list[0]
+
+        if (type == "updateStatus") {
+
+            if (userInfo.status != "01") {
+
+                SingleToast.INSTANCE.show(this, "Não foi possível atualizar seu status, tente novamente mais tarde!",
+                    Toast.LENGTH_LONG)
+
+            } else {
+
+                val driverLocation = User()
+
+                driverLocation.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
+                driverLocation.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
+
+                userControl.updateLocation(driverLocation)
+
+            }
+        } else if (type == "currentLocationStatus"){
+
+            imAvailable_sw.isChecked = userInfo.on == "1"
+            imAvailable_sw.isClickable = true
+
+        } else {
+
+            userControl.findCurrentLocationStatus()
+
         }
 
     }
@@ -335,36 +372,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 notifyScreenStageChanged(MainScreenStage.ONGOING_RIDE)
             }
-        }
-
-    }
-
-    override fun uResponse(list: List<User>, type: String) {
-
-        val userInfo = list[0]
-
-        if (type == "updateStatus") {
-            if (userInfo.status == "01") {
-
-                val driverLocation = User()
-
-                driverLocation.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
-                driverLocation.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
-
-                userControl.updateLocation(driverLocation)
-
-           } else {
-                imAvailable_sw.isChecked = false
-                SingleToast.INSTANCE.show(this, userInfo.msg!! , Toast.LENGTH_LONG)
-           }
-        } else if (type == "currentLocationStatus"){
-
-            imAvailable_sw.isChecked = userInfo.on == "1"
-
-        } else {
-
-            userControl.findCurrentLocationStatus()
-
         }
 
     }
