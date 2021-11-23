@@ -3,10 +3,17 @@ package br.com.app5m.appshelterdriver.util
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.net.Uri
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
@@ -26,6 +33,8 @@ class Useful (private val context: Context) {
      *
      * @Requered Androidx, daimajia
      */
+
+    private var bottomSheetDialog: DefaultBottomSheetContainerFragDialog? = null
 
     private val builder = AlertDialog.Builder(context)
     val alertDialog = builder.create()
@@ -62,11 +71,13 @@ class Useful (private val context: Context) {
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun setActionBar(activity: Activity, bar: ActionBar, title: String, type: Int){
+    fun setActionBar(activity: Activity, bar: ActionBar, title: String, type: Int) {
 
         val view = activity.layoutInflater.inflate(R.layout.toolbar_custom, null)
-        val params = ActionBar.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,
-            ActionBar.LayoutParams.WRAP_CONTENT, Gravity.START)
+        val params = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.WRAP_CONTENT,
+            ActionBar.LayoutParams.WRAP_CONTENT, Gravity.START
+        )
 
         bar.setCustomView(view, params)
         bar.title = title
@@ -88,8 +99,14 @@ class Useful (private val context: Context) {
 
     @SuppressLint("SetTextI18n")
     fun showDefaultDialogView(fragmentManager: FragmentManager, tag: String) {
-        val bottomSheetDialog = DefaultBottomSheetContainerFragDialog()
-        bottomSheetDialog.show(fragmentManager, tag)
+        dismissDefaultDialogView()
+        bottomSheetDialog = DefaultBottomSheetContainerFragDialog()
+        bottomSheetDialog!!.show(fragmentManager, tag)
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun dismissDefaultDialogView() {
+        bottomSheetDialog?.dismiss()
     }
 
     fun bitmapDescriptorFromVector(
@@ -110,6 +127,31 @@ class Useful (private val context: Context) {
         val canvas = Canvas(bitmap)
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
+    @SuppressLint("QueryPermissionsNeeded")
+    fun openWebPage(url: String?) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        context.startActivity(browserIntent)
+    }
+
+    fun createLink(
+        targetTextView: TextView, completeString: String,
+        partToClick: String, clickableAction: ClickableSpan?
+    ): TextView {
+        val spannableString = SpannableString(completeString)
+
+        // make sure the String is exist, if it doesn't exist
+        // it will throw IndexOutOfBoundException
+        val startPosition = completeString.indexOf(partToClick)
+        val endPosition = completeString.lastIndexOf(partToClick) + partToClick.length
+        spannableString.setSpan(
+            clickableAction, startPosition, endPosition,
+            Spanned.SPAN_INCLUSIVE_EXCLUSIVE
+        )
+        targetTextView.text = spannableString
+        targetTextView.movementMethod = LinkMovementMethod.getInstance()
+        return targetTextView
     }
 
 }
