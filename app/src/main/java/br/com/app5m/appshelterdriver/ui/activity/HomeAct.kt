@@ -32,6 +32,7 @@ import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Document
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.models.User
+import br.com.app5m.appshelterdriver.ui.MapBottomPaddingDelegate
 import br.com.app5m.appshelterdriver.util.DialogMessages
 import br.com.app5m.appshelterdriver.util.MyLocation
 import br.com.app5m.appshelterdriver.util.Preferences
@@ -59,7 +60,7 @@ import kotlinx.android.synthetic.main.loading.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import kotlinx.android.synthetic.main.toolbar_custom.*
 
-class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
+class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate {
 
     private lateinit var useful: Useful
     private lateinit var preferences: Preferences
@@ -230,25 +231,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                 bottom_im_available.visibility = View.VISIBLE
                 bottom_documentation_off.visibility = View.GONE
 
-                imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
+                val driverLocation = User()
 
-                    imAvailable_sw.isClickable = false
+                driverLocation.latitude = userLatLng!!.latitude.toString()
+                driverLocation.longitude = userLatLng!!.longitude.toString()
 
-                    val driverStatus = User()
-
-                    driverStatus.latitude = userLatLng!!.latitude.toString()
-                    driverStatus.longitude = userLatLng!!.longitude.toString()
-
-                    if (isChecked) {
-                        //online
-                        driverStatus.online = "1"
-                    } else {
-                        //offline
-                        driverStatus.online = "2"
-                    }
-
-                    userControl.updateStatusOnline(driverStatus)
-                }
+                userControl.updateLocation(driverLocation)
 
             } else {
 
@@ -273,7 +261,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         val userInfo = list[0]
 
         if (type == "updateStatus") {
-
             if (userInfo.status != "01") {
 
                 SingleToast.INSTANCE.show(this, "Não foi possível atualizar seu status, tente novamente mais tarde!",
@@ -281,18 +268,32 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             } else {
 
-                val driverLocation = User()
-
-                driverLocation.latitude = userLatLng!!.latitude.toString()
-                driverLocation.longitude = userLatLng!!.longitude.toString()
-
-                userControl.updateLocation(driverLocation)
+                imAvailable_sw.isEnabled = true
 
             }
         } else if (type == "currentLocationStatus"){
 
             imAvailable_sw.isChecked = userInfo.on == "1"
-            imAvailable_sw.isClickable = true
+
+            imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
+
+                imAvailable_sw.isEnabled = false
+
+                val driverStatus = User()
+
+                driverStatus.latitude = userLatLng!!.latitude.toString()
+                driverStatus.longitude = userLatLng!!.longitude.toString()
+
+                if (isChecked) {
+                    //online
+                    driverStatus.online = "1"
+                } else {
+                    //offline
+                    driverStatus.online = "2"
+                }
+
+                userControl.updateStatusOnline(driverStatus)
+            }
 
         } else {
 
@@ -368,6 +369,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         }
 
     }
+
+
+    override fun setMapVerticalPadding(bottomPx: Int, topPx: Int?) {
+        val tPadding = topPx ?: toolbar?.height ?: 0
+        val hPadding = resources.getDimension(R.dimen.map_horizontal_padding).toInt()
+        mMap?.setPadding(hPadding, tPadding, hPadding, bottomPx)
+        mapPlotUpdated(mapPlotDateLiveData.value)
+    }
+
 
     private fun configDrawer() {
 
@@ -505,23 +515,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                         isCameraLock = true
                     }
 
-                    userLatLng = LatLng (location.latitude, location.latitude)
+                    userLatLng = LatLng (location.latitude, location.longitude)
 
                     _mapPlotDateLiveData.value = MapPlotData(
-                        userPosition = LatLng(location.latitude, location.longitude),
+                        userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
                     )
 
                     if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
 
                         mapPlotUpdated(mapPlotDateLiveData.value)
 
-                        //atualizar localizacao a cada 5 segundos
-                        val driverLocation = User()
-
-                        driverLocation.latitude = mapPlotDateLiveData.value!!.userPosition!!.latitude.toString()
-                        driverLocation.longitude = mapPlotDateLiveData.value!!.userPosition!!.longitude.toString()
-
-                        userControl.updateLocation(driverLocation)
                         documentControl.listDocDriver()
 
                     }
@@ -575,6 +578,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
         when (newStage) {
             MainScreenStage.RELOAD_OVERVIEW_STATEMENT -> {
 
+
             }
 
             MainScreenStage.ACCEPT_RIDE -> {
@@ -589,7 +593,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
                 if (rideLiveData.value != null) {
                     _mapPlotDateLiveData.value = MapPlotData(
-//                        userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                        userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
                         originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
                         destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()))
 
@@ -608,7 +612,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
                     }
 
                     _mapPlotDateLiveData.value = MapPlotData(
-    //                    userPosition = LatLng(mapPlotDateLiveData.value!!.userPosition!!.latitude, mapPlotDateLiveData.value!!.userPosition!!.longitude),
+                        userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
                         originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
                         destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
                         polyline = polyLineFormatted)
@@ -623,6 +627,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult {
 
             }
 
+        }
+
+        if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
+            top_credit_available.visibility = View.VISIBLE
+        } else {
+            top_credit_available.visibility = View.GONE
         }
 
         handler.postDelayed(runnable, 5000)

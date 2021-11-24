@@ -53,5 +53,6 @@
     <dimen name="card_margin">25dp</dimen>
 
     <dimen name="map_pin_padding">32dp</dimen>
+    <dimen name="map_horizontal_padding">24dp</dimen>
 
 </resources>

@@ -12,6 +12,7 @@ import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.ui.MapBottomPaddingDelegate
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.ui.dialog.ride_flow.*
 import br.com.app5m.appshelterdriver.util.Useful
@@ -46,8 +47,13 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        useful = Useful(requireContext())
+        sheet_container.post {
+            (requireActivity() as? MapBottomPaddingDelegate)?.setMapVerticalPadding(
+                sheet_container.height
+            )
+        }
 
+        useful = Useful(requireContext())
 
         // mostrar o bottomsheet inteiro
         dialog!!.setOnShowListener { dialog ->
