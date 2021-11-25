@@ -118,7 +118,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     private var runnable = Runnable { getRealTimeLocation()}
 
     private val DRIVER_POSITION_TRACKING_RATE = 3000L
-    private val DELAY_HANDLER = 5000
+    private val DELAY_HANDLER = 5000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -513,7 +513,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     statusCheck()
                     handler.removeCallbacks(runnable)
 
-                    rideControl.findAllDriver()
                 } else {
 
 
@@ -537,8 +536,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                     }
 
-                    rideControl.findAllDriver()
                 }
+
+                rideControl.findAllDriver()
             }
         }
 
@@ -643,7 +643,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             top_credit_available.visibility = View.GONE
         }
 
-        handler.postDelayed(runnable, DELAY_HANDLER.toLong())
+        handler.postDelayed(runnable, DELAY_HANDLER)
     }
 
 
