@@ -11,8 +11,10 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
+import android.os.SystemClock
 import android.util.Log
 import android.view.View
+import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 
@@ -21,6 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
@@ -33,19 +36,13 @@ import br.com.app5m.appshelterdriver.models.Document
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.ui.MapBottomPaddingDelegate
-import br.com.app5m.appshelterdriver.util.DialogMessages
-import br.com.app5m.appshelterdriver.util.MyLocation
-import br.com.app5m.appshelterdriver.util.Preferences
-import br.com.app5m.appshelterdriver.util.Useful
+import br.com.app5m.appshelterdriver.util.*
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.*
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.InstanceIdResult
 import com.google.gson.Gson
@@ -59,6 +56,9 @@ import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.loading.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import kotlinx.android.synthetic.main.toolbar_custom.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate {
 
@@ -70,8 +70,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
     private lateinit var myLocation: MyLocation
     private lateinit var locationResult: MyLocation.LocationResult
-
-    private var mMap: GoogleMap? = null
 
     enum class MainScreenStage {
         RELOAD_OVERVIEW_STATEMENT,
@@ -100,18 +98,27 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     val _mapPlotDateLiveData = MutableLiveData<MapPlotData?>()
     val mapPlotDateLiveData: LiveData<MapPlotData?> = _mapPlotDateLiveData
 
-    private var userLatLng: LatLng? = null
+    private lateinit var mapFragment: SupportMapFragment
 
     private lateinit var lastRideInfo: Ride
+
+    private var mMap: GoogleMap? = null
+    private var driverMarker: Marker? = null
+
+    private var userLatLng: LatLng? = null
+
+    private val interpolator = LinearInterpolator()
+    private var animatingJob: Job? = null
+    private val vehicleInterpolator = LinearFixed()
 
     var isCameraLock: Boolean = true
     lateinit var notificationRideId: String
 
-    private lateinit var mapFragment: SupportMapFragment
-
     private val handler = Handler()
     private var runnable = Runnable { getRealTimeLocation()}
 
+    private val DRIVER_POSITION_TRACKING_RATE = 3000L
+    private val DELAY_HANDLER = 5000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -509,9 +516,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     rideControl.findAllDriver()
                 } else {
 
+
                     if (location.latitude != mapPlotDateLiveData.value?.userPosition?.latitude
                         && location.longitude != mapPlotDateLiveData.value?.userPosition?.longitude) {
-
                         isCameraLock = true
                     }
 
@@ -519,6 +526,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                     _mapPlotDateLiveData.value = MapPlotData(
                         userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
+                        vehicleAngle = location.bearing
                     )
 
                     if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
@@ -635,7 +643,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             top_credit_available.visibility = View.GONE
         }
 
-        handler.postDelayed(runnable, 5000)
+        handler.postDelayed(runnable, DELAY_HANDLER.toLong())
     }
 
 
@@ -646,16 +654,22 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         val boundsLatLng = ArrayList<LatLng>()
 
         mapPlotData?.userPosition?.let {
+            run {
+                driverMarker = mMap?.addMarker(
+                    MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin_driver))
+                        .rotation(mapPlotData.vehicleAngle ?: 0f)
+                        .position(it)
+                        .title("Localização atual")
+                        .anchor(0.5f, 0.5f)
+                )
 
-            mMap?.addMarker(
-                MarkerOptions().icon(useful.bitmapDescriptorFromVector(R.drawable.ic_car))
-                    .position(it)
-                    .title("Localização atual")
-                    .anchor(0.5f, 0.5f)
-            )!!.showInfoWindow()
-            boundsLatLng.add(it)
+                driverMarker!!.showInfoWindow()
 
+                animateVehiclePosition(it, mapPlotData.vehicleAngle ?: 0f)
+                boundsLatLng.add(it)
+            }
         }
+
 
         mapPlotData?.originLatLng?.let {
             mMap?.addMarker(
@@ -677,40 +691,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             boundsLatLng.add(it)
         }
 
-
-//        if (mapPlotData?.freeVehiclesLatLng != null) {
-//
-//            val vehiclesHere: List<LatLng>? = mapPlotData.freeVehiclesLatLng
-//
-//            if (vehiclesHere != null) {
-//                if (key2 == "0") key = "1"
-//                for (i in vehiclesHere.indices) {
-//
-//                    mapPlotData.freeVehiclesLatLng?.let {
-//                        mMap?.addMarker(
-//                            MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_car))
-//                                .position(it[i])
-//                                .rotation(mapPlotData.vehicleAngle ?: 0f)
-//                                .anchor(0.5f, 0.5f)
-//                        )
-//                        boundsLatLng.add(it[i])
-//                    }
-//
-//                }
-//            }
-//        }
-
-        mapPlotData?.vehicleLatLng?.let {
-            mMap?.addMarker(
-                MarkerOptions().icon(useful.bitmapDescriptorFromVector(R.drawable.ic_car))
-                    .position(it)
-                    .title("Motorista")
-                    .rotation(mapPlotData.vehicleAngle ?: 0f)
-                    .anchor(0.5f, 0.5f)
-            )!!.showInfoWindow()
-            boundsLatLng.add(it)
-        }
-
         mapPlotData?.polyline?.let { lineList ->
             mMap?.addPolyline(
                 PolylineOptions()
@@ -723,6 +703,38 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         centerMapOnPoints(boundsLatLng)
     }
+
+    private fun animateVehiclePosition(newPosition: LatLng, newAngle: Float) {
+
+        Log.v("Angle", newAngle.toString())
+
+        animatingJob?.cancel()
+        animatingJob = lifecycleScope.launch {
+
+            var elapsed: Long
+            var t = 0f
+            var v: Float
+            val start = SystemClock.uptimeMillis()
+
+            val startPosition = driverMarker?.position
+            val startRotation = driverMarker?.rotation
+
+            while (t < 1 && driverMarker != null) {
+                // Calculate progress using interpolator
+                elapsed = SystemClock.uptimeMillis() - start
+                t = elapsed / DRIVER_POSITION_TRACKING_RATE.toFloat()
+                v = interpolator.getInterpolation(t)
+
+                driverMarker?.position =
+                    vehicleInterpolator.interpolate(v, startPosition!!, newPosition)
+                driverMarker?.rotation =
+                    vehicleInterpolator.interpolateAngle(v, startRotation!!, newAngle)
+
+                delay(16)
+            }
+        }
+    }
+
 
     private fun centerMapOnPoints(points: List<LatLng?>) {
 

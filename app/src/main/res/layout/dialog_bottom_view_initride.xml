@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Você chegou ao ponto de embarque da sua corrida, aguarde o(s) passageiro(s) entrar(em)."
+            android:text="Inicie a corrida quando estiver no ponto de embarque, aguarde o(s) passageiro(s) entrar(em)."
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark" />
 
