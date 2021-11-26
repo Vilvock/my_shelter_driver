@@ -10,6 +10,9 @@ import java.io.Serializable
 class User : Parcelable {
 
 
+    @field:SerializedName("total_recebimentos")
+    var totalReceives: String? = null
+
     @field:SerializedName("veiculo")
     var vehicle: Vehicle = Vehicle()
 

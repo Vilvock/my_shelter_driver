@@ -58,12 +58,6 @@ interface WebService {
         @Body u: User
     ): Call<List<User>>
 
-    @POST("motoristas/recebimentos/" + "{id}")
-    fun listReceipts(
-        @Path("id") idUser: String,
-        @Body u: User
-    ): Call<List<User>>
-
     @POST("motoristas/localizacaoatual/" + "{id}")
     fun findCurrentLocationStatus(
         @Path("id") idUser: String,

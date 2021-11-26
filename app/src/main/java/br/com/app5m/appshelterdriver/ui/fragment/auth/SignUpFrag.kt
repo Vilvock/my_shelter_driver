@@ -9,28 +9,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.RideControl
+import br.com.app5m.appshelterdriver.controller.UserControl
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.ui.activity.DocumentPdfWebViewAct
+import br.com.app5m.appshelterdriver.ui.activity.SucessInfoAct
 import br.com.app5m.appshelterdriver.util.Mask
 import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.Validation
+import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class SignUpFrag :  Fragment(), WSResult{
-
+class SignUpFrag : Fragment(), WSResult {
 
     private lateinit var useful: Useful
-    private lateinit var validation: Validation
     private lateinit var preferences: Preferences
+    private lateinit var userControl: UserControl
+    private lateinit var validation: Validation
 
     private lateinit var cpfMask: TextWatcher
     private lateinit var cnpjMask: TextWatcher
@@ -53,6 +57,7 @@ class SignUpFrag :  Fragment(), WSResult{
         preferences = Preferences(requireContext())
 
         rideControl = RideControl(requireContext(), this, useful)
+        userControl = UserControl(requireContext(), this, useful)
 
         useful.openLoading()
         rideControl.listVehicleTypes()
@@ -105,6 +110,26 @@ class SignUpFrag :  Fragment(), WSResult{
 
     }
 
+    override fun uResponse(list: List<User>, type: String) {
+
+        useful.closeLoading()
+
+        val user = list[0]
+
+        if (user.status.equals("01")) {
+            preferences.setLogin(true)
+            preferences.setUserData(user)
+
+            startActivity(Intent(requireContext(), SucessInfoAct::class.java))
+            requireActivity().finish()
+
+        } else {
+
+            SingleToast.INSTANCE.show(context, user.msg!!, Toast.LENGTH_LONG)
+        }
+
+
+    }
 
     private fun loadMasks() {
         cpfMask = Mask.insert("###.###.###-##", document_et)
@@ -144,7 +169,12 @@ class SignUpFrag :  Fragment(), WSResult{
             user.vehicle.modelYear = year_et.text.toString()
             user.vehicle.typeCar = (typeCar_sp.selectedItemPosition + 1).toString()
 
-            useful.startFragmentOnBack(PhoneValidation1Frag(user), requireActivity().supportFragmentManager)
+            useful.openLoading()
+
+            userControl.register(user)
+
+
+//            useful.startFragmentOnBack(PhoneValidation1Frag(user), requireActivity().supportFragmentManager)
 
         }
 

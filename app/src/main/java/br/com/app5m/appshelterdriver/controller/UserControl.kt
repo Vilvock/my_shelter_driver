@@ -246,16 +246,16 @@ class UserControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
     }
 
-    fun listReceipts(){
+    fun listReceives(){
 
-        type = "listReceipts"
+        type = "listReceives"
 
         user = User()
 
         user.id = preferences.getUserData()!!.id
         user.token = WSConstants.TOKEN
 
-        val param: Call<List<User>> = service.listReceipts(user.id!!, user)
+        val param: Call<List<User>> = service.listReceives(user.id!!, user)
         param.enqueue(this)
     }
 
@@ -272,18 +272,6 @@ class UserControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
     }
 
-    fun listReceives(){
-
-        type = "listReceives"
-
-        user = User()
-
-        user.id = preferences.getUserData()!!.id
-        user.token = WSConstants.TOKEN
-
-        val param: Call<List<User>> = service.findCurrentLocationStatus(user.id!!, user)
-        param.enqueue(this)
-    }
 
     fun saveFcm(user: User) {
 

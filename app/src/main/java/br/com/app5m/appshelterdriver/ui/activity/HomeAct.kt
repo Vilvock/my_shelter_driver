@@ -57,6 +57,7 @@ import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
 import kotlinx.android.synthetic.main.loading.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import kotlinx.android.synthetic.main.toolbar_custom.*
+import kotlinx.android.synthetic.main.top_credit_available.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -302,6 +303,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                 userControl.updateStatusOnline(driverStatus)
             }
+
+            userControl.listReceives()
+
+        } else if (type == "listReceives"){
+
+            currentCredit_tv.text = userInfo.totalReceives
 
         } else {
 

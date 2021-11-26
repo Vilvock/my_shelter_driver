@@ -22,13 +22,14 @@
             android:text="Seu saldo disponível na sua conta Shelter:" />
 
         <TextView
+            android:id="@+id/currentCredit_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorAccent"
             android:textAlignment="textEnd"
             android:textSize="@dimen/text_size6"
-            android:text="R$ 500" />
+            android:text="" />
 
     </LinearLayout>
 
