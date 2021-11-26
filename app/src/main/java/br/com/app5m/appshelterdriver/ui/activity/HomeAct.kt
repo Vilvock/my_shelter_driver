@@ -53,6 +53,7 @@ import kotlinx.android.synthetic.main.activity_send_document.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.bottom_im_available.*
 import kotlinx.android.synthetic.main.content_home.*
+import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
 import kotlinx.android.synthetic.main.loading.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import kotlinx.android.synthetic.main.toolbar_custom.*
@@ -382,9 +383,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         val tPadding = topPx ?: toolbar?.height ?: 0
         val hPadding = resources.getDimension(R.dimen.map_horizontal_padding).toInt()
         mMap?.setPadding(hPadding, tPadding, hPadding, bottomPx)
-        mapPlotUpdated(mapPlotDateLiveData.value)
+//        mapPlotUpdated(mapPlotDateLiveData.value)
     }
 
+    private fun resetVerticalPaddingScreen() {
+        (this as? MapBottomPaddingDelegate)?.setMapVerticalPadding(0)
+    }
 
     private fun configDrawer() {
 
@@ -586,6 +590,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         when (newStage) {
             MainScreenStage.RELOAD_OVERVIEW_STATEMENT -> {
 
+                resetVerticalPaddingScreen()
 
             }
 
@@ -663,7 +668,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                         .anchor(0.5f, 0.5f)
                 )
 
-                driverMarker!!.showInfoWindow()
+//                driverMarker!!.showInfoWindow()
 
                 animateVehiclePosition(it, mapPlotData.vehicleAngle ?: 0f)
                 boundsLatLng.add(it)
@@ -677,7 +682,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     .position(it)
                     .title("Local de partida")
                     .anchor(0.5f, 0.5f)
-            )!!.showInfoWindow()
+            )
             boundsLatLng.add(it)
         }
 
@@ -687,7 +692,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     .position(it)
                     .title("Destino final")
                     .anchor(0.5f, 0.70f)
-            )!!.showInfoWindow()
+            )
             boundsLatLng.add(it)
         }
 

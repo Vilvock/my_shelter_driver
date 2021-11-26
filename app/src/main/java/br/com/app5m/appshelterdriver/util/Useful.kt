@@ -101,7 +101,7 @@ class Useful (private val context: Context) {
     fun showDefaultDialogView(fragmentManager: FragmentManager, tag: String) {
         dismissDefaultDialogView()
         bottomSheetDialog = DefaultBottomSheetContainerFragDialog()
-        bottomSheetDialog!!.show(fragmentManager, tag)
+        bottomSheetDialog?.show(fragmentManager, tag)
     }
 
     @SuppressLint("SetTextI18n")
