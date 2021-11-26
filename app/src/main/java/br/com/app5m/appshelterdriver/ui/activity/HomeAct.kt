@@ -308,7 +308,13 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         } else if (type == "listReceives"){
 
-            currentCredit_tv.text = userInfo.totalReceives
+            if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
+                top_credit_available.visibility = View.VISIBLE
+
+                currentCredit_tv.text = userInfo.totalReceives
+            } else {
+                top_credit_available.visibility = View.GONE
+            }
 
         } else {
 
@@ -647,12 +653,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             }
 
-        }
-
-        if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
-            top_credit_available.visibility = View.VISIBLE
-        } else {
-            top_credit_available.visibility = View.GONE
         }
 
         handler.postDelayed(runnable, DELAY_HANDLER)
