@@ -42,7 +42,6 @@ class OnGoingRideFragDialog (private val bottomSheetDialogFragment: BottomSheetD
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetDialogFragment.close_imageButton.visibility = View.GONE
         useful = Useful(requireContext())
         rideControl = RideControl(requireContext(), this, useful)
 
