@@ -161,7 +161,7 @@ class Validation (context: Context) {
             animation.shake(editText)
             return false
         }
-        if (editText.text.length < 14) {
+        if (editText.text.length < 11) {
             error(editText, "CPF deve ser preenchido de forma completa.")
             animation.shake(editText)
             return false
@@ -184,13 +184,13 @@ class Validation (context: Context) {
             animation.shake(editText)
             return false
         }
-        if (editText.text.length < 18) {
+        if (editText.text.length < 14) {
             error(editText, "CNPJ deve ser preenchido de forma completa.")
             animation.shake(editText)
             return false
         }
         if (!validatorCNPJ(editText.text.toString().replace(".", "")
-                        .replace("-", "").replace("/", ""))) {
+                .replace("-", "").replace("/", ""))) {
             error(editText, "Este CNPJ não é válido.")
             animation.shake(editText)
             return false

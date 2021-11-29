@@ -53,6 +53,12 @@ class UserProfileFrag : Fragment(), WSResult {
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
+    companion object {
+        private var DOCUMENT_TYPE = 0
+        private const val CNPJ_TYPE = 0
+        private const val CPF_TYPE = 1
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -99,6 +105,13 @@ class UserProfileFrag : Fragment(), WSResult {
             birth_et.setText(user.birth)
             document_et.setText(user.document)
 
+            DOCUMENT_TYPE = if (user.document!!.length > 11) {
+                CNPJ_TYPE
+            } else {
+                CPF_TYPE
+            }
+
+
         }
         useful.closeLoading()
 
@@ -116,7 +129,7 @@ class UserProfileFrag : Fragment(), WSResult {
             user.name = name_et.text.toString()
             user.email = email_et.text.toString()
             user.cellphone = cellphone_et.text.toString()
-            //document
+            user.cpf = document_et.text.toString()
             user.birth = birth_et.text.toString()
 
             useful.openLoading()
@@ -287,12 +300,17 @@ class UserProfileFrag : Fragment(), WSResult {
     }
 
     private fun validate(): Boolean {
-        return if (!validation.name(name_et)) false
-        else if (!validation.email(email_et)) false
-        else if (!validation.cellphone(cellphone_et)) false
-        else if (!validation.date(birth_et)) false
+        if (!validation.name(name_et)) return false
+        if (!validation.email(email_et)) return false
+        if (!validation.cellphone(cellphone_et)) return false
+        if (!validation.date(birth_et)) return false
 
-        // ver um pra cnpj tbm
-        else (validation.cpf(document_et))
+        if (DOCUMENT_TYPE == CNPJ_TYPE) {
+            if (!validation.cnpj(document_et)) return false
+        } else {
+            if (!validation.cpf(document_et)) return false
+        }
+
+        return true
     }
 }
