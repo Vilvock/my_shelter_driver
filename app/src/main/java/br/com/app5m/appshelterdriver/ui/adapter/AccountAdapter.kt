@@ -1,35 +1,21 @@
 package br.com.app5m.appshelterdriver.ui.adapter
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.RelativeLayout
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.models.Bank
-import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.util.RecyclerItemClickListener
-import br.com.app5m.appshelterdriver.util.Useful
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.MapsInitializer
-import kotlinx.android.synthetic.main.dialog_bottom_view_initride.*
-import kotlinx.android.synthetic.main.dialog_bottom_view_savebankaccount.*
 
-
-class BankAdapter(private val list: List<Bank>,
-                  private val context: Context,
-                    private val recyclerItemClickListener: RecyclerItemClickListener):
-        RecyclerView.Adapter<BankAdapter.Holder>(){
+class AccountAdapter(private val list: List<Bank>,
+                     private val context: Context,
+                     private val recyclerItemClickListener: RecyclerItemClickListener):
+        RecyclerView.Adapter<AccountAdapter.Holder>(){
 
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -38,10 +24,15 @@ class BankAdapter(private val list: List<Bank>,
         val ccDTv: TextView = itemView.findViewById(R.id.ccD_tv)
         val agencyTv: TextView = itemView.findViewById(R.id.agency_tv)
         val agencyDTv: TextView = itemView.findViewById(R.id.agencyD_tv)
+        val bankLl: LinearLayout = itemView.findViewById(R.id.bank_ll)
+        val pixLL: LinearLayout = itemView.findViewById(R.id.pix_ll)
+        val titleTv: TextView = itemView.findViewById(R.id.title_tv)
+        val typePix: TextView = itemView.findViewById(R.id.typePix_tv)
+        val pixKeyTv: TextView = itemView.findViewById(R.id.pixKey_tv)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.adapter_banks, parent, false))
+        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.adapter_accounts, parent, false))
     }
 
     @SuppressLint("NotifyDataSetChanged", "UseCompatLoadingForDrawables")
@@ -49,11 +40,28 @@ class BankAdapter(private val list: List<Bank>,
 
         val bank = list[position]
 
-        holder.bankTv.text = bank.bank
-        holder.ccTv.text = bank.cc
-        holder.ccDTv.text = bank.ccDigit
-        holder.agencyTv.text = bank.agency
-        holder.agencyDTv.text = bank.agencyDigit
+        if (bank.bank != "") {
+
+            holder.titleTv.text = "Conta Bancária"
+
+            holder.pixLL.visibility = View.GONE
+
+            holder.bankTv.text = bank.bank
+            holder.ccTv.text = bank.cc
+            holder.ccDTv.text = bank.ccDigit
+            holder.agencyTv.text = bank.agency
+            holder.agencyDTv.text = bank.agencyDigit
+
+        } else {
+
+            holder.titleTv.text = "PIX"
+
+            holder.bankLl.visibility = View.GONE
+
+            holder.typePix.text = bank.typePixKey
+            holder.pixKeyTv.text = bank.pixKey
+
+        }
 
         holder.itemView.setOnClickListener {
             recyclerItemClickListener.onClickListenerBank(position)

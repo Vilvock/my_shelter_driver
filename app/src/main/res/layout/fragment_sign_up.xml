@@ -259,26 +259,30 @@
                     android:id="@+id/year_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
                     android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/shape_main_et"
                     android:ems="10"
                     android:hint="Ano"
                     android:inputType="number"
                     android:maxLines="1"/>
 
-                <TextView
-                    android:id="@+id/color_tv"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/shape_main_et"
-                    android:ems="10"
-                    android:focusableInTouchMode="false"
-                    android:hint="Cor"
-                    android:text="Vermelho"
-                    android:maxLines="1" />
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/shape_main_spinner">
+
+                    <Spinner
+                        android:id="@+id/colorCar_sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/type_carColor"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp" />
+
+                </FrameLayout>
             </LinearLayout>
 
             <FrameLayout

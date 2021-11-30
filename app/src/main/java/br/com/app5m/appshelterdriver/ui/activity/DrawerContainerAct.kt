@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.fragment.drawer.other.UserBanksFrag
+import br.com.app5m.appshelterdriver.ui.fragment.drawer.other.UserAccountFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UpdateVehicleFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserProfileFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserRidesInfoContainerFrag
@@ -44,7 +44,7 @@ class DrawerContainerAct : AppCompatActivity() {
 
                 }
                 "bank_account" -> {
-                    useful.startFragment(UserBanksFrag(), supportFragmentManager)
+                    useful.startFragment(UserAccountFrag(), supportFragmentManager)
 
                 }
 

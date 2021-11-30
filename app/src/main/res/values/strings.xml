@@ -15,6 +15,42 @@
         <item>Pessoa Jurídica</item>
     </string-array>
 
+    <string-array name="type_carColor">
+        <item>AMARELO</item>
+        <item>AZUL</item>
+        <item>BEGE</item>
+        <item>BRANCA</item>
+        <item>CINZA</item>
+        <item>DOURADA</item>
+        <item>GRENA</item>
+        <item>LARANJA</item>
+        <item>MARROM</item>
+        <item>PRATA</item>
+        <item>PRETA</item>
+        <item>ROSA</item>
+        <item>ROXA</item>
+        <item>VERDE</item>
+        <item>VERMELHA</item>
+        <item>FANTASIA</item>
+    </string-array>
+
+    <!--    01-AMARELO
+        02-AZUL
+        03-BEGE
+        04-BRANCA
+        05-CINZA
+        06-DOURADA
+        07-GRENA
+        08-LARANJA
+        09-MARROM
+        10-PRATA
+        11-PRETA
+        12-ROSA
+        13-ROXA
+        14-VERDE
+        15-VERMELHA
+        16-FANTASIA-->
+
     <string-array name="type_key_pix">
         <item>CPF</item>
         <item>CNPJ</item>
@@ -45,7 +81,7 @@
     <string name="menu_Change_vehicle">Meu Veículo</string>
     <string name="menu_myTrips">Minhas Viagens</string>
     <string name="menu_myPayments">Meus Pagamentos</string>
-    <string name="menu_bank_account">Contas Bancárias</string>
+    <string name="menu_account">Financeiro</string>
     <string name="menu_logOut">Sair</string>
 
 </resources>

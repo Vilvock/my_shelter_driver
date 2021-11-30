@@ -446,7 +446,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     intent.putExtra("key", "myPayments")
                 }
 
-                R.id.nav_bankAccount -> {
+                R.id.nav_account -> {
                     intent.putExtra("key", "bank_account")
                 }
                 else -> {

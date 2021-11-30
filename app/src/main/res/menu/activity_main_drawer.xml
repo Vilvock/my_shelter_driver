@@ -18,8 +18,8 @@
             android:title="@string/menu_myPayments"
             />
         <item
-            android:id="@+id/nav_bankAccount"
-            android:title="@string/menu_bank_account"
+            android:id="@+id/nav_account"
+            android:title="@string/menu_account"
             />
         <item
             android:id="@+id/nav_logOut"

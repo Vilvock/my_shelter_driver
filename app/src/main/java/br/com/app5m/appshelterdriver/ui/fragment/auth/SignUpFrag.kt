@@ -164,7 +164,7 @@ class SignUpFrag : Fragment(), WSResult {
             user.vehicle.mark = mark_et.text.toString()
             user.vehicle.model = model_et.text.toString()
             user.vehicle.board = board_et.text.toString()
-            user.vehicle.color = "Vermelho"
+            user.vehicle.color = colorCar_sp.selectedItem.toString()
             user.vehicle.year = year_et.text.toString()
             user.vehicle.modelYear = year_et.text.toString()
             user.vehicle.typeCar = (typeCar_sp.selectedItemPosition + 1).toString()

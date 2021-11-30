@@ -9,16 +9,16 @@ import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.BankControl
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Bank
-import br.com.app5m.appshelterdriver.ui.adapter.BankAdapter
+import br.com.app5m.appshelterdriver.ui.adapter.AccountAdapter
 import br.com.app5m.appshelterdriver.util.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.util.Useful
-import kotlinx.android.synthetic.main.fragment_user_banks.*
+import kotlinx.android.synthetic.main.fragment_user_account.*
 import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  */
-class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
+class UserAccountFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
     private lateinit var useful: Useful
     private lateinit var bankControl: BankControl
@@ -31,7 +31,7 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_banks, container, false)
+        return inflater.inflate(R.layout.fragment_user_account, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,7 +61,7 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
         when (item.itemId) {
             R.id.action_add -> {
-                useful.showDefaultDialogView(requireActivity().supportFragmentManager, "add_bank")
+                useful.showDefaultDialogView(requireActivity().supportFragmentManager, "account")
             }
 
         }
@@ -91,7 +91,7 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
     private fun configRecycler() {
 
-        val bankAdapter = BankAdapter(bankList, requireContext(), this)
+        val bankAdapter = AccountAdapter(bankList, requireContext(), this)
 
         banks_rv.apply {
             setHasFixedSize(false)
@@ -104,7 +104,7 @@ class UserBanksFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
         this.position = positionBank
 
-        useful.showDefaultDialogView(parentFragmentManager, "update_bank")
+        useful.showDefaultDialogView(parentFragmentManager, "update_account")
 
 
     }

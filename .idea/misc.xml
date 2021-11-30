@@ -32,6 +32,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/activity_permission_localization.xml" value="0.11041666666666666" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/activity_send_document.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/activity_sucess_info.xml" value="0.36666666666666664" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_accounts.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_add_bank_form.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_add_pix_form.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_banks.xml" value="0.22" />
@@ -69,7 +70,9 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_initride.xml" value="0.22" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_ongoing.xml" value="0.22" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_processingdriversearch.xml" value="0.36666666666666664" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_saveaccount.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_savebankaccount.xml" value="0.36666666666666664" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_typeaccount.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_bottom_view_vehicle.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_gallery_camera.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/dialog_my_payments_filter.xml" value="0.1796875" />
