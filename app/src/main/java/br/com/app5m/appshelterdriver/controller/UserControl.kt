@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
-import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
+import br.com.app5m.appshelterdriver.config.RetrofitInitializer
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.controller.webservice.WebService
 import br.com.app5m.appshelterdriver.util.Preferences

@@ -10,7 +10,7 @@ import br.com.app5m.appshelterdriver.models.UAddress
 import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
-import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
+import br.com.app5m.appshelterdriver.config.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -10,7 +10,7 @@ import br.com.app5m.appshelterdriver.models.Document
 import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
-import br.com.app5m.appshelterpassenger.config.RetrofitInitializer
+import br.com.app5m.appshelterdriver.config.RetrofitInitializer
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

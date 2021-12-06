@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterpassenger.config
+package br.com.app5m.appshelterdriver.config
 
 import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import okhttp3.OkHttpClient
