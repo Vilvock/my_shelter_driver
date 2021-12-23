@@ -311,7 +311,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
                 top_credit_available.visibility = View.VISIBLE
 
-                currentCredit_tv.text = userInfo.totalReceives
+                currentCredit_tv.text = userInfo.credit
             } else {
                 top_credit_available.visibility = View.GONE
             }

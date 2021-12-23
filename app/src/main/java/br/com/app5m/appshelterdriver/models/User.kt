@@ -9,6 +9,8 @@ import java.io.Serializable
 @Parcelize
 class User : Parcelable {
 
+    @field:SerializedName("saldo")
+    var credit: String? = null
 
     @field:SerializedName("total_recebimentos")
     var totalReceives: String? = null
