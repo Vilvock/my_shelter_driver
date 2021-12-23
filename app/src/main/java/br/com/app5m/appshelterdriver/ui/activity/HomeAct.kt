@@ -304,9 +304,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                 userControl.updateStatusOnline(driverStatus)
             }
 
-            userControl.listReceives()
+            userControl.listCredit()
 
-        } else if (type == "listReceives"){
+        } else if (type == "listCredit"){
 
             if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
                 top_credit_available.visibility = View.VISIBLE

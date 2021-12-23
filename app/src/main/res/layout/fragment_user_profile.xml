@@ -118,7 +118,8 @@
                     android:ems="10"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:text="" />
+                    android:text=""
+                    android:enabled="false" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -177,7 +178,8 @@
                     android:background="@drawable/shape_main_stroke_gray_et"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:enabled="false" />
 
                 <TextView
                     android:layout_width="match_parent"
