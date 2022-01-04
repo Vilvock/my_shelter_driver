@@ -61,6 +61,7 @@ import kotlinx.android.synthetic.main.top_credit_available.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate {
 
@@ -108,6 +109,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     private var driverMarker: Marker? = null
 
     private var userLatLng: LatLng? = null
+    private var userBearing = 0F
+
 
     private val interpolator = LinearInterpolator()
     private var animatingJob: Job? = null
@@ -539,10 +542,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     }
 
                     userLatLng = LatLng (location.latitude, location.longitude)
+                    userBearing = location.bearing
+
 
                     _mapPlotDateLiveData.value = MapPlotData(
                         userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
-                        vehicleAngle = location.bearing
+                        vehicleAngle = userBearing
                     )
 
                     if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
@@ -620,8 +625,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                 if (rideLiveData.value != null) {
                     _mapPlotDateLiveData.value = MapPlotData(
                         userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
-                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-                        destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()))
+                        vehicleAngle = userBearing,
+                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble())/*,
+                        destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble())*/)
 
                     mapPlotUpdated(mapPlotDateLiveData.value)
                 }
@@ -639,7 +645,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                     _mapPlotDateLiveData.value = MapPlotData(
                         userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
-                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                        vehicleAngle = userBearing,
+//                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
                         destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
                         polyline = polyLineFormatted)
 
