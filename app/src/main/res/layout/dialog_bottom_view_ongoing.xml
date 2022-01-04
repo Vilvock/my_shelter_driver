@@ -22,15 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dados da viagem"
-                android:layout_gravity="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size3" />
+                android:layout_marginTop="16dp"
+                android:text="Dados da corrida"
+                android:textAllCaps="true"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
+
 
             <TextView
                 android:id="@+id/rideInfo_tv"
@@ -39,7 +42,6 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/lorem_ipsum"
                 android:textStyle="bold"
-                android:textSize="@dimen/text_size3"
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
@@ -49,7 +51,8 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="0 km restantes até o fim da sua corrida"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/openMapNavigation_bt"

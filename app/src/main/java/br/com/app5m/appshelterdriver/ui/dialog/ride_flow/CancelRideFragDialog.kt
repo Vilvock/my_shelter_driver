@@ -53,6 +53,12 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
                 }
 
+                HomeAct.MainScreenStage.ONGOING_RIDE -> {
+
+                    useful.showDefaultDialogView(requireActivity().supportFragmentManager, "ongoing")
+
+                }
+
                 else -> {}
             }
             bottomSheetDialogFragment.dismiss()
