@@ -278,20 +278,7 @@ class UserControl(private val context: Context, private val result: WSResult, pr
     }
 
     fun updateVehicleData(vehicle: User){
-/*
-        {
-{
-				"marca": "Chevrolet",
-                "modelo": "Celta",
-                "placa": "III4456",
-                "cor": "Preto",
-                "ano": "2013",
-                "ano_modelo": "2013",
-				"tipo_carro": 1,
-				"id": 1,
-				"token": "shelter_movel#2021"
-}
-        }*/
+
 
         type = "updateVehicleData"
 

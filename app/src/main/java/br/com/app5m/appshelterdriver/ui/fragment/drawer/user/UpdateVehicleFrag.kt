@@ -6,18 +6,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.controller.RideControl
 import br.com.app5m.appshelterdriver.controller.UserControl
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
+import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.models.User
+import br.com.app5m.appshelterdriver.models.Vehicle
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.ui.fragment.auth.RecoverPasswordFrag
 import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.Validation
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 import kotlinx.android.synthetic.main.fragment_update_vehicle.*
+import kotlinx.android.synthetic.main.fragment_update_vehicle.board_et
+import kotlinx.android.synthetic.main.fragment_update_vehicle.colorCar_sp
+import kotlinx.android.synthetic.main.fragment_update_vehicle.mark_et
+import kotlinx.android.synthetic.main.fragment_update_vehicle.model_et
+import kotlinx.android.synthetic.main.fragment_update_vehicle.typeCar_sp
+import kotlinx.android.synthetic.main.fragment_update_vehicle.year_et
 
 
 class UpdateVehicleFrag : Fragment(), WSResult {
@@ -25,6 +36,9 @@ class UpdateVehicleFrag : Fragment(), WSResult {
     private lateinit var useful: Useful
     private lateinit var userControl: UserControl
     private lateinit var validation: Validation
+    private lateinit var rideControl: RideControl
+
+    private lateinit var vehicleResponseInfo: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,10 +54,13 @@ class UpdateVehicleFrag : Fragment(), WSResult {
         useful = Useful(requireContext())
         validation = Validation(requireContext())
         userControl = UserControl(requireContext(), this, useful)
+        rideControl = RideControl(requireContext(), this, useful)
 
         useful.openLoading()
-        userControl.listVehicle()
 
+        rideControl.listVehicleTypes()
+
+        colorCar_sp.setSelection(1)
 
         loadClicks()
 
@@ -53,16 +70,57 @@ class UpdateVehicleFrag : Fragment(), WSResult {
 
         useful.closeLoading()
 
-        val user = list[0]
+        vehicleResponseInfo = list[0]
 
-        if (user.status.equals("01")) {
+
+        if (type == "updateVehicleData") {
+            if (vehicleResponseInfo.status == "01") {
+
+                rideControl.listVehicleTypes()
+            } else {
+                SingleToast.INSTANCE.show(requireContext(), vehicleResponseInfo.msg!!, Toast.LENGTH_LONG)
+            }
 
         } else {
-//
-//            SingleToast.INSTANCE.show(context, user.msg!!, Toast.LENGTH_LONG)
-        }
+
+            mark_et.setText(vehicleResponseInfo.mark)
+            model_et.setText(vehicleResponseInfo.model)
+            board_et.setText(vehicleResponseInfo.board)
+            year_et.setText(vehicleResponseInfo.year)
+
+
+//            colorCar_sp.setSelection(arrayAdapterSpinner.getPosition(vehicleResponseInfo.year))
+
+       }
 
     }
+
+    override fun rResponse(list: List<Ride>, type: String) {
+
+        val typeCarNameList = ArrayList<String>()
+
+
+        typeCarNameList.add("Selecione")
+
+        for (item in list) {
+            typeCarNameList.add(item.name!!)
+        }
+
+        //sla ta gordo
+        val arrayAdapterSpinner = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            typeCarNameList
+        )
+
+        typeCar_sp.adapter = arrayAdapterSpinner
+
+        typeCar_sp.setSelection(1)
+
+        userControl.listVehicle()
+
+    }
+
 
     private fun loadClicks() {
 
@@ -73,6 +131,15 @@ class UpdateVehicleFrag : Fragment(), WSResult {
             val vehicle = User()
 
             useful.openLoading()
+
+            vehicle.id = vehicleResponseInfo.id
+            vehicle.mark = mark_et.text.toString()
+            vehicle.model = model_et.text.toString()
+            vehicle.board = board_et.text.toString()
+            vehicle.year = year_et.text.toString()
+            vehicle.modelYear = year_et.text.toString()
+            vehicle.color = (colorCar_sp.selectedItem).toString()
+            vehicle.typeCar = (typeCar_sp.selectedItemPosition).toString()
 
             userControl.updateVehicleData(vehicle)
 
@@ -97,7 +164,7 @@ class UpdateVehicleFrag : Fragment(), WSResult {
 
         if (typeCar_sp.selectedItemPosition == 0) {
 
-            SingleToast.INSTANCE.show(context, "Selecione qual seu tipo de veículo!",
+            SingleToast.INSTANCE.show(context, "Selecione qual é seu tipo de veículo!",
                 Toast.LENGTH_SHORT)
 
             return false

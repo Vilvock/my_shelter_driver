@@ -102,6 +102,8 @@ class SignUpFrag : Fragment(), WSResult {
 
         val typeCarNameList = ArrayList<String>()
 
+        typeCarNameList.add("Selecione")
+
         for (item in list) {
             typeCarNameList.add(item.name!!)
         }
@@ -172,10 +174,10 @@ class SignUpFrag : Fragment(), WSResult {
             user.vehicle.mark = mark_et.text.toString()
             user.vehicle.model = model_et.text.toString()
             user.vehicle.board = board_et.text.toString()
-            user.vehicle.color = colorCar_sp.selectedItem.toString()
+            user.vehicle.color = (colorCar_sp.selectedItem).toString()
             user.vehicle.year = year_et.text.toString()
             user.vehicle.modelYear = year_et.text.toString()
-            user.vehicle.typeCar = (typeCar_sp.selectedItemPosition + 1).toString()
+            user.vehicle.typeCar = (typeCar_sp.selectedItemPosition).toString()
 
             useful.openLoading()
 
@@ -228,7 +230,7 @@ class SignUpFrag : Fragment(), WSResult {
 
         if (typeCar_sp.selectedItemPosition == 0) {
 
-            SingleToast.INSTANCE.show(context, "Selecione qual seu tipo de veículo!",
+            SingleToast.INSTANCE.show(context, "Selecione qual é seu tipo de veículo!",
                 Toast.LENGTH_SHORT)
 
             return false

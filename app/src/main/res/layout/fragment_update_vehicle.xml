@@ -81,44 +81,76 @@
                 </FrameLayout>
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Marca"
+                android:textAllCaps="true"
+                android:textColor="@color/gray400" />
+
 
             <EditText
                 android:id="@+id/mark_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/shape_main_et"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/shape_main_stroke_gray_et"
                 android:ems="10"
-                android:hint="Marca"
                 android:inputType="text"
                 android:maxLines="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Modelo"
+                android:textAllCaps="true"
+                android:textColor="@color/gray400" />
+
 
             <EditText
                 android:id="@+id/model_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/shape_main_et"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/shape_main_stroke_gray_et"
                 android:ems="10"
-                android:hint="Modelo"
                 android:inputType="text"
                 android:maxLines="1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Placa"
+                android:textAllCaps="true"
+                android:textColor="@color/gray400" />
+
 
             <EditText
                 android:id="@+id/board_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/shape_main_et"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/shape_main_stroke_gray_et"
                 android:ems="10"
-                android:hint="Placa"
                 android:inputType="text"
                 android:maxLines="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ano e cor"
+                android:textAllCaps="true"
+                android:textColor="@color/gray400" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
                 <EditText
@@ -127,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/shape_main_et"
+                    android:background="@drawable/shape_main_stroke_gray_et"
                     android:ems="10"
                     android:hint="Ano"
                     android:inputType="number"
@@ -151,10 +183,19 @@
                 </FrameLayout>
             </LinearLayout>
 
-            <FrameLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:text="Tipo de veículo"
+                android:textAllCaps="true"
+                android:textColor="@color/gray400" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/shape_main_spinner">
 
                 <Spinner

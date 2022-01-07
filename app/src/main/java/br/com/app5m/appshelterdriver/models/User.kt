@@ -123,4 +123,25 @@ class User : Parcelable {
     @field:SerializedName("registration_id")
     var registrationId: String? = null
 
+    @field:SerializedName("marca")
+    var mark: String? = null
+
+    @field:SerializedName("modelo")
+    var model: String? = null
+
+    @field:SerializedName("placa")
+    var board: String? = null
+
+    @field:SerializedName("cor")
+    var color: String? = null
+
+    @field:SerializedName("ano")
+    var year: String? = null
+
+    @field:SerializedName("ano_modelo")
+    var modelYear: String? = null
+
+    @field:SerializedName("tipo_carro")
+    var typeCar: String? = null
+
 }
