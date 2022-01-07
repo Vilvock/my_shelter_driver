@@ -10,6 +10,7 @@ import br.com.app5m.appshelterdriver.controller.BankControl
 import br.com.app5m.appshelterdriver.controller.UserControl
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Bank
+import br.com.app5m.appshelterdriver.models.Receive
 import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.ui.adapter.AccountAdapter
 import br.com.app5m.appshelterdriver.ui.adapter.ReceiveAdapter
@@ -28,7 +29,7 @@ class UserPaymentsFrag : Fragment(), WSResult, RecyclerItemClickListener {
     private lateinit var useful: Useful
     private lateinit var userControl: UserControl
 
-    val paymentList = ArrayList<User>()
+    val paymentList = ArrayList<Receive>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,7 +65,7 @@ class UserPaymentsFrag : Fragment(), WSResult, RecyclerItemClickListener {
         useful.closeLoading()
 
         paymentList.clear()
-        paymentList.addAll(list)
+        paymentList.addAll(list[0].receiveList)
 
         if (paymentList[0].rows != "0") {
             payments_rv.visibility = View.VISIBLE

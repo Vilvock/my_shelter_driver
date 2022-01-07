@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 @Parcelize
-class User : Parcelable {
+class Receive : Parcelable {
 
     @field:SerializedName("saldo")
     var credit: String? = null
@@ -17,9 +17,6 @@ class User : Parcelable {
 
     @field:SerializedName("veiculo")
     var vehicle: Vehicle = Vehicle()
-
-    @field:SerializedName("recebimentos")
-    var receiveList = ArrayList<Receive>()
 
     @field:SerializedName("latitude")
     var latitude: String? = null

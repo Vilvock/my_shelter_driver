@@ -10,10 +10,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.models.Bank
+import br.com.app5m.appshelterdriver.models.Receive
 import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.util.RecyclerItemClickListener
 
-class ReceiveAdapter(private val list: List<User>,
+class ReceiveAdapter(private val list: List<Receive>,
                      private val context: Context,
                      private val recyclerItemClickListener: RecyclerItemClickListener):
         RecyclerView.Adapter<ReceiveAdapter.Holder>(){
