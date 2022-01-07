@@ -60,6 +60,15 @@ class User : Parcelable {
     @field:SerializedName("tipo")
     var typeUser: String? = null
 
+    @field:SerializedName("valor")
+    var value: String? = null
+
+    @field:SerializedName("banco")
+    var bank: String? = null
+
+    @field:SerializedName("data")
+    var date: String? = null
+
     @field:SerializedName("type")
     var type: String? = null
 

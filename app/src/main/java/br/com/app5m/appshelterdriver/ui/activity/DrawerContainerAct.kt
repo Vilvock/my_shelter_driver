@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.other.UserAccountFrag
+import br.com.app5m.appshelterdriver.ui.fragment.drawer.other.UserPaymentsFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UpdateVehicleFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserProfileFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserRidesInfoContainerFrag
@@ -40,7 +41,7 @@ class DrawerContainerAct : AppCompatActivity() {
                 }
 
                 "myPayments" -> {
-//                    useful.startFragment(MyPayments(), supportFragmentManager)
+                    useful.startFragment(UserPaymentsFrag(), supportFragmentManager)
 
                 }
                 "bank_account" -> {

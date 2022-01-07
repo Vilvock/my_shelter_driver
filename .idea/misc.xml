@@ -46,6 +46,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_my_payments.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_my_pix.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_mypromotions.xml" value="0.1796875" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_receives.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_travel_history.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_vehicle_color.xml" value="0.4318813716404078" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/adapter_veicle_color.xml" value="0.1796875" />
@@ -122,6 +123,7 @@
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_address.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_banks.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_historic_rides.xml" value="0.36666666666666664" />
+        <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_payments.xml" value="0.36666666666666664" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_profile.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_user_rides_info_container.xml" value="0.1796875" />
         <entry key="..\:/Arquivos/Android/AndroidStudioProjects/sheltermotorista_android_new/app/src/main/res/layout/fragment_verify_token.xml" value="0.36666666666666664" />
