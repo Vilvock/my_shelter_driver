@@ -168,12 +168,6 @@ class UserControl(private val context: Context, private val result: WSResult, pr
 
         type = "recover"
 
-
-/*        {
-            "email": "diogocosta.js@gmail.com",
-        }*/
-
-
         val param: Call<List<User>> = service.recoverPassword(user)
         param.enqueue(this)
     }
@@ -181,11 +175,6 @@ class UserControl(private val context: Context, private val result: WSResult, pr
     fun verifyToken(user: User){
 
         type = "verify"
-/*
-        {
-            "token_senha": "45d6637b718d0f24a237069fe41b0db4"
-        }*/
-
 
         val param: Call<List<User>> = service.verifyToken(user)
         param.enqueue(this)
@@ -194,12 +183,6 @@ class UserControl(private val context: Context, private val result: WSResult, pr
     fun updatePasswordByToken(user: User){
 
         type = "updateTokenPassword"
-/*
-    {
-    "token_senha": "45d6637b718d0f24a237069fe41b0db4",
-    "password": "dig1208s"
-}*/
-
 
         val param: Call<List<User>> = service.updatePasswordToken(user)
         param.enqueue(this)
@@ -208,11 +191,6 @@ class UserControl(private val context: Context, private val result: WSResult, pr
     fun updateLocation(user: User){
 
         type = "updateLocation"
- /*       {
-            "latitude": "-30.0036668",
-            "longitude": "-51.0546295",
-            "id_motorista": "9"
-        }*/
 
         user.driverId = preferences.getUserData()!!.id
 
@@ -283,6 +261,44 @@ class UserControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
 
 
+    }
+
+    fun listVehicle() {
+
+        type = "fcm"
+
+        user = User()
+
+        user.token = WSConstants.TOKEN
+
+        val param: Call<List<User>> = service.listVehicle(preferences.getUserData()!!.id!!, user)
+        param.enqueue(this)
+
+
+    }
+
+    fun updateVehicleData(vehicle: User){
+/*
+        {
+{
+				"marca": "Chevrolet",
+                "modelo": "Celta",
+                "placa": "III4456",
+                "cor": "Preto",
+                "ano": "2013",
+                "ano_modelo": "2013",
+				"tipo_carro": 1,
+				"id": 1,
+				"token": "shelter_movel#2021"
+}
+        }*/
+
+        type = "updateVehicleData"
+
+        vehicle.token = WSConstants.TOKEN
+
+        val param: Call<List<User>> = service.updateVehicle(vehicle)
+        param.enqueue(this)
     }
 
 }

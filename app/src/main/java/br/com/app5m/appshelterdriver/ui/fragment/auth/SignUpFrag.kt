@@ -24,6 +24,13 @@ import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.Validation
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import kotlinx.android.synthetic.main.fragment_sign_up.board_et
+import kotlinx.android.synthetic.main.fragment_sign_up.colorCar_sp
+import kotlinx.android.synthetic.main.fragment_sign_up.mark_et
+import kotlinx.android.synthetic.main.fragment_sign_up.model_et
+import kotlinx.android.synthetic.main.fragment_sign_up.typeCar_sp
+import kotlinx.android.synthetic.main.fragment_sign_up.year_et
+import kotlinx.android.synthetic.main.fragment_update_vehicle.*
 
 
 /**
@@ -145,6 +152,7 @@ class SignUpFrag : Fragment(), WSResult {
 
 
             if (!validate()) return@setOnClickListener
+            if (!validateVehicle()) return@setOnClickListener
 
             val user = User()
 
@@ -184,7 +192,6 @@ class SignUpFrag : Fragment(), WSResult {
 
     }
 
-    //validacao para carro dps
     private fun validate() : Boolean {
         if (!validation.name(name_et)) return false
         if (!validation.lastName(lastName_et)) return false
@@ -200,6 +207,32 @@ class SignUpFrag : Fragment(), WSResult {
 
         if (!validation.password(password_et, 0)) return false
         if (!validation.coPassword(password_et, coPassword_et)) return false
+
+        return true
+    }
+
+    private fun validateVehicle(): Boolean {
+
+        if (!validation.validateTextField(mark_et)) return false
+        if (!validation.validateTextField(model_et)) return false
+        if (!validation.validateTextField(board_et)) return false
+        if (!validation.validateTextField(year_et)) return false
+
+        if (colorCar_sp.selectedItemPosition == 0) {
+
+            SingleToast.INSTANCE.show(context, "Selecione uma cor para seu veículo!",
+                Toast.LENGTH_SHORT)
+
+            return false
+        }
+
+        if (typeCar_sp.selectedItemPosition == 0) {
+
+            SingleToast.INSTANCE.show(context, "Selecione qual seu tipo de veículo!",
+                Toast.LENGTH_SHORT)
+
+            return false
+        }
 
         return true
     }

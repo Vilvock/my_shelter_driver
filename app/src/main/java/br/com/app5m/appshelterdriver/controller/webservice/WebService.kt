@@ -70,6 +70,15 @@ interface WebService {
         @Body u: User
     ): Call<List<User>>
 
+    @POST("motoristas/listveiculo/" + "{id}")
+    fun listVehicle(
+        @Path("id") idUser: String,
+        @Body u: User
+    ): Call<List<User>>
+
+    @POST("motoristas/updateveiculo")
+    fun updateVehicle(@Body u: User): Call<List<User>>
+
     //Address
 
     @POST("passageiros/saveendereco")

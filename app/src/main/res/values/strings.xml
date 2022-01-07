@@ -16,6 +16,7 @@
     </string-array>
 
     <string-array name="type_carColor">
+        <item>Selecione</item>
         <item>AMARELO</item>
         <item>AZUL</item>
         <item>BEGE</item>
