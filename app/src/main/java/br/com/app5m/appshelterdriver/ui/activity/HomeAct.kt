@@ -122,7 +122,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     private val handler = Handler()
     private var runnable = Runnable { getRealTimeLocation()}
 
-    private val DRIVER_POSITION_TRACKING_RATE = 3000L
+    private val DRIVER_POSITION_TRACKING_RATE = 1000L
     private val DELAY_HANDLER = 2000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
