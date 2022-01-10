@@ -60,8 +60,6 @@ class UpdateVehicleFrag : Fragment(), WSResult {
 
         rideControl.listVehicleTypes()
 
-        colorCar_sp.setSelection(1)
-
         loadClicks()
 
     }
@@ -89,16 +87,19 @@ class UpdateVehicleFrag : Fragment(), WSResult {
             year_et.setText(vehicleResponseInfo.year)
 
 
-//            colorCar_sp.setSelection(arrayAdapterSpinner.getPosition(vehicleResponseInfo.year))
+            colorCar_sp.setSelection((colorCar_sp.adapter as ArrayAdapter<String?>)
+                .getPosition(vehicleResponseInfo.color))
 
-       }
+            typeCar_sp.setSelection(vehicleResponseInfo.typeCar!!.toInt())
+
+
+        }
 
     }
 
     override fun rResponse(list: List<Ride>, type: String) {
 
         val typeCarNameList = ArrayList<String>()
-
 
         typeCarNameList.add("Selecione")
 
@@ -114,8 +115,6 @@ class UpdateVehicleFrag : Fragment(), WSResult {
         )
 
         typeCar_sp.adapter = arrayAdapterSpinner
-
-        typeCar_sp.setSelection(1)
 
         userControl.listVehicle()
 
@@ -152,7 +151,7 @@ class UpdateVehicleFrag : Fragment(), WSResult {
         if (!validation.validateTextField(mark_et)) return false
         if (!validation.validateTextField(model_et)) return false
         if (!validation.validateTextField(board_et)) return false
-        if (!validation.validateTextField(year_et)) return false
+        if (!validation.year(year_et)) return false
 
         if (colorCar_sp.selectedItemPosition == 0) {
 

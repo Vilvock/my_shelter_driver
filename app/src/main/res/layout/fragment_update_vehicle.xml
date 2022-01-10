@@ -162,6 +162,7 @@
                     android:background="@drawable/shape_main_stroke_gray_et"
                     android:ems="10"
                     android:hint="Ano"
+                    android:maxLength="4"
                     android:inputType="number"
                     android:maxLines="1"/>
 

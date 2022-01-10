@@ -198,6 +198,23 @@ class Validation (context: Context) {
         return true
     }
 
+    fun year(editText: EditText): Boolean {
+
+        if (editText.text.toString().isEmpty()) {
+            editText.error = "Data precisa ser preenchida"
+            animation.shake(editText)
+            return false
+        }
+
+        if (editText.text.toString().length < 4) {
+            editText.error = "Data inválida"
+            animation.shake(editText)
+            return false
+        }
+
+        return true
+    }
+
     fun date(editText: EditText): Boolean {
 
         if (editText.text.toString().isEmpty()) {
