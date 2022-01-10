@@ -89,7 +89,7 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
 
             "finish" -> {
 
-                fragment =FinishedRideDetailsFragDialog(this)
+                fragment = FinishedRideDetailsFragDialog(this)
             }
 
             "cancel" -> {

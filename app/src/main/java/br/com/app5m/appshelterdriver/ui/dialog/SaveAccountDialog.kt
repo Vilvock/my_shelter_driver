@@ -29,7 +29,9 @@ import kotlinx.android.synthetic.main.fragment_sign_up.typePerson_sp
 /**
  * A simple [Fragment] subclass.
  */
-class SaveAccountDialog(private val bottomSheetDialogFragment: BottomSheetDialogFragment, private val isSave: Boolean, private val isBank: Boolean?) :
+class SaveAccountDialog(private val bottomSheetDialogFragment: BottomSheetDialogFragment,
+                        private val isSave: Boolean,
+                        private val isBank: Boolean?) :
     BottomSheetDialogFragment(), WSResult {
 
     private lateinit var useful: Useful
