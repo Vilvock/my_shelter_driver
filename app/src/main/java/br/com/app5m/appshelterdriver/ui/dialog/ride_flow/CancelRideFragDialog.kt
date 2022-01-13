@@ -61,7 +61,6 @@ class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
                 else -> {}
             }
-            useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
         }
 
         cancel_bt.setOnClickListener {
@@ -84,7 +83,6 @@ class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
                 homeActContext.isCameraLock = true
                 homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
-                useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
             }
 
         }
@@ -99,7 +97,6 @@ class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
             homeActContext.isCameraLock = true
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 
-            useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
         } else {
             SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
         }

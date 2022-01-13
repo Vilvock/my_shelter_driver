@@ -80,14 +80,13 @@ class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCo
 
         val rideInfo = list[0]
 
+        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
+
         if (rideInfo.status == "01") {
             homeActContext.isCameraLock = true
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.FINISH_RIDE)
 
         }
-
-        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
-        useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
 
     }
 

@@ -38,6 +38,7 @@ import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.ui.MapBottomPaddingDelegate
 import br.com.app5m.appshelterdriver.util.*
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -366,12 +367,21 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                             useful.showRideFlowFrag(supportFragmentManager, "finish")
                         }
 
-                        notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
+                        if (screenStageLiveData.value == MainScreenStage.ACCEPT_RIDE) {
+                            notifyScreenStageChanged(MainScreenStage.ACCEPT_RIDE)
+                        } else {
+                            notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
+                        }
                     }
 
                     else -> {
                         //cancelada
-                        notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
+
+                        if (screenStageLiveData.value == MainScreenStage.ACCEPT_RIDE) {
+                            notifyScreenStageChanged(MainScreenStage.ACCEPT_RIDE)
+                        } else {
+                            notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
+                        }
                     }
                 }
 
@@ -398,7 +408,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         val tPadding = topPx ?: toolbar?.height ?: 0
         val hPadding = resources.getDimension(R.dimen.map_horizontal_padding).toInt()
         mMap?.setPadding(hPadding, tPadding, hPadding, bottomPx)
-//        mapPlotUpdated(mapPlotDateLiveData.value)
     }
 
     private fun resetVerticalPaddingScreen() {
@@ -473,6 +482,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         }
 
         val headerView: View = nav_view.getHeaderView(0)
+
+        Glide.with(this)
+            .load(WSConstants.AVATAR_USER + preferences.getUserData()!!.avatar).into(headerView.userAvatar_iv)
+
         headerView.nameUser_tv.text = preferences.getUserData()!!.name
         headerView.emailUser_tv.text = preferences.getUserData()!!.email
 
@@ -606,12 +619,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         when (newStage) {
             MainScreenStage.RELOAD_OVERVIEW_STATEMENT -> {
+                useful.dismissRideFlowFrag(supportFragmentManager)
 
                 resetVerticalPaddingScreen()
 
             }
 
             MainScreenStage.ACCEPT_RIDE -> {
+
+//                bottom_im_available.visibility = View.GONE
 
                 useful.showRideFlowFrag(supportFragmentManager, "accept")
 

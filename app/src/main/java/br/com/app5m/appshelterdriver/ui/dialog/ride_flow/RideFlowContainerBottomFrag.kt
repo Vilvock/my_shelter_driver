@@ -24,6 +24,8 @@ class RideFlowContainerBottomFrag: Fragment() {
 
     private lateinit var fragment: Fragment
 
+    private lateinit var homeActContext: HomeAct
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,13 +38,17 @@ class RideFlowContainerBottomFrag: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sheet_container.post {
-            (requireActivity() as? MapBottomPaddingDelegate)?.setMapVerticalPadding(
-                sheet_container.height
-            )
-        }
-
         useful = Useful(requireContext())
+        homeActContext = requireActivity() as HomeAct
+
+        if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
+            || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
+            sheet_container.post {
+                (requireActivity() as? MapBottomPaddingDelegate)?.setMapVerticalPadding(
+                    sheet_container.height
+                )
+            }
+        }
 
         val transaction = childFragmentManager.beginTransaction()
 

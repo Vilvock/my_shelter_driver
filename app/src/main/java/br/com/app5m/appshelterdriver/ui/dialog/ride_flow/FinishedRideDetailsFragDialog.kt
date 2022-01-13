@@ -50,7 +50,7 @@ class FinishedRideDetailsFragDialog (private val rideFlowContainerBottomFrag: Ri
 
         ok_bt.setOnClickListener {
 
-            useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
+            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
         }
 
         val origin = "Embarque: " + homeActContext.rideLiveData.value!!.originAddress

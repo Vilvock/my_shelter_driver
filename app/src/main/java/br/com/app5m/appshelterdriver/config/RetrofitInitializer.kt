@@ -18,14 +18,15 @@ class RetrofitInitializer {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
 
-        val client = if (log_enable) OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS).readTimeout(10, TimeUnit.SECONDS).addInterceptor(logging).build()
+        val client = if (log_enable) OkHttpClient.Builder().connectTimeout(25, TimeUnit.SECONDS)
+            .writeTimeout(25, TimeUnit.SECONDS).readTimeout(25, TimeUnit.SECONDS)
+            .addInterceptor(logging).build()
         else
-            OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
-                    .writeTimeout(10, TimeUnit.SECONDS).readTimeout(10, TimeUnit.SECONDS).build()
+            OkHttpClient.Builder().connectTimeout(25, TimeUnit.SECONDS)
+                .writeTimeout(25, TimeUnit.SECONDS).readTimeout(25, TimeUnit.SECONDS).build()
 
         return Retrofit.Builder().baseUrl(WSConstants.WS_URL_BASE)
-                .addConverterFactory(GsonConverterFactory.create()).client(client).build()
+            .addConverterFactory(GsonConverterFactory.create()).client(client).build()
     }
 
 }
