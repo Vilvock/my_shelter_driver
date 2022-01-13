@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.rid
 /**
  * A simple [Fragment] subclass.
  */
-class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) :
+class FinishedRideDetailsFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag) :
     BottomSheetDialogFragment() {
 
     private lateinit var useful: Useful
@@ -50,7 +50,7 @@ class FinishedRideDetailsFragDialog (private val bottomSheetDialogFragment: Bott
 
         ok_bt.setOnClickListener {
 
-            bottomSheetDialogFragment.dismiss()
+            useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
         }
 
         val origin = "Embarque: " + homeActContext.rideLiveData.value!!.originAddress

@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.*
 /**
  * A simple [Fragment] subclass.
  */
-class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) :
+class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag) :
     BottomSheetDialogFragment(), WSResult {
 
     private lateinit var useful: Useful
@@ -92,7 +92,7 @@ class AcceptRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
         }
 
         SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
-        bottomSheetDialogFragment.dismiss()
+        useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
 
     }
 

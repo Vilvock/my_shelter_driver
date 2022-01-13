@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.rideInfo_tv
 /**
  * A simple [Fragment] subclass.
  */
-class OnGoingRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) : BottomSheetDialogFragment(), WSResult {
+class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag) : BottomSheetDialogFragment(), WSResult {
 
     private lateinit var useful: Useful
     private lateinit var rideControl: RideControl
@@ -87,7 +87,7 @@ class OnGoingRideFragDialog (private val bottomSheetDialogFragment: BottomSheetD
         }
 
         SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
-        bottomSheetDialogFragment.dismiss()
+        useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
 
     }
 

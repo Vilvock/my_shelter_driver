@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_cancelride.*
 /**
  * A simple [Fragment] subclass.
  */
-class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment) :
+class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag) :
     BottomSheetDialogFragment(), WSResult {
 
     private lateinit var useful: Useful
@@ -39,7 +39,7 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetDialogFragment.close_imageButton.visibility = View.GONE
+        rideFlowContainerBottomFrag.close_imageButton.visibility = View.GONE
         useful = Useful(requireContext())
         rideControl = RideControl(requireContext(), this, useful)
 
@@ -49,19 +49,19 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
             when (homeActContext.screenStageLiveData.value) {
                 HomeAct.MainScreenStage.WAITING_PICKUP -> {
 
-                    useful.showDefaultDialogView(requireActivity().supportFragmentManager, "waiting")
+                    useful.showRideFlowFrag(requireActivity().supportFragmentManager, "waiting")
 
                 }
 
                 HomeAct.MainScreenStage.ONGOING_RIDE -> {
 
-                    useful.showDefaultDialogView(requireActivity().supportFragmentManager, "ongoing")
+                    useful.showRideFlowFrag(requireActivity().supportFragmentManager, "ongoing")
 
                 }
 
                 else -> {}
             }
-            bottomSheetDialogFragment.dismiss()
+            useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
         }
 
         cancel_bt.setOnClickListener {
@@ -84,7 +84,7 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
 
                 homeActContext.isCameraLock = true
                 homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
-                bottomSheetDialogFragment.dismiss()
+                useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
             }
 
         }
@@ -99,7 +99,7 @@ class CancelRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDi
             homeActContext.isCameraLock = true
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 
-            bottomSheetDialogFragment.dismiss()
+            useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
         } else {
             SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
         }

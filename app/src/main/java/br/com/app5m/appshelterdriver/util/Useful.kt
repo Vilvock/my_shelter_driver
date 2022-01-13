@@ -21,7 +21,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.dialog.DefaultBottomSheetContainerFragDialog
+import br.com.app5m.appshelterdriver.ui.dialog.others.DefaultBottomSheetContainerFragDialog
+import br.com.app5m.appshelterdriver.ui.dialog.ride_flow.RideFlowContainerBottomFrag
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
@@ -41,7 +42,7 @@ class Useful (private val context: Context) {
 
     fun startFragment(frag: Fragment, fragmentManager: FragmentManager) {
         val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.containerView, frag)/*.addToBackStack(null)*/.commit()
+        transaction.replace(R.id.containerView, frag).commitAllowingStateLoss()
     }
 
     fun startFragmentOnBack(frag: Fragment, fragmentManager: FragmentManager) {
@@ -52,8 +53,7 @@ class Useful (private val context: Context) {
             R.anim.enter_from_left,
             R.anim.exit_to_right
         )
-        transaction.replace(R.id.containerView, frag).addToBackStack(null).commit()
-//        transaction.commitAllowingStateLoss()
+        transaction.replace(R.id.containerView, frag).addToBackStack(null).commitAllowingStateLoss()
     }
 
     fun openLoading() {
@@ -98,6 +98,36 @@ class Useful (private val context: Context) {
     }
 
     @SuppressLint("SetTextI18n")
+    fun showRideFlowFrag(fragmentManager: FragmentManager, tag: String) {
+        dismissRideFlowFrag(fragmentManager)
+
+        val transaction = fragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.enter_from_bottom,
+            R.anim.exit_from_top
+        )
+        transaction.add(R.id.containerView, RideFlowContainerBottomFrag(), tag).commitAllowingStateLoss()
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun dismissRideFlowFrag(fragmentManager: FragmentManager) {
+        val fragments: List<Fragment> = fragmentManager.fragments
+        if (fragments != null) {
+            for (fragment in fragments) {
+                if (fragment.tag != "maps") {
+
+                    val transaction = fragmentManager.beginTransaction()
+                    transaction.setCustomAnimations(
+                        R.anim.enter_from_bottom,
+                        R.anim.exit_from_top
+                    )
+                    transaction.remove(fragment).commitAllowingStateLoss()
+                }
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
     fun showDefaultDialogView(fragmentManager: FragmentManager, tag: String) {
         dismissDefaultDialogView()
         bottomSheetDialog = DefaultBottomSheetContainerFragDialog()
@@ -108,6 +138,7 @@ class Useful (private val context: Context) {
     fun dismissDefaultDialogView() {
         bottomSheetDialog?.dismiss()
     }
+
 
     fun bitmapDescriptorFromVector(
         @DrawableRes vectorDrawableResourceId: Int

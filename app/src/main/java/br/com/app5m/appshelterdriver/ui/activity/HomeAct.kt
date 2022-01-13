@@ -61,7 +61,6 @@ import kotlinx.android.synthetic.main.top_credit_available.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.math.roundToInt
 
 class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate {
 
@@ -341,7 +340,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                         //primeira vez q entrar vai overview  e so vai aparecer uma vez a dialog
                         if (screenStageLiveData.value != MainScreenStage.WAITING_PICKUP) {
-                            useful.showDefaultDialogView(supportFragmentManager, "waiting")
+                            useful.showRideFlowFrag(supportFragmentManager, "waiting")
                         }
 
 
@@ -364,7 +363,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     "Finalizada" -> {
 
                         if (screenStageLiveData.value == MainScreenStage.FINISH_RIDE) {
-                            useful.showDefaultDialogView(supportFragmentManager, "finish")
+                            useful.showRideFlowFrag(supportFragmentManager, "finish")
                         }
 
                         notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
@@ -385,7 +384,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             if (lastRideInfo.rows != "0") {
 
                 if (screenStageLiveData.value != MainScreenStage.ONGOING_RIDE) {
-                    useful.showDefaultDialogView(supportFragmentManager, "ongoing")
+                    useful.showRideFlowFrag(supportFragmentManager, "ongoing")
                 }
 
                 notifyScreenStageChanged(MainScreenStage.ONGOING_RIDE)
@@ -614,7 +613,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             MainScreenStage.ACCEPT_RIDE -> {
 
-                useful.showDefaultDialogView(supportFragmentManager, "accept")
+                useful.showRideFlowFrag(supportFragmentManager, "accept")
 
             }
 

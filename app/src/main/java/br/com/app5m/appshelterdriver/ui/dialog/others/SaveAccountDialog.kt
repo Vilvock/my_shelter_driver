@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.ui.dialog
+package br.com.app5m.appshelterdriver.ui.dialog.others
 
 import android.os.Bundle
 import android.text.TextWatcher

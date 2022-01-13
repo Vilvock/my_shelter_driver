@@ -1,4 +1,4 @@
-package br.com.app5m.appshelterdriver.ui.dialog
+package br.com.app5m.appshelterdriver.ui.dialog.others
 
 import android.app.Dialog
 import android.graphics.Color
@@ -7,14 +7,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
-import br.com.app5m.appshelterdriver.ui.MapBottomPaddingDelegate
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
-import br.com.app5m.appshelterdriver.ui.dialog.ride_flow.*
 import br.com.app5m.appshelterdriver.util.Useful
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -47,12 +44,6 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sheet_container.post {
-            (requireActivity() as? MapBottomPaddingDelegate)?.setMapVerticalPadding(
-                sheet_container.height
-            )
-        }
-
         useful = Useful(requireContext())
 
         // mostrar o bottomsheet inteiro
@@ -73,29 +64,6 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
         val transaction = childFragmentManager.beginTransaction()
 
         when(tag) {
-
-            "accept" -> {
-                fragment = AcceptRideFragDialog(this)
-            }
-
-            "waiting" -> {
-                fragment = InitRideFragDialog(this)
-            }
-
-            "ongoing" -> {
-
-                fragment = OnGoingRideFragDialog(this)
-            }
-
-            "finish" -> {
-
-                fragment = FinishedRideDetailsFragDialog(this)
-            }
-
-            "cancel" -> {
-                fragment = CancelRideFragDialog(this)
-            }
-
 
 
 //            //others
@@ -124,24 +92,6 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
 
         close_imageButton.setOnClickListener {
 
-            val homeActContext = requireActivity() as? HomeAct
-
-            if (requireActivity() == homeActContext) {
-
-                Log.d("TAG", "onDestroy: " + homeActContext.screenStageLiveData.value)
-                if (homeActContext.screenStageLiveData.value != HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
-                    if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
-                        || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
-
-                        useful.showDefaultDialogView(requireActivity().supportFragmentManager, "cancel")
-
-                    } else {
-
-                        homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
-                    }
-                }
-            }
-
             this.dismiss()
         }
 
@@ -157,10 +107,8 @@ class DefaultBottomSheetContainerFragDialog: BottomSheetDialogFragment() {
             val bottomSheet: View = dialog.findViewById(R.id.sheet_container)
             bottomSheet.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
 
-//            if (tag.equals("ongoing")) {
+//                dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
 
-                dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-//            }
         }
         val view = view
         view!!.post {

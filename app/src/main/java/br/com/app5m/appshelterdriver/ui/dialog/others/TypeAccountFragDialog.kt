@@ -1,16 +1,10 @@
-package br.com.app5m.appshelterdriver.ui.dialog
+package br.com.app5m.appshelterdriver.ui.dialog.others
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView.OnEditorActionListener
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.util.Useful
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -38,13 +32,13 @@ class TypeAccountFragDialog (private val bottomSheetDialogFragment: BottomSheetD
         useful = Useful(requireContext())
 
         account_bt.setOnClickListener {
-            useful.showDefaultDialogView(requireActivity().supportFragmentManager, "add_bank")
+            useful.showRideFlowFrag(requireActivity().supportFragmentManager, "add_bank")
 
             bottomSheetDialogFragment.dismiss()
         }
 
         pix_bt.setOnClickListener {
-            useful.showDefaultDialogView(requireActivity().supportFragmentManager, "pix")
+            useful.showRideFlowFrag(requireActivity().supportFragmentManager, "pix")
 
             bottomSheetDialogFragment.dismiss()
         }

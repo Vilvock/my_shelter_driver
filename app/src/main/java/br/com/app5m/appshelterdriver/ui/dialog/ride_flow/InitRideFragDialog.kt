@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_initride.*
 /**
  * A simple [Fragment] subclass.
  */
-class InitRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDialogFragment)
+class InitRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag)
     : BottomSheetDialogFragment(), WSResult {
 
     private lateinit var useful: Useful
@@ -89,7 +89,7 @@ class InitRideFragDialog (private val bottomSheetDialogFragment: BottomSheetDial
         }
 
         SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
-        bottomSheetDialogFragment.dismiss()
+        useful.dismissRideFlowFrag(requireActivity().supportFragmentManager)
 
     }
 }
