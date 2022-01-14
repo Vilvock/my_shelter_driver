@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.rideInfo_tv
 /**
  * A simple [Fragment] subclass.
  */
-class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag) : BottomSheetDialogFragment(), WSResult {
+class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag) : Fragment(), WSResult {
 
     private lateinit var useful: Useful
     private lateinit var rideControl: RideControl
@@ -84,7 +84,7 @@ class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCo
 
         val rideInfo = list[0]
 
-        SingleToast.INSTANCE.show(requireActivity(), rideInfo.msg!!, Toast.LENGTH_LONG)
+//        SingleToast.INSTANCE.show(requireActivity(), rideInfo.msg!!, Toast.LENGTH_LONG)
 
         if (rideInfo.status == "01") {
             homeActContext.isCameraLock = true

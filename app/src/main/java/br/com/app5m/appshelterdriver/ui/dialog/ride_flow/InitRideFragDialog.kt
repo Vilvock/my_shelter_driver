@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_initride.*
  * A simple [Fragment] subclass.
  */
 class InitRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag)
-    : BottomSheetDialogFragment(), WSResult {
+    : Fragment(), WSResult {
 
     private lateinit var useful: Useful
     private lateinit var rideControl: RideControl
@@ -86,7 +86,7 @@ class InitRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowConta
 
         val rideInfo = list[0]
 
-        SingleToast.INSTANCE.show(requireActivity(), rideInfo.msg!!, Toast.LENGTH_LONG)
+//        SingleToast.INSTANCE.show(requireActivity(), rideInfo.msg!!, Toast.LENGTH_LONG)
 
         if (rideInfo.status == "01") {
             homeActContext.isCameraLock = true

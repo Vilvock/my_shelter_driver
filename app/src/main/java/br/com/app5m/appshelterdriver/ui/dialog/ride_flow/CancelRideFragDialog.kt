@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_cancelride.*
  * A simple [Fragment] subclass.
  */
 class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag) :
-    BottomSheetDialogFragment(), WSResult {
+    Fragment(), WSResult {
 
     private lateinit var useful: Useful
     private lateinit var rideControl: RideControl

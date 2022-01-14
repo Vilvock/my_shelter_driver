@@ -363,10 +363,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                     "Finalizada" -> {
 
-                        if (screenStageLiveData.value == MainScreenStage.FINISH_RIDE) {
-                            useful.showRideFlowFrag(supportFragmentManager, "finish")
-                        }
-
                         if (screenStageLiveData.value == MainScreenStage.ACCEPT_RIDE) {
                             notifyScreenStageChanged(MainScreenStage.ACCEPT_RIDE)
                         } else {
@@ -670,12 +666,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             MainScreenStage.FINISH_RIDE -> {
 
 
+                useful.showRideFlowFrag(supportFragmentManager, "finish")
+
 
             }
 
         }
 
-        if (screenStageLiveData.value != MainScreenStage.ACCEPT_RIDE) {
+        if (screenStageLiveData.value != MainScreenStage.ACCEPT_RIDE
+            && screenStageLiveData.value != MainScreenStage.FINISH_RIDE) {
             handler.postDelayed(runnable, DELAY_HANDLER)
         }
 

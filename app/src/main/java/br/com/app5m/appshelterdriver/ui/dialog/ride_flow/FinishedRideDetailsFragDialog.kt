@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.rid
  * A simple [Fragment] subclass.
  */
 class FinishedRideDetailsFragDialog (private val rideFlowContainerBottomFrag: RideFlowContainerBottomFrag) :
-    BottomSheetDialogFragment() {
+    Fragment() {
 
     private lateinit var useful: Useful
 
