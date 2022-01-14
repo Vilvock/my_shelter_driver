@@ -53,6 +53,8 @@ class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
         accept_bt.setOnClickListener {
 
+            useful.openLoading()
+
             val acceptRide = Ride()
 
             Log.d("TAG", "accept:" )
@@ -83,9 +85,11 @@ class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
     override fun rResponse(list: List<Ride>, type: String) {
 
+        useful.closeLoading()
+
         val rideInfo = list[0]
 
-        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
+//        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
 
         if (rideInfo.status == "01") {
             homeActContext.isCameraLock = true

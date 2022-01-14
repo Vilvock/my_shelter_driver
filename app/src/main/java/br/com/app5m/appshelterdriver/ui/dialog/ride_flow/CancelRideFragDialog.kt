@@ -98,7 +98,7 @@ class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 
         } else {
-            SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
+            SingleToast.INSTANCE.show(requireActivity(), rideInfo.msg!!, Toast.LENGTH_LONG)
         }
 
     }

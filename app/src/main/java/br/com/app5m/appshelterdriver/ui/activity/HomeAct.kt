@@ -288,8 +288,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             imAvailable_sw.isChecked = userInfo.on == "1"
 
             imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
-
-                imAvailable_sw.isEnabled = false
+//
+//                imAvailable_sw.isEnabled = false
 
                 val driverStatus = User()
 
@@ -627,8 +627,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             MainScreenStage.ACCEPT_RIDE -> {
 
-//                bottom_im_available.visibility = View.GONE
-
                 useful.showRideFlowFrag(supportFragmentManager, "accept")
 
             }
@@ -677,7 +675,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         }
 
-        handler.postDelayed(runnable, DELAY_HANDLER)
+        if (screenStageLiveData.value != MainScreenStage.ACCEPT_RIDE) {
+            handler.postDelayed(runnable, DELAY_HANDLER)
+        }
+
     }
 
 

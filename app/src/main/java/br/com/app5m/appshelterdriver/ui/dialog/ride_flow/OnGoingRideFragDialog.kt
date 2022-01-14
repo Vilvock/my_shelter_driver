@@ -48,6 +48,8 @@ class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCo
         homeActContext = requireActivity() as HomeAct
 
         finish_bt.setOnClickListener{
+            useful.openLoading()
+
             val finishRide = Ride()
 
             //diogo precisa me trazer vehicleboard e vehicle model no login
@@ -78,9 +80,11 @@ class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCo
 
     override fun rResponse(list: List<Ride>, type: String) {
 
+        useful.closeLoading()
+
         val rideInfo = list[0]
 
-        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
+        SingleToast.INSTANCE.show(requireActivity(), rideInfo.msg!!, Toast.LENGTH_LONG)
 
         if (rideInfo.status == "01") {
             homeActContext.isCameraLock = true
