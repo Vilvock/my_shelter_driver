@@ -89,13 +89,12 @@ class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
         val rideInfo = list[0]
 
-//        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
+        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
 
-        if (rideInfo.status == "01") {
-            homeActContext.isCameraLock = true
-            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
+        homeActContext.isCameraLock = true
+        homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 
-        }
+
 
     }
 
