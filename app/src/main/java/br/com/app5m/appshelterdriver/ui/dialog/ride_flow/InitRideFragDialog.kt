@@ -9,12 +9,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.RideControl
+import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.dialog_bottom_view_initride.*
 
@@ -68,6 +70,12 @@ class InitRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowConta
 
             rideControl.startRide(initRide)
         }
+
+        Glide.with(requireContext())
+            .load(WSConstants.AVATAR_USER + homeActContext.rideLiveData.value!!.passengerAvatar).into(passengerAvatar_iv)
+
+        passengerInfo_tv.text = homeActContext.rideLiveData.value!!.passengerName
+
 
         val origin = "Embarque: " + homeActContext.rideLiveData.value!!.originAddress
         val destination = "Destino: " + homeActContext.rideLiveData.value!!.destinationAddress

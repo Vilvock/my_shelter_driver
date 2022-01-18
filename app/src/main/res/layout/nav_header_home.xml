@@ -17,11 +17,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/roundedImageView"
             android:id="@+id/userAvatar_iv"
-            style="@style/roundedImageViewRounded"
+            style="@style/roundedImageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/nav_header_desc"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             app:srcCompat="@android:drawable/sym_def_app_icon" />

@@ -63,7 +63,7 @@
 
                     <ImageView
                         android:id="@+id/avatar_iv"
-                        style="@style/roundedImageViewRounded"
+                        style="@style/roundedImageView"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_margin="8dp"

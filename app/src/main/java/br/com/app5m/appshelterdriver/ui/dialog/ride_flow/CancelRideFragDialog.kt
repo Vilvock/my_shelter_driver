@@ -65,7 +65,8 @@ class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
         cancel_bt.setOnClickListener {
 
-            if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP) {
+            if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
+                || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
 
                 val cancelRide = Ride()
 

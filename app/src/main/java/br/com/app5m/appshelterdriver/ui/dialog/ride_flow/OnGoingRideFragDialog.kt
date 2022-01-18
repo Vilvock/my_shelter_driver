@@ -8,16 +8,21 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.RideControl
+import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
 import kotlinx.android.synthetic.main.dialog_bottom_view_acceptride.*
 import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.*
+import kotlinx.android.synthetic.main.dialog_bottom_view_initride.*
 import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.*
+import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.passengerAvatar_iv
+import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.passengerInfo_tv
 import kotlinx.android.synthetic.main.dialog_bottom_view_ongoing.rideInfo_tv
 
 
@@ -64,6 +69,11 @@ class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCo
             rideControl.finishRide(finishRide)
 
         }
+
+        Glide.with(requireContext())
+            .load(WSConstants.AVATAR_USER + homeActContext.rideLiveData.value!!.userAvatar).into(passengerAvatar_iv)
+
+        passengerInfo_tv.text = homeActContext.rideLiveData.value!!.userName
 
 
         val origin = "Embarque: " + homeActContext.rideLiveData.value!!.originAddress

@@ -138,4 +138,16 @@ class Ride : Serializable {
     @field:SerializedName("destino")
     var destination: String? = null
 
+    @field:SerializedName("passageiro_nome")
+    var passengerName: String? = null
+
+    @field:SerializedName("passageiro_avatar")
+    var passengerAvatar: String? = null
+
+    @field:SerializedName("usuario_avatar")
+    var userAvatar: String? = null
+
+    @field:SerializedName("usuario_nome")
+    var userName: String? = null
+
 }

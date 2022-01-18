@@ -36,11 +36,39 @@
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearanceOverlay="@style/roundedImageView"
+                android:id="@+id/passengerAvatar_iv"
+                style="@style/roundedImageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="12dp"
+                app:srcCompat="@android:drawable/sym_def_app_icon" />
+
+            <TextView
+                android:id="@+id/passengerInfo_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/rideInfo_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:text="@string/lorem_ipsum"
             android:textStyle="bold"
             android:textColor="@color/colorPrimaryDark" />
