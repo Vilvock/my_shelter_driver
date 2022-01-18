@@ -265,7 +265,7 @@ class UserControl(private val context: Context, private val result: WSResult, pr
 
     fun listVehicle() {
 
-        type = "fcm"
+        type = "vehicle"
 
         user = User()
 

@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.RideControl
+import br.com.app5m.appshelterdriver.controller.UserControl
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Ride
+import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
@@ -29,6 +31,7 @@ class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
     private lateinit var useful: Useful
     private lateinit var rideControl: RideControl
+    private lateinit var userControl: UserControl
 
     private lateinit var preferences: Preferences
 
@@ -48,6 +51,7 @@ class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
         useful = Useful(requireContext())
         preferences = Preferences(requireContext())
         rideControl = RideControl(requireContext(), this, useful)
+        userControl = UserControl(requireContext(), this, useful)
 
         homeActContext = requireActivity() as HomeAct
 
@@ -55,19 +59,8 @@ class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
             useful.openLoading()
 
-            val acceptRide = Ride()
+            userControl.listVehicle()
 
-            Log.d("TAG", "accept:" )
-            acceptRide.id = homeActContext.notificationRideId
-
-
-            acceptRide.vehicleBoard = "teste"
-            acceptRide.vehicleModel = "teste"
-//            acceptRide.vehicleBoard = preferences.getUserData()!!.vehicle.board
-//            acceptRide.vehicleModel = preferences.getUserData()!!.vehicle.model
-
-
-            rideControl.acceptRide(acceptRide)
         }
 
         rideInfo_tv.visibility = View.GONE
@@ -83,18 +76,32 @@ class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
     }
 
+    override fun uResponse(list: List<User>, type: String) {
+
+        val responseInfo = list[0]
+
+        val acceptRide = Ride()
+
+        Log.d("TAG", "accept:" )
+        acceptRide.id = homeActContext.notificationRideId
+
+        acceptRide.vehicleBoard = responseInfo.board
+        acceptRide.vehicleModel = responseInfo.model
+
+        rideControl.acceptRide(acceptRide)
+
+    }
+
     override fun rResponse(list: List<Ride>, type: String) {
 
         useful.closeLoading()
 
         val rideInfo = list[0]
 
-        SingleToast.INSTANCE.show(requireContext(), rideInfo.msg!!, Toast.LENGTH_LONG)
+        SingleToast.INSTANCE.show(homeActContext, rideInfo.msg!!, Toast.LENGTH_LONG)
 
         homeActContext.isCameraLock = true
         homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
-
-
 
     }
 
