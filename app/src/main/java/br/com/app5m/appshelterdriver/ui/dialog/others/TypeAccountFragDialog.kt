@@ -32,13 +32,13 @@ class TypeAccountFragDialog (private val bottomSheetDialogFragment: BottomSheetD
         useful = Useful(requireContext())
 
         account_bt.setOnClickListener {
-            useful.showRideFlowFrag(requireActivity().supportFragmentManager, "add_bank")
+            useful.showDefaultDialogView(requireActivity().supportFragmentManager, "add_bank")
 
             bottomSheetDialogFragment.dismiss()
         }
 
         pix_bt.setOnClickListener {
-            useful.showRideFlowFrag(requireActivity().supportFragmentManager, "pix")
+            useful.showDefaultDialogView(requireActivity().supportFragmentManager, "pix")
 
             bottomSheetDialogFragment.dismiss()
         }
