@@ -118,6 +118,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
     var isCameraLock: Boolean = true
     lateinit var notificationRideId: String
+    private var isStatusUpdated = false
 
     private val handler = Handler()
     private var runnable = Runnable { getRealTimeLocation()}
@@ -278,18 +279,18 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                 SingleToast.INSTANCE.show(this, "Não foi possível atualizar seu status, tente novamente mais tarde!",
                     Toast.LENGTH_LONG)
 
-            } else {
-
-                imAvailable_sw.isEnabled = true
-
             }
+
+            isStatusUpdated = false
+
         } else if (type == "currentLocationStatus"){
 
-            imAvailable_sw.isChecked = userInfo.on == "1"
+            if (!isStatusUpdated) {
+                imAvailable_sw.isChecked = userInfo.on == "1"
+                isStatusUpdated = true
+            }
 
             imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
-//
-//                imAvailable_sw.isEnabled = false
 
                 val driverStatus = User()
 
