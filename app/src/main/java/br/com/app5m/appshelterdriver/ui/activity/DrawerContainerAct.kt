@@ -3,6 +3,7 @@ package br.com.app5m.appshelterdriver.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.other.UserAccountFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.other.UserPaymentsFrag
@@ -10,6 +11,7 @@ import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UpdateVehicleFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserProfileFrag
 import br.com.app5m.appshelterdriver.ui.fragment.drawer.user.UserRidesInfoContainerFrag
 import br.com.app5m.appshelterdriver.util.Useful
+import kotlinx.android.synthetic.main.activity_drawer_container.*
 import kotlinx.android.synthetic.main.toolbar_yellow.*
 
 
@@ -26,25 +28,36 @@ class DrawerContainerAct : AppCompatActivity() {
         useful.setActionBar(this, supportActionBar!!, "", 0)
 
         if (intent.extras != null) {
+
+            var title = ""
+
             when (intent!!.extras!!.getString("key")) {
 
                 "profile" -> {
+
+                    screenTitle_tv.visibility = View.GONE
                     useful.startFragment(UserProfileFrag(), supportFragmentManager)
                 }
                 "change_vehicle" -> {
-                    useful.startFragment(UpdateVehicleFrag(), supportFragmentManager)
 
+                    screenTitle_tv.visibility = View.GONE
+                    useful.startFragment(UpdateVehicleFrag(), supportFragmentManager)
                 }
                 "rides" -> {
-                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
 
+                    title = "Minhas viagens"
+                    useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
                 }
 
                 "myPayments" -> {
+
+                    title = "Meus pagamentos"
                     useful.startFragment(UserPaymentsFrag(), supportFragmentManager)
 
                 }
                 "bank_account" -> {
+
+                    title = "Financeiro"
                     useful.startFragment(UserAccountFrag(), supportFragmentManager)
 
                 }
@@ -52,6 +65,7 @@ class DrawerContainerAct : AppCompatActivity() {
 
             }
 
+            screenTitle_tv.text = title
         }
 
 

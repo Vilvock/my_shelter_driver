@@ -458,7 +458,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     intent.putExtra("key", "bank_account")
                 }
                 else -> {
-                    onPause()
                     DialogMessages(this).click("Atenção",
                         "Se você deslogar, precisará realizar o login novamente mais tarde. Deseja continuar?",
                         object : DialogMessages.Answer {
