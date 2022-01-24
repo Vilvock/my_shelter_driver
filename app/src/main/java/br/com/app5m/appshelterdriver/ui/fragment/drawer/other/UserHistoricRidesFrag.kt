@@ -13,6 +13,7 @@ import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.ui.adapter.HistoricRideAdapter
 import br.com.app5m.appshelterdriver.util.Useful
+import kotlinx.android.synthetic.main.empty_list.*
 import kotlinx.android.synthetic.main.fragment_user_historic_rides.*
 import java.util.ArrayList
 
@@ -40,12 +41,29 @@ class UserHistoricRidesFrag : Fragment(), WSResult {
         useful = Useful(requireContext())
         rideControl = RideControl(requireContext(), this, useful)
 
-        rideControl.findAllDriver()
         configRecycler()
+
+        screenTitle_tv.text = "Minhas viagens"
+        title_tv.text = "Não foram encontrados resultados!"
+        list_iv.setImageDrawable(resources.getDrawable(R.drawable.default_search))
+
+        swipeRefresh.setOnRefreshListener {
+            useful.openLoading()
+            rideControl.findAllDriver()}
+    }
+
+    override fun onResume() {
+        super.onResume()
+        useful.openLoading()
+        rideControl.findAllDriver()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun rResponse(list: List<Ride>, type: String) {
+
+        if (swipeRefresh.isRefreshing) swipeRefresh.isRefreshing = false
+
+        useful.closeLoading()
 
         historicRides.clear()
         historicRides.addAll(list)
@@ -53,13 +71,16 @@ class UserHistoricRidesFrag : Fragment(), WSResult {
         if (type == "findAll") {
 
             if (historicRides[0].rows != "0") {
+
                 historicRides_rv.visibility = View.VISIBLE
-                historicRides_rv.adapter!!.notifyDataSetChanged()
+                emptyList_layout.visibility = View.GONE
 
             } else {
                 historicRides_rv.visibility = View.GONE
+                emptyList_layout.visibility = View.VISIBLE
             }
 
+            historicRides_rv.adapter!!.notifyDataSetChanged()
         }
 
     }
@@ -76,5 +97,4 @@ class UserHistoricRidesFrag : Fragment(), WSResult {
         }
 
     }
-
 }

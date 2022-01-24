@@ -12,7 +12,11 @@ import br.com.app5m.appshelterdriver.models.Bank
 import br.com.app5m.appshelterdriver.ui.adapter.AccountAdapter
 import br.com.app5m.appshelterdriver.util.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.util.Useful
+import kotlinx.android.synthetic.main.empty_list.*
 import kotlinx.android.synthetic.main.fragment_user_account.*
+import kotlinx.android.synthetic.main.fragment_user_account.screenTitle_tv
+import kotlinx.android.synthetic.main.fragment_user_account.swipeRefresh
+import kotlinx.android.synthetic.main.fragment_user_payments.*
 import java.util.ArrayList
 
 /**
@@ -43,7 +47,13 @@ class UserAccountFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
         configRecycler()
 
-        swipeRefresh.setOnRefreshListener { bankControl.listBanksUser() }
+        screenTitle_tv.text = "Financeiro"
+        title_tv.text = "Não foram encontrados resultados!"
+        list_iv.setImageDrawable(resources.getDrawable(R.drawable.default_search))
+
+        swipeRefresh.setOnRefreshListener {
+            useful.openLoading()
+            bankControl.listBanksUser() }
     }
 
     override fun onResume() {
@@ -80,12 +90,14 @@ class UserAccountFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
         if (bankList[0].rows != "0") {
             banks_rv.visibility = View.VISIBLE
-            banks_rv.adapter!!.notifyDataSetChanged()
+            emptyList_layout.visibility = View.GONE
         } else {
 
             banks_rv.visibility = View.GONE
+            emptyList_layout.visibility = View.VISIBLE
         }
 
+        banks_rv.adapter!!.notifyDataSetChanged()
 
     }
 

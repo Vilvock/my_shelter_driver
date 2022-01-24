@@ -29,35 +29,28 @@ class DrawerContainerAct : AppCompatActivity() {
 
         if (intent.extras != null) {
 
-            var title = ""
-
             when (intent!!.extras!!.getString("key")) {
 
                 "profile" -> {
 
-                    screenTitle_tv.visibility = View.GONE
                     useful.startFragment(UserProfileFrag(), supportFragmentManager)
                 }
                 "change_vehicle" -> {
 
-                    screenTitle_tv.visibility = View.GONE
                     useful.startFragment(UpdateVehicleFrag(), supportFragmentManager)
                 }
                 "rides" -> {
 
-                    title = "Minhas viagens"
                     useful.startFragment(UserRidesInfoContainerFrag(), supportFragmentManager)
                 }
 
                 "myPayments" -> {
 
-                    title = "Meus pagamentos"
                     useful.startFragment(UserPaymentsFrag(), supportFragmentManager)
 
                 }
                 "bank_account" -> {
 
-                    title = "Financeiro"
                     useful.startFragment(UserAccountFrag(), supportFragmentManager)
 
                 }
@@ -65,7 +58,6 @@ class DrawerContainerAct : AppCompatActivity() {
 
             }
 
-            screenTitle_tv.text = title
         }
 
 

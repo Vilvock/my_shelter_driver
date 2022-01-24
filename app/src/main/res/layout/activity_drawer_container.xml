@@ -29,7 +29,8 @@
                 android:padding="12dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_size17"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/containerView"

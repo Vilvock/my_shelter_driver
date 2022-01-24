@@ -16,9 +16,12 @@ import br.com.app5m.appshelterdriver.ui.adapter.AccountAdapter
 import br.com.app5m.appshelterdriver.ui.adapter.ReceiveAdapter
 import br.com.app5m.appshelterdriver.util.RecyclerItemClickListener
 import br.com.app5m.appshelterdriver.util.Useful
+import kotlinx.android.synthetic.main.empty_list.*
 import kotlinx.android.synthetic.main.fragment_user_account.*
 import kotlinx.android.synthetic.main.fragment_user_account.swipeRefresh
+import kotlinx.android.synthetic.main.fragment_user_historic_rides.*
 import kotlinx.android.synthetic.main.fragment_user_payments.*
+import kotlinx.android.synthetic.main.fragment_user_payments.screenTitle_tv
 import java.util.ArrayList
 
 /**
@@ -29,7 +32,7 @@ class UserPaymentsFrag : Fragment(), WSResult, RecyclerItemClickListener {
     private lateinit var useful: Useful
     private lateinit var userControl: UserControl
 
-    val paymentList = ArrayList<Receive>()
+    private val paymentList = ArrayList<Receive>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,9 +48,16 @@ class UserPaymentsFrag : Fragment(), WSResult, RecyclerItemClickListener {
         useful = Useful(requireContext())
         userControl = UserControl(requireContext(), this, useful)
 
+
         configRecycler()
 
-        swipeRefresh.setOnRefreshListener { userControl.listReceives() }
+        screenTitle_tv.text = "Meus pagamentos"
+        title_tv.text = "Não foram encontrados resultados!"
+        list_iv.setImageDrawable(resources.getDrawable(R.drawable.default_search))
+
+        swipeRefresh.setOnRefreshListener {
+            useful.openLoading()
+            userControl.listReceives() }
     }
 
     override fun onResume() {
@@ -69,11 +79,14 @@ class UserPaymentsFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
         if (paymentList[0].rows != "0") {
             payments_rv.visibility = View.VISIBLE
-            payments_rv.adapter!!.notifyDataSetChanged()
+            emptyList_layout.visibility = View.GONE
         } else {
 
             payments_rv.visibility = View.GONE
+            emptyList_layout.visibility = View.VISIBLE
         }
+
+        payments_rv.adapter!!.notifyDataSetChanged()
     }
 
     private fun configRecycler() {
