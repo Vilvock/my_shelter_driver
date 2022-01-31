@@ -329,6 +329,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             isStatusUpdated = false
 
+            userControl.findCurrentLocationStatus()
+
         } else if (type == "currentLocationStatus"){
 
             if (!isStatusUpdated) {
@@ -342,12 +344,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         } else if (type == "listCredit"){
 
             if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
-                top_credit_available.visibility = View.VISIBLE
 
                 currentCredit_tv.text = userInfo.credit
+                top_credit_available.visibility = View.VISIBLE
+
             } else {
                 top_credit_available.visibility = View.GONE
             }
+
+            rideControl.findAllDriver()
 
         } else {
 
@@ -583,10 +588,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                 }
 
                 try {
-                    if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
-                        documentControl.listDocDriver()
-                    }
-                    rideControl.findAllDriver()
+                    documentControl.listDocDriver()
+
                 }catch (eNull: NullPointerException) {
 
                 }

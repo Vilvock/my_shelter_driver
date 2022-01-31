@@ -101,6 +101,7 @@ class AcceptRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
         SingleToast.INSTANCE.show(homeActContext, rideInfo.msg!!, Toast.LENGTH_LONG)
 
         homeActContext.isCameraLock = true
+        homeActContext.isRefreshingRideStatus = true
         homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 
     }

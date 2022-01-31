@@ -46,15 +46,6 @@ class RideFlowContainerBottomFrag: Fragment() {
         useful = Useful(requireContext())
         homeActContext = requireActivity() as HomeAct
 
-        if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
-            || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
-            sheet_container.post {
-                (requireActivity() as? MapBottomPaddingDelegate)?.setMapVerticalPadding(
-                    sheet_container.height
-                )
-            }
-        }
-
         val transaction = childFragmentManager.beginTransaction()
 
         when(tag) {
@@ -102,6 +93,15 @@ class RideFlowContainerBottomFrag: Fragment() {
                     val params: FrameLayout.LayoutParams = FrameLayout.LayoutParams(activityWidth, newHeightParam)
 
                     sheet_container.layoutParams = params
+                }
+
+                if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
+                    || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
+                    sheet_container.post {
+                        (requireActivity() as? MapBottomPaddingDelegate)?.setMapVerticalPadding(
+                            sheet_container.height
+                        )
+                    }
                 }
 
             }
