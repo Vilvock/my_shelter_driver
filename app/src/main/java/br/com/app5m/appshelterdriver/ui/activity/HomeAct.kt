@@ -565,11 +565,11 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                 } else {
 
-
-                    if (location.latitude != mapPlotDateLiveData.value?.userPosition?.latitude
-                        && location.longitude != mapPlotDateLiveData.value?.userPosition?.longitude) {
-                        isCameraLock = true
-                    }
+//
+//                    if (location.latitude != mapPlotDateLiveData.value?.userPosition?.latitude
+//                        && location.longitude != mapPlotDateLiveData.value?.userPosition?.longitude) {
+//                        isCameraLock = true
+//                    }
 
                     userLatLng = LatLng (location.latitude, location.longitude)
                     userBearing = location.bearing
