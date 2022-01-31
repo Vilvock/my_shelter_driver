@@ -62,6 +62,7 @@ import kotlinx.android.synthetic.main.top_credit_available.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.NullPointerException
 
 class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate {
 
@@ -117,6 +118,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     private val vehicleInterpolator = LinearFixed()
 
     var isCameraLock: Boolean = true
+    var isRefreshingRideStatus: Boolean = true
     lateinit var notificationRideId: String
     private var isStatusUpdated = false
 
@@ -124,7 +126,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     private var runnable = Runnable { getRealTimeLocation()}
 
     private val DRIVER_POSITION_TRACKING_RATE = 1000L
-    private val DELAY_HANDLER = 2000L
+    private val DELAY_HANDLER = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,6 +147,45 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         )
 
         saveFcm()
+
+        val headerView: View = nav_view.getHeaderView(0)
+
+        Glide.with(this)
+            .load(WSConstants.AVATAR_USER + preferences.getUserData()!!.avatar).into(headerView.userAvatar_iv)
+
+        headerView.nameUser_tv.text = preferences.getUserData()!!.name
+        headerView.emailUser_tv.text = preferences.getUserData()!!.email
+
+        headerView.profile_ib.setOnClickListener {
+            val intent = Intent(this, DrawerContainerAct::class.java)
+            intent.putExtra("key", "profile")
+            startActivity(intent)
+        }
+
+
+        imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
+
+            val driverStatus = User()
+
+            driverStatus.latitude = userLatLng!!.latitude.toString()
+            driverStatus.longitude = userLatLng!!.longitude.toString()
+
+            if (isChecked) {
+                //online
+                driverStatus.online = "1"
+            } else {
+                //offline
+                driverStatus.online = "2"
+            }
+
+            userControl.updateStatusOnline(driverStatus)
+        }
+
+        centerCameraFab.setOnClickListener {
+            val originLatLng = LatLng(userLatLng!!.latitude, userLatLng!!.longitude)
+
+            mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(originLatLng, 16f))
+        }
 
     }
 
@@ -188,6 +229,11 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     override fun onDestroy() {
         handler.removeCallbacks(runnable)
         super.onDestroy()
+    }
+
+    override fun onBackPressed() {
+        handler.removeCallbacks(runnable)
+        finishAffinity()
     }
 
     @SuppressLint("MissingPermission")
@@ -290,23 +336,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                 isStatusUpdated = true
             }
 
-            imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
-
-                val driverStatus = User()
-
-                driverStatus.latitude = userLatLng!!.latitude.toString()
-                driverStatus.longitude = userLatLng!!.longitude.toString()
-
-                if (isChecked) {
-                    //online
-                    driverStatus.online = "1"
-                } else {
-                    //offline
-                    driverStatus.online = "2"
-                }
-
-                userControl.updateStatusOnline(driverStatus)
-            }
 
             userControl.listCredit()
 
@@ -478,19 +507,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             true
         }
 
-        val headerView: View = nav_view.getHeaderView(0)
-
-        Glide.with(this)
-            .load(WSConstants.AVATAR_USER + preferences.getUserData()!!.avatar).into(headerView.userAvatar_iv)
-
-        headerView.nameUser_tv.text = preferences.getUserData()!!.name
-        headerView.emailUser_tv.text = preferences.getUserData()!!.email
-
-        headerView.profile_ib.setOnClickListener {
-            val intent = Intent(this, DrawerContainerAct::class.java)
-            intent.putExtra("key", "profile")
-            startActivity(intent)
-        }
 
     }
 
@@ -560,16 +576,22 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     )
 
                     if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
-
                         mapPlotUpdated(mapPlotDateLiveData.value)
-
-                        documentControl.listDocDriver()
-
                     }
+
 
                 }
 
-                rideControl.findAllDriver()
+                try {
+                    if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
+                        documentControl.listDocDriver()
+                    }
+                    rideControl.findAllDriver()
+                }catch (eNull: NullPointerException) {
+
+                }
+
+
             }
         }
 
@@ -607,76 +629,88 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         handler.removeCallbacks(runnable)
 
-        _screenStageLiveData.value = newStage
-        configDrawer()
+        try {
 
-        Log.d("TAG", "notifyScreen: " + screenStageLiveData.value)
-        Log.d("TAG", "mapPlotDateLiveData" + mapPlotDateLiveData.value)
-        Log.d("TAG", "ridelivedata" + Gson().toJson(rideLiveData.value))
+            configDrawer()
+            _screenStageLiveData.value = newStage
 
-        when (newStage) {
-            MainScreenStage.RELOAD_OVERVIEW_STATEMENT -> {
-                useful.dismissRideFlowFrag(supportFragmentManager)
+            Log.d("TAG", "notifyScreen: " + screenStageLiveData.value)
+            Log.d("TAG", "mapPlotDateLiveData" + mapPlotDateLiveData.value)
+            Log.d("TAG", "ridelivedata" + Gson().toJson(rideLiveData.value))
 
-                resetVerticalPaddingScreen()
-
-            }
-
-            MainScreenStage.ACCEPT_RIDE -> {
-
-                useful.showRideFlowFrag(supportFragmentManager, "accept")
-
-            }
-
-            MainScreenStage.WAITING_PICKUP  -> {
-
-                //mapupdate aqui quando poly parar de ser null
-
-                if (rideLiveData.value != null) {
-                    _mapPlotDateLiveData.value = MapPlotData(
-                        userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
-                        vehicleAngle = userBearing,
-                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble())/*,
-                        destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble())*/)
-
-                    mapPlotUpdated(mapPlotDateLiveData.value)
-                }
-
-            }
-            MainScreenStage.ONGOING_RIDE -> {
-
-                if (rideLiveData.value != null) {
-
-                    var polyLineFormatted: List<LatLng>? = null
-
-                    if (rideLiveData.value?.finalRoute?.overViewPolyLine?.polyLinePoints != null) {
-                       polyLineFormatted = PolyUtil.decode(rideLiveData.value?.finalRoute?.overViewPolyLine?.polyLinePoints)
+            when (newStage) {
+                MainScreenStage.RELOAD_OVERVIEW_STATEMENT -> {
+                    if (isRefreshingRideStatus) {
+                        useful.dismissRideFlowFrag(supportFragmentManager)
                     }
 
-                    _mapPlotDateLiveData.value = MapPlotData(
-                        userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
-                        vehicleAngle = userBearing,
-//                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-                        destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
-                        polyline = polyLineFormatted)
+                    resetVerticalPaddingScreen()
 
-                    mapPlotUpdated(mapPlotDateLiveData.value)
+                }
+
+                MainScreenStage.ACCEPT_RIDE -> {
+
+                    useful.showRideFlowFrag(supportFragmentManager, "accept")
+                    isRefreshingRideStatus = false
+
+                }
+
+                MainScreenStage.WAITING_PICKUP  -> {
+
+                    isRefreshingRideStatus = true
+                    //mapupdate aqui quando poly parar de ser null
+
+                    if (rideLiveData.value != null) {
+                        _mapPlotDateLiveData.value = MapPlotData(
+                            userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
+                            vehicleAngle = userBearing,
+                            originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble())/*,
+                            destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble())*/)
+
+                        mapPlotUpdated(mapPlotDateLiveData.value)
+                    }
+
+                }
+                MainScreenStage.ONGOING_RIDE -> {
+
+                    if (rideLiveData.value != null) {
+
+                        var polyLineFormatted: List<LatLng>? = null
+
+                        if (rideLiveData.value?.finalRoute?.overViewPolyLine?.polyLinePoints != null) {
+                           polyLineFormatted = PolyUtil.decode(rideLiveData.value?.finalRoute?.overViewPolyLine?.polyLinePoints)
+                        }
+
+                        _mapPlotDateLiveData.value = MapPlotData(
+                            userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
+                            vehicleAngle = userBearing,
+    //                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
+                            destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
+                            polyline = polyLineFormatted)
+
+                        mapPlotUpdated(mapPlotDateLiveData.value)
+                    }
+
+                }
+                MainScreenStage.FINISH_RIDE -> {
+
+
+                    useful.showRideFlowFrag(supportFragmentManager, "finish")
+
+
                 }
 
             }
-            MainScreenStage.FINISH_RIDE -> {
 
-
-                useful.showRideFlowFrag(supportFragmentManager, "finish")
-
-
-            }
+        }catch (eNull: NullPointerException) {
 
         }
 
         if (screenStageLiveData.value != MainScreenStage.ACCEPT_RIDE
             && screenStageLiveData.value != MainScreenStage.FINISH_RIDE) {
-            handler.postDelayed(runnable, DELAY_HANDLER)
+            if (isRefreshingRideStatus) {
+                handler.postDelayed(runnable, DELAY_HANDLER)
+            }
         }
 
     }
@@ -783,7 +817,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
             if (isCameraLock) {
                 if (notNullPoints.size == 1) {
-                    mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 18f))
+                    mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 16f))
                     isCameraLock = false
                 }
             }

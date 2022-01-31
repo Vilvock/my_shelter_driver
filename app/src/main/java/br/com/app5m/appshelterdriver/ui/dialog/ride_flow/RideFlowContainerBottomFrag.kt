@@ -8,10 +8,15 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
 
 import android.util.Log
+import android.view.ViewTreeObserver
+import android.widget.FrameLayout
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.ui.MapBottomPaddingDelegate
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.util.Useful
+import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.close_imageButton
+import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.sheet_container
+import kotlinx.android.synthetic.main.fragment_rideflow_bottom_container.*
 
 
 /**
@@ -82,25 +87,40 @@ class RideFlowContainerBottomFrag: Fragment() {
 
         transaction.replace(R.id.containerViewChild, fragment).commitAllowingStateLoss()
 
+        view.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                view.viewTreeObserver.removeOnGlobalLayoutListener(this)
+
+                //100%
+                val activityHeight = requireActivity().window.decorView.height
+                val activityWidth = requireActivity().window.decorView.width
+
+                Log.d("TAG", "sheet 3: " + view.height)
+                if (view.height > activityHeight / 2) {
+
+                    val newHeightParam: Int = activityHeight / 2
+                    val params: FrameLayout.LayoutParams = FrameLayout.LayoutParams(activityWidth, newHeightParam)
+
+                    sheet_container.layoutParams = params
+                }
+
+            }
+        })
+
         close_imageButton.setOnClickListener {
 
-            val homeActContext = requireActivity() as? HomeAct
+            Log.d("TAG", "onDestroy: " + homeActContext.screenStageLiveData.value)
+            if (homeActContext.screenStageLiveData.value != HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
+                if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
+                    || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
 
-            if (requireActivity() == homeActContext) {
-
-                Log.d("TAG", "onDestroy: " + homeActContext.screenStageLiveData.value)
-                if (homeActContext.screenStageLiveData.value != HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
-                    if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
-                        || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
-
-                        useful.showRideFlowFrag(requireActivity().supportFragmentManager, "cancel")
-
-                    } else {
-
-                        homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
-                    }
+                    useful.showRideFlowFrag(requireActivity().supportFragmentManager, "cancel")
+                    return@setOnClickListener
                 }
             }
+
+            homeActContext.isRefreshingRideStatus = true
+            homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 
         }
 
