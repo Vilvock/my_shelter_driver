@@ -106,6 +106,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
     private lateinit var lastRideInfo: Ride
 
+    private lateinit var headerView: View
+
     private var mMap: GoogleMap? = null
     private var driverMarker: Marker? = null
 
@@ -148,19 +150,13 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         saveFcm()
 
-        val headerView: View = nav_view.getHeaderView(0)
+        headerView = nav_view.getHeaderView(0)
 
         Glide.with(this)
             .load(WSConstants.AVATAR_USER + preferences.getUserData()!!.avatar).into(headerView.userAvatar_iv)
 
         headerView.nameUser_tv.text = preferences.getUserData()!!.name
         headerView.emailUser_tv.text = preferences.getUserData()!!.email
-
-        headerView.profile_ib.setOnClickListener {
-            val intent = Intent(this, DrawerContainerAct::class.java)
-            intent.putExtra("key", "profile")
-            startActivity(intent)
-        }
 
 
         imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
@@ -512,6 +508,11 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             true
         }
 
+        headerView.profile_ib.setOnClickListener {
+            val intent = Intent(this, DrawerContainerAct::class.java)
+            intent.putExtra("key", "profile")
+            startActivity(intent)
+        }
 
     }
 
@@ -653,8 +654,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                 MainScreenStage.ACCEPT_RIDE -> {
 
-                    useful.showRideFlowFrag(supportFragmentManager, "accept")
                     isRefreshingRideStatus = false
+                    useful.showRideFlowFrag(supportFragmentManager, "accept")
 
                 }
 
@@ -698,6 +699,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                 MainScreenStage.FINISH_RIDE -> {
 
 
+                    isRefreshingRideStatus = false
                     useful.showRideFlowFrag(supportFragmentManager, "finish")
 
 

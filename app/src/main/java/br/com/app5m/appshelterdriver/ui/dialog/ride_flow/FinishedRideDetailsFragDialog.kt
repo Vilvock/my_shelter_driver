@@ -50,6 +50,7 @@ class FinishedRideDetailsFragDialog (private val rideFlowContainerBottomFrag: Ri
 
         ok_bt.setOnClickListener {
 
+            homeActContext.isRefreshingRideStatus = true
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
         }
 

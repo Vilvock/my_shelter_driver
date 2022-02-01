@@ -111,6 +111,7 @@ class UserProfileFrag : Fragment(), WSResult {
                 CPF_TYPE
             }
 
+            preferences.setUserData(user)
 
         }
         useful.closeLoading()

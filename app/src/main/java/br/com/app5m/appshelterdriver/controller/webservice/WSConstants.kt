@@ -6,7 +6,7 @@ object WSConstants {
     const val TYPE_FCM = "1"
     const val VIACEP = "https://viacep.com.br/ws/"
     const val WS_URL_BASE = "https://sheltermovel.com.br/apiv3/user/"
-    const val AVATAR_USER = "https://sheltermovel.com.br/uploads/avatar/"
+    const val AVATAR_USER = "http://sheltermovel.com.br/uploads/avatar/"
 
 
 }
