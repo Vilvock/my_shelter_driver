@@ -82,6 +82,7 @@ class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
 
             }  else {
 
+                homeActContext.isRefreshingRideStatus = true
                 homeActContext.isCameraLock = true
                 homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
             }
@@ -95,6 +96,7 @@ class CancelRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCon
         val rideInfo = list[0]
 
         if (rideInfo.status == "01") {
+            homeActContext.isRefreshingRideStatus = true
             homeActContext.isCameraLock = true
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 

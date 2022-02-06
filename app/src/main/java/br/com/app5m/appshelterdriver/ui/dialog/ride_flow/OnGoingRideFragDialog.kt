@@ -70,10 +70,20 @@ class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCo
 
         }
 
-        Glide.with(requireContext())
-            .load(WSConstants.AVATAR_USER + homeActContext.rideLiveData.value!!.userAvatar).into(passengerAvatar_iv)
+        var passengerAvatar = homeActContext.rideLiveData.value!!.userAvatar
+        if (homeActContext.rideLiveData.value!!.userAvatar == null || homeActContext.rideLiveData.value!!.userName == "") {
+            passengerAvatar = homeActContext.rideLiveData.value!!.passengerAvatar
+        }
 
-        passengerInfo_tv.text = homeActContext.rideLiveData.value!!.userName
+        Glide.with(requireContext())
+            .load(WSConstants.AVATAR_USER + passengerAvatar).into(passengerAvatar_iv)
+
+        var passengerName = homeActContext.rideLiveData.value!!.userName
+        if (homeActContext.rideLiveData.value!!.userName == null || homeActContext.rideLiveData.value!!.userName == "") {
+            passengerName = homeActContext.rideLiveData.value!!.passengerName
+        }
+
+        passengerInfo_tv.text = passengerName
 
 
         val origin = "Embarque: " + homeActContext.rideLiveData.value!!.originAddress

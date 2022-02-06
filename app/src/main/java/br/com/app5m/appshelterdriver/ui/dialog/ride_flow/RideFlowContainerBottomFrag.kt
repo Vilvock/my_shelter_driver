@@ -119,6 +119,7 @@ class RideFlowContainerBottomFrag: Fragment() {
                 }
             }
 
+            homeActContext.isCameraLock = true
             homeActContext.isRefreshingRideStatus = true
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
 

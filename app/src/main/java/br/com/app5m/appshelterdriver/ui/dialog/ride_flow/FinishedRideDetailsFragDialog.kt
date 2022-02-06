@@ -16,6 +16,7 @@ import br.com.app5m.appshelterdriver.util.Preferences
 import br.com.app5m.appshelterdriver.util.Useful
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.main.default_bottom_sheet_dialog_container.*
 import kotlinx.android.synthetic.main.dialog_bottom_view_acceptride.*
 import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.*
 import kotlinx.android.synthetic.main.dialog_bottom_view_finishedridedetails.rideInfo_tv
@@ -43,6 +44,7 @@ class FinishedRideDetailsFragDialog (private val rideFlowContainerBottomFrag: Ri
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        rideFlowContainerBottomFrag.close_imageButton.visibility = View.GONE
         useful = Useful(requireContext())
         preferences = Preferences(requireContext())
 
@@ -50,6 +52,8 @@ class FinishedRideDetailsFragDialog (private val rideFlowContainerBottomFrag: Ri
 
         ok_bt.setOnClickListener {
 
+
+            homeActContext.isCameraLock = true
             homeActContext.isRefreshingRideStatus = true
             homeActContext.notifyScreenStageChanged(HomeAct.MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
         }
