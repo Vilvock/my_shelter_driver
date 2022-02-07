@@ -33,7 +33,8 @@
         <activity android:name=".ui.activity.AuthContainerAct" />
         <activity android:name=".ui.activity.DrawerContainerAct" />
 
-        <activity android:name=".MainAct">
+        <activity android:name=".MainAct"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
