@@ -48,6 +48,8 @@ import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.InstanceIdResult
 import com.google.gson.Gson
 import com.google.maps.android.PolyUtil
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_send_document.*
@@ -62,6 +64,7 @@ import kotlinx.android.synthetic.main.top_credit_available.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.lang.NullPointerException
 
 class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate {
@@ -141,23 +144,11 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         documentControl = DocumentControl(this, this, useful)
         myLocation = MyLocation(this)
 
-        mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+        configDrawer()
 
         LocalBroadcastManager.getInstance(this).registerReceiver(myReceiver,
             IntentFilter("Notification")
         )
-
-        saveFcm()
-
-        headerView = nav_view.getHeaderView(0)
-
-        Glide.with(this)
-            .load(WSConstants.AVATAR_USER + preferences.getUserData()!!.avatar).into(headerView.userAvatar_iv)
-
-        headerView.nameUser_tv.text = preferences.getUserData()!!.name
-        headerView.emailUser_tv.text = preferences.getUserData()!!.email
-
 
         imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
 
@@ -443,6 +434,25 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
     private fun configDrawer() {
 
+        headerView = nav_view.getHeaderView(0)
+
+        Picasso.get().load(WSConstants.AVATAR_USER + preferences.getUserData()!!.avatar)
+            .into(headerView.userAvatar_iv, object : Callback {
+                override fun onSuccess() {
+                    saveFcm()
+
+                }
+
+                override fun onError(e: Exception?) {
+                    saveFcm()
+                }
+
+            })
+
+        headerView.nameUser_tv.text = preferences.getUserData()!!.name
+        headerView.emailUser_tv.text = preferences.getUserData()!!.email
+
+
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         val drawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
@@ -529,6 +539,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                 Log.d("TAG", "não salvou")
 
+                mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+                mapFragment.getMapAsync(this@HomeAct)
             } else {
 
 
@@ -542,8 +554,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                 val userControl = UserControl(this, object : WSResult{
                     override fun uResponse(list: List<User>, type: String) {
-                        Log.d("TAG", "salve")
 
+                        mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+                        mapFragment.getMapAsync(this@HomeAct)
                     }
                 }, useful)
 
@@ -634,8 +647,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         handler.removeCallbacks(runnable)
 
         try {
-
-            configDrawer()
             _screenStageLiveData.value = newStage
 
             Log.d("TAG", "notifyScreen: " + screenStageLiveData.value)
@@ -714,7 +725,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         if (screenStageLiveData.value != MainScreenStage.ACCEPT_RIDE
             && screenStageLiveData.value != MainScreenStage.FINISH_RIDE) {
             if (isRefreshingRideStatus) {
-                handler.postDelayed(runnable, DELAY_HANDLER)
+                getRealTimeLocation()
             }
         }
 
