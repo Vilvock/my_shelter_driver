@@ -80,13 +80,20 @@ dependencies {
     //anim
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
 
-    //okhttp
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
-
-    // define any required OkHttp artifacts without version
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
+
+
+//    //okhttp
+//    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+//
+//    // define any required OkHttp artifacts without version
+//    implementation("com.squareup.okhttp3:okhttp")
+//    implementation("com.squareup.okhttp3:logging-interceptor")
+//    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
 
     //firebase
     implementation 'com.google.firebase:firebase-core:17.4.1'
