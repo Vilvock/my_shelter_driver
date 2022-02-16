@@ -1,0 +1,14 @@
+[
+  {
+    "featureType": "poi",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "saturation": -100
+      },
+      {
+        "lightness": 65
+      }
+    ]
+  }
+]
