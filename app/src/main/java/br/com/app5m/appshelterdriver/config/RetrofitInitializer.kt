@@ -45,13 +45,14 @@ class RetrofitInitializer {
     }
 
     private fun getOkHttpBuilder(): OkHttpClient.Builder =
-//        if (Build.VERSION.SDK_INT in 23..25) {
+        //android 10 é o 29
+        if (Build.VERSION.SDK_INT in 23..28) {
             getUnsafeOkHttpClient()
-//        } else {
-//            // Workaround for the error "Caused by: com.android.org.bouncycastle.jce.exception.ExtCertPathValidatorException:
-//                // Could not validate certificate: Certificate expired at".
-//            OkHttpClient.Builder()
-//    }
+        } else {
+            // Workaround for the error "Caused by: com.android.org.bouncycastle.jce.exception.ExtCertPathValidatorException:
+            // Could not validate certificate: Certificate expired at".
+            OkHttpClient.Builder()
+    }
 
     private fun getUnsafeOkHttpClient(): OkHttpClient.Builder =
         try {
