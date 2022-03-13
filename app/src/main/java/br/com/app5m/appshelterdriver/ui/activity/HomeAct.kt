@@ -199,6 +199,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
                 isCameraLock = true
                 mapFragment.getMapAsync(this)
+                //por enquanto deixa aqui
+                configDrawer()
             }
         }
     }
@@ -235,12 +237,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             isTiltGesturesEnabled = false
         }
         //custom map
-//        mMap?.setMapStyle(
-//            MapStyleOptions.loadRawResourceStyle(
-//                requireContext(),
-//                R.raw.map_style_json
-//            )
-//        )
+        mMap?.setMapStyle(
+            MapStyleOptions.loadRawResourceStyle(
+                this,
+                R.raw.map_style_json
+            )
+        )
 
         //por enquanto deixa aqui
             if (intent.extras != null) {
