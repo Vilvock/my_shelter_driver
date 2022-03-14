@@ -1,5 +1,8 @@
 package br.com.app5m.appshelterdriver.ui.dialog.ride_flow
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +16,7 @@ import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.ui.activity.HomeAct
 import br.com.app5m.appshelterdriver.util.Useful
+import br.com.app5m.appshelterdriver.util.createMapChooser
 import br.com.app5m.appshelterdriver.util.visual.SingleToast
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -70,6 +74,8 @@ class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCo
 
         }
 
+        openMapNavigation_bt.setOnClickListener(::openMapChooser)
+
         var passengerAvatar = homeActContext.rideLiveData.value!!.userAvatar
         if (homeActContext.rideLiveData.value!!.userAvatar == null || homeActContext.rideLiveData.value!!.userName == "") {
             passengerAvatar = homeActContext.rideLiveData.value!!.passengerAvatar
@@ -113,5 +119,24 @@ class OnGoingRideFragDialog (private val rideFlowContainerBottomFrag: RideFlowCo
         }
 
     }
+
+    private fun openMapChooser(v: View) {
+        try {
+
+            val lat = homeActContext.rideLiveData.value?.destinationLatitude ?: return
+            val lng = homeActContext.rideLiveData.value?.destinationLongitude ?: return
+
+            val gmmIntentUri = Uri.parse("geo:$lat,$lng?q=$lat,$lng")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            startActivity(mapIntent.createMapChooser(requireContext()))
+
+        } catch (ex: ActivityNotFoundException) {
+            // If Waze is not installed, open it in Google Play:
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.waze"))
+            startActivity(intent)
+        }
+    }
+
+
 
 }

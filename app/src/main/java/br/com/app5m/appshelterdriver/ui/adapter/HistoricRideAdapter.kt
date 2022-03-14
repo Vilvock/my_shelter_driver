@@ -28,7 +28,7 @@ class HistoricRideAdapter(private val list: List<Ride>,
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        val mapView: MapView = itemView.findViewById(R.id.lite_listrow_map)
+//        val mapView: MapView = itemView.findViewById(R.id.lite_listrow_map)
         val rideInfoTv: TextView = itemView.findViewById(R.id.info_tv)
         val priceTv: TextView = itemView.findViewById(R.id.price_tv)
         val dateTv: TextView = itemView.findViewById(R.id.date_tv)
@@ -43,11 +43,11 @@ class HistoricRideAdapter(private val list: List<Ride>,
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
         val historicRide = list[position]
-
-        // Initialise the MapView
-        holder.mapView.onCreate(null)
-        // Set the map ready callback to receive the GoogleMap object
-        holder.mapView.getMapAsync(this)
+//
+//        // Initialise the MapView
+//        holder.mapView.onCreate(null)
+//        // Set the map ready callback to receive the GoogleMap object
+//        holder.mapView.getMapAsync(this)
 
         val origin = "Embarque: " + historicRide.originAddress
         val destination = "Destino: " + historicRide.destinationAddress
@@ -56,7 +56,7 @@ class HistoricRideAdapter(private val list: List<Ride>,
         val payment = "Tipo de pagamento: " + historicRide.nameTypePayment
 
         holder.dateTv.text = historicRide.date
-        holder.rideInfoTv.text = "$origin\n$destination\n$distance\n$duration\n$payment"
+        holder.rideInfoTv.text = "$origin\n$destination\n\n$distance\n$duration\n$payment"
         holder.priceTv.text = historicRide.totalValue
 
 
@@ -69,7 +69,7 @@ class HistoricRideAdapter(private val list: List<Ride>,
     override fun onMapReady(googleMap: GoogleMap) {
         MapsInitializer.initialize(context)
         map = googleMap
-        setMapLocation();
+        setMapLocation()
     }
 
     /**
@@ -98,7 +98,7 @@ class HistoricRideAdapter(private val list: List<Ride>,
 //        // Store a reference to the item in the mapView's tag. We use it to get the
 //        // coordinate of a location, when setting the map location.
 //        mapView.setTag(item);
-        setMapLocation();
+        setMapLocation()
 //        title.setText(item.name);
     }
 

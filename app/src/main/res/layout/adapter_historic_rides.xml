@@ -34,11 +34,11 @@
                 android:ellipsize="end"
                 android:textColor="@color/colorPrimaryDark" />
 
-            <com.google.android.gms.maps.MapView
+<!--            <com.google.android.gms.maps.MapView
                 android:id="@+id/lite_listrow_map"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                />
+                />-->
             <!--map:liteMode="true" map:mapType="none"-->
             <TextView
                 android:id="@+id/info_tv"
