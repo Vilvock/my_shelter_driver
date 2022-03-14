@@ -113,24 +113,24 @@ class MainAct : AppCompatActivity() {
 
             loading.visibility = View.GONE
             authButtons_ll.visibility = View.VISIBLE
-
-            if (preferences.getInt(
-                    Preferences.ENTERING_FIRST_TIME, 1) == 1) {
-
-                signUp_bt.setOnClickListener {
-
-                    startActivity(Intent(this, IntroContainerAct::class.java).putExtra("key", 0))
-
-                }
-
-                login_bt.setOnClickListener {
-
-                    startActivity(Intent(this, IntroContainerAct::class.java).putExtra("key", 1))
-
-                }
-
-
-            } else {
+//
+//            if (preferences.getInt(
+//                    Preferences.ENTERING_FIRST_TIME, 1) == 1) {
+//
+//                signUp_bt.setOnClickListener {
+//
+//                    startActivity(Intent(this, IntroContainerAct::class.java).putExtra("key", 0))
+//
+//                }
+//
+//                login_bt.setOnClickListener {
+//
+//                    startActivity(Intent(this, IntroContainerAct::class.java).putExtra("key", 1))
+//
+//                }
+//
+//
+//            } else {
 
                 signUp_bt.setOnClickListener {
 
@@ -142,7 +142,7 @@ class MainAct : AppCompatActivity() {
                     startActivity(Intent(this, AuthContainerAct::class.java).putExtra("key", 1))
 
                 }
-            }
+//            }
         }
 
     }

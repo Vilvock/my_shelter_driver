@@ -52,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Para obter uma melhor precisão dos motoristas mais próximos à você é necessário permitir sua localização atual!"
+            android:text="Para obter uma melhor precisão da sua localização é necessário aceitar as permissões requeridas!"
             android:textAlignment="center"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
