@@ -7,23 +7,28 @@
         <item
             android:id="@+id/nav_changeVehicle"
             android:title="@string/menu_Change_vehicle"
+            android:icon="@drawable/ic_car"
             />
         <item
             android:id="@+id/nav_myRides"
             android:title="@string/menu_myTrips"
+            android:icon="@drawable/ic_history"
             />
 
         <item
             android:id="@+id/nav_myPayments"
             android:title="@string/menu_myPayments"
+            android:icon="@drawable/ic_payments"
             />
         <item
             android:id="@+id/nav_account"
             android:title="@string/menu_account"
+            android:icon="@drawable/ic_credit"
             />
         <item
             android:id="@+id/nav_logOut"
             android:title="@string/menu_logOut"
+            android:icon="@drawable/ic_logout"
             />
 <!--
         android:icon="@drawable/ic_menu_slideshow"-->
