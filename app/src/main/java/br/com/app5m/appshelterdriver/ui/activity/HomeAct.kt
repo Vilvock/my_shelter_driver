@@ -245,25 +245,25 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         )
 
         //por enquanto deixa aqui
-            if (intent.extras != null) {
+        if (intent.extras != null) {
 
-                val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
-                val rideId = intent.extras?.getString("rideId")
+            val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
+            val rideId = intent.extras?.getString("rideId")
 
-                if (screenStage == MainScreenStage.ACCEPT_RIDE) {
-                    if (rideId != null) {
+            if (screenStage == MainScreenStage.ACCEPT_RIDE) {
+                if (rideId != null) {
 
-                        notificationRideId = rideId
+                    notificationRideId = rideId
 
-                    }
                 }
-
-                notifyScreenStageChanged(screenStage!!)
-
-            } else {
-
-                notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
             }
+
+            notifyScreenStageChanged(screenStage!!)
+
+        } else {
+
+            notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
+        }
 
     }
 

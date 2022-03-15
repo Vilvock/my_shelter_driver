@@ -99,14 +99,16 @@ class Useful (private val context: Context) {
 
     @SuppressLint("SetTextI18n")
     fun showRideFlowFrag(fragmentManager: FragmentManager, tag: String) {
-        dismissRideFlowFrag(fragmentManager)
+//        dismissRideFlowFrag(fragmentManager)
 
         val transaction = fragmentManager.beginTransaction()
         transaction.setCustomAnimations(
-            R.anim.enter_from_bottom,
-            R.anim.exit_from_top
+            R.anim.enter_from_bottom, // quando inicia
+            R.anim.exit_to_left, // quando entra a proxima
+            R.anim.enter_from_left, // quando volta do pop
+            R.anim.exit_from_top// quando fecha (n chama)
         )
-        transaction.add(R.id.containerView, RideFlowContainerBottomFrag(), tag).commitAllowingStateLoss()
+        transaction.replace(R.id.containerView, RideFlowContainerBottomFrag(), tag).commitAllowingStateLoss()
     }
 
     @SuppressLint("SetTextI18n")
