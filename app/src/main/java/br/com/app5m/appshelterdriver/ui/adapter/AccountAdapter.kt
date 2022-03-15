@@ -9,14 +9,22 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.app5m.appshelterdriver.R
+import br.com.app5m.appshelterdriver.controller.BankControl
+import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Bank
+import br.com.app5m.appshelterdriver.util.DialogMessages
 import br.com.app5m.appshelterdriver.util.RecyclerItemClickListener
+import br.com.app5m.appshelterdriver.util.Useful
 
 class AccountAdapter(private val list: List<Bank>,
                      private val context: Context,
+                     private val useful: Useful,
+                     private val wsResult: WSResult,
                      private val recyclerItemClickListener: RecyclerItemClickListener):
         RecyclerView.Adapter<AccountAdapter.Holder>(){
 
+
+    private val bankControl = BankControl(context, wsResult, useful)
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val bankTv: TextView = itemView.findViewById(R.id.bank_tv)
@@ -29,6 +37,7 @@ class AccountAdapter(private val list: List<Bank>,
         val titleTv: TextView = itemView.findViewById(R.id.title_tv)
         val typePix: TextView = itemView.findViewById(R.id.typePix_tv)
         val pixKeyTv: TextView = itemView.findViewById(R.id.pixKey_tv)
+        val deleteTv: TextView = itemView.findViewById(R.id.delete_tv)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -61,6 +70,19 @@ class AccountAdapter(private val list: List<Bank>,
             holder.typePix.text = bank.typePixKey
             holder.pixKeyTv.text = bank.pixKey
 
+        }
+
+        holder.deleteTv.setOnClickListener {
+            DialogMessages(context).click("Remover",
+                "Você tem certeza que deseja remover essa conta?", object: DialogMessages.Answer{
+                    override fun setOnClickListener() {
+
+                        useful.openLoading()
+                        bankControl.deleteBank(bank.id!!)
+
+                    }
+
+                })
         }
 
         holder.itemView.setOnClickListener {

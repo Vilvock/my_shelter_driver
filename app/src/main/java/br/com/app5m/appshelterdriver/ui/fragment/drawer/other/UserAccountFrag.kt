@@ -83,6 +83,11 @@ class UserAccountFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
         if (swipeRefresh.isRefreshing) swipeRefresh.isRefreshing = false
 
+        if (type == "delete"){
+            bankControl.listBanksUser()
+            return
+        }
+
         useful.closeLoading()
 
         bankList.clear()
@@ -103,7 +108,7 @@ class UserAccountFrag : Fragment(), WSResult, RecyclerItemClickListener {
 
     private fun configRecycler() {
 
-        val bankAdapter = AccountAdapter(bankList, requireContext(), this)
+        val bankAdapter = AccountAdapter(bankList, requireContext(), useful, this, this)
 
         banks_rv.apply {
             setHasFixedSize(false)

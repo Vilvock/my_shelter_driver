@@ -75,6 +75,16 @@ class BankControl(private val context: Context, private val result: WSResult, pr
         param.enqueue(this)
     }
 
+    fun deleteBank(idBank: String){
+
+        type = "delete"
+
+        bank = Bank()
+        bank.token = WSConstants.TOKEN
+
+        val param: Call<List<Bank>> = service.deleteBank(idBank, bank)
+        param.enqueue(this)
+    }
 
 
 }

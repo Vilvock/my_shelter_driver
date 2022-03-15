@@ -138,6 +138,11 @@ interface WebService {
 
     //Bank
 
+    @POST("bancos/remove/" + "{id}")
+    fun deleteBank(
+        @Path("id") id: String,
+        @Body b: Bank): Call<List<Bank>>
+
     @POST("bancos/update")
     fun updateBank(@Body b: Bank): Call<List<Bank>>
 

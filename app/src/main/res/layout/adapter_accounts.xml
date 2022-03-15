@@ -130,6 +130,16 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/delete_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="end"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size5"
+            android:text="Remover" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
