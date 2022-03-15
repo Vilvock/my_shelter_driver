@@ -16,6 +16,8 @@ interface WSResult {
 
     fun rResponse(list: List<Ride>, type: String){}
 
+    fun raResponse(list: List<Rating>, type: String){}
+
     fun bResponse(list: List<Bank>, type: String){}
 
     fun error(error: String){}

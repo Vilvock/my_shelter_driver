@@ -155,6 +155,13 @@ interface WebService {
     @POST("bancos/save")
     fun saveBank(@Body b: Bank): Call<List<Bank>>
 
+    //ratings
+
+    @POST("avaliacoes/media")
+    fun averageDriverRating(@Body r: Rating): Call<List<Rating>>
+
+    @POST("avaliacoes/find")
+    fun findRatings(@Body r: Rating): Call<List<Rating>>
 
     /*
      *Outros

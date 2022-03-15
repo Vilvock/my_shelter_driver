@@ -28,11 +28,13 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import br.com.app5m.appshelterdriver.MainAct
 import br.com.app5m.appshelterdriver.R
 import br.com.app5m.appshelterdriver.controller.DocumentControl
+import br.com.app5m.appshelterdriver.controller.RatingControl
 import br.com.app5m.appshelterdriver.controller.RideControl
 import br.com.app5m.appshelterdriver.controller.UserControl
 import br.com.app5m.appshelterdriver.controller.webservice.WSConstants
 import br.com.app5m.appshelterdriver.controller.webservice.WSResult
 import br.com.app5m.appshelterdriver.models.Document
+import br.com.app5m.appshelterdriver.models.Rating
 import br.com.app5m.appshelterdriver.models.Ride
 import br.com.app5m.appshelterdriver.models.User
 import br.com.app5m.appshelterdriver.ui.MapBottomPaddingDelegate
@@ -453,6 +455,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         headerView.nameUser_tv.text = preferences.getUserData()!!.name
         headerView.emailUser_tv.text = preferences.getUserData()!!.email
+
+        RatingControl(this, object : WSResult {
+            override fun raResponse(list: List<Rating>, type: String) {
+
+                val responseInfo = list[0]
+
+                headerView.ratingNumber_tv.text = responseInfo.average
+
+            }
+          }, useful).listAverage(preferences.getUserData()!!.id!!)
 
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
