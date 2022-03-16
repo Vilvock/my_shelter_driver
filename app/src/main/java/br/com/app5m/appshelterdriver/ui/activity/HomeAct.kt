@@ -68,6 +68,16 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.lang.NullPointerException
+import android.view.MotionEvent
+import com.google.android.gms.maps.model.LatLng
+
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener
+
+
+
+
+
+
 
 class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate {
 
@@ -171,11 +181,20 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         }
 
         centerCameraFab.setOnClickListener {
+
+            isCameraLock = true
+
             val originLatLng = LatLng(userLatLng!!.latitude, userLatLng!!.longitude)
 
             mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(originLatLng, 16f))
+
         }
 
+        touchableWrapper.onTouch = {
+            if (MotionEvent.ACTION_DOWN == it.action) {
+                isCameraLock = false
+            }
+        }
     }
 
     override fun onRestart() {
@@ -684,7 +703,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
                 MainScreenStage.ACCEPT_RIDE -> {
 
-                    isRefreshingRideStatus = false
                     useful.showRideFlowFrag(supportFragmentManager, "accept")
 
                 }
@@ -849,14 +867,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         if (notNullPoints.isEmpty())
             return
 
-        if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
-            if (isCameraLock) {
-                if (notNullPoints.size == 1) {
-                    mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 16f))
-                    isCameraLock = false
-                }
-            }
-        } else {
+        if (!isCameraLock) return
+
+        if (screenStageLiveData.value == MainScreenStage.WAITING_PICKUP) {
 
             val builder = LatLngBounds.Builder()
 
@@ -867,6 +880,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             val bounds = builder.build()
             val padding = resources.getDimension(R.dimen.map_pin_padding).toInt()
             mMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding))
+
+        } else {
+
+            mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(notNullPoints.first(), 16f))
 
         }
 
@@ -879,7 +896,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             if (intent.extras != null) {
 
-                val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
+                var screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
                 val rideId = intent.getStringExtra("rideId")
 
                 Log.d("TAG", "onReceive: " + rideId)
@@ -887,8 +904,12 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                 if (screenStage == MainScreenStage.ACCEPT_RIDE) {
                     if (rideId != null) {
 
+                        isRefreshingRideStatus = false
                         notificationRideId = rideId
 
+                    } else {
+                        //caso n tenha id manda ficar overview novamente
+                        screenStage = MainScreenStage.RELOAD_OVERVIEW_STATEMENT
                     }
                 }
 
