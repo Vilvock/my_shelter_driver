@@ -66,6 +66,9 @@ class Receive : Parcelable {
     @field:SerializedName("banco")
     var bank: String? = null
 
+    @field:SerializedName("chave_pix")
+    var pixKey: String? = null
+
     @field:SerializedName("data")
     var date: String? = null
 

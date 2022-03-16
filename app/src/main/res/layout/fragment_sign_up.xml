@@ -238,7 +238,7 @@
                 android:inputType="text"
                 android:maxLines="1"/>
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/board_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -247,7 +247,8 @@
                 android:ems="10"
                 android:hint="Placa"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                app:met_mask="###-####"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -265,7 +266,8 @@
                     android:ems="10"
                     android:hint="Ano"
                     android:inputType="number"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:maxLength="4"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"

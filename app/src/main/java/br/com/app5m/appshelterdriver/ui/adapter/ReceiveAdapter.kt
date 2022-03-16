@@ -35,9 +35,17 @@ class ReceiveAdapter(private val list: List<Receive>,
 
         val receive = list[position]
 
+        val type = if (receive.bank != "") {
+            "Banco: " + receive.bank
+
+        } else {
+            "Chave PIX: " + receive.pixKey
+
+        }
+
         holder.receiveInfoTv.text = "Tipo: " + receive.typeUser +
                 "\nValor: " + receive.value +
-                "\n\nBanco: " + receive.bank
+                "\n\n" + type
 
         holder.dateTv.text = receive.date
 

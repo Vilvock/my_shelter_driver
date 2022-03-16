@@ -128,7 +128,7 @@
                 android:textColor="@color/gray400" />
 
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/board_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,7 +136,9 @@
                 android:background="@drawable/shape_main_stroke_gray_et"
                 android:ems="10"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                app:met_mask="###-####"
+                />
 
             <TextView
                 android:layout_width="match_parent"
