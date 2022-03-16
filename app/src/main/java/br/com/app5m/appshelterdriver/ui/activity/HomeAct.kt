@@ -198,7 +198,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     }
                 })
         } else {
-            if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
+            if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT
+                || screenStageLiveData.value == MainScreenStage.WAITING_PICKUP
+                || screenStageLiveData.value == MainScreenStage.ONGOING_RIDE) {
                 isCameraLock = true
                 isRefreshingRideStatus = true
                 mapFragment.getMapAsync(this)
@@ -717,7 +719,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                             userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
                             vehicleAngle = userBearing,
     //                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-                            destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
+//                            destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
                             polyline = polyLineFormatted)
 
                         mapPlotUpdated(mapPlotDateLiveData.value)

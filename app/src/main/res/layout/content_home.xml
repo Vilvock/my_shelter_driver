@@ -12,36 +12,6 @@
         android:tag="maps"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include
-            android:id="@+id/top_credit_available"
-            layout="@layout/top_credit_available"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_gravity="top|end"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/centerCameraFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="16dp"
-             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="90dp"
-            android:src="@drawable/ic_gps"
-            app:backgroundTint="@android:color/white"
-            app:fabSize="mini"
-            app:tint="@color/colorPrimaryDark" />
-    </LinearLayout>
-
     <include
         android:id="@+id/bottom_im_available"
         layout="@layout/bottom_im_available"
