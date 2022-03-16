@@ -719,7 +719,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                             userPosition = LatLng(userLatLng!!.latitude, userLatLng!!.longitude),
                             vehicleAngle = userBearing,
     //                        originLatLng = LatLng(rideLiveData.value!!.originLatitude!!.toDouble(), rideLiveData.value!!.originLongitude!!.toDouble()),
-//                            destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
+                            destinationLatLng = LatLng(rideLiveData.value!!.destinationLatitude!!.toDouble(), rideLiveData.value!!.destinationLongitude!!.toDouble()),
                             polyline = polyLineFormatted)
 
                         mapPlotUpdated(mapPlotDateLiveData.value)
@@ -792,14 +792,14 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     .title("Destino final")
                     .anchor(0.5f, 0.70f)
             )
-            boundsLatLng.add(it)
+//            boundsLatLng.add(it)
         }
 
         mapPlotData?.polyline?.let { lineList ->
             mMap?.addPolyline(
                 PolylineOptions()
                     .addAll(lineList)
-                    .color(ContextCompat.getColor(this, R.color.colorPrimary))
+                    .color(ContextCompat.getColor(this, R.color.blue600))
             )
         }
 
