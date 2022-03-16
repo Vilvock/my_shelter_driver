@@ -200,7 +200,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         } else {
             if (screenStageLiveData.value == MainScreenStage.RELOAD_OVERVIEW_STATEMENT) {
                 isCameraLock = true
+                isRefreshingRideStatus = true
                 mapFragment.getMapAsync(this)
+
                 //por enquanto deixa aqui
                 configDrawer()
             }
@@ -208,6 +210,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     }
 
     override fun onStop() {
+        isRefreshingRideStatus = false
         handler.removeCallbacks(runnable)
         super.onStop()
     }
