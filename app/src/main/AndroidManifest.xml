@@ -16,25 +16,51 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/GeneralNoTitle"
         android:usesCleartextTraffic="true"
-        android:requestLegacyExternalStorage="true">
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/GeneralNoTitle">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ui.activity.SendDocumentAct"/>
-        <activity android:name=".ui.activity.SucessInfoAct"/>
-        <activity android:name=".ui.activity.PermissionLocalizationAct"/>
-        <activity android:name=".ui.activity.DocumentPdfWebViewAct"/>
-        <activity android:name=".ui.activity.HomeAct" />
-        <activity android:name=".ui.activity.IntroContainerAct" />
-        <activity android:name=".ui.activity.AuthContainerAct" />
-        <activity android:name=".ui.activity.DrawerContainerAct" />
+        <activity android:name=".ui.activity.SendDocumentAct"
+            android:exported="false"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.SucessInfoAct"
+            android:exported="false"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.PermissionLocalizationAct"
+            android:exported="false"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.DocumentPdfWebViewAct"
+            android:exported="false"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.DrawerContainerAct"
+            android:exported="false"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"  />
+        <activity android:name=".ui.activity.HomeAct"
+            android:exported="false"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"  />
+        <activity android:name=".ui.activity.AuthContainerAct"
+            android:exported="false"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"  />
+        <activity android:name=".ui.activity.IntroContainerAct"
+            android:exported="false"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"  />
 
         <activity android:name=".MainAct"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
