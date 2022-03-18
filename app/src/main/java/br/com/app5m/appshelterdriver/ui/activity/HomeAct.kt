@@ -182,6 +182,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         centerCameraFab.setOnClickListener {
 
+            if (userLatLng?.latitude == null || userLatLng?.longitude == null) return@setOnClickListener
+
             isCameraLock = true
 
             val originLatLng = LatLng(userLatLng!!.latitude, userLatLng!!.longitude)
@@ -285,6 +287,11 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
             }
 
             notifyScreenStageChanged(screenStage!!)
+
+            intent.replaceExtras(Bundle())
+            intent.action = ""
+            intent.data = null
+            intent.flags = 0
 
         } else {
 
