@@ -188,6 +188,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             val originLatLng = LatLng(userLatLng!!.latitude, userLatLng!!.longitude)
 
+            if (screenStageLiveData.value == MainScreenStage.WAITING_PICKUP) return@setOnClickListener
+
             mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(originLatLng, 16f))
 
         }
