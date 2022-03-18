@@ -142,7 +142,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     private val handler = Handler()
     private var runnable = Runnable { getRealTimeLocation()}
 
-    private val DRIVER_POSITION_TRACKING_RATE = 1000L
+    private val DRIVER_POSITION_TRACKING_RATE = 0L
     private val DELAY_HANDLER = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -288,11 +288,13 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                 }
             }
 
+            Log.d("tag", "onMapReady: " + notificationRideId)
+
             notifyScreenStageChanged(screenStage!!)
 
-//            intent.replaceExtras(Bundle())
+            intent.replaceExtras(Bundle())
 //            intent.action = ""
-//            intent.data = null
+            intent.data = null
 //            intent.flags = 0
 
         } else {
@@ -423,7 +425,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                     "Finalizada" -> {
 
                         if (screenStageLiveData.value == MainScreenStage.ACCEPT_RIDE) {
-                            notifyScreenStageChanged(MainScreenStage.ACCEPT_RIDE)
+//                            notifyScreenStageChanged(MainScreenStage.ACCEPT_RIDE)
                         } else {
                             notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                         }
@@ -433,7 +435,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
                         //cancelada
 
                         if (screenStageLiveData.value == MainScreenStage.ACCEPT_RIDE) {
-                            notifyScreenStageChanged(MainScreenStage.ACCEPT_RIDE)
+//                            notifyScreenStageChanged(MainScreenStage.ACCEPT_RIDE)
                         } else {
                             notifyScreenStageChanged(MainScreenStage.RELOAD_OVERVIEW_STATEMENT)
                         }
