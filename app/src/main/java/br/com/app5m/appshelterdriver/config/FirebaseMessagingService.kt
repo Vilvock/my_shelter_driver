@@ -86,8 +86,13 @@ class FirebaseMessagingService: FirebaseMessagingService() {
             intentBroadcast.putExtra("notifyScreen", notifyScreenValue)
         }
 
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(
-            this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent: PendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getActivity(
+                this, 0, intent, PendingIntent.FLAG_MUTABLE)
+        } else {
+            PendingIntent.getActivity(
+                this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
 
         broadcastManager.sendBroadcast(intentBroadcast)
 

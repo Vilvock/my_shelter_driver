@@ -288,10 +288,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             notifyScreenStageChanged(screenStage!!)
 
-            intent.replaceExtras(Bundle())
-            intent.action = ""
-            intent.data = null
-            intent.flags = 0
+//            intent.replaceExtras(Bundle())
+//            intent.action = ""
+//            intent.data = null
+//            intent.flags = 0
 
         } else {
 
