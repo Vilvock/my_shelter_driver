@@ -78,18 +78,6 @@ import com.google.android.gms.maps.GoogleMap.OnMapClickListener
 import android.hardware.SensorManager
 import android.view.animation.RotateAnimation
 
-
-
-
-
-
-
-
-
-
-
-
-
 class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate, SensorEventListener {
 
     private lateinit var useful: Useful
@@ -100,6 +88,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
     private lateinit var myLocation: MyLocation
     private lateinit var locationResult: MyLocation.LocationResult
+
+    private lateinit var mSensorManager: SensorManager
 
     enum class MainScreenStage {
         RELOAD_OVERVIEW_STATEMENT,
@@ -156,12 +146,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     private val DRIVER_POSITION_TRACKING_RATE = 1000L
     private val DELAY_HANDLER = 0L
 
-
-    // record the compass picture angle turned
     private var currentDegree = 0f
-
-    // device sensor manager
-    private lateinit var mSensorManager: SensorManager
+    private var mGravity = FloatArray(9)
+    private var mGeomagnetic = FloatArray(9)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -228,9 +215,19 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         // for the system's orientation sensor registered listeners
         mSensorManager.registerListener(
-            this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
+            this, mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
             SensorManager.SENSOR_DELAY_GAME
         )
+
+        mSensorManager.registerListener(
+            this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+            SensorManager.SENSOR_DELAY_GAME
+        )
+
+//        mSensorManager.registerListener(
+//            this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
+//            SensorManager.SENSOR_DELAY_GAME
+//        )
     }
 
     override fun onRestart() {
@@ -288,16 +285,31 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         finishAffinity()
     }
 
+    override fun onSensorChanged(event: SensorEvent) {
+        if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) mGravity = event.values
+        if (event.sensor.type == Sensor.TYPE_MAGNETIC_FIELD) mGeomagnetic = event.values
+        if (mGravity != null && mGeomagnetic != null) {
+            val R = FloatArray(9)
+            val I = FloatArray(9)
+            if (SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic)) {
 
-    override fun onSensorChanged(event: SensorEvent?) {
-        // get the angle around the z-axis rotated
-        val degree = Math.round(event?.values!!.get(0)).toFloat()
+                // orientation contains azimut, pitch and roll
+                val orientation = FloatArray(3)
+                SensorManager.getOrientation(R, orientation)
+                val azimut = orientation[0]
 
-        // create a rotation animation (reverse turn degree degrees)
 
-        currentDegree = degree
-
-        Log.d("TAG", "onSensorChanged: " + currentDegree)
+                currentDegree = (Math.toDegrees(azimut.toDouble()) + 360).toFloat() % 360
+            }
+        } else {
+//            val degree = Math.round(event?.values!!.get(0)).toFloat()
+//
+//            // create a rotation animation (reverse turn degree degrees)
+//
+//            currentDegree = degree
+//
+//            Log.d("TAG", "onSensorChanged: " + currentDegree)
+        }
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
