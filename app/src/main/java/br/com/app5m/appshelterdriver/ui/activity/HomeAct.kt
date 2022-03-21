@@ -288,6 +288,23 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         finishAffinity()
     }
 
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        // get the angle around the z-axis rotated
+        val degree = Math.round(event?.values!!.get(0)).toFloat()
+
+        // create a rotation animation (reverse turn degree degrees)
+
+        currentDegree = degree
+
+        Log.d("TAG", "onSensorChanged: " + currentDegree)
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+
+    }
+
+
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap?) {
         mMap = map
@@ -961,21 +978,6 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             }
         }
-    }
-
-    override fun onSensorChanged(event: SensorEvent?) {
-        // get the angle around the z-axis rotated
-        val degree = Math.round(event?.values!!.get(0)).toFloat()
-
-        // create a rotation animation (reverse turn degree degrees)
-
-        currentDegree = degree
-
-        Log.d("TAG", "onSensorChanged: " + currentDegree)
-    }
-
-    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-
     }
 
 }
