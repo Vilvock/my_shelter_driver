@@ -7,6 +7,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
@@ -72,6 +75,8 @@ import android.view.MotionEvent
 import com.google.android.gms.maps.model.LatLng
 
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener
+import android.hardware.SensorManager
+import android.view.animation.RotateAnimation
 
 
 
@@ -79,7 +84,13 @@ import com.google.android.gms.maps.GoogleMap.OnMapClickListener
 
 
 
-class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate {
+
+
+
+
+
+
+class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPaddingDelegate, SensorEventListener {
 
     private lateinit var useful: Useful
     private lateinit var preferences: Preferences
@@ -142,8 +153,15 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
     private val handler = Handler()
     private var runnable = Runnable { getRealTimeLocation()}
 
-    private val DRIVER_POSITION_TRACKING_RATE = 0L
+    private val DRIVER_POSITION_TRACKING_RATE = 1000L
     private val DELAY_HANDLER = 0L
+
+
+    // record the compass picture angle turned
+    private var currentDegree = 0f
+
+    // device sensor manager
+    private lateinit var mSensorManager: SensorManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -155,6 +173,10 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         userControl = UserControl(this, this, useful)
         documentControl = DocumentControl(this, this, useful)
         myLocation = MyLocation(this)
+
+
+        // initialize your android device sensor capabilities
+        mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
 
         configDrawer()
 
@@ -201,6 +223,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        // for the system's orientation sensor registered listeners
+        mSensorManager.registerListener(
+            this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
+            SensorManager.SENSOR_DELAY_GAME
+        )
+    }
+
     override fun onRestart() {
         super.onRestart()
 
@@ -242,6 +274,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
     override fun onPause() {
         handler.removeCallbacks(runnable)
+        mSensorManager.unregisterListener(this)
         super.onPause()
     }
 
@@ -635,7 +668,7 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 //                    }
 
                     userLatLng = LatLng (location.latitude, location.longitude)
-                    userBearing = location.bearing
+                    userBearing = currentDegree
 
 
                     _mapPlotDateLiveData.value = MapPlotData(
@@ -928,6 +961,21 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             }
         }
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        // get the angle around the z-axis rotated
+        val degree = Math.round(event?.values!!.get(0)).toFloat()
+
+        // create a rotation animation (reverse turn degree degrees)
+
+        currentDegree = degree
+
+        Log.d("TAG", "onSensorChanged: " + currentDegree)
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+
     }
 
 }
