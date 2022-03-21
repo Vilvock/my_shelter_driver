@@ -173,6 +173,8 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
         imAvailable_sw.setOnCheckedChangeListener { buttonView, isChecked -> //commit prefs on change
 
+            if (userLatLng?.latitude == null || userLatLng?.longitude == null) return@setOnCheckedChangeListener
+
             val driverStatus = User()
 
             driverStatus.latitude = userLatLng!!.latitude.toString()
@@ -354,9 +356,9 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
 
             notifyScreenStageChanged(screenStage!!)
 
-            intent.replaceExtras(Bundle())
+            intent.replaceExtras(null)
 //            intent.action = ""
-            intent.data = null
+//            intent.data = null
 //            intent.flags = 0
 
         } else {

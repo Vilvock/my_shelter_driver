@@ -95,14 +95,14 @@ class RideFlowContainerBottomFrag: Fragment() {
                     sheet_container.layoutParams = params
                 }
 
-                if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
-                    || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
+//                if (homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.WAITING_PICKUP
+//                    || homeActContext.screenStageLiveData.value == HomeAct.MainScreenStage.ONGOING_RIDE) {
                     sheet_container.post {
                         (requireActivity() as? MapBottomPaddingDelegate)?.setMapVerticalPadding(
                             sheet_container.height
                         )
                     }
-                }
+//                }
 
             }
         })
