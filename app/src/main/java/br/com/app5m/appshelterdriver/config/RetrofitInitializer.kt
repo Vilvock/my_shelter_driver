@@ -51,7 +51,8 @@ class RetrofitInitializer {
         } else {
             // Workaround for the error "Caused by: com.android.org.bouncycastle.jce.exception.ExtCertPathValidatorException:
             // Could not validate certificate: Certificate expired at".
-            OkHttpClient.Builder()
+//            OkHttpClient.Builder()
+            getUnsafeOkHttpClient()
     }
 
     private fun getUnsafeOkHttpClient(): OkHttpClient.Builder =
