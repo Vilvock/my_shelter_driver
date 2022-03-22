@@ -17,9 +17,6 @@ import com.google.firebase.messaging.RemoteMessage
 
 class FirebaseMessagingService: FirebaseMessagingService() {
 
-
-    private var REQUEST_CODE = 0 //DEFAULT
-
     private val TAG = "notifica"
 //    private var intent: Intent? = null
 
@@ -45,6 +42,8 @@ class FirebaseMessagingService: FirebaseMessagingService() {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun setMessage(title: String?, body: String?, type: String?, rideId: String?) {
+
+        var REQUEST_CODE = 0 //DEFAULT
 
         val channel = getString(R.string.default_notification_channel_id)
         val uriSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
