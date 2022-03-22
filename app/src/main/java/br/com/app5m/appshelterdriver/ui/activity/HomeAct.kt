@@ -342,17 +342,16 @@ class HomeAct : AppCompatActivity(), OnMapReadyCallback, WSResult, MapBottomPadd
         if (intent.extras != null) {
 
             val screenStage: MainScreenStage? = intent.getSerializableExtra("notifyScreen") as MainScreenStage?
-            val rideId = intent.extras?.getString("rideId")
+            val rideId = intent.getStringExtra("rideId")
 
             if (screenStage == MainScreenStage.ACCEPT_RIDE) {
                 if (rideId != null) {
 
                     notificationRideId = rideId
 
+                    Log.d("tag", "recebido: " + rideId)
                 }
             }
-
-            Log.d("tag", "onMapReady: " + notificationRideId)
 
             notifyScreenStageChanged(screenStage!!)
 

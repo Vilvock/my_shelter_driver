@@ -18,8 +18,10 @@ import com.google.firebase.messaging.RemoteMessage
 class FirebaseMessagingService: FirebaseMessagingService() {
 
 
+    private var REQUEST_CODE = 0 //DEFAULT
+
     private val TAG = "notifica"
-    private var intent: Intent? = null
+//    private var intent: Intent? = null
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
@@ -49,7 +51,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
 
         var notifyScreenValue: HomeAct.MainScreenStage? = null
 
-        intent = Intent(this, HomeAct::class.java)
+        val intent = Intent(this, HomeAct::class.java)
 
         val broadcastManager = LocalBroadcastManager.getInstance(this)
         val intentBroadcast = Intent("Notification")
@@ -63,6 +65,10 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 intentBroadcast.putExtra("rideId", rideId)
 
                 notifyScreenValue = HomeAct.MainScreenStage.ACCEPT_RIDE
+
+                REQUEST_CODE = rideId!!.toInt()
+
+                Log.d("tag", "recebido: " + rideId)
 
             }
             "2", //ACEITA
@@ -88,10 +94,10 @@ class FirebaseMessagingService: FirebaseMessagingService() {
 
         val pendingIntent: PendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             PendingIntent.getActivity(
-                this, 0, intent, PendingIntent.FLAG_MUTABLE)
+                this, REQUEST_CODE, intent, PendingIntent.FLAG_MUTABLE)
         } else {
             PendingIntent.getActivity(
-                this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                this, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
         broadcastManager.sendBroadcast(intentBroadcast)
