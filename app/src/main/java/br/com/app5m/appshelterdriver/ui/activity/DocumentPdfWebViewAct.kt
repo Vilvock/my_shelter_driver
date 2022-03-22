@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.toolbar_yellow.*
 
 class DocumentPdfWebViewAct : AppCompatActivity() {
 
-    private val pdfLink: String = "https://portalpluraltv.com.br/termos_pluraltv.pdf"
+    private val pdfLink: String = "https://sheltermovel.com.br/termos_uso_shelter.pdf"
     private lateinit var useful: Useful
 
     @SuppressLint("SetJavaScriptEnabled")
