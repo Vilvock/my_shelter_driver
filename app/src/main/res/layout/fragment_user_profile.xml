@@ -67,8 +67,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="8dp"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@android:drawable/sym_def_app_icon" />
+                            android:scaleType="centerCrop" />
 
                         <com.google.android.material.floatingactionbutton.FloatingActionButton
                             android:id="@+id/updateAvatar_fab"
